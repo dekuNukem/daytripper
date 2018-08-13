@@ -1,0 +1,86 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.17.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: deku Nukem, myself, LIC=FQQDY-I5BJJ-EYNVT-RXU1P-C7LG9-KARG6
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.17
+Toolchain Path:  d:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.17
+Dialog DLL:      DARMCM1.DLL V1.12.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TARMCM1.DLL V1.9.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Allen\Desktop\old projects\gps_logger_new3\MDK-ARM\gps_logger_new.uvprojx
+Project File Date:  07/25/2016
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'gps_logger_new'
+compiling helpers.c...
+../Inc/helpers.h(24): warning:  #1295-D: Deprecated declaration check_battery - give arg types
+  float check_battery();
+../Inc/helpers.h(25): warning:  #1295-D: Deprecated declaration gps_on - give arg types
+  void gps_on();
+../Inc/helpers.h(26): warning:  #1295-D: Deprecated declaration gps_off - give arg types
+  void gps_off();
+../Inc/helpers.h(28): warning:  #1295-D: Deprecated declaration low_bat_shutoff - give arg types
+  void low_bat_shutoff();
+../Inc/helpers.h(29): warning:  #1295-D: Deprecated declaration gps_status - give arg types
+  int8_t gps_status();
+..\Src\helpers.c(143): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "uint8_t *"
+      HAL_UART_Receive_IT(
+ps_uart_ptr, gps_byte_buf, 1);
+..\Src\helpers.c(181): warning:  #188-D: enumerated type mixed with another type
+      HAL_GPIO_WritePin(
+AT_LED_GPIO_Port, 
+AT_LED_Pin, vbat >= 3.6);
+..\Src\helpers.c(182): warning:  #188-D: enumerated type mixed with another type
+      HAL_GPIO_WritePin(
+PS_LED_GPIO_Port, 
+PS_LED_Pin, vbat >= 3.75);
+..\Src\helpers.c(183): warning:  #188-D: enumerated type mixed with another type
+      HAL_GPIO_WritePin(
+D_LED_GPIO_Port, 
+D_LED_Pin, vbat >= 3.9);
+..\Src\helpers.c(210): warning:  #111-D: statement is unreachable
+    return -1;
+..\Src\helpers.c(262): warning:  #188-D: enumerated type mixed with another type
+        HAL_NVIC_DisableIRQ(i);
+..\Src\helpers.c(267): warning:  #1-D: last line of file ends without a newline
+  }
+..\Src\helpers.c: 12 warnings, 0 errors
+linking...
+Program Size: Code=30032 RO-data=1604 RW-data=180 ZI-data=5604  
+"gps_logger_new\gps_logger_new.axf" - 0 Error(s), 12 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 4.3.0
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\Allen\Desktop\old projects\gps_logger_new3\MDK-ARM\RTE
+  d:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  d:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:4.3.0
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+/**/ WPCOMSharing.update_facebook_count({
+   "https://fabiobaltieri.com/2012/05/06/2-4-ghz-inverted-f-antenna-eagle-library/": {
+      "share": {
+         "comment_count": 0,
+         "share_count": 1
+      },
+      "og_object": {
+         "id": "10150814048073865",
+         "description": "ISM radios for microcontroller are becoming quite popular in last years, and if you are designing with wireless radios you have a wide choice of transceiver in both sub-gigahertz an 2.4 GHz bandwid\u2026",
+         "title": "2.4 GHz Inverted F Antenna Eagle Library",
+         "type": "article",
+         "updated_time": "2017-11-07T17:21:53+0000"
+      },
+      "id": "https://fabiobaltieri.com/2012/05/06/2-4-ghz-inverted-f-antenna-eagle-library/"
+   }
+});

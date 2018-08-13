@@ -1,0 +1,12 @@
+gps_logger_new\minmea.o: ..\Src\minmea.c
+gps_logger_new\minmea.o: ../Inc/minmea.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+gps_logger_new\minmea.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
