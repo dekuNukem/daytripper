@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.0">
+<eagle version="9.1.3">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
@@ -168,10 +168,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="26" y2="0" width="0" layer="20"/>
-<wire x1="26" y1="0" x2="26" y2="40" width="0" layer="20"/>
-<wire x1="26" y1="40" x2="0" y2="40" width="0" layer="20"/>
-<wire x1="0" y1="40" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="20" y2="0" width="0" layer="20"/>
+<wire x1="20" y1="0" x2="20" y2="55" width="0" layer="20"/>
+<wire x1="20" y1="55" x2="0" y2="55" width="0" layer="20"/>
+<wire x1="0" y1="55" x2="0" y2="0" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="nRF24L01-Chip-v13">
@@ -205,45 +205,6 @@ by exp-lbrs.ulp</description>
 <smd name="20" x="-0.9863" y="1.9254" dx="0.6858" dy="0.2934" layer="1" roundness="100" rot="R90" thermals="no"/>
 <text x="-1.27" y="0.889" size="0.4064" layer="25">&gt;NAME</text>
 <text x="-1.27" y="-1.27" size="0.4064" layer="27">&gt;VALUE</text>
-</package>
-</packages>
-</library>
-<library name="antenna">
-<packages>
-<package name="DN007+0">
-<wire x1="-8.6" y1="-3.3" x2="16.9" y2="-3.3" width="0.127" layer="51" style="shortdash"/>
-<smd name="FEED" x="2.22" y="-2.8" dx="0.46" dy="1" layer="1" stop="no" thermals="no" cream="no"/>
-<smd name="GND@1" x="1.035" y="-2.93" dx="0.74" dy="1.01" layer="1" rot="R90" stop="no" thermals="no" cream="no"/>
-<smd name="GND" x="-1.16" y="-2.93" dx="0.74" dy="1.01" layer="1" rot="R90" stop="no" thermals="no" cream="no"/>
-<polygon width="0.25" layer="1">
-<vertex x="2.115" y="-2.4"/>
-<vertex x="2.115" y="-0.9406"/>
-<vertex x="1.4562" y="-0.485"/>
-<vertex x="-1.535" y="-0.485"/>
-<vertex x="-1.535" y="0.475"/>
-<vertex x="-0.535" y="0.475"/>
-<vertex x="-0.535" y="1.525"/>
-<vertex x="-6.585" y="1.525"/>
-<vertex x="-6.585" y="-1.395"/>
-<vertex x="1.415" y="-1.395"/>
-<vertex x="1.415" y="-2.63"/>
-<vertex x="0.66" y="-2.63"/>
-<vertex x="0.66" y="-2.435"/>
-<vertex x="-0.78" y="-2.435"/>
-<vertex x="-0.78" y="-2.59"/>
-<vertex x="-1.54" y="-2.59"/>
-<vertex x="-1.54" y="-2.435"/>
-<vertex x="-8.515" y="-2.435"/>
-<vertex x="-8.515" y="3.485"/>
-<vertex x="16.815" y="3.485"/>
-<vertex x="16.815" y="2.525"/>
-<vertex x="0.415" y="2.525"/>
-<vertex x="0.415" y="0.475"/>
-<vertex x="1.415" y="0.475"/>
-<vertex x="1.415" y="-0.21"/>
-<vertex x="2.325" y="-0.866"/>
-<vertex x="2.325" y="-2.4"/>
-</polygon>
 </package>
 </packages>
 </library>
@@ -380,6 +341,101 @@ by exp-lbrs.ulp</description>
 <smd name="32" x="-2.8" y="4.2926" dx="0.5588" dy="1.27" layer="1"/>
 <text x="-2.7686" y="5.08" size="0.8128" layer="25">&gt;NAME</text>
 <text x="-3.0226" y="-1.27" size="0.8128" layer="27">&gt;VALUE</text>
+</package>
+</packages>
+</library>
+<library name="clock">
+<description>Generated from &lt;b&gt;clock.sch&lt;/b&gt;&lt;p&gt;
+by exp-lbrs.ulp</description>
+<packages>
+<package name="TF-PULL">
+<description>TF / Micro SD socket is PUSH-PUSH type, the card can be pushed into and auto locked and pushed out by simply press the card.
+&lt;p&gt;
+Surface Mounting type.</description>
+<wire x1="7.4" y1="-7.25" x2="7.4" y2="6.75" width="0.127" layer="21"/>
+<wire x1="7.4" y1="6.75" x2="-1.4" y2="6.75" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="6.75" x2="-4.4" y2="7.55" width="0.127" layer="21"/>
+<wire x1="-4.4" y1="7.55" x2="-7.4" y2="7.55" width="0.127" layer="21"/>
+<wire x1="-7.4" y1="7.55" x2="-7.4" y2="-5.8" width="0.127" layer="21"/>
+<wire x1="-7.4" y1="-5.8" x2="-6.1" y2="-5.8" width="0.127" layer="21"/>
+<wire x1="-6.1" y1="-5.8" x2="-6.1" y2="-7.25" width="0.127" layer="21"/>
+<wire x1="-6.1" y1="-7.25" x2="7.4" y2="-7.25" width="0.127" layer="21"/>
+<smd name="1" x="-2.2" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="2" x="-1.1" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="3" x="0" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="4" x="1.1" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="5" x="2.2" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="6" x="3.3" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="7" x="4.4" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="8" x="5.5" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="9" x="6.6" y="-7.62" dx="0.7" dy="1.4" layer="1"/>
+<smd name="S1" x="-7.9" y="2.85" dx="1.4" dy="2" layer="1" thermals="no"/>
+<smd name="S2" x="7.9" y="2.85" dx="1.4" dy="2" layer="1" thermals="no"/>
+<smd name="S3" x="7.96" y="-6.75" dx="1.28" dy="1.4" layer="1" thermals="no"/>
+<smd name="S4" x="-7.025" y="-6.75" dx="1.95" dy="1.4" layer="1" thermals="no"/>
+<text x="7.7" y="1.1" size="1.016" layer="25" ratio="18" rot="R270">&gt;NAME</text>
+<hole x="-3.1" y="3.25" drill="1.25"/>
+<hole x="4.9" y="3.25" drill="1.25"/>
+</package>
+</packages>
+</library>
+<library name="SparkFun-RF">
+<description>&lt;h3&gt;SparkFun RF, WiFi, Cellular, and Bluetooth&lt;/h3&gt;
+In this library you'll find things that send or receive RF-- cellular modules, Bluetooth, WiFi, etc.
+&lt;br&gt;
+&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
+&lt;br&gt;
+&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;
+&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="TRACE_ANTENNA_2.4GHZ_15.2MM">
+<description>&lt;h3&gt;2.4GHz Meander PCB Trace Antenna&lt;/h3&gt;
+&lt;p&gt;PCB trace antenna with a 15.2 x 5.7mm footprint.&lt;/p&gt;
+&lt;p&gt;Based on layout from &lt;a href="http://www.ti.com/lit/an/swra117d/swra117d.pdf"&gt;TI app note AN043&lt;/a&gt;.&lt;/p&gt;</description>
+<polygon width="0.002540625" layer="1">
+<vertex x="-0.25" y="-0.5"/>
+<vertex x="-0.25" y="4.4"/>
+<vertex x="-1.65" y="4.4"/>
+<vertex x="-1.65" y="-0.5"/>
+<vertex x="-2.55" y="-0.5"/>
+<vertex x="-2.55" y="4.9"/>
+<vertex x="2.45" y="4.9"/>
+<vertex x="2.45" y="2.26"/>
+<vertex x="4.45" y="2.26"/>
+<vertex x="4.45" y="4.9"/>
+<vertex x="7.15" y="4.9"/>
+<vertex x="7.15" y="2.26"/>
+<vertex x="9.15" y="2.26"/>
+<vertex x="9.15" y="4.9"/>
+<vertex x="11.85" y="4.9"/>
+<vertex x="11.85" y="0.46"/>
+<vertex x="11.35" y="0.46"/>
+<vertex x="11.35" y="4.4"/>
+<vertex x="9.65" y="4.4"/>
+<vertex x="9.65" y="1.76"/>
+<vertex x="6.65" y="1.76"/>
+<vertex x="6.65" y="4.4"/>
+<vertex x="4.95" y="4.4"/>
+<vertex x="4.95" y="1.76"/>
+<vertex x="1.95" y="1.76"/>
+<vertex x="1.95" y="4.4"/>
+<vertex x="0.25" y="4.4"/>
+<vertex x="0.25" y="-0.5"/>
+</polygon>
+<wire x1="-3" y1="0" x2="12" y2="0" width="0.05" layer="51"/>
+<smd name="GND" x="-2.1" y="-0.25" dx="0.9" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="ANT" x="0" y="-0.25" dx="0.5" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
+<wire x1="-3" y1="5.2" x2="12" y2="5.2" width="0.05" layer="51"/>
+<text x="1" y="-0.8" size="0.64" layer="51" font="vector">Ground Plane</text>
+<text x="1.5" y="5.5" size="0.64" layer="51" font="vector">Board Edge</text>
+<text x="0" y="1.27" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="1.016" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
 </package>
 </packages>
 </library>
@@ -576,13 +632,14 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="12.7" y="27.94"/>
-<element name="U$4" library="antenna" package="DN007+0" value="INVERTED_F_ANTENNA+0" x="8.8392" y="36.1442"/>
-<element name="J1" library="SparkFun-Connectors" package="USB-A-H" value="USB_A_PTH_MALE" x="12.7" y="2.54" rot="R90">
-<attribute name="PROD_ID" value="CONN-08367" x="12.7" y="2.54" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="SF_ID" value="PRT-00437" x="12.7" y="2.54" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="8.89" y="43.18"/>
+<element name="J1" library="SparkFun-Connectors" package="USB-A-H" value="USB_A_PTH_MALE" x="10.16" y="2.54" rot="R90">
+<attribute name="PROD_ID" value="CONN-08367" x="10.16" y="2.54" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="SF_ID" value="PRT-00437" x="10.16" y="2.54" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="IC2" library="nixx" package="TQFP32-08" value="STM32F042K6" x="12.7" y="16.51"/>
+<element name="IC2" library="nixx" package="TQFP32-08" value="STM32F042K6" x="8.89" y="11.43"/>
+<element name="SD1" library="clock" package="TF-PULL" value="TF-HOLDER" x="10.16" y="29.21" rot="R90"/>
+<element name="E1" library="SparkFun-RF" package="TRACE_ANTENNA_2.4GHZ_15.2MM" value="ANTENNA-GROUNDEDTRACE-15.2MM" x="5.08" y="48.26"/>
 </elements>
 <signals>
 <signal name="DVDD">
@@ -592,8 +649,10 @@ design rules under a new name.</description>
 <contactref element="U$3" pad="7"/>
 <contactref element="U$3" pad="15"/>
 <contactref element="U$3" pad="18"/>
-<wire x1="12.7" y1="29.8654" x2="14.6254" y2="28.9263" width="0" layer="19" extent="1-1"/>
-<wire x1="12.2069" y1="26.0146" x2="14.6254" y2="28.9263" width="0" layer="19" extent="1-1"/>
+<contactref element="SD1" pad="4"/>
+<wire x1="8.89" y1="45.1054" x2="10.8154" y2="44.1663" width="0" layer="19" extent="1-1"/>
+<wire x1="8.3969" y1="41.2546" x2="10.8154" y2="44.1663" width="0" layer="19" extent="1-1"/>
+<wire x1="17.78" y1="30.31" x2="8.3969" y2="41.2546" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VDD_PA">
 <contactref element="U$3" pad="11"/>
@@ -604,10 +663,12 @@ design rules under a new name.</description>
 <contactref element="U$3" pad="14"/>
 <contactref element="U$3" pad="17"/>
 <contactref element="U$3" pad="20"/>
-<wire x1="12.7" y1="26.0146" x2="12.7" y2="27.94" width="0" layer="19" extent="1-1"/>
-<wire x1="14.6254" y1="28.4331" x2="12.7" y2="27.94" width="0" layer="19" extent="1-1"/>
-<wire x1="13.1931" y1="29.8654" x2="12.7" y2="27.94" width="0" layer="19" extent="1-1"/>
-<wire x1="11.7137" y1="29.8654" x2="13.1931" y2="29.8654" width="0" layer="19" extent="1-1"/>
+<contactref element="SD1" pad="6"/>
+<wire x1="8.89" y1="41.2546" x2="8.89" y2="43.18" width="0" layer="19" extent="1-1"/>
+<wire x1="10.8154" y1="43.6731" x2="8.89" y2="43.18" width="0" layer="19" extent="1-1"/>
+<wire x1="9.3831" y1="45.1054" x2="8.89" y2="43.18" width="0" layer="19" extent="1-1"/>
+<wire x1="7.9037" y1="45.1054" x2="9.3831" y2="45.1054" width="0" layer="19" extent="1-1"/>
+<wire x1="17.78" y1="32.51" x2="8.89" y2="41.2546" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VBUS">
 <contactref element="J1" pad="VBUS"/>
