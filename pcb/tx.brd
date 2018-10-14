@@ -958,10 +958,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="17.399" y="20.0914" smashed="yes" rot="R90">
 <attribute name="PROD_ID" value="XTAL-12454" x="44.704" y="-0.4826" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R3" library="joyAnalog" package="0805" value="5K1" x="22.8346" y="5.8928" smashed="yes" rot="R90">
+<element name="R3" library="joyAnalog" package="0805" value="5.1K" x="22.8346" y="5.8928" smashed="yes" rot="R90">
 <attribute name="NAME" x="23.4696" y="4.2799" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R2" library="joyAnalog" package="0805" value="5K1" x="24.5618" y="5.8928" smashed="yes" rot="R90">
+<element name="R2" library="joyAnalog" package="0805" value="5.1K" x="24.5618" y="5.8928" smashed="yes" rot="R90">
 <attribute name="NAME" x="26.1493" y="4.9022" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="U3" library="microbuilder" package="SOT23-5" value="MCP73831T-2ACI/OT" x="7.0612" y="4.8514" smashed="yes" rot="R270"/>
@@ -971,7 +971,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C10" library="SparkFun-Passives" package="0805" value="4.7µF" x="5.715" y="1.651" smashed="yes" rot="R270">
 <attribute name="NAME" x="3.0734" y="0.0889" size="0.8128" layer="25"/>
 </element>
-<element name="R5" library="SparkFun-Passives" package="0805" value="27K" x="10.0838" y="4.8514" smashed="yes" rot="R270">
+<element name="R5" library="SparkFun-Passives" package="0805" value="22K" x="10.0838" y="4.8514" smashed="yes" rot="R270">
 <attribute name="NAME" x="10.9093" y="5.6134" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="U$9" library="3pos_slide_switch" package="SOT23R_INFINEON" value="XC6206_DEV" x="6.7056" y="14.9352" smashed="yes" rot="R90"/>
@@ -1017,7 +1017,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="7.874" y="22.606" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="7.874" y="22.606" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R12" library="joyAnalog" package="0805" value="4K7" x="8.2296" y="24.9428" smashed="yes" rot="R180">
+<element name="R12" library="joyAnalog" package="0805" value="4.7K" x="8.2296" y="24.9428" smashed="yes" rot="R180">
 <attribute name="NAME" x="9.144" y="26.7081" size="0.8128" layer="25" rot="R180"/>
 <attribute name="VALUE" x="9.2456" y="26.3398" size="0.4064" layer="27" rot="R180"/>
 <attribute name="VALUE" x="9.2456" y="26.3398" size="0.4064" layer="27" rot="R180"/>

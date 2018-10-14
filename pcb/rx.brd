@@ -918,17 +918,17 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="13.335" y="6.223" size="0.8128" layer="25" rot="R180"/>
 <attribute name="VALUE" x="13.335" y="11.303" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="C10" library="clock" package="0805" value="1uF" x="14.351" y="8.382" smashed="yes" rot="R90">
+<element name="C10" library="clock" package="0805" value="4.7uF" x="14.351" y="8.382" smashed="yes" rot="R90">
 <attribute name="NAME" x="16.002" y="6.7945" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C11" library="clock" package="0805" value="1uF" x="7.493" y="8.128" smashed="yes" rot="R180">
+<element name="C11" library="clock" package="0805" value="4.7uF" x="7.493" y="8.128" smashed="yes" rot="R180">
 <attribute name="NAME" x="8.382" y="9.8425" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="10.541" y="24.13" smashed="yes" rot="R90">
 <attribute name="PROD_ID" value="XTAL-12454" x="10.541" y="24.13" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="12.065" y="24.13" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
-<element name="R2" library="joyAnalog" package="0805" value="22K" x="17.0688" y="22.9108" smashed="yes">
+<element name="R2" library="joyAnalog" package="0805" value="10K" x="17.0688" y="22.9108" smashed="yes">
 <attribute name="NAME" x="15.6718" y="21.3233" size="0.8128" layer="25"/>
 <attribute name="VALUE" x="16.0528" y="21.5138" size="0.4064" layer="27"/>
 <attribute name="VALUE" x="16.0528" y="21.5138" size="0.4064" layer="27"/>
@@ -939,17 +939,17 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C13" library="clock" package="0805" value="100nF" x="15.0622" y="11.0998" smashed="yes" rot="R180">
 <attribute name="NAME" x="15.5067" y="10.2362" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="R3" library="joyAnalog" package="0805" value="22K" x="15.4432" y="28.702" smashed="yes" rot="R270">
+<element name="R3" library="joyAnalog" package="0805" value="4.7K" x="15.4432" y="28.702" smashed="yes" rot="R270">
 <attribute name="NAME" x="15.7353" y="30.353" size="0.8128" layer="25" rot="R90"/>
 <attribute name="VALUE" x="14.0462" y="29.718" size="0.4064" layer="27" rot="R270"/>
 <attribute name="VALUE" x="14.0462" y="29.718" size="0.4064" layer="27" rot="R270"/>
 </element>
-<element name="R4" library="joyAnalog" package="0805" value="22K" x="16.9672" y="28.702" smashed="yes" rot="R270">
+<element name="R4" library="joyAnalog" package="0805" value="2.2K" x="16.9672" y="28.702" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.7927" y="29.21" size="0.8128" layer="25" rot="R270"/>
 <attribute name="VALUE" x="15.5702" y="29.718" size="0.4064" layer="27" rot="R270"/>
 <attribute name="VALUE" x="15.5702" y="29.718" size="0.4064" layer="27" rot="R270"/>
 </element>
-<element name="R5" library="joyAnalog" package="0805" value="22K" x="13.8176" y="28.702" smashed="yes" rot="R270">
+<element name="R5" library="joyAnalog" package="0805" value="2.2K" x="13.8176" y="28.702" smashed="yes" rot="R270">
 <attribute name="NAME" x="12.2301" y="29.21" size="0.8128" layer="25" rot="R270"/>
 <attribute name="VALUE" x="12.4206" y="29.718" size="0.4064" layer="27" rot="R270"/>
 <attribute name="VALUE" x="12.4206" y="29.718" size="0.4064" layer="27" rot="R270"/>

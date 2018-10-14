@@ -8108,12 +8108,12 @@ B340A  3A 40V SMA &lt;br&gt;</description>
 <part name="GND11" library="clock" deviceset="GND" device=""/>
 <part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
-<part name="R3" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5K1"/>
-<part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5K1"/>
+<part name="R3" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5.1K"/>
+<part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5.1K"/>
 <part name="U3" library="microbuilder" deviceset="MCP73831/2" device="" value="MCP73831T-2ACI/OT"/>
 <part name="R4" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="4.7K"/>
 <part name="C10" library="SparkFun-Passives" deviceset="CAP" device="0805" value="4.7µF"/>
-<part name="R5" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="27K"/>
+<part name="R5" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$9" library="3pos_slide_switch" deviceset="XC6206_DEV" device=""/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
@@ -8150,7 +8150,7 @@ B340A  3A 40V SMA &lt;br&gt;</description>
 <part name="GND25" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND26" library="clock" deviceset="GND" device=""/>
 <part name="LED2" library="joyAnalog" deviceset="LED" device="CHIP-LED0805"/>
-<part name="R12" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
+<part name="R12" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="4.7K"/>
 <part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$11" library="adafruit_changed" deviceset="PINHD1X2" device=""/>

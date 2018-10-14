@@ -5118,12 +5118,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="U$4" library="3pos_slide_switch" deviceset="XC6206_DEV" device=""/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C10" library="clock" deviceset="CAP" device="0805" value="1uF"/>
-<part name="C11" library="clock" deviceset="CAP" device="0805" value="1uF"/>
+<part name="C10" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
+<part name="C11" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5"/>
-<part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
+<part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="10K"/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
@@ -5132,9 +5132,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C13" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R3" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
-<part name="R4" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
-<part name="R5" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
+<part name="R3" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="4.7K"/>
+<part name="R4" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="2.2K"/>
+<part name="R5" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="2.2K"/>
 <part name="+3V4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="JP2" library="adafruit_changed" deviceset="PINHD-1X8" device="CLEANBIG"/>
 <part name="+3V5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
