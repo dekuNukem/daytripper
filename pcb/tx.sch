@@ -7712,10 +7712,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 </package>
 <package name="342_SWICH_FOOT">
-<smd name="P$1" x="0" y="0" dx="1.4" dy="1.15" layer="1"/>
-<smd name="P$2" x="0" y="1.65" dx="1.4" dy="1.15" layer="1"/>
-<smd name="P$3" x="4.1" y="1.65" dx="1.4" dy="1.15" layer="1"/>
-<smd name="P$4" x="4.1" y="0" dx="1.4" dy="1.15" layer="1"/>
+<smd name="P$1" x="-2.05" y="-0.825" dx="1.4" dy="1.15" layer="1"/>
+<smd name="P$2" x="-2.05" y="0.825" dx="1.4" dy="1.15" layer="1"/>
+<smd name="P$3" x="2.05" y="0.825" dx="1.4" dy="1.15" layer="1"/>
+<smd name="P$4" x="2.05" y="-0.825" dx="1.4" dy="1.15" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -8129,11 +8129,11 @@ B340A  3A 40V SMA &lt;br&gt;</description>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="LED1" library="joyAnalog" deviceset="LED" device="CHIP-LED0805"/>
 <part name="GND18" library="clock" deviceset="GND" device=""/>
-<part name="R6" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="27K"/>
-<part name="R7" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="27K"/>
+<part name="R6" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="10K"/>
+<part name="R7" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="10K"/>
 <part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="R8" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="27K"/>
+<part name="R8" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="10K"/>
 <part name="+3V6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND19" library="clock" deviceset="GND" device=""/>
 <part name="C13" library="clock" deviceset="CAP" device="0805" value="100nF"/>
@@ -8141,16 +8141,16 @@ B340A  3A 40V SMA &lt;br&gt;</description>
 <part name="+3V7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C14" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
-<part name="C15" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
+<part name="C14" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C15" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$10" library="3pos_slide_switch" deviceset="324_SW" device=""/>
-<part name="R9" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
+<part name="R9" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="10K"/>
 <part name="GND25" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND26" library="clock" deviceset="GND" device=""/>
 <part name="LED2" library="joyAnalog" deviceset="LED" device="CHIP-LED0805"/>
-<part name="4K7" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
+<part name="R12" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$11" library="adafruit_changed" deviceset="PINHD1X2" device=""/>
@@ -8255,7 +8255,7 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="GND25" gate="1" x="38.1" y="-55.88"/>
 <instance part="GND26" gate="1" x="30.48" y="40.64"/>
 <instance part="LED2" gate="G$1" x="-10.16" y="-147.32" rot="R90"/>
-<instance part="4K7" gate="G$1" x="0" y="-147.32" rot="R180"/>
+<instance part="R12" gate="G$1" x="0" y="-147.32" rot="R180"/>
 <instance part="GND27" gate="1" x="7.62" y="-124.46"/>
 <instance part="GND28" gate="1" x="12.7" y="-149.86"/>
 <instance part="U$11" gate="1" x="53.34" y="-132.08"/>
@@ -8460,7 +8460,7 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="GND27" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="4K7" gate="G$1" pin="1"/>
+<pinref part="R12" gate="G$1" pin="1"/>
 <pinref part="GND28" gate="1" pin="GND"/>
 <wire x1="12.7" y1="-147.32" x2="5.08" y2="-147.32" width="0.1524" layer="91"/>
 </segment>
@@ -8835,7 +8835,7 @@ I_CHG = 1000 / R_PROG</text>
 <net name="N$28" class="0">
 <segment>
 <pinref part="LED2" gate="G$1" pin="C"/>
-<pinref part="4K7" gate="G$1" pin="2"/>
+<pinref part="R12" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$29" class="0">
