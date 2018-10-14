@@ -128,6 +128,10 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
+  // high speed mode
+  // see arduino library for details
+  // vl53l0x-arduino-master.zip
+  setMeasurementTimingBudget(20000);
 
   while (1)
   {
@@ -154,6 +158,9 @@ int main(void)
     printf("> Retranmission count: %d\r\n",temp);
 
     printf("%d\n", readRangeSingleMillimeters());
+    if(timeoutOccurred())
+      printf("TIMEOUT\n");
+
     HAL_Delay(500);
   }
   /* USER CODE END 3 */

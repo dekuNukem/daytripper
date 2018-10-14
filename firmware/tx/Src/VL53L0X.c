@@ -277,7 +277,7 @@ void writeReg(uint8_t reg, uint8_t value)
   // Wire.write(value);
   // last_status = Wire.endTransmission();
 
-  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 1, &value, 1, 100);
+  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 1, &value, 1, 11);
 }
 
 // Write a 16-bit register
@@ -290,9 +290,9 @@ void writeReg16Bit(uint8_t reg, uint16_t value)
   // last_status = Wire.endTransmission();
 
   uint8_t buf[2];
-  buf[1] = (value >> 8) & 0xFF;
-  buf[0] = value & 0xFF;
-  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 2, buf, 2, 100);
+  buf[0] = (value >> 8) & 0xFF;
+  buf[1] = value & 0xFF;
+  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 1, buf, 2, 11);
 }
 
 // Write a 32-bit register
@@ -307,11 +307,11 @@ void writeReg32Bit(uint8_t reg, uint32_t value)
   // last_status = Wire.endTransmission();
 
   uint8_t buf[4];
-  buf[3] = (value >> 24) & 0xFF;
-  buf[2] = (value >> 16) & 0xFF;
-  buf[1] = (value >> 8) & 0xFF;
-  buf[0] = value & 0xFF;
-  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 4, buf, 4, 100);
+  buf[0] = (value >> 24) & 0xFF;
+  buf[1] = (value >> 16) & 0xFF;
+  buf[2] = (value >> 8) & 0xFF;
+  buf[3] = value & 0xFF;
+  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 1, buf, 4, 11);
 }
 
 // Read an 8-bit register
@@ -326,7 +326,7 @@ uint8_t readReg(uint8_t reg)
   // Wire.requestFrom(address, (uint8_t)1);
   // value = Wire.read();
 
-  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 1, &value, 1, 100);
+  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 1, &value, 1, 11);
 
   return value;
 }
@@ -345,9 +345,9 @@ uint16_t readReg16Bit(uint8_t reg)
   // value |=           Wire.read();      // value low byte
 
   uint8_t buf[2];
-  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 2, buf, 2, 100);
-  value = (uint16_t)buf[1] << 8;
-  value |= buf[0];
+  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 1, buf, 2, 11);
+  value = (uint16_t)buf[0] << 8;
+  value |= buf[1];
   return value;
 }
 
@@ -367,12 +367,12 @@ uint32_t readReg32Bit(uint8_t reg)
   // value |=           Wire.read();       // value lowest byte
 
   uint8_t buf[4];
-  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 4, buf, 4, 100);
+  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 1, buf, 4, 11);
   
-  value = (uint32_t)buf[3] << 24;
-  value = (uint32_t)buf[2] << 16;
-  value = (uint16_t)buf[1] << 8;
-  value |= buf[0];
+  value = (uint32_t)buf[0] << 24;
+  value = (uint32_t)buf[1] << 16;
+  value = (uint16_t)buf[2] << 8;
+  value |= buf[3];
 
   return value;
 }
@@ -391,7 +391,7 @@ void writeMulti(uint8_t reg, uint8_t *src, uint8_t count)
 
   // last_status = Wire.endTransmission();
 
-  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, count, src, count, 100);
+  last_status = HAL_I2C_Mem_Write(&hi2c1, address, reg, 1, src, count, 11);
 }
 
 // Read an arbitrary number of bytes from the sensor, starting at the given
@@ -408,7 +408,7 @@ void readMulti(uint8_t reg, uint8_t * dst, uint8_t count)
   // {
   //   *(dst++) = Wire.read();
   // }
-  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, count, dst, count, 100);
+  last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 1, dst, count, 11);
 }
 
 // Set the return signal rate limit check value in units of MCPS (mega counts
