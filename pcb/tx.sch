@@ -9296,11 +9296,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="GND30" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP1" library="adafruit_changed" deviceset="PINHD-1X3" device="CB"/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="SJ1" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_2_NC_TRACE" device="_NO-SILK"/>
 <part name="SJ2" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_2_NC_TRACE" device="_NO-SILK"/>
-<part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="+3V10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R"/>
+<part name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R"/>
 </parts>
 <sheets>
 <sheet>
@@ -9406,11 +9405,10 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="GND30" gate="1" x="-162.56" y="-71.12"/>
 <instance part="JP1" gate="A" x="22.86" y="-91.44" rot="R270"/>
 <instance part="+3V8" gate="G$1" x="25.4" y="45.72"/>
-<instance part="SJ1" gate="G$1" x="-48.26" y="-55.88"/>
 <instance part="SJ2" gate="G$1" x="-48.26" y="-66.04"/>
-<instance part="+3V9" gate="G$1" x="-58.42" y="-53.34"/>
 <instance part="+3V10" gate="G$1" x="-58.42" y="-63.5"/>
 <instance part="TP1" gate="G$1" x="25.4" y="10.16" rot="R180"/>
+<instance part="TP2" gate="G$1" x="-40.64" y="-55.88" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -9694,11 +9692,6 @@ I_CHG = 1000 / R_PROG</text>
 <segment>
 <pinref part="R8" gate="G$1" pin="2"/>
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<pinref part="+3V9" gate="G$1" pin="+3V3"/>
-<pinref part="SJ1" gate="G$1" pin="1"/>
-<wire x1="-58.42" y1="-55.88" x2="-53.34" y2="-55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
@@ -10021,13 +10014,6 @@ I_CHG = 1000 / R_PROG</text>
 <wire x1="30.48" y1="33.02" x2="25.4" y2="33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$23" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="PF0/OSC_IN"/>
-<pinref part="SJ1" gate="G$1" pin="2"/>
-<wire x1="-33.02" y1="-55.88" x2="-43.18" y2="-55.88" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$34" class="0">
 <segment>
 <pinref part="SJ2" gate="G$1" pin="2"/>
@@ -10061,6 +10047,13 @@ I_CHG = 1000 / R_PROG</text>
 <wire x1="30.48" y1="30.48" x2="25.4" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="TP1" gate="G$1" pin="TP"/>
 <wire x1="25.4" y1="30.48" x2="25.4" y2="12.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$37" class="0">
+<segment>
+<pinref part="U$2" gate="G$1" pin="PF0/OSC_IN"/>
+<pinref part="TP2" gate="G$1" pin="TP"/>
+<wire x1="-33.02" y1="-55.88" x2="-38.1" y2="-55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

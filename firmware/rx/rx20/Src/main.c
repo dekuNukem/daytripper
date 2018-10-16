@@ -52,6 +52,9 @@
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
+#include "nrf24.h"
+#include "shared.h"
+#include "keyboard.h"
 
 /* USER CODE END Includes */
 
@@ -62,7 +65,11 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint8_t temp;
+uint8_t q = 0;
+uint8_t data_array[4];
+uint8_t tx_address[5] = {0xD7,0xD7,0xD7,0xD7,0xD7};
+uint8_t rx_address[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -77,7 +84,11 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+int fputc(int ch, FILE *f)
+{
+    HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
+    return ch;
+}
 /* USER CODE END 0 */
 
 /**
@@ -113,7 +124,10 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  nrf24_init();
+  nrf24_config(2,4);
+  nrf24_tx_address(tx_address);
+  nrf24_rx_address(rx_address);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -124,7 +138,16 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+  	if(nrf24_dataReady())
+    {
+        nrf24_getData(data_array);        
+        printf("> ");
+        printf("%2X ",data_array[0]);
+        printf("%2X ",data_array[1]);
+        printf("%2X ",data_array[2]);
+        printf("%2X\r\n",data_array[3]);
+    }
+    keyboard_press(54, 0);
   }
   /* USER CODE END 3 */
 

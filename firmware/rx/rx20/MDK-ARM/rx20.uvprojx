@@ -389,9 +389,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
           <GroupName>Application/User</GroupName>
           <Files>
             <File>
@@ -423,6 +420,41 @@
               <FileName>stm32f0xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32f0xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrf24.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\nrf24.h</FilePath>
+            </File>
+            <File>
+              <FileName>nRF24L01.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\nRF24L01.h</FilePath>
+            </File>
+            <File>
+              <FileName>shared.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\shared.h</FilePath>
+            </File>
+            <File>
+              <FileName>nrf24.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\nrf24.c</FilePath>
+            </File>
+            <File>
+              <FileName>radioPinFunctions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\radioPinFunctions.c</FilePath>
+            </File>
+            <File>
+              <FileName>keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\keyboard.h</FilePath>
+            </File>
+            <File>
+              <FileName>keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\keyboard.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -565,6 +597,9 @@
               <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>

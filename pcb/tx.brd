@@ -196,8 +196,6 @@ dekuNukem 2018</text>
 <text x="10.5156" y="9.2456" size="1.27" layer="25" rot="R90">CHARGE</text>
 <text x="24.765" y="15.1384" size="2.54" layer="26" rot="MR0">-</text>
 <text x="4.7244" y="29.4894" size="1.27" layer="25" rot="R270">STAT</text>
-<text x="18.161" y="3.81" size="1.27" layer="26" rot="MR0">1</text>
-<text x="15.9766" y="3.81" size="1.27" layer="26" rot="MR0">0</text>
 </plain>
 <libraries>
 <library name="L1">
@@ -1089,15 +1087,16 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="JP1" library="adafruit_changed" package="1X03-CLEANBIG" value="" x="26.67" y="9.906" smashed="yes" rot="R90">
 <attribute name="VALUE" x="29.845" y="6.096" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="SJ1" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="15.5956" y="2.7432" smashed="yes" rot="MR90">
-<attribute name="VALUE" x="14.4526" y="2.7432" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
-</element>
 <element name="SJ2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="17.78" y="2.7432" smashed="yes" rot="MR90">
 <attribute name="VALUE" x="16.637" y="2.7432" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
 </element>
 <element name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="14.2748" y="14.1224" smashed="yes" rot="MR0">
 <attribute name="TP_SIGNAL_NAME" value="" x="14.2748" y="11.5824" size="1" layer="38" rot="MR0"/>
 <attribute name="VALUE" x="14.7828" y="13.4874" size="0.0254" layer="28" rot="MR0"/>
+</element>
+<element name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="17.018" y="10.9728" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="17.018" y="8.4328" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="17.526" y="10.3378" size="0.0254" layer="28" rot="MR0"/>
 </element>
 </elements>
 <signals>
@@ -1265,7 +1264,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="12.6792" y1="11.4" x2="11.5824" y2="12.4968" width="0.1524" layer="1"/>
 <wire x1="16.3576" y1="14.7938" x2="15.6972" y2="15.4542" width="0.1524" layer="1"/>
 <wire x1="15.6972" y1="15.4542" x2="15.6972" y2="16.002" width="0.1524" layer="1"/>
-<contactref element="SJ1" pad="1"/>
 <contactref element="SJ2" pad="1"/>
 </signal>
 <signal name="N$1">
@@ -1606,17 +1604,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="13.2" y1="14.6" x2="11.5918" y2="14.6" width="0.1524" layer="1"/>
 <wire x1="11.5918" y1="14.6" x2="11.5824" y2="14.5906" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$23">
-<contactref element="U$2" pad="2"/>
-<contactref element="SJ1" pad="2"/>
-<wire x1="18.5022" y1="10.1632" x2="18.5022" y2="11.4698" width="0.1524" layer="1"/>
-<wire x1="18.5022" y1="11.4698" x2="18.3388" y2="11.6332" width="0.1524" layer="1"/>
-<via x="18.3388" y="11.6332" extent="1-16" drill="0.381"/>
-<wire x1="15.5956" y1="3.2512" x2="16.4592" y2="4.1148" width="0.1524" layer="16"/>
-<wire x1="16.4592" y1="4.1148" x2="18.0848" y2="4.1148" width="0.1524" layer="16"/>
-<wire x1="18.0848" y1="4.1148" x2="18.3388" y2="4.3688" width="0.1524" layer="16"/>
-<wire x1="18.3388" y1="4.3688" x2="18.3388" y2="11.6332" width="0.1524" layer="16"/>
-</signal>
 <signal name="N$34">
 <contactref element="SJ2" pad="2"/>
 <contactref element="U$2" pad="3"/>
@@ -1636,7 +1623,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="22.5552" y1="11.6332" x2="21.5392" y2="12.6492" width="0.1524" layer="16"/>
 <wire x1="21.5392" y1="12.6492" x2="12.5476" y2="12.6492" width="0.1524" layer="16"/>
 <wire x1="5.334" y1="19.8628" x2="5.334" y2="20.9296" width="0.1524" layer="16"/>
-<via x="5.334" y="20.9296" extent="1-16" drill="0.381"/>
+<via x="5.334" y="20.9296" extent="1-16" drill="0.4"/>
 <wire x1="5.334" y1="20.9296" x2="5.334" y2="22.4704" width="0.1524" layer="1"/>
 <wire x1="12.5476" y1="12.6492" x2="5.334" y2="19.8628" width="0.1524" layer="16"/>
 </signal>
@@ -1649,8 +1636,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="21.082" y1="11.6332" x2="20.4216" y2="12.2936" width="0.1524" layer="16"/>
 <wire x1="12.446" y1="12.2936" x2="5.9436" y2="18.796" width="0.1524" layer="16"/>
 <wire x1="5.9436" y1="18.796" x2="4.1148" y2="18.796" width="0.1524" layer="16"/>
-<via x="4.1148" y="18.796" extent="1-16" drill="0.381"/>
-<wire x1="0.8128" y1="19.7554" x2="0.8514" y2="19.794" width="0.1524" layer="1"/>
+<via x="4.1148" y="18.796" extent="1-16" drill="0.4"/>
 <wire x1="20.4216" y1="12.2936" x2="12.446" y2="12.2936" width="0.1524" layer="16"/>
 <contactref element="U$10" pad="P$3"/>
 <wire x1="4.1148" y1="18.796" x2="3.9624" y2="18.6436" width="0.1524" layer="1"/>
@@ -1668,6 +1654,15 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="14.5796" y1="15.6464" x2="14.2748" y2="15.3416" width="0.1524" layer="16"/>
 <wire x1="14.2748" y1="15.3416" x2="14.2748" y2="14.1224" width="0.1524" layer="16"/>
 </signal>
+<signal name="N$37">
+<contactref element="U$2" pad="2"/>
+<contactref element="TP2" pad="TP"/>
+<wire x1="18.5022" y1="10.1632" x2="18.5022" y2="11.3682" width="0.1524" layer="1"/>
+<wire x1="18.5022" y1="11.3682" x2="18.2372" y2="11.6332" width="0.1524" layer="1"/>
+<via x="18.2372" y="11.6332" extent="1-16" drill="0.4"/>
+<wire x1="18.2372" y1="11.6332" x2="17.6784" y2="11.6332" width="0.1524" layer="16"/>
+<wire x1="17.6784" y1="11.6332" x2="17.018" y2="10.9728" width="0.1524" layer="16"/>
+</signal>
 </signals>
 <mfgpreviewcolors>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
@@ -1681,12 +1676,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <approved hash="21,19,bf70bd72bd72bf70"/>
 <approved hash="5,1,0550393a4c5788d1"/>
 <approved hash="5,1,ecb9dc2ad018ed68"/>
-<approved hash="5,1,63dc3c50e784bd84"/>
 <approved hash="5,1,b1a6d12c49ed1289"/>
 <approved hash="6,1,db5f9b5a5fce1fcb"/>
 <approved hash="6,1,497551f02fbb52f1"/>
 <approved hash="6,1,e153bf8bb69e8108"/>
-<approved hash="6,1,56f6ef2a39ee913c"/>
 <approved hash="6,1,b602c933fd75fd68"/>
 </errors>
 </board>
