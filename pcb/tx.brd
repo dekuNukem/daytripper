@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.2.0">
+<eagle version="9.1.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -411,6 +411,10 @@ by exp-lbrs.ulp</description>
 <vertex x="4.37013125" y="-1.25884375"/>
 <vertex x="4.27013125" y="-1.25884375" curve="-90"/>
 </polygon>
+<rectangle x1="-4.7752" y1="2.2352" x2="-3.8608" y2="4.0132" layer="31"/>
+<rectangle x1="-4.7752" y1="-1.4732" x2="-3.8608" y2="0.3556" layer="31"/>
+<rectangle x1="3.8608" y1="-1.4732" x2="4.7752" y2="0.3556" layer="31"/>
+<rectangle x1="3.8608" y1="2.2352" x2="4.7752" y2="4.064" layer="31"/>
 </package>
 <package name="SWITCH-SPST-SMD-A">
 <wire x1="-3.35" y1="1.3" x2="-3.35" y2="-1.3" width="0.127" layer="51"/>

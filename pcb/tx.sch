@@ -972,6 +972,10 @@ by exp-lbrs.ulp</description>
 <vertex x="4.37013125" y="-1.25884375"/>
 <vertex x="4.27013125" y="-1.25884375" curve="-90"/>
 </polygon>
+<rectangle x1="-4.7752" y1="2.2352" x2="-3.8608" y2="4.0132" layer="31"/>
+<rectangle x1="-4.7752" y1="-1.4732" x2="-3.8608" y2="0.3556" layer="31"/>
+<rectangle x1="3.8608" y1="-1.4732" x2="4.7752" y2="0.3556" layer="31"/>
+<rectangle x1="3.8608" y1="2.2352" x2="4.7752" y2="4.064" layer="31"/>
 </package>
 <package name="TX_SPARKFUN-BATTERIES_BATTCON-6.8MM">
 <description>Part#: MS621FE-FL11E</description>
