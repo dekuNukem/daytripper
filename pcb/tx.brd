@@ -692,12 +692,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <library name="adafruit_changed">
 <packages>
 <package name="1X02">
-<pad name="1" x="-2.54" y="0" drill="1.016" diameter="1.6764" rot="R90"/>
-<pad name="2" x="0" y="0" drill="1.016" diameter="1.6764" rot="R90"/>
-<text x="-3.8862" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<pad name="1" x="-1.27" y="0" drill="1.016" diameter="1.6764" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1.016" diameter="1.6764" rot="R90"/>
+<text x="-2.6162" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.81" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
+<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
 </package>
 <package name="1X03-CLEANBIG">
 <pad name="1" x="-2.54" y="0" drill="1.016" diameter="1.6764" rot="R90"/>
@@ -956,151 +956,150 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </pass>
 </autorouter>
 <elements>
-<element name="U$1" library="tx" package="L1_USBC_6P_PAC" value="L1_USBC_6P_DEV" x="16.6952" y="3.2"/>
-<element name="U$2" library="exixe_pogo" package="TSSOP20" value="STM32F030F4" x="20.7772" y="13.081"/>
-<element name="U1" library="Adafruit VL53L0X" package="LGA12_ST" value="" x="14" y="13" rot="R270">
+<element name="U$1" library="tx" package="L1_USBC_6P_PAC" value="L1_USBC_6P_DEV" x="16.6952" y="3.2" smashed="yes"/>
+<element name="U$2" library="exixe_pogo" package="TSSOP20" value="STM32F030F4" x="20.7772" y="13.081" smashed="yes"/>
+<element name="U1" library="Adafruit VL53L0X" package="LGA12_ST" value="" x="14" y="13" smashed="yes" rot="R270">
+<attribute name="VALUE" x="12.1" y="15.2" size="0.4064" layer="25" ratio="10" rot="R270"/>
 <attribute name="VALUE" x="12.1" y="15.2" size="0.4064" layer="25" ratio="10" rot="R270"/>
 </element>
-<element name="U$4" library="antenna" package="DN007+0" value="INVERTED_F_ANTENNA+0" x="9.8474" y="32.9216"/>
-<element name="U$5" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="2.5" y="27.5"/>
-<element name="U$6" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="25.5" y="27.5"/>
-<element name="U$7" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="2.5" y="2.5"/>
-<element name="U$8" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="25.5" y="2.5"/>
-<element name="BT1" library="tx" package="TX_SPARKFUN-BATTERIES_BATTCON_24.5MM_PTH" value="" x="14" y="16.6" rot="MR180">
+<element name="U$4" library="antenna" package="DN007+0" value="INVERTED_F_ANTENNA+0" x="9.8474" y="32.9216" smashed="yes"/>
+<element name="U$5" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="2.5" y="27.5" smashed="yes"/>
+<element name="U$6" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="25.5" y="27.5" smashed="yes"/>
+<element name="U$7" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="2.5" y="2.5" smashed="yes"/>
+<element name="U$8" library="L1" package="M3_MOUNTING_HOLE_PACK" value="M3_MOUNTING_HOLE" x="25.5" y="2.5" smashed="yes"/>
+<element name="BT1" library="tx" package="TX_SPARKFUN-BATTERIES_BATTCON_24.5MM_PTH" value="" x="14" y="16.6" smashed="yes" rot="MR180">
 <attribute name="SF_SKU" value="PRT-08863" x="14" y="16.6" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="S2" library="tx" package="SWITCH-SPST-SMD-A" value="" x="1.7018" y="9.779" rot="R90">
+<element name="S2" library="tx" package="SWITCH-SPST-SMD-A" value="" x="1.7018" y="9.779" smashed="yes" rot="R90">
+<attribute name="VALUE" x="2.9718" y="8.509" size="0.6096" layer="27" rot="R90"/>
 <attribute name="VALUE" x="2.9718" y="8.509" size="0.6096" layer="27" rot="R90"/>
 </element>
-<element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="12.827" y="19.4818" rot="R90"/>
-<element name="C1" library="clock" package="0805" value="100nF" x="8.2042" y="19.1516" rot="R180">
+<element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="12.827" y="19.4818" smashed="yes" rot="R90">
+<attribute name="NAME" x="11.938" y="18.2118" size="0.4064" layer="25" rot="R90"/>
+</element>
+<element name="C1" library="clock" package="0805" value="100nF" x="8.2042" y="19.1516" smashed="yes" rot="R180">
 <attribute name="NAME" x="6.0071" y="19.685" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="R1" library="joyAnalog" package="0805" value="22K" x="8.2042" y="22.1996" rot="R180">
+<element name="R1" library="joyAnalog" package="0805" value="22K" x="8.2042" y="22.1996" smashed="yes" rot="R180">
 <attribute name="NAME" x="5.9563" y="21.4122" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="C2" library="clock" package="0805" value="2.2nF" x="8.2042" y="20.6756" rot="R180">
+<element name="C2" library="clock" package="0805" value="2.2nF" x="8.2042" y="20.6756" smashed="yes" rot="R180">
 <attribute name="NAME" x="7.4422" y="23.7617" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C3" library="clock" package="0805" value="100nF" x="8.2042" y="17.6276" rot="R180">
+<element name="C3" library="clock" package="0805" value="100nF" x="8.2042" y="17.6276" smashed="yes" rot="R180">
 <attribute name="NAME" x="8.509" y="16.0655" size="0.8128" layer="25"/>
 </element>
-<element name="L1" library="basicBoard" package="0805" value="3.9nH" x="12.3952" y="25.1968" rot="R90">
+<element name="L1" library="basicBoard" package="0805" value="3.9nH" x="12.3952" y="25.1968" smashed="yes" rot="R90">
 <attribute name="NAME" x="11.2649" y="24.7904" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="L2" library="basicBoard" package="0805" value="8.2nH" x="13.1318" y="22.9108">
+<element name="L2" library="basicBoard" package="0805" value="8.2nH" x="13.1318" y="22.9108" smashed="yes">
 <attribute name="NAME" x="10.4902" y="22.5679" size="0.8128" layer="25"/>
 </element>
-<element name="C4" library="clock" package="0805" value="1.5pF" x="12.3952" y="28.1686" rot="R90">
+<element name="C4" library="clock" package="0805" value="1.5pF" x="12.3952" y="28.1686" smashed="yes" rot="R90">
 <attribute name="NAME" x="11.3665" y="27.7114" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="C5" library="clock" package="0805" value="1pF" x="14.0462" y="28.1686" rot="R270">
+<element name="C5" library="clock" package="0805" value="1pF" x="14.0462" y="28.1686" smashed="yes" rot="R270">
 <attribute name="NAME" x="14.859" y="28.8925" size="0.8128" layer="25"/>
 </element>
-<element name="L3" library="basicBoard" package="0805" value="2.7nH" x="14.0462" y="25.1968" rot="R90">
-<attribute name="NAME" x="14.9225" y="25.3492" size="0.8128" layer="25" rot="R270"/>
-</element>
-<element name="C6" library="clock" package="0805" value="2.2nF" x="16.6624" y="28.0924">
+<element name="L3" library="basicBoard" package="0805" value="2.7nH" x="14.0462" y="25.1968" smashed="yes" rot="R90"/>
+<element name="C6" library="clock" package="0805" value="2.2nF" x="16.6624" y="28.0924" smashed="yes">
 <attribute name="NAME" x="18.4404" y="27.7495" size="0.8128" layer="25"/>
 </element>
-<element name="C7" library="clock" package="0805" value="4.7pF" x="16.5608" y="26.2382">
+<element name="C7" library="clock" package="0805" value="4.7pF" x="16.5608" y="26.2382" smashed="yes">
 <attribute name="NAME" x="18.3388" y="25.9461" size="0.8128" layer="25"/>
 </element>
-<element name="C8" library="clock" package="0805" value="22pF" x="19.9898" y="19.812" rot="R90">
+<element name="C8" library="clock" package="0805" value="22pF" x="19.9898" y="19.812" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.4978" y="22.0853" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C9" library="clock" package="0805" value="22pF" x="17.4498" y="23.0886">
+<element name="C9" library="clock" package="0805" value="22pF" x="17.4498" y="23.0886" smashed="yes">
 <attribute name="NAME" x="16.9418" y="24.0665" size="0.8128" layer="25"/>
 </element>
-<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="17.399" y="20.0914" rot="R90">
+<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="17.399" y="20.0914" smashed="yes" rot="R90">
 <attribute name="PROD_ID" value="XTAL-12454" x="44.704" y="-0.4826" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R3" library="joyAnalog" package="0805" value="5.1K" x="22.8346" y="6.0452" rot="R90">
+<element name="R3" library="joyAnalog" package="0805" value="5.1K" x="22.8346" y="6.0452" smashed="yes" rot="R90">
 <attribute name="NAME" x="23.4696" y="4.4323" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R2" library="joyAnalog" package="0805" value="5.1K" x="24.3586" y="6.0452" rot="R90">
+<element name="R2" library="joyAnalog" package="0805" value="5.1K" x="24.3586" y="6.0452" smashed="yes" rot="R90">
 <attribute name="NAME" x="25.9461" y="5.0546" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="U3" library="microbuilder" package="SOT23-5" value="MCP73831T-2ACI/OT" x="7.0612" y="4.8514" rot="R270"/>
-<element name="R4" library="SparkFun-Passives" package="0805" value="5.1K" x="5.461" y="8.001" rot="R270">
+<element name="U3" library="microbuilder" package="SOT23-5" value="MCP73831T-2ACI/OT" x="7.0612" y="4.8514" smashed="yes" rot="R270"/>
+<element name="R4" library="SparkFun-Passives" package="0805" value="5.1K" x="5.461" y="8.001" smashed="yes" rot="R270">
 <attribute name="NAME" x="3.8481" y="6.985" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="C10" library="SparkFun-Passives" package="0805" value="4.7uF" x="5.715" y="1.651" rot="R270">
+<element name="C10" library="SparkFun-Passives" package="0805" value="4.7uF" x="5.715" y="1.651" smashed="yes" rot="R270">
 <attribute name="NAME" x="4.9403" y="0.127" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="R5" library="SparkFun-Passives" package="0805" value="22K" x="10.0838" y="4.8514" rot="R270">
+<element name="R5" library="SparkFun-Passives" package="0805" value="22K" x="10.0838" y="4.8514" smashed="yes" rot="R270">
 <attribute name="NAME" x="10.9093" y="5.6134" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="U$9" library="3pos_slide_switch" package="SOT23R_INFINEON" value="XC6206_DEV" x="6.7056" y="14.9352" rot="R90"/>
-<element name="C11" library="clock" package="0805" value="4.7uF" x="4.0386" y="15.6972" rot="R90">
+<element name="U$9" library="3pos_slide_switch" package="SOT23R_INFINEON" value="XC6206_DEV" x="6.7056" y="14.9352" smashed="yes" rot="R90"/>
+<element name="C11" library="clock" package="0805" value="4.7uF" x="4.0386" y="15.6972" smashed="yes" rot="R90">
 <attribute name="NAME" x="3.5941" y="14.3256" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="C12" library="clock" package="0805" value="4.7uF" x="5.3086" y="18.8214" rot="R90">
+<element name="C12" library="clock" package="0805" value="4.7uF" x="5.3086" y="18.8214" smashed="yes" rot="R90">
 <attribute name="NAME" x="4.4323" y="18.669" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="D2" library="SparkFun-DiscreteSemi" package="SOD-323" value="BAT20J" x="5.9182" y="11.4554" rot="R270">
+<element name="D2" library="SparkFun-DiscreteSemi" package="SOD-323" value="BAT20J" x="5.9182" y="11.4554" smashed="yes" rot="R270">
 <attribute name="PROD_ID" value="DIO-11623" x="9.6012" y="14.6304" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="D1" library="SparkFun-DiscreteSemi" package="SOD-323" value="BAT20J" x="8.2042" y="11.4554" rot="R270">
+<element name="D1" library="SparkFun-DiscreteSemi" package="SOD-323" value="BAT20J" x="8.2042" y="11.4554" smashed="yes" rot="R270">
 <attribute name="PROD_ID" value="DIO-11623" x="8.2042" y="11.4554" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="LED1" library="joyAnalog" package="CHIP-LED0805" value="" x="8.6106" y="8.128" rot="R90">
+<element name="LED1" library="joyAnalog" package="CHIP-LED0805" value="" x="8.6106" y="8.128" smashed="yes" rot="R90">
+<attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 <attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 <attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R6" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="13.8938" rot="R90">
+<element name="R6" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="13.8938" smashed="yes" rot="R90">
 <attribute name="NAME" x="16.891" y="17.2593" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R7" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="10.9982" rot="R270">
+<element name="R7" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="10.9982" smashed="yes" rot="R270">
 <attribute name="NAME" x="15.6718" y="8.7503" size="0.8128" layer="25"/>
 </element>
-<element name="R8" library="SparkFun-Passives" package="0805" value="22K" x="11.5824" y="13.6906" rot="R270">
+<element name="R8" library="SparkFun-Passives" package="0805" value="22K" x="11.5824" y="13.6906" smashed="yes" rot="R270">
 <attribute name="NAME" x="11.0998" y="11.2903" size="0.8128" layer="25"/>
 </element>
-<element name="C13" library="clock" package="0805" value="100nF" x="13.9446" y="9.3472">
-<attribute name="NAME" x="12.6238" y="7.7343" size="0.8128" layer="25"/>
+<element name="C13" library="clock" package="0805" value="100nF" x="13.9446" y="9.3472" smashed="yes">
+<attribute name="NAME" x="12.1666" y="7.6327" size="0.8128" layer="25"/>
 </element>
-<element name="C14" library="clock" package="0805" value="100nF" x="21.59" y="19.812" rot="R90">
+<element name="C14" library="clock" package="0805" value="100nF" x="21.59" y="19.812" smashed="yes" rot="R90">
 <attribute name="NAME" x="21.0312" y="21.2471" size="0.8128" layer="25"/>
 </element>
-<element name="C15" library="clock" package="0805" value="100nF" x="18.2372" y="8.5852" rot="R180">
+<element name="C15" library="clock" package="0805" value="100nF" x="18.2372" y="8.5852" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.8336" y="7.5819" size="0.8128" layer="25"/>
 </element>
-<element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT" value="324_SW" x="1.6764" y="21.844" rot="R90"/>
-<element name="R9" library="joyAnalog" package="0805" value="22K" x="24.1808" y="8.6868">
+<element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT" value="324_SW" x="1.6764" y="21.844" smashed="yes" rot="R90"/>
+<element name="R9" library="joyAnalog" package="0805" value="22K" x="24.1808" y="8.6868" smashed="yes">
 <attribute name="NAME" x="22.6949" y="8.0772" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="LED2" library="joyAnalog" package="CHIP-LED0805" value="" x="5.334" y="23.5204">
+<element name="LED2" library="joyAnalog" package="CHIP-LED0805" value="" x="5.334" y="23.5204" smashed="yes">
+<attribute name="VALUE" x="7.874" y="22.2504" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="7.874" y="22.2504" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="7.874" y="22.2504" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="7.874" y="22.2504" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R12" library="joyAnalog" package="0805" value="5.1K" x="8.2296" y="24.5364" rot="R180">
+<element name="R12" library="joyAnalog" package="0805" value="5.1K" x="8.2296" y="24.5364" smashed="yes" rot="R180">
 <attribute name="NAME" x="9.144" y="26.3017" size="0.8128" layer="25" rot="R180"/>
-<attribute name="VALUE" x="9.2456" y="25.9334" size="0.4064" layer="27" rot="R180"/>
-<attribute name="VALUE" x="9.2456" y="25.9334" size="0.4064" layer="27" rot="R180"/>
 </element>
-<element name="U$11" library="adafruit_changed" package="1X02" value="PINHD1X2" x="26.67" y="23.368" rot="R90"/>
-<element name="R10" library="SparkFun-Passives" package="0805" value="22K" x="8.8392" y="1.651" rot="R90">
+<element name="U$11" library="adafruit_changed" package="1X02" value="PINHD1X2" x="26.67" y="22.098" smashed="yes" rot="R90"/>
+<element name="R10" library="SparkFun-Passives" package="0805" value="22K" x="8.8392" y="1.651" smashed="yes" rot="R90">
 <attribute name="NAME" x="6.9723" y="3.0226" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="10.2362" y="0.635" size="0.4064" layer="27" rot="R90"/>
 </element>
-<element name="R11" library="SparkFun-Passives" package="0805" value="22K" x="10.4648" y="1.651" rot="R270">
+<element name="R11" library="SparkFun-Passives" package="0805" value="22K" x="10.4648" y="1.651" smashed="yes" rot="R270">
 <attribute name="NAME" x="12.0269" y="0.127" size="0.8128" layer="25" rot="R90"/>
-<attribute name="VALUE" x="9.0678" y="2.667" size="0.4064" layer="27" rot="R270"/>
 </element>
-<element name="JP1" library="adafruit_changed" package="1X03-CLEANBIG" value="" x="26.67" y="9.906" rot="R90">
+<element name="JP1" library="adafruit_changed" package="1X03-CLEANBIG" value="" x="26.67" y="9.906" smashed="yes" rot="R90">
+<attribute name="VALUE" x="29.845" y="6.096" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="29.845" y="6.096" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="SJ2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="17.78" y="2.7432" rot="MR90">
-<attribute name="VALUE" x="16.637" y="2.7432" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
-</element>
-<element name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="14.2748" y="14.1224" rot="MR0">
+<element name="SJ2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="17.78" y="2.7432" smashed="yes" rot="MR90"/>
+<element name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="14.2748" y="14.1224" smashed="yes" rot="MR0">
 <attribute name="TP_SIGNAL_NAME" value="" x="14.2748" y="11.5824" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="14.7828" y="13.4874" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="17.018" y="10.9728" rot="MR0">
+<element name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1" value="TPTP12R" x="17.018" y="10.9728" smashed="yes" rot="MR0">
 <attribute name="TP_SIGNAL_NAME" value="" x="17.018" y="8.4328" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="17.526" y="10.3378" size="0.0254" layer="28" rot="MR0"/>
 </element>
 </elements>
 <signals>
@@ -1185,8 +1184,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="11.684" y1="22.0472" x2="9.1948" y2="24.5364" width="0.1524" layer="1"/>
 <wire x1="9.1948" y1="24.5364" x2="9.1296" y2="24.5364" width="0.1524" layer="1"/>
 <contactref element="U$10" pad="P$1"/>
-<wire x1="0.7018" y1="13.429" x2="2.8018" y2="13.429" width="0" layer="19" extent="1-1"/>
 <wire x1="0.7018" y1="6.129" x2="2.8018" y2="6.129" width="0" layer="19" extent="1-1"/>
+<wire x1="0.7018" y1="13.429" x2="2.8018" y2="13.429" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="U$3" pad="18"/>
