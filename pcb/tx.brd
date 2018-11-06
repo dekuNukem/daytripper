@@ -659,11 +659,13 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 </package>
-<package name="342_SWICH_FOOT">
+<package name="342_SWICH_FOOT_HOLE">
 <smd name="P$1" x="-2.05" y="-0.825" dx="1.4" dy="1.15" layer="1" thermals="no"/>
 <smd name="P$2" x="-2.05" y="0.825" dx="1.4" dy="1.15" layer="1" thermals="no"/>
 <smd name="P$3" x="2.05" y="0.825" dx="1.4" dy="1.15" layer="1" thermals="no"/>
 <smd name="P$4" x="2.05" y="-0.825" dx="1.4" dy="1.15" layer="1" thermals="no"/>
+<hole x="0" y="0.9" drill="0.7"/>
+<hole x="0" y="-0.9" drill="0.7"/>
 </package>
 </packages>
 </library>
@@ -1070,7 +1072,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C15" library="clock" package="0805" value="100nF" x="18.2372" y="8.5852" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.8336" y="7.5819" size="0.8128" layer="25"/>
 </element>
-<element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT" value="324_SW" x="1.6764" y="21.844" smashed="yes" rot="R90"/>
+<element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE" x="1.6764" y="21.844" smashed="yes" rot="R90"/>
 <element name="R9" library="joyAnalog" package="0805" value="22K" x="24.1808" y="8.6868" smashed="yes">
 <attribute name="NAME" x="22.6949" y="8.0772" size="0.8128" layer="25" rot="R90"/>
 </element>
@@ -1646,7 +1648,11 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="3.9624" y1="18.6436" x2="1.4224" y2="18.6436" width="0.1524" layer="1"/>
 <wire x1="1.4224" y1="18.6436" x2="0.8514" y2="19.2146" width="0.1524" layer="1"/>
 <wire x1="0.8514" y1="19.2146" x2="0.8514" y2="19.794" width="0.1524" layer="1"/>
-<wire x1="0.8514" y1="23.894" x2="0.8514" y2="19.794" width="1.016" layer="1"/>
+<wire x1="0.8514" y1="23.894" x2="0.8514" y2="23.0246" width="0.254" layer="1"/>
+<wire x1="0.8514" y1="23.0246" x2="1.5748" y2="22.3012" width="0.254" layer="1"/>
+<wire x1="1.5748" y1="22.3012" x2="1.5748" y2="21.336" width="0.254" layer="1"/>
+<wire x1="0.8514" y1="20.6126" x2="0.8514" y2="19.794" width="0.254" layer="1"/>
+<wire x1="1.5748" y1="21.336" x2="0.8514" y2="20.6126" width="0.254" layer="1"/>
 </signal>
 <signal name="N$36">
 <contactref element="U1" pad="7"/>
