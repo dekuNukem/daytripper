@@ -983,10 +983,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="6.0071" y="19.685" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="R1" library="joyAnalog" package="0805" value="22K" x="8.2042" y="22.1996" smashed="yes" rot="R180">
-<attribute name="NAME" x="5.9563" y="21.4122" size="0.8128" layer="25" rot="R270"/>
+<attribute name="NAME" x="6.3246" y="23.0251" size="0.8128" layer="25"/>
 </element>
 <element name="C2" library="clock" package="0805" value="2.2nF" x="8.2042" y="20.6756" smashed="yes" rot="R180">
-<attribute name="NAME" x="7.4422" y="23.7617" size="0.8128" layer="25" rot="R180"/>
+<attribute name="NAME" x="5.9563" y="21.1582" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="C3" library="clock" package="0805" value="100nF" x="8.2042" y="17.6276" smashed="yes" rot="R180">
 <attribute name="NAME" x="8.509" y="16.0655" size="0.8128" layer="25"/>
@@ -1003,7 +1003,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C5" library="clock" package="0805" value="1pF" x="14.0462" y="28.1686" smashed="yes" rot="R270">
 <attribute name="NAME" x="14.859" y="28.8925" size="0.8128" layer="25"/>
 </element>
-<element name="L3" library="basicBoard" package="0805" value="2.7nH" x="14.0462" y="25.1968" smashed="yes" rot="R90"/>
+<element name="L3" library="basicBoard" package="0805" value="2.7nH" x="14.0462" y="25.1968" smashed="yes" rot="R90">
+<attribute name="NAME" x="15.8115" y="24.13" size="0.8128" layer="25" rot="R90"/>
+<attribute name="VALUE" x="15.4432" y="24.1808" size="0.4064" layer="27" rot="R90"/>
+</element>
 <element name="C6" library="clock" package="0805" value="2.2nF" x="16.6624" y="28.0924" smashed="yes">
 <attribute name="NAME" x="18.4404" y="27.7495" size="0.8128" layer="25"/>
 </element>
@@ -1054,10 +1057,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 <attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R6" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="13.8938" smashed="yes" rot="R90">
+<element name="R6" library="SparkFun-Passives" package="0805" value="5.1K" x="16.3576" y="13.8938" smashed="yes" rot="R90">
 <attribute name="NAME" x="16.891" y="17.2593" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R7" library="SparkFun-Passives" package="0805" value="22K" x="16.3576" y="10.9982" smashed="yes" rot="R270">
+<element name="R7" library="SparkFun-Passives" package="0805" value="5.1K" x="16.3576" y="10.9982" smashed="yes" rot="R270">
 <attribute name="NAME" x="15.6718" y="8.7503" size="0.8128" layer="25"/>
 </element>
 <element name="R8" library="SparkFun-Passives" package="0805" value="22K" x="11.5824" y="13.6906" smashed="yes" rot="R270">
