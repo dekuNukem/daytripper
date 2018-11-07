@@ -42,12 +42,14 @@
 
 /* USER CODE BEGIN Includes */
 #include "shared.h"
-// #include "nrf24.h"
+#include "nrf24.h"
 #include "VL53L0X.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+
+SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
 
@@ -61,6 +63,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_SPI1_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -73,6 +76,12 @@ int fputc(int ch, FILE *f)
     HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
     return ch;
 }
+
+uint8_t temp;
+uint8_t q = 0;
+uint8_t data_array[4];
+uint8_t tx_address[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+uint8_t rx_address[5] = {0xD7,0xD7,0xD7,0xD7,0xD7};
 
 /* USER CODE END 0 */
 
@@ -107,12 +116,20 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+  printf("nrf initializing...\n");
+  nrf24_init();
+  nrf24_config(2,4);
+  nrf24_tx_address(tx_address);
+  nrf24_rx_address(rx_address);
+  printf("done\n");
 
   VL53L0X_init();
   setTimeout(500);
@@ -125,13 +142,31 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 
-	HAL_Delay(500);
-	
-	printf("%d\n", readRangeSingleMillimeters());
+    HAL_Delay(500);
+
+    data_array[0] = 'l';
+    data_array[1] = 'o';
+    data_array[2] = 'l';
+    data_array[3] = ((q++) % 10) + 48;
+
+    printf("sending...\n");
+    nrf24_send(data_array);
+    while(nrf24_isSending());
+    temp = nrf24_lastMessageStatus();
+
+    if(temp == NRF24_TRANSMISSON_OK)
+      printf("> Tranmission went OK\r\n");
+    else if(temp == NRF24_MESSAGE_LOST)
+      printf("> Message is lost ...\r\n");
+
+    temp = nrf24_retransmissionCount();
+    printf("> Retranmission count: %d\r\n",temp);
+    
+    printf("%d\n", readRangeSingleMillimeters());
     if(timeoutOccurred())
       printf("TIMEOUT\n");
 
-	HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+    HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
 
   }
   /* USER CODE END 3 */
@@ -227,6 +262,32 @@ static void MX_I2C1_Init(void)
 
 }
 
+/* SPI1 init function */
+static void MX_SPI1_Init(void)
+{
+
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /* USART2 init function */
 static void MX_USART2_UART_Init(void)
 {
@@ -262,16 +323,27 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, USER_LED_Pin|NRF_CE_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : USER_LED_Pin */
-  GPIO_InitStruct.Pin = USER_LED_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pins : USER_LED_Pin NRF_CE_Pin */
+  GPIO_InitStruct.Pin = USER_LED_Pin|NRF_CE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USER_LED_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SPI1_CS_Pin */
+  GPIO_InitStruct.Pin = SPI1_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI1_CS_GPIO_Port, &GPIO_InitStruct);
 
 }
 

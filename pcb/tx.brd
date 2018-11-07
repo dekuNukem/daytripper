@@ -1657,8 +1657,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="0.8514" y1="20.6126" x2="0.8514" y2="19.794" width="0.254" layer="1"/>
 <wire x1="1.5748" y1="21.336" x2="0.8514" y2="20.6126" width="0.254" layer="1"/>
 </signal>
-<signal name="N$36">
-<contactref element="U1" pad="7"/>
+<signal na                       U1" pad="7"/>
 <contactref element="TP1" pad="TP"/>
 <wire x1="14.8" y1="14.6" x2="14.5796" y2="14.8204" width="0.1524" layer="1"/>
 <wire x1="14.5796" y1="14.8204" x2="14.5796" y2="15.6464" width="0.1524" layer="1"/>
