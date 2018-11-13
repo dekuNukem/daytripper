@@ -10,7 +10,7 @@ find . -type f -name "*.csv#*" -exec rm -f {} \;
 find . -type f -name "*.DS_Store*" -exec rm -f {} \;
 find . -name "__pycache__" -exec rm -rf {} \;
 find . -type f -name "._*" -exec rm -f {} \;
-cp ~/Documents/EAGLE/libraries/3pos_slide_switch.lbr ./pcb/misc/
+#cp ~/Documents/EAGLE/libraries/3pos_slide_switch.lbr ./pcb/misc/
 
 git add --all
 git commit -m "$@"

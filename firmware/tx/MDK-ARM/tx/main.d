@@ -26,11 +26,14 @@ tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h
+tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc.h
+tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc_ex.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
 tx\main.o: ../Inc/shared.h
+tx\main.o: ../Inc/helpers.h
 tx\main.o: ../Inc/nrf24.h
 tx\main.o: ../Inc/nRF24L01.h
 tx\main.o: ../Inc/VL53L0X.h

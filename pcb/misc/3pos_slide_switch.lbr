@@ -175,10 +175,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <wire x1="12.7" y1="7.62" x2="12.7" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-2.54" x2="-12.7" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="-2.54" x2="-12.7" y2="7.62" width="0.254" layer="94"/>
-<pin name="A" x="-7.62" y="12.7" length="middle" rot="R270"/>
-<pin name="B" x="-2.54" y="12.7" length="middle" rot="R270"/>
-<pin name="C" x="2.54" y="12.7" length="middle" rot="R270"/>
-<pin name="D" x="7.62" y="12.7" length="middle" rot="R270"/>
+<pin name="D" x="-7.62" y="12.7" length="middle" rot="R270"/>
+<pin name="C" x="-2.54" y="12.7" length="middle" rot="R270"/>
+<pin name="B" x="2.54" y="12.7" length="middle" rot="R270"/>
+<pin name="A" x="7.62" y="12.7" length="middle" rot="R270"/>
 <pin name="GND" x="-17.78" y="0" length="middle"/>
 </symbol>
 <symbol name="XC6206_SYM">
@@ -256,10 +256,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <devices>
 <device name="" package="SW_3POS_FOOT">
 <connects>
-<connect gate="G$1" pin="A" pad="P$3"/>
-<connect gate="G$1" pin="B" pad="P$6"/>
-<connect gate="G$1" pin="C" pad="P$7"/>
-<connect gate="G$1" pin="D" pad="P$8"/>
+<connect gate="G$1" pin="A" pad="P$8"/>
+<connect gate="G$1" pin="B" pad="P$7"/>
+<connect gate="G$1" pin="C" pad="P$6"/>
+<connect gate="G$1" pin="D" pad="P$3"/>
 <connect gate="G$1" pin="GND" pad="P$1 P$2 P$4 P$5"/>
 </connects>
 <technologies>
@@ -268,10 +268,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 </device>
 <device name="SW_3POS_OFFICIAL" package="SW_3POS_FOOT_OFFICIAL">
 <connects>
-<connect gate="G$1" pin="A" pad="P$8"/>
-<connect gate="G$1" pin="B" pad="P$7"/>
-<connect gate="G$1" pin="C" pad="P$6"/>
-<connect gate="G$1" pin="D" pad="P$3"/>
+<connect gate="G$1" pin="A" pad="P$3"/>
+<connect gate="G$1" pin="B" pad="P$6"/>
+<connect gate="G$1" pin="C" pad="P$7"/>
+<connect gate="G$1" pin="D" pad="P$8"/>
 <connect gate="G$1" pin="GND" pad="P$1 P$2 P$4 P$5"/>
 </connects>
 <technologies>

@@ -1954,10 +1954,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <wire x1="12.7" y1="7.62" x2="12.7" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="12.7" y1="-2.54" x2="-12.7" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="-2.54" x2="-12.7" y2="7.62" width="0.254" layer="94"/>
-<pin name="A" x="-7.62" y="12.7" length="middle" rot="R270"/>
-<pin name="B" x="-2.54" y="12.7" length="middle" rot="R270"/>
-<pin name="C" x="2.54" y="12.7" length="middle" rot="R270"/>
-<pin name="D" x="7.62" y="12.7" length="middle" rot="R270"/>
+<pin name="D" x="-7.62" y="12.7" length="middle" rot="R270"/>
+<pin name="C" x="-2.54" y="12.7" length="middle" rot="R270"/>
+<pin name="B" x="2.54" y="12.7" length="middle" rot="R270"/>
+<pin name="A" x="7.62" y="12.7" length="middle" rot="R270"/>
 <pin name="GND" x="-17.78" y="0" length="middle"/>
 </symbol>
 <symbol name="XC6206_SYM">
@@ -1989,10 +1989,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <devices>
 <device name="" package="SW_3POS_FOOT">
 <connects>
-<connect gate="G$1" pin="A" pad="P$3"/>
-<connect gate="G$1" pin="B" pad="P$6"/>
-<connect gate="G$1" pin="C" pad="P$7"/>
-<connect gate="G$1" pin="D" pad="P$8"/>
+<connect gate="G$1" pin="A" pad="P$8"/>
+<connect gate="G$1" pin="B" pad="P$7"/>
+<connect gate="G$1" pin="C" pad="P$6"/>
+<connect gate="G$1" pin="D" pad="P$3"/>
 <connect gate="G$1" pin="GND" pad="P$1 P$2 P$4 P$5"/>
 </connects>
 <technologies>
@@ -2001,10 +2001,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 </device>
 <device name="SW_3POS_OFFICIAL" package="SW_3POS_FOOT_OFFICIAL">
 <connects>
-<connect gate="G$1" pin="A" pad="P$8"/>
-<connect gate="G$1" pin="B" pad="P$7"/>
-<connect gate="G$1" pin="C" pad="P$6"/>
-<connect gate="G$1" pin="D" pad="P$3"/>
+<connect gate="G$1" pin="A" pad="P$3"/>
+<connect gate="G$1" pin="B" pad="P$6"/>
+<connect gate="G$1" pin="C" pad="P$7"/>
+<connect gate="G$1" pin="D" pad="P$8"/>
 <connect gate="G$1" pin="GND" pad="P$1 P$2 P$4 P$5"/>
 </connects>
 <technologies>
@@ -5853,6 +5853,7 @@ Shield pins may be grounded.
 <part name="+3V4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$5" library="adafruit_changed" deviceset="PINHD5" device=""/>
+<part name="+3V5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5918,6 +5919,7 @@ Shield pins may be grounded.
 <instance part="+3V4" gate="G$1" x="86.36" y="-5.08"/>
 <instance part="GND23" gate="1" x="71.12" y="-12.7"/>
 <instance part="U$5" gate="G$1" x="81.28" y="-7.62"/>
+<instance part="+3V5" gate="G$1" x="-30.48" y="22.86"/>
 </instances>
 <busses>
 </busses>
@@ -6115,6 +6117,11 @@ Shield pins may be grounded.
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
 <wire x1="78.74" y1="-7.62" x2="86.36" y2="-7.62" width="0.1524" layer="91"/>
 <pinref part="U$5" gate="G$1" pin="4"/>
+</segment>
+<segment>
+<pinref part="+3V5" gate="G$1" pin="+3V3"/>
+<pinref part="U$1" gate="G$1" pin="C"/>
+<wire x1="-30.48" y1="20.32" x2="-10.16" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -6344,18 +6351,8 @@ Shield pins may be grounded.
 <pinref part="U$2" gate="G$1" pin="PF0/OSC_IN"/>
 <wire x1="12.7" y1="12.7" x2="0" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="0" y1="12.7" x2="0" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="A"/>
+<pinref part="U$1" gate="G$1" pin="D"/>
 <wire x1="0" y1="25.4" x2="-10.16" y2="25.4" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$25" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="PF1/OSC_OUT"/>
-<wire x1="12.7" y1="10.16" x2="-2.54" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="-2.54" y1="10.16" x2="-2.54" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="-2.54" y1="20.32" x2="-7.62" y2="20.32" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="B"/>
-<wire x1="-7.62" y1="20.32" x2="-10.16" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -6365,7 +6362,7 @@ Shield pins may be grounded.
 <wire x1="27.94" y1="25.4" x2="27.94" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="7.62" x2="-5.08" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="C"/>
+<pinref part="U$1" gate="G$1" pin="B"/>
 <wire x1="-5.08" y1="15.24" x2="-10.16" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
