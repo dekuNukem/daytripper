@@ -32,6 +32,7 @@ tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h
 tx\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
+tx\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 tx\main.o: ../Inc/shared.h
 tx\main.o: ../Inc/helpers.h
 tx\main.o: ../Inc/nrf24.h

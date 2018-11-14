@@ -41,10 +41,13 @@
 #include "stm32f0xx_hal.h"
 
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
 #include "shared.h"
 #include "helpers.h"
 #include "nrf24.h"
 #include "VL53L0X.h"
+#define STATE_IDLE 0
+#define STATE_TRIGGERED 1
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -83,7 +86,7 @@ int fputc(int ch, FILE *f)
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
-  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+  // HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
   wakeup_count++;
 }
 /* USER CODE END 0 */
@@ -131,8 +134,16 @@ int main(void)
   VL53L0X_init();
   setTimeout(500);
   setMeasurementTimingBudget(20000);
-
   MX_RTC_Init();
+
+  printf("calibrating...\n");
+  int16_t baseline = get_baseline();
+  printf("done!\n");
+
+  uint16_t diff_threshold = get_trigger_threshold(baseline);
+  int16_t this_reading = 0;
+  int16_t diff = 0;
+  uint8_t current_state = STATE_IDLE;
 
   while (1)
   {
@@ -140,10 +151,24 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    uint32_t distance = readRangeSingleMillimeters();
-    printf("%d\n", distance);
-    // HAL_Delay(500);
-    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    this_reading = readRangeSingleMillimeters();
+    diff = abs(baseline - this_reading);
+
+    if(current_state == STATE_IDLE && diff > diff_threshold)
+    {
+      printf("triggered!!!\n");
+      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+      current_state = STATE_TRIGGERED;
+    }
+    else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
+    {
+      printf("returned!!!\n");
+      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+      current_state = STATE_IDLE;
+    }
+
+    HAL_Delay(50);
+    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   }
   /* USER CODE END 3 */
 

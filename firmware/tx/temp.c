@@ -11,9 +11,9 @@ uint8_t rx_address[5] = {0xD7,0xD7,0xD7,0xD7,0xD7};
   // nrf24_rx_address(rx_address);
   // printf("done\n");
 
-  // VL53L0X_init();
-  // setTimeout(500);
-  // setMeasurementTimingBudget(20000);
+  VL53L0X_init();
+  setTimeout(500);
+  setMeasurementTimingBudget(20000);
 
     data_array[0] = 'l';
     data_array[1] = 'o';
@@ -55,3 +55,80 @@ void recovery_mode(void)
       HAL_Delay(1000);
     }
 }
+
+uint16_t get_baseline(void)
+{
+  printf("calibrating...\n");
+
+  for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+  {
+    baseline_data[i] = readRangeSingleMillimeters();
+    HAL_Delay(50);
+  }
+
+  uint32_t sum = 0;
+  for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+    printf("%d: %d\n", i, baseline_data[i]);
+}
+
+uint16_t get_baseline(void)
+{
+  printf("calibrating...\n");
+
+  uint32_t mean = 0;
+  for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+  {
+    baseline_data[i] = readRangeSingleMillimeters();
+    mean += baseline_data[i];
+    HAL_Delay(50);
+  }
+  mean /= BASELINE_SAMPLE_SIZE;
+
+  uint32_t variance = 0;
+  for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+  {
+    printf("%d ", baseline_data[i]);
+    variance += (baseline_data[i] - mean) * (baseline_data[i] - mean);
+  }
+  variance /= BASELINE_SAMPLE_SIZE;
+
+  printf("\nvar: %d\n", variance);
+
+  return 0;
+}
+
+// var smaller than 300
+// trigger when current reading is 30% away from baseline?
+// go into triggered state, so dont repeat sending package
+// wait until readings return to baseline
+
+printf("%4d %4d %4d %4.2f\n", baseline, this_reading, diff, diff_ratio);
+
+int16_t this_reading = readRangeSingleMillimeters();
+    int16_t diff = abs(baseline - this_reading);
+    float diff_ratio = diff/(float)baseline;
+    printf("%4d %4d %4d %4.2f\n", baseline, this_reading, diff, diff_ratio);
+    if(diff_ratio > get_trigger_threshold(baseline))
+      printf("triggered!!\n");
+    HAL_Delay(50);
+
+
+  int16_t this_reading = readRangeSingleMillimeters();
+    int16_t diff = abs(baseline - this_reading);
+    
+    printf("%4d %4d %4d %4d\n", baseline, this_reading, diff, diff_threshold);
+    HAL_Delay(50);
+
+  int16_t this_reading = 0;
+  int16_t diff = 0;
+
+    this_reading = readRangeSingleMillimeters();
+    diff = abs(baseline - this_reading);
+
+    while(diff >= diff_threshold)
+    {
+      printf("waiting to return...\n");
+      HAL_Delay(50);
+    }
+
+    

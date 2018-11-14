@@ -432,9 +432,29 @@ by exp-lbrs.ulp</description>
 &lt;h4&gt;Devices Using&lt;/h4&gt;
 &lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
 <circle x="0" y="0" radius="12.25" width="0.2032" layer="51"/>
-<pad name="1" x="-12.5" y="0" drill="1.5"/>
-<pad name="2" x="12.5" y="0" drill="1.5"/>
+<pad name="1" x="-12.5" y="0" drill="1.27" shape="long" rot="R90"/>
+<pad name="2" x="12.5" y="0" drill="1.27" shape="long" rot="R90"/>
 <text x="-10.16" y="1.524" size="2.54" layer="21" font="vector" align="top-center">+</text>
+<polygon width="0.127" layer="46">
+<vertex x="-12.8016" y="1.6256"/>
+<vertex x="-12.2428" y="1.6256"/>
+<vertex x="-11.8872" y="1.2192"/>
+<vertex x="-11.8872" y="-1.2192"/>
+<vertex x="-12.2428" y="-1.6256"/>
+<vertex x="-12.8016" y="-1.6256"/>
+<vertex x="-13.1064" y="-1.2192"/>
+<vertex x="-13.1064" y="1.2192"/>
+</polygon>
+<polygon width="0.127" layer="46">
+<vertex x="12.2428" y="1.6256"/>
+<vertex x="12.8016" y="1.6256"/>
+<vertex x="13.1064" y="1.27"/>
+<vertex x="13.1064" y="-1.1684"/>
+<vertex x="12.8016" y="-1.6256"/>
+<vertex x="12.2428" y="-1.6256"/>
+<vertex x="11.8872" y="-1.2192"/>
+<vertex x="11.8872" y="1.2192"/>
+</polygon>
 </package>
 <package name="L1_USBC_6P_PAC">
 <wire x1="-4.32" y1="-3.15" x2="4.32" y2="-3.15" width="0.1524" layer="51"/>
