@@ -51,8 +51,6 @@
 
 #define USER_BUTTON_Pin GPIO_PIN_0
 #define USER_BUTTON_GPIO_Port GPIOA
-#define USER_LED_Pin GPIO_PIN_3
-#define USER_LED_GPIO_Port GPIOA
 #define NRF_CE_Pin GPIO_PIN_4
 #define NRF_CE_GPIO_Port GPIOA
 #define SPI1_CS_Pin GPIO_PIN_1

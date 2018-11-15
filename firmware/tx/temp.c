@@ -1,3 +1,28 @@
+/*
+hrtc.Init.AsynchPrediv = 16;
+hrtc.Init.SynchPrediv = 4;
+
+16 4 4Hz
+16 3 5Hz
+*/
+if(current_animation == ANIMATION_TYPE_RAPID_FLASHING)
+  {
+    if(curr_frame % 8 < 4)
+      pwm_timer->Instance->CCR4 = 0;
+    else
+      pwm_timer->Instance->CCR4 = 255;
+  }
+  else 
+
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+  wakeup_count++;
+  if(wakeup_count % 2)
+    start_animation(ANIMATION_TYPE_CONST_OFF);
+  else
+    start_animation(ANIMATION_TYPE_CONST_ON);
+}
+
 uint8_t temp;
 uint8_t q = 0;
 uint8_t data_array[4];
@@ -131,4 +156,6 @@ int16_t this_reading = readRangeSingleMillimeters();
       HAL_Delay(50);
     }
 
-    
+
+  // HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+  // HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);

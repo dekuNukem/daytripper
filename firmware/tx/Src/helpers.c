@@ -9,11 +9,6 @@
 
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 
-void boot_animation(void)
-{
-	;
-}
-
 uint16_t get_baseline(void)
 {
 	while(1)

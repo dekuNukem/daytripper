@@ -4,6 +4,7 @@
 "tx\radiopinfunctions.o"
 "tx\nrf24.o"
 "tx\helpers.o"
+"tx\animation.o"
 "tx\main.o"
 "tx\stm32f0xx_it.o"
 "tx\stm32f0xx_hal_msp.o"
