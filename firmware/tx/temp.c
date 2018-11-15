@@ -5,6 +5,28 @@ hrtc.Init.SynchPrediv = 4;
 16 4 4Hz
 16 3 5Hz
 */
+volatile uint8_t adc_index;
+volatile uint8_t adc_buf[ADC_BUF_SIZE];
+// set discontinues mode for it to work
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)  
+{
+  if(__HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOC)) 
+  {
+    adc_buf[adc_index] = HAL_ADC_GetValue(hadc); 
+    adc_index++;
+  }
+  if(__HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOS))  
+  {
+    adc_index = 0;
+  }
+}
+for (int i = 0; i < ADC_BUF_SIZE; ++i)
+    {
+      printf("%d ", adc_buf[i]);
+    }
+    printf("\n%d\n", adc_index);
+HAL_ADC_Start_IT(&hadc);
+
 if(current_animation == ANIMATION_TYPE_RAPID_FLASHING)
   {
     if(curr_frame % 8 < 4)
@@ -22,7 +44,18 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
   else
     start_animation(ANIMATION_TYPE_CONST_ON);
 }
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)  
+{
+  if(__HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOC)) 
+  {
+    adc_buf[adc_index] = HAL_ADC_GetValue(hadc); 
+    adc_index = (adc_index + 1) % ADC_BUF_SIZE;
+  }
+  // if(__HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOS))  
+  // {
+  //   adc_index = 0;
+  // }
+}
 uint8_t temp;
 uint8_t q = 0;
 uint8_t data_array[4];

@@ -1506,7 +1506,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="C10" pad="1"/>
 <contactref element="BT1" pad="1"/>
 <contactref element="S2" pad="3"/>
-<wire x1="2.6776" y1="12.029" x2="3.4518" y2="12.029" width="0.254" layer="1"/>
 <wire x1="3.4518" y1="12.029" x2="3.4518" y2="11.0718" width="0.254" layer="1"/>
 <wire x1="1.1176" y1="10.0076" x2="0.7112" y2="9.6012" width="0.254" layer="1"/>
 <wire x1="0.7112" y1="9.6012" x2="0.7112" y2="7.7978" width="0.254" layer="1"/>
@@ -1518,10 +1517,12 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="3.4518" y1="11.0718" x2="2.3876" y2="10.0076" width="0.254" layer="1"/>
 <wire x1="2.3876" y1="10.0076" x2="1.1176" y2="10.0076" width="0.254" layer="1"/>
 <wire x1="3.81" y1="4.953" x2="4.8616" y2="3.9014" width="0.254" layer="1"/>
-<wire x1="1.5" y1="13.2066" x2="2.6776" y2="12.029" width="0.254" layer="1"/>
-<wire x1="1.5" y1="16.346" x2="1.5" y2="13.2066" width="0.254" layer="1"/>
 <wire x1="5.7611" y1="3.9014" x2="5.7611" y2="2.9621" width="0.2032" layer="1"/>
 <wire x1="5.7611" y1="2.9621" x2="6.223" y2="2.5002" width="0.2032" layer="1"/>
+<wire x1="3.4518" y1="12.029" x2="2.4998" y2="12.029" width="0.254" layer="1"/>
+<wire x1="1.7272" y1="16.1188" x2="1.5" y2="16.346" width="0.254" layer="1"/>
+<wire x1="2.4998" y1="12.029" x2="1.7272" y2="12.8016" width="0.254" layer="1"/>
+<wire x1="1.7272" y1="12.8016" x2="1.7272" y2="16.1188" width="0.254" layer="1"/>
 </signal>
 <signal name="N$26">
 <contactref element="U$1" pad="VBUS2"/>
