@@ -1,10 +1,60 @@
 /*
-hrtc.Init.AsynchPrediv = 16;
+hrtc.Init.AsynchPrediv = 32;
 hrtc.Init.SynchPrediv = 4;
 
-16 4 4Hz
-16 3 5Hz
+26 4 5Hz 0.2s
+32 4 4Hz 0.25s
 */
+
+  printf("vbat = %d\n", result);
+
+uint8_t get_adc_reading(void)
+{
+  uint8_t result = 0;
+  HAL_ADC_Start(&hadc);
+  if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
+    result = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_Stop(&hadc);
+  return result;
+}
+uint8_t get_adc_reading(void)
+{
+  uint8_t result = 0;
+
+  ADC_ChannelConfTypeDef sConfig;
+  sConfig.Channel = ADC_CHANNEL_VREFINT;
+  sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
+  sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+  HAL_ADC_ConfigChannel(&hadc, &sConfig);
+
+  HAL_ADC_Start(&hadc);
+  if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
+    result = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_Stop(&hadc);
+
+  printf("%d\n", result);
+
+  sConfig.Channel = ADC_CHANNEL_1;
+  HAL_ADC_ConfigChannel(&hadc, &sConfig);
+
+  HAL_ADC_Start(&hadc);
+  if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
+    result = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_Stop(&hadc);
+
+  printf("%d\n\n", result);
+
+  return result;
+}
+
+HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
+
+    HAL_ADC_MspDeInit(&hadc);
+    HAL_ADC_MspInit(&hadc);
+    MX_ADC_Init();
+    printf("%d\n", get_adc_reading());
+    HAL_Delay(500);
+
 volatile uint8_t adc_index;
 volatile uint8_t adc_buf[ADC_BUF_SIZE];
 // set discontinues mode for it to work

@@ -72,13 +72,11 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-volatile uint32_t wakeup_count = 0;
-
+volatile uint32_t wakeup_count = 1;
 uint8_t nrf_status;
 uint8_t data_array[NRF_PAYLOAD_SIZE] = {70, 85, 67, 75};
 uint8_t tx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
 uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,6 +108,13 @@ int fputc(int ch, FILE *f)
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   wakeup_count++;
+  if(wakeup_count % 16 == 0) //3600
+  {
+    HAL_ADC_MspInit(&hadc);
+    MX_ADC_Init();
+    check_battery();
+    HAL_ADC_MspDeInit(&hadc);
+  }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -166,8 +171,7 @@ int main(void)
   VL53L0X_init();
   setTimeout(500);
   setMeasurementTimingBudget(20000);
-  MX_RTC_Init();
-
+  
   printf("initializing NRF...\n");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
@@ -184,7 +188,10 @@ int main(void)
   int16_t diff = 0;
   uint8_t current_state = STATE_IDLE;
 
+  check_battery();
+  HAL_ADC_MspDeInit(&hadc);
   start_animation(ANIMATION_TYPE_CONST_OFF);
+  MX_RTC_Init();
   while (1)
   {
 
@@ -214,9 +221,9 @@ int main(void)
       printf("returned!!!\n");
       current_state = STATE_IDLE;
     }
-    
-    HAL_Delay(50);
+    HAL_Delay(250);
     // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
   }
   /* USER CODE END 3 */
 
@@ -374,7 +381,7 @@ static void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 16;
+  hrtc.Init.AsynchPrediv = 32;
   hrtc.Init.SynchPrediv = 4;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
@@ -555,14 +562,25 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct;
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin : TEST_OUT_Pin */
+  GPIO_InitStruct.Pin = TEST_OUT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(TEST_OUT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : USER_BUTTON_Pin */
   GPIO_InitStruct.Pin = USER_BUTTON_Pin;

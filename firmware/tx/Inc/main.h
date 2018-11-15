@@ -49,6 +49,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define TEST_OUT_Pin GPIO_PIN_0
+#define TEST_OUT_GPIO_Port GPIOF
 #define USER_BUTTON_Pin GPIO_PIN_0
 #define USER_BUTTON_GPIO_Port GPIOA
 #define NRF_CE_Pin GPIO_PIN_4

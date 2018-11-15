@@ -10,7 +10,7 @@
 
 uint16_t get_baseline(void);
 uint16_t get_trigger_threshold(uint16_t baseline);
-uint8_t get_adc_reading(void);
+void check_battery(void);
 
 #ifdef __cplusplus
 }
