@@ -24,3 +24,49 @@ nrf24_init();
     HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
   
     printf("%d\n", get_slide_sw_pos());
+
+keyboard_press(KEY_LEFT_GUI, 0);
+        HAL_Delay(34);
+        keyboard_press('d', 0);
+        HAL_Delay(34);
+        keyboard_release_all();
+        HAL_Delay(100);
+
+
+void press_keys(void)
+{
+    switch (get_slide_sw_pos())
+    {
+    case SLIDE_SW_POS_MINI:
+      keyboard_press('M', 1);
+      HAL_Delay(34);
+      keyboard_release_all();
+      HAL_Delay(10);
+      break;
+    case SLIDE_SW_POS_CUSTOM:
+        keyboard_press('C', 1);
+      HAL_Delay(34);
+      keyboard_release_all();
+      HAL_Delay(10);
+      break;
+    case SLIDE_SW_POS_LOCK:
+        keyboard_press('L', 1);
+      HAL_Delay(34);
+      keyboard_release_all();
+      HAL_Delay(10);
+      break;
+    }
+}
+    if(nrf24_dataReady())
+    {
+        nrf24_getData(data_array);        
+        printf("> ");
+        printf("%d ",data_array[0]);
+        printf("%d ",data_array[1]);
+        printf("%d ",data_array[2]);
+        printf("%d\n",data_array[3]);
+        
+        press_keys(get_slide_sw_pos());
+
+        HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+    }

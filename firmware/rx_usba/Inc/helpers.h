@@ -9,10 +9,11 @@
 #include "shared.h"
 
 #define SLIDE_SW_POS_MINI 0
-#define SLIDE_SW_POS_LOCK 1
-#define SLIDE_SW_POS_CUSTOM 2
+#define SLIDE_SW_POS_CUSTOM 1
+#define SLIDE_SW_POS_LOCK 2
 
 uint8_t get_slide_sw_pos(void);
+void press_keys(uint8_t index);
 
 #ifdef __cplusplus
 }

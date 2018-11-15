@@ -24,6 +24,8 @@ rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_fl
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h
+rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd.h
+rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd_ex.h
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h
 rx\stm32f0xx_hal_uart_ex.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h
