@@ -23,3 +23,4 @@ nrf24_init();
     }
     HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
   
+    printf("%d\n", get_slide_sw_pos());

@@ -44,7 +44,8 @@
 #include "shared.h"
 #include "nrf24.h"
 #include "helpers.h"
-
+#define NRF_PAYLOAD_SIZE 4
+#define NRF_CHANNEL 120
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -75,11 +76,10 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
-uint8_t temp;
-uint8_t q = 0;
-uint8_t data_array[4];
-uint8_t tx_address[5] = {0xD7,0xD7,0xD7,0xD7,0xD7};
-uint8_t rx_address[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+uint8_t nrf_status;
+uint8_t data_array[NRF_PAYLOAD_SIZE];
+uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+uint8_t rx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
 
 /* USER CODE END 0 */
 
@@ -116,6 +116,13 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
+  printf("initializing NRF...\n");
+  nrf24_init();
+  nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
+  nrf24_tx_address(tx_address);
+  nrf24_rx_address(rx_address);
+  printf("done\n");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,10 +134,17 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
-    printf("%d\n", get_slide_sw_pos());
-
-    HAL_Delay(500);
+    if(nrf24_dataReady())
+    {
+        nrf24_getData(data_array);        
+        printf("> ");
+        printf("%d ",data_array[0]);
+        printf("%d ",data_array[1]);
+        printf("%d ",data_array[2]);
+        printf("%d\n",data_array[3]);
+        HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+    }
+    
   }
   /* USER CODE END 3 */
 

@@ -48,6 +48,8 @@
 #include "VL53L0X.h"
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
+#define NRF_PAYLOAD_SIZE 4
+#define NRF_CHANNEL 120
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -62,6 +64,12 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 uint32_t wakeup_count = 0;
+
+uint8_t nrf_status;
+uint8_t data_array[NRF_PAYLOAD_SIZE] = {70, 85, 67, 75};
+uint8_t tx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
+uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -136,6 +144,13 @@ int main(void)
   setMeasurementTimingBudget(20000);
   MX_RTC_Init();
 
+  printf("initializing NRF...\n");
+  nrf24_init();
+  nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
+  nrf24_tx_address(tx_address);
+  nrf24_rx_address(rx_address);
+  printf("done\n");
+
   printf("calibrating...\n");
   int16_t baseline = get_baseline();
   printf("done!\n");
@@ -157,6 +172,15 @@ int main(void)
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
       printf("triggered!!!\n");
+
+      nrf24_send(data_array);
+      while(nrf24_isSending());
+      nrf_status = nrf24_lastMessageStatus();
+      if(nrf_status == NRF24_TRANSMISSON_OK)
+        printf("Tranmission went OK\n");
+      else if(nrf_status == NRF24_MESSAGE_LOST)
+        printf("Message is lost ...\n");
+
       HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
       current_state = STATE_TRIGGERED;
     }
