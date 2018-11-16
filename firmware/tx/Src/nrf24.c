@@ -246,7 +246,7 @@ void nrf24_powerUpRx()
 
     nrf24_configRegister(STATUS,(1<<RX_DR)|(1<<TX_DS)|(1<<MAX_RT)); 
 
-    nrf24_ce_digitalWrite(LOW);    
+    nrf24_ce_digitalWrite(LOW);
     nrf24_configRegister(CONFIG,nrf24_CONFIG|((1<<PWR_UP)|(1<<PRIM_RX)));    
     nrf24_ce_digitalWrite(HIGH);
 }

@@ -61,6 +61,8 @@ ADC_HandleTypeDef hadc;
 
 I2C_HandleTypeDef hi2c1;
 
+IWDG_HandleTypeDef hiwdg;
+
 RTC_HandleTypeDef hrtc;
 
 SPI_HandleTypeDef hspi1;
@@ -89,6 +91,7 @@ static void MX_RTC_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM17_Init(void);
 static void MX_ADC_Init(void);
+static void MX_IWDG_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                                 
@@ -108,7 +111,7 @@ int fputc(int ch, FILE *f)
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   wakeup_count++;
-  if(wakeup_count % 16 == 0) //3600
+  if(wakeup_count % 3600 == 0) // 3600 * 0.2 = 12 minutes
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
@@ -161,13 +164,25 @@ int main(void)
   MX_TIM17_Init();
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
+
+  check_battery();
+  HAL_ADC_MspDeInit(&hadc);
+  MX_IWDG_Init(); // where should this go?
+  
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
-  HAL_Delay(2000);
+
+  for (int i = 0; i < 4; i++)
+  {
+    HAL_IWDG_Refresh(&hiwdg);
+    HAL_Delay(500);
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
   setMeasurementTimingBudget(20000);
@@ -188,8 +203,6 @@ int main(void)
   int16_t diff = 0;
   uint8_t current_state = STATE_IDLE;
 
-  check_battery();
-  HAL_ADC_MspDeInit(&hadc);
   start_animation(ANIMATION_TYPE_CONST_OFF);
   MX_RTC_Init();
   while (1)
@@ -198,6 +211,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    HAL_IWDG_Refresh(&hiwdg);
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
@@ -207,12 +221,12 @@ int main(void)
       printf("triggered!!!\n");
 
       nrf24_send(data_array);
-      while(nrf24_isSending());
-      nrf_status = nrf24_lastMessageStatus();
-      if(nrf_status == NRF24_TRANSMISSON_OK)
-        printf("Tranmission went OK\n");
-      else if(nrf_status == NRF24_MESSAGE_LOST)
-        printf("Message is lost ...\n");
+      // while(nrf24_isSending());
+      // nrf_status = nrf24_lastMessageStatus();
+      // if(nrf_status == NRF24_TRANSMISSON_OK)
+      //   printf("Tranmission went OK\n");
+      // else if(nrf_status == NRF24_MESSAGE_LOST)
+      //   printf("Message is lost ...\n");
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
@@ -221,8 +235,8 @@ int main(void)
       printf("returned!!!\n");
       current_state = STATE_IDLE;
     }
-    HAL_Delay(250);
-    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    // HAL_Delay(200);
+    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
     HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
   }
   /* USER CODE END 3 */
@@ -361,6 +375,21 @@ static void MX_I2C1_Init(void)
 
 }
 
+/* IWDG init function */
+static void MX_IWDG_Init(void)
+{
+
+  hiwdg.Instance = IWDG;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_32;
+  hiwdg.Init.Window = 4095;
+  hiwdg.Init.Reload = 4095;
+  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /* RTC init function */
 static void MX_RTC_Init(void)
 {
@@ -381,7 +410,7 @@ static void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 32;
+  hrtc.Init.AsynchPrediv = 26;
   hrtc.Init.SynchPrediv = 4;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;

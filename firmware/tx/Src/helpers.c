@@ -19,6 +19,7 @@ uint16_t get_baseline(void)
     {
       baseline_data[i] = readRangeSingleMillimeters();
       mean += baseline_data[i];
+      HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
     mean /= BASELINE_SAMPLE_SIZE;
@@ -43,7 +44,8 @@ uint16_t get_trigger_threshold(uint16_t baseline)
 
 void check_battery(void)
 {
-  uint8_t result = 0;
+  return;
+  uint8_t result = 255;
   HAL_ADC_Start(&hadc);
   if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
     result = HAL_ADC_GetValue(&hadc);
@@ -52,7 +54,16 @@ void check_battery(void)
   if(result <= 135) // 3.6V
   {
     printf("low battery, shutting down...\n"); 
-    // disable all interrupts, turn off LED
+
+    // turn off external chips
+    HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
+    // disable all interrupts
+    for (int i = 0; i <= 31; i++)
+      HAL_NVIC_DisableIRQ(i);
+
+    // turn off periphrials
     HAL_ADC_MspDeInit(&hadc);
     HAL_I2C_MspDeInit(&hi2c1);
     HAL_RTC_MspDeInit(&hrtc);
@@ -61,8 +72,6 @@ void check_battery(void)
     HAL_TIM_Base_MspDeInit(&htim17);
     HAL_UART_MspDeInit(&huart2);
 
-    // turn off periphrials
-    // ...........
     HAL_PWR_EnterSTANDBYMode();
   }
 }

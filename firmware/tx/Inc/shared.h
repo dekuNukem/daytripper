@@ -11,4 +11,6 @@ extern ADC_HandleTypeDef hadc;
 extern RTC_HandleTypeDef hrtc;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim17;
+extern IWDG_HandleTypeDef hiwdg;
+
 #endif
