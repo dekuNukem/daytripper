@@ -111,7 +111,7 @@ int fputc(int ch, FILE *f)
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   wakeup_count++;
-  if(wakeup_count % 3600 == 0) // 3600 * 0.2 = 12 minutes
+  if(wakeup_count % 5000 == 0) // 5000 * 0.2 = 16.6 minutes
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
@@ -205,6 +205,9 @@ int main(void)
 
   start_animation(ANIMATION_TYPE_CONST_OFF);
   MX_RTC_Init();
+  // HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  // HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
   while (1)
   {
 
@@ -218,26 +221,32 @@ int main(void)
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
       start_animation(ANIMATION_TYPE_CONST_ON);
-      printf("triggered!!!\n");
+      printf("triggered\n");
 
-      nrf24_send(data_array);
-      // while(nrf24_isSending());
-      // nrf_status = nrf24_lastMessageStatus();
-      // if(nrf_status == NRF24_TRANSMISSON_OK)
-      //   printf("Tranmission went OK\n");
-      // else if(nrf_status == NRF24_MESSAGE_LOST)
-      //   printf("Message is lost ...\n");
+      for (int i = 0; i < 3; i++)
+      {
+        nrf24_send(data_array);
+        while(nrf24_isSending());
+        nrf_status = nrf24_lastMessageStatus();
+        if(nrf_status == NRF24_TRANSMISSON_OK)
+        {
+          printf("TX OK\n");
+          break;
+        }
+        printf("TX failed, retry %d\n", i);
+      }
+
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
     {
       start_animation(ANIMATION_TYPE_CONST_OFF);
-      printf("returned!!!\n");
+      printf("returned\n");
       current_state = STATE_IDLE;
     }
-    // HAL_Delay(200);
-    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
-    HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
+    HAL_Delay(200);
+    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    // HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
   }
   /* USER CODE END 3 */
 

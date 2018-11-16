@@ -44,7 +44,6 @@ uint16_t get_trigger_threshold(uint16_t baseline)
 
 void check_battery(void)
 {
-  return;
   uint8_t result = 255;
   HAL_ADC_Start(&hadc);
   if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
