@@ -168,22 +168,14 @@
 </layers>
 <board>
 <plain>
-<wire x1="19" y1="2.032" x2="19" y2="35.968" width="0" layer="20"/>
-<wire x1="19" y1="35.968" x2="16.968" y2="38" width="0" layer="20" curve="90"/>
-<wire x1="16.968" y1="38" x2="2.032" y2="38" width="0" layer="20"/>
-<wire x1="2.032" y1="38" x2="0" y2="35.968" width="0" layer="20" curve="90"/>
-<wire x1="0" y1="35.968" x2="0" y2="2.032" width="0" layer="20"/>
+<wire x1="19" y1="2.032" x2="19" y2="34.968" width="0" layer="20"/>
+<wire x1="19" y1="34.968" x2="16.968" y2="37" width="0" layer="20" curve="90"/>
+<wire x1="16.968" y1="37" x2="2.032" y2="37" width="0" layer="20"/>
+<wire x1="2.032" y1="37" x2="0" y2="34.968" width="0" layer="20" curve="90"/>
+<wire x1="0" y1="34.968" x2="0" y2="2.032" width="0" layer="20"/>
 <wire x1="0" y1="2.032" x2="2.032" y2="0" width="0" layer="20" curve="90"/>
 <wire x1="2.032" y1="0" x2="16.968" y2="0" width="0" layer="20"/>
 <wire x1="16.968" y1="0" x2="19" y2="2.032" width="0" layer="20" curve="90"/>
-<polygon width="0.1524" layer="41">
-<vertex x="4.6228" y="33.7444"/>
-<vertex x="4.6228" y="32.7284"/>
-<vertex x="4.7752" y="32.576"/>
-<vertex x="5.1308" y="32.576"/>
-<vertex x="5.2324" y="32.6776"/>
-<vertex x="5.2324" y="33.7444"/>
-</polygon>
 <text x="15.875" y="15.6596" size="1.27" layer="26" font="vector" rot="MR0">DIO</text>
 <text x="15.875" y="18.2024" size="1.27" layer="26" font="vector" rot="MR0">CLK</text>
 <text x="15.875" y="13.0716" size="1.27" layer="26" font="vector" rot="MR0">TX</text>
@@ -235,66 +227,6 @@ by exp-lbrs.ulp</description>
 </package>
 </packages>
 </library>
-<library name="SparkFun-RF">
-<description>&lt;h3&gt;SparkFun RF, WiFi, Cellular, and Bluetooth&lt;/h3&gt;
-In this library you'll find things that send or receive RF-- cellular modules, Bluetooth, WiFi, etc.
-&lt;br&gt;
-&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
-&lt;br&gt;
-&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;
-&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="TRACE_ANTENNA_2.4GHZ_15.2MM">
-<description>&lt;h3&gt;2.4GHz Meander PCB Trace Antenna&lt;/h3&gt;
-&lt;p&gt;PCB trace antenna with a 15.2 x 5.7mm footprint.&lt;/p&gt;
-&lt;p&gt;Based on layout from &lt;a href="http://www.ti.com/lit/an/swra117d/swra117d.pdf"&gt;TI app note AN043&lt;/a&gt;.&lt;/p&gt;</description>
-<polygon width="0.002540625" layer="1">
-<vertex x="-0.25" y="-0.5"/>
-<vertex x="-0.25" y="4.4"/>
-<vertex x="-1.65" y="4.4"/>
-<vertex x="-1.65" y="-0.5"/>
-<vertex x="-2.55" y="-0.5"/>
-<vertex x="-2.55" y="4.9"/>
-<vertex x="2.45" y="4.9"/>
-<vertex x="2.45" y="2.26"/>
-<vertex x="4.45" y="2.26"/>
-<vertex x="4.45" y="4.9"/>
-<vertex x="7.15" y="4.9"/>
-<vertex x="7.15" y="2.26"/>
-<vertex x="9.15" y="2.26"/>
-<vertex x="9.15" y="4.9"/>
-<vertex x="11.85" y="4.9"/>
-<vertex x="11.85" y="0.46"/>
-<vertex x="11.35" y="0.46"/>
-<vertex x="11.35" y="4.4"/>
-<vertex x="9.65" y="4.4"/>
-<vertex x="9.65" y="1.76"/>
-<vertex x="6.65" y="1.76"/>
-<vertex x="6.65" y="4.4"/>
-<vertex x="4.95" y="4.4"/>
-<vertex x="4.95" y="1.76"/>
-<vertex x="1.95" y="1.76"/>
-<vertex x="1.95" y="4.4"/>
-<vertex x="0.25" y="4.4"/>
-<vertex x="0.25" y="-0.5"/>
-</polygon>
-<wire x1="-3" y1="0" x2="12" y2="0" width="0.05" layer="51"/>
-<smd name="GND" x="-2.1" y="-0.25" dx="0.9" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
-<smd name="ANT" x="0" y="-0.25" dx="0.5" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
-<wire x1="-3" y1="5.2" x2="12" y2="5.2" width="0.05" layer="51"/>
-<text x="1" y="-0.8" size="0.64" layer="51" font="vector">Ground Plane</text>
-<text x="1.5" y="5.5" size="0.64" layer="51" font="vector">Board Edge</text>
-<text x="0" y="1.27" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="1.016" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-</package>
-</packages>
-</library>
 <library name="3pos_slide_switch">
 <packages>
 <package name="SW_3POS_FOOT_OFFICIAL">
@@ -339,6 +271,14 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <smd name="P$4" x="2.05" y="-0.825" dx="1.4" dy="1.15" layer="1" thermals="no"/>
 <hole x="0" y="0.9" drill="0.7"/>
 <hole x="0" y="-0.9" drill="0.7"/>
+</package>
+<package name="C1206">
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
+chip</description>
+<smd name="1" x="-1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
+<smd name="2" x="1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
+<rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
+<text x="-2.032" y="-1.143" size="1.27" layer="21" rot="R271">F</text>
 </package>
 </packages>
 </library>
@@ -820,7 +760,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </autorouter>
 <elements>
 <element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="5.969" y="22.543" smashed="yes" rot="R90"/>
-<element name="E1" library="SparkFun-RF" package="TRACE_ANTENNA_2.4GHZ_15.2MM" value="ANTENNA-GROUNDEDTRACE-15.2MM" x="4.953" y="32.5882" smashed="yes"/>
 <element name="U$1" library="3pos_slide_switch" package="SW_3POS_FOOT_OFFICIAL" value="SW_3POS_DEVSW_3POS_OFFICIAL" x="0.7016" y="12.746" smashed="yes" rot="R270"/>
 <element name="C1" library="clock" package="0805" value="100nF" x="1.905" y="23.305" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.1844" y="20.7777" size="0.8128" layer="25" rot="R180"/>
@@ -904,6 +843,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="18.669" y="4.826" size="0.4064" layer="27" rot="R90"/>
 <attribute name="VALUE" x="18.669" y="4.826" size="0.4064" layer="27" rot="R90"/>
 </element>
+<element name="U$7" library="3pos_slide_switch" package="C1206" value="1206ANT_DEV" x="6.604" y="35.7124"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -929,7 +869,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="C5" pad="2"/>
 <contactref element="C6" pad="2"/>
 <contactref element="C7" pad="2"/>
-<contactref element="E1" pad="GND"/>
 <contactref element="C8" pad="2"/>
 <contactref element="C9" pad="2"/>
 <contactref element="U$4" pad="1"/>
@@ -1093,10 +1032,11 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <signal name="N$5">
 <contactref element="C4" pad="2"/>
 <contactref element="C5" pad="1"/>
-<contactref element="E1" pad="ANT"/>
 <wire x1="6.985" y1="32.079" x2="5.207" y2="32.079" width="0.762" layer="1"/>
-<wire x1="4.953" y1="32.3382" x2="5.207" y2="32.0842" width="0.3048" layer="1"/>
 <wire x1="5.207" y1="32.0842" x2="5.207" y2="32.079" width="0.3048" layer="1"/>
+<contactref element="U$7" pad="1"/>
+<wire x1="5.204" y1="35.7124" x2="5.204" y2="32.0872" width="0.762" layer="1"/>
+<wire x1="5.204" y1="32.0872" x2="5.207" y2="32.0842" width="0.762" layer="1"/>
 </signal>
 <signal name="N$6">
 <contactref element="L2" pad="2"/>

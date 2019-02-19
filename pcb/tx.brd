@@ -8,7 +8,7 @@
 </settings>
 <grid distance="2" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
@@ -28,11 +28,11 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -46,9 +46,9 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
@@ -58,7 +58,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="1" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="7" fill="1" visible="no" active="no"/>
@@ -176,12 +176,6 @@
 <wire x1="0" y1="2.032" x2="2.032" y2="0" width="0" layer="20" curve="90"/>
 <wire x1="2.032" y1="0" x2="25.968" y2="0" width="0" layer="20"/>
 <wire x1="25.968" y1="0" x2="28" y2="2.032" width="0" layer="20" curve="90"/>
-<polygon width="0.254" layer="41">
-<vertex x="11.8364" y="28.7782"/>
-<vertex x="11.8364" y="29.8958"/>
-<vertex x="12.8524" y="29.8958"/>
-<vertex x="12.8524" y="28.7782"/>
-</polygon>
 <text x="25.273" y="21.971" size="1.27" layer="26" rot="MR0">GND</text>
 <text x="25.273" y="19.431" size="1.27" layer="26" rot="MR0">3V</text>
 <text x="25.273" y="11.811" size="1.27" layer="26" rot="MR0">DIO</text>
@@ -197,6 +191,7 @@ FEB19</text>
 <text x="24.765" y="15.1384" size="2.54" layer="26" rot="MR0">-</text>
 <text x="8.6614" y="26.7716" size="1.27" layer="25" rot="R180">STAT</text>
 <text x="23.0886" y="6.3754" size="0.8128" layer="26" rot="MR270">ADDR</text>
+<text x="1.9304" y="22.7584" size="1.27" layer="26" rot="MR270">DFU</text>
 </plain>
 <libraries>
 <library name="L1">
@@ -590,6 +585,14 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <hole x="0" y="0.9" drill="0.7"/>
 <hole x="0" y="-0.9" drill="0.7"/>
 </package>
+<package name="C1206">
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
+chip</description>
+<smd name="1" x="-1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
+<smd name="2" x="1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
+<rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
+<text x="-2.032" y="1.905" size="1.27" layer="21" rot="R271">F</text>
+</package>
 </packages>
 </library>
 <library name="SparkFun-DiscreteSemi">
@@ -663,60 +666,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <vertex x="-0.1905" y="-0.127"/>
 </polygon>
 <rectangle x1="-0.2032" y1="-0.127" x2="0.2032" y2="0.127" layer="1"/>
-</package>
-</packages>
-</library>
-<library name="SparkFun-RF">
-<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
-In this library you'll find things that send or receive RF-- cellular modules, Bluetooth, WiFi, etc.&lt;br&gt;&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
-&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="TRACE_ANTENNA_2.4GHZ_15.2MM">
-<description>&lt;h3&gt;2.4GHz Meander PCB Trace Antenna&lt;/h3&gt;
-&lt;p&gt;PCB trace antenna with a 15.2 x 5.7mm footprint.&lt;/p&gt;
-&lt;p&gt;Based on layout from &lt;a href="http://www.ti.com/lit/an/swra117d/swra117d.pdf"&gt;TI app note AN043&lt;/a&gt;.&lt;/p&gt;</description>
-<polygon width="0.002540625" layer="1">
-<vertex x="-0.25" y="-0.5"/>
-<vertex x="-0.25" y="4.4"/>
-<vertex x="-1.65" y="4.4"/>
-<vertex x="-1.65" y="-0.5"/>
-<vertex x="-2.55" y="-0.5"/>
-<vertex x="-2.55" y="4.9"/>
-<vertex x="2.45" y="4.9"/>
-<vertex x="2.45" y="2.26"/>
-<vertex x="4.45" y="2.26"/>
-<vertex x="4.45" y="4.9"/>
-<vertex x="7.15" y="4.9"/>
-<vertex x="7.15" y="2.26"/>
-<vertex x="9.15" y="2.26"/>
-<vertex x="9.15" y="4.9"/>
-<vertex x="11.85" y="4.9"/>
-<vertex x="11.85" y="0.46"/>
-<vertex x="11.35" y="0.46"/>
-<vertex x="11.35" y="4.4"/>
-<vertex x="9.65" y="4.4"/>
-<vertex x="9.65" y="1.76"/>
-<vertex x="6.65" y="1.76"/>
-<vertex x="6.65" y="4.4"/>
-<vertex x="4.95" y="4.4"/>
-<vertex x="4.95" y="1.76"/>
-<vertex x="1.95" y="1.76"/>
-<vertex x="1.95" y="4.4"/>
-<vertex x="0.25" y="4.4"/>
-<vertex x="0.25" y="-0.5"/>
-</polygon>
-<wire x1="-3" y1="0" x2="12" y2="0" width="0.05" layer="51"/>
-<smd name="GND" x="-2.1" y="-0.25" dx="0.9" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
-<smd name="ANT" x="0" y="-0.25" dx="0.5" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
-<wire x1="-3" y1="5.2" x2="12" y2="5.2" width="0.05" layer="51"/>
-<text x="1" y="-0.8" size="0.64" layer="51" font="vector">Ground Plane</text>
-<text x="1.5" y="5.5" size="0.64" layer="51" font="vector">Board Edge</text>
-<text x="0" y="1.27" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="1.016" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
 </package>
 </packages>
 </library>
@@ -1121,11 +1070,9 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="29.845" y="6.096" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="SJ2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="23.9268" y="5.588" smashed="yes" rot="MR90"/>
-<element name="E1" library="SparkFun-RF" package="TRACE_ANTENNA_2.4GHZ_15.2MM" value="ANT" x="12.3952" y="29.5148" smashed="yes">
-<attribute name="VALUE" x="12.3952" y="30.5308" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
-</element>
 <element name="U$4" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="13.462" y="7.7724"/>
 <element name="R13" library="joyAnalog" package="0805" value="22K" x="4.1656" y="23.0632" rot="R90"/>
+<element name="U$1" library="3pos_slide_switch" package="C1206" value="1206ANT_DEV" x="12.3952" y="32.5374" rot="R90"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -1153,14 +1100,14 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="C11" pad="2"/>
 <contactref element="BT1" pad="2"/>
 <polygon width="0.1524" layer="1" isolate="0.254">
-<vertex x="28" y="2.032"/>
-<vertex x="28" y="27.3696" curve="90"/>
-<vertex x="25.968" y="29.4016"/>
-<vertex x="2.032" y="29.4016" curve="90"/>
-<vertex x="0" y="27.3696"/>
+<vertex x="25.968" y="29.0968"/>
+<vertex x="2.032" y="29.0968" curve="90"/>
+<vertex x="0" y="27.0648"/>
 <vertex x="0" y="2.032" curve="90"/>
 <vertex x="2.032" y="0"/>
 <vertex x="25.968" y="0" curve="90"/>
+<vertex x="28" y="2.032"/>
+<vertex x="28" y="27.0648" curve="90"/>
 </polygon>
 <contactref element="C10" pad="2"/>
 <contactref element="U3" pad="2"/>
@@ -1196,7 +1143,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="R11" pad="1"/>
 <wire x1="11.7348" y1="21.9964" x2="9.1948" y2="24.5364" width="0.1524" layer="1"/>
 <wire x1="9.1948" y1="24.5364" x2="9.1296" y2="24.5364" width="0.1524" layer="1"/>
-<contactref element="E1" pad="GND"/>
 <contactref element="U$4" pad="B11A12"/>
 <contactref element="U$4" pad="P$13"/>
 <contactref element="U$4" pad="P$16"/>
@@ -1225,14 +1171,14 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="U$9" pad="2"/>
 <contactref element="C12" pad="1"/>
 <polygon width="0.1524" layer="16" isolate="0.254">
-<vertex x="28" y="2.032"/>
-<vertex x="28" y="27.3696" curve="90"/>
-<vertex x="25.968" y="29.4016"/>
-<vertex x="2.032" y="29.4016" curve="90"/>
-<vertex x="0" y="27.3696"/>
+<vertex x="25.968" y="29.0968"/>
+<vertex x="2.032" y="29.0968" curve="90"/>
+<vertex x="0" y="27.0648"/>
 <vertex x="0" y="2.032" curve="90"/>
 <vertex x="2.032" y="0"/>
 <vertex x="25.968" y="0" curve="90"/>
+<vertex x="28" y="2.032"/>
+<vertex x="28" y="27.0648" curve="90"/>
 </polygon>
 <via x="5.9436" y="16.6878" extent="1-16" drill="0.5"/>
 <contactref element="R6" pad="2"/>
@@ -1344,9 +1290,9 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <signal name="N$5">
 <contactref element="C4" pad="2"/>
 <contactref element="C5" pad="1"/>
-<contactref element="E1" pad="ANT"/>
 <wire x1="14.0462" y1="29.0686" x2="12.3952" y2="29.0686" width="0.762" layer="1"/>
-<wire x1="12.3952" y1="29.0686" x2="12.3952" y2="29.2648" width="0.508" layer="1"/>
+<contactref element="U$1" pad="1"/>
+<wire x1="12.3952" y1="29.0686" x2="12.3952" y2="31.1374" width="0.762" layer="1"/>
 </signal>
 <signal name="N$6">
 <contactref element="L2" pad="2"/>
@@ -1754,16 +1700,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <errors>
 <approved hash="21,19,bf70bd72bd72bf70"/>
 <approved hash="21,19,bf70bd72bd72bf70"/>
-<approved hash="19,1,8a944a90be229de6"/>
-<approved hash="19,1,73cfdb44c77dc3b0"/>
-<approved hash="19,1,9a440d19bf61eebf"/>
-<approved hash="19,1,8f72a09015430958"/>
-<approved hash="19,1,5acb0d2cc2565675"/>
-<approved hash="6,1,5ebd65541de50fae"/>
 <approved hash="6,1,f4f4fdbbf9e2d0a9"/>
-<approved hash="6,1,b50f27fd38ecaa1e"/>
-<approved hash="6,1,b3175da65da0b311"/>
-<approved hash="6,1,f9b0074a7031ff97"/>
 </errors>
 </board>
 </drawing>
