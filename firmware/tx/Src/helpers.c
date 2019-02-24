@@ -19,7 +19,7 @@ uint16_t get_baseline(void)
     {
       baseline_data[i] = readRangeSingleMillimeters();
       mean += baseline_data[i];
-      HAL_IWDG_Refresh(&hiwdg);
+      // HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
     mean /= BASELINE_SAMPLE_SIZE;
@@ -30,7 +30,10 @@ uint16_t get_baseline(void)
     variance /= BASELINE_SAMPLE_SIZE;
 
     if(variance <= 300)
+    {
+      printf("mean: %d\n", mean);
       return mean;
+    }
 
     printf("calibration failed - variance too large: %d, retrying...\n", variance);
   }
@@ -44,6 +47,7 @@ uint16_t get_trigger_threshold(uint16_t baseline)
 
 void check_battery(void)
 {
+  return;
   uint8_t result = 255;
   HAL_ADC_Start(&hadc);
   if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)

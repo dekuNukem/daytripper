@@ -168,37 +168,6 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
-<library name="L1">
-<description>Generated from &lt;b&gt;L1.sch&lt;/b&gt;&lt;p&gt;
-by exp-lbrs.ulp</description>
-<packages>
-<package name="M3_MOUNTING_HOLE_PACK">
-<circle x="0" y="0" radius="2" width="0" layer="41"/>
-<circle x="0" y="0" radius="2" width="0" layer="42"/>
-<hole x="0" y="0" drill="3.2"/>
-</package>
-</packages>
-<symbols>
-<symbol name="M3_MOUNTING_HOLE_SYM">
-<circle x="0" y="0" radius="3.5921" width="0.254" layer="94"/>
-<text x="5.08" y="0" size="1.778" layer="94">M3 hole</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="M3_MOUNTING_HOLE">
-<gates>
-<gate name="G$1" symbol="M3_MOUNTING_HOLE_SYM" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="M3_MOUNTING_HOLE_PACK">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="exixe_pogo">
 <description>Generated from &lt;b&gt;exixe_pogo.sch&lt;/b&gt;&lt;p&gt;
 by exp-lbrs.ulp</description>
@@ -7180,13 +7149,10 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <hole x="0" y="0.9" drill="0.7"/>
 <hole x="0" y="-0.9" drill="0.7"/>
 </package>
-<package name="C1206">
-<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
-<smd name="1" x="-1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
-<smd name="2" x="1.4" y="0" dx="1.6" dy="1.8" layer="1"/>
-<rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
-<text x="-2.032" y="1.905" size="1.27" layer="21" rot="R271">F</text>
+<package name="M2_SCREW_FOOT">
+<hole x="0" y="0" drill="2.3"/>
+<circle x="0" y="0" radius="1.6" width="0.127" layer="51"/>
+<circle x="0" y="0" radius="2.828" width="0.127" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -7210,13 +7176,12 @@ chip</description>
 <pin name="3" x="15.24" y="5.08" length="middle" rot="R180"/>
 <pin name="4" x="15.24" y="-2.54" length="middle" rot="R180"/>
 </symbol>
-<symbol name="1206ANT_SYM">
-<wire x1="-12.7" y1="5.08" x2="15.24" y2="5.08" width="0.254" layer="94"/>
-<wire x1="15.24" y1="5.08" x2="15.24" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-5.08" x2="-12.7" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-5.08" x2="-12.7" y2="5.08" width="0.254" layer="94"/>
-<pin name="FEED" x="-17.78" y="0" length="middle"/>
-<pin name="NC" x="20.32" y="0" length="middle" rot="R180"/>
+<symbol name="M2_SCREW_SYM">
+<wire x1="-10.16" y1="5.08" x2="12.7" y2="5.08" width="0.254" layer="94"/>
+<wire x1="12.7" y1="5.08" x2="12.7" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="0" size="1.778" layer="94">M2 SCREW</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -7266,16 +7231,12 @@ chip</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="1206ANT_DEV">
+<deviceset name="M2_SCREW_DEV">
 <gates>
-<gate name="G$1" symbol="1206ANT_SYM" x="-2.54" y="0"/>
+<gate name="G$1" symbol="M2_SCREW_SYM" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="C1206">
-<connects>
-<connect gate="G$1" pin="FEED" pad="1"/>
-<connect gate="G$1" pin="NC" pad="2"/>
-</connects>
+<device name="" package="M2_SCREW_FOOT">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -7783,6 +7744,212 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="esp32-thing-temp">
+<packages>
+<package name="ANTENNA-CHIP">
+<wire x1="-5" y1="2" x2="5" y2="2" width="0.2032" layer="21"/>
+<wire x1="5" y1="2" x2="5" y2="-2" width="0.2032" layer="21"/>
+<wire x1="5" y1="-2" x2="-5" y2="-2" width="0.2032" layer="21"/>
+<wire x1="-5" y1="-2" x2="-5" y2="2" width="0.2032" layer="21"/>
+<smd name="3" x="1" y="-2" dx="1" dy="1" layer="1"/>
+<smd name="4" x="2.5" y="-2" dx="1" dy="1" layer="1"/>
+<smd name="5" x="2.5" y="2" dx="1" dy="1" layer="1"/>
+<smd name="6" x="1" y="2" dx="1" dy="1" layer="1"/>
+<smd name="7" x="-1" y="2" dx="1" dy="1" layer="1"/>
+<smd name="8" x="-2.5" y="2" dx="1" dy="1" layer="1"/>
+<smd name="FEED" x="-1" y="-2" dx="1" dy="1" layer="1"/>
+<smd name="GND" x="-2.5" y="-2" dx="1" dy="1" layer="1"/>
+</package>
+<package name="TRACE_ANTENNA_2.4GHZ_25.7MM">
+<wire x1="-0.68" y1="0" x2="-11" y2="0" width="0.1" layer="51"/>
+<wire x1="-0.68" y1="-2" x2="-0.68" y2="0" width="0.1" layer="51"/>
+<wire x1="0.68" y1="0" x2="0.68" y2="-2" width="0.1" layer="51"/>
+<wire x1="0.68" y1="0" x2="14.75" y2="0" width="0.1" layer="51"/>
+<wire x1="-11" y1="7.52" x2="14.75" y2="7.52" width="0.1" layer="51"/>
+<smd name="ANT" x="0" y="0.23" dx="0.46" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="GND" x="-1.18" y="0.23" dx="1" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="GND2" x="-3.38" y="0.23" dx="1" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<text x="-11.049" y="-1.397" size="0.889" layer="51" font="vector">Ground Plane</text>
+<text x="2.921" y="-1.397" size="0.889" layer="51" font="vector">Ground Plane</text>
+<text x="-4.449" y="7.703" size="0.889" layer="51" font="vector">Board edge</text>
+<polygon width="0.002540625" layer="1">
+<vertex x="-0.23" y="0"/>
+<vertex x="-0.23" y="2.28"/>
+<vertex x="-0.73" y="2.69"/>
+<vertex x="-3.88" y="2.69"/>
+<vertex x="-3.88" y="3.9"/>
+<vertex x="-2.88" y="3.9"/>
+<vertex x="-2.88" y="4.7"/>
+<vertex x="-8.68" y="4.7"/>
+<vertex x="-8.68" y="2.03"/>
+<vertex x="-0.68" y="2.03"/>
+<vertex x="-0.68" y="0"/>
+<vertex x="-1.68" y="0"/>
+<vertex x="-1.68" y="0.7"/>
+<vertex x="-2.88" y="0.7"/>
+<vertex x="-2.88" y="0"/>
+<vertex x="-3.88" y="0"/>
+<vertex x="-3.88" y="0.74"/>
+<vertex x="-10.86" y="0.74"/>
+<vertex x="-10.86" y="6.91"/>
+<vertex x="14.72" y="6.91"/>
+<vertex x="14.72" y="5.7"/>
+<vertex x="-1.68" y="5.7"/>
+<vertex x="-1.68" y="3.9"/>
+<vertex x="-0.68" y="3.9"/>
+<vertex x="-0.68" y="3.29"/>
+<vertex x="0.23" y="2.53"/>
+<vertex x="0.23" y="0"/>
+</polygon>
+</package>
+<package name="TRACE_ANTENNA_2.4GHZ_15.2MM">
+<wire x1="-3" y1="0" x2="12" y2="0" width="0.05" layer="51"/>
+<wire x1="-3" y1="5.2" x2="12" y2="5.2" width="0.05" layer="51"/>
+<wire x1="-1.5" y1="-0.5" x2="-1.5" y2="-0.1" width="0.127" layer="41"/>
+<wire x1="-2.7" y1="-0.5" x2="-2.7" y2="-0.1" width="0.127" layer="41"/>
+<smd name="ANT" x="0" y="-0.25" dx="0.5" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="GND" x="-2.1" y="-0.25" dx="0.9" dy="0.5" layer="1" stop="no" thermals="no" cream="no"/>
+<text x="1" y="-0.8" size="0.64" layer="51" font="vector">Ground Plane</text>
+<text x="1.5" y="5.5" size="0.64" layer="51" font="vector">Board Edge</text>
+<polygon width="0" layer="1">
+<vertex x="-0.25" y="-0.5"/>
+<vertex x="-0.25" y="4.4"/>
+<vertex x="-1.65" y="4.4"/>
+<vertex x="-1.65" y="-0.5"/>
+<vertex x="-2.55" y="-0.5"/>
+<vertex x="-2.55" y="4.9"/>
+<vertex x="2.45" y="4.9"/>
+<vertex x="2.45" y="2.26"/>
+<vertex x="4.45" y="2.26"/>
+<vertex x="4.45" y="4.9"/>
+<vertex x="7.15" y="4.9"/>
+<vertex x="7.15" y="2.26"/>
+<vertex x="9.15" y="2.26"/>
+<vertex x="9.15" y="4.9"/>
+<vertex x="11.85" y="4.9"/>
+<vertex x="11.85" y="0.46"/>
+<vertex x="11.35" y="0.46"/>
+<vertex x="11.35" y="4.4"/>
+<vertex x="9.65" y="4.4"/>
+<vertex x="9.65" y="1.76"/>
+<vertex x="6.65" y="1.76"/>
+<vertex x="6.65" y="4.4"/>
+<vertex x="4.95" y="4.4"/>
+<vertex x="4.95" y="1.76"/>
+<vertex x="1.95" y="1.76"/>
+<vertex x="1.95" y="4.4"/>
+<vertex x="0.25" y="4.4"/>
+<vertex x="0.25" y="-0.5"/>
+</polygon>
+</package>
+<package name="TRACE_ANTENNA_2.4GHZ_25.7MM_TUNED">
+<wire x1="-0.68" y1="0" x2="-11" y2="0" width="0.1" layer="51"/>
+<wire x1="-0.68" y1="-2" x2="-0.68" y2="0" width="0.1" layer="51"/>
+<wire x1="0.68" y1="0" x2="0.68" y2="-2" width="0.1" layer="51"/>
+<wire x1="0.68" y1="0" x2="13.843" y2="0" width="0.1" layer="51"/>
+<wire x1="-11" y1="7.52" x2="13.861" y2="7.52" width="0.1" layer="51"/>
+<wire x1="13.843" y1="0.2032" x2="-11" y2="0.2032" width="0" layer="41"/>
+<wire x1="13.843" y1="0.2032" x2="-11" y2="0.2032" width="0" layer="42"/>
+<smd name="ANT" x="0" y="0.23" dx="0.46" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="GND" x="-1.18" y="0.23" dx="1" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<smd name="GND2" x="-3.38" y="0.23" dx="1" dy="0.46" layer="1" stop="no" thermals="no" cream="no"/>
+<text x="-6.35" y="-0.127" size="0.6096" layer="51" font="vector" ratio="20" align="top-center">Ground Plane</text>
+<text x="7.62" y="-0.127" size="0.6096" layer="51" font="vector" ratio="20" align="top-center">Ground Plane</text>
+<text x="0" y="7.62" size="0.6096" layer="51" font="vector" ratio="20" align="bottom-center">Board edge</text>
+<polygon width="0.002540625" layer="1">
+<vertex x="-0.23" y="0"/>
+<vertex x="-0.23" y="2.28"/>
+<vertex x="-0.73" y="2.69"/>
+<vertex x="-3.88" y="2.69"/>
+<vertex x="-3.88" y="3.9"/>
+<vertex x="-2.88" y="3.9"/>
+<vertex x="-2.88" y="4.7"/>
+<vertex x="-8.68" y="4.7"/>
+<vertex x="-8.68" y="2.03"/>
+<vertex x="-0.68" y="2.03"/>
+<vertex x="-0.68" y="0"/>
+<vertex x="-1.68" y="0"/>
+<vertex x="-1.68" y="0.7"/>
+<vertex x="-2.88" y="0.7"/>
+<vertex x="-2.88" y="0"/>
+<vertex x="-3.88" y="0"/>
+<vertex x="-3.88" y="0.74"/>
+<vertex x="-10.86" y="0.74"/>
+<vertex x="-10.86" y="6.91"/>
+<vertex x="13.831" y="6.91"/>
+<vertex x="13.831" y="5.7"/>
+<vertex x="-1.68" y="5.7"/>
+<vertex x="-1.68" y="3.9"/>
+<vertex x="-0.68" y="3.9"/>
+<vertex x="-0.68" y="3.29"/>
+<vertex x="0.23" y="2.53"/>
+<vertex x="0.23" y="0"/>
+</polygon>
+</package>
+</packages>
+<symbols>
+<symbol name="ANTENNA">
+<circle x="0" y="-5.08" radius="1.1359" width="0.254" layer="94"/>
+<wire x1="0" y1="-2.54" x2="0" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="-2.54" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="-2.54" x2="-2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-5.08" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-5.08" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
+<pin name="GND" x="2.54" y="-10.16" visible="off" length="short" rot="R90"/>
+<pin name="SIGNAL" x="0" y="-10.16" visible="off" length="short" rot="R90"/>
+<text x="3.81" y="-7.62" size="1.778" layer="95">&gt;NAME</text>
+<text x="3.81" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="ANTENNA" prefix="E">
+<description>&lt;b&gt;Chip antenna&lt;/b&gt;&lt;p&gt;
+Chip antenna with ground or secondary connection. Common with larger metal RF connectors.</description>
+<gates>
+<gate name="G$1" symbol="ANTENNA" x="0" y="5.08"/>
+</gates>
+<devices>
+<device name="SMD1" package="ANTENNA-CHIP">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="SIGNAL" pad="FEED"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TRACE" package="TRACE_ANTENNA_2.4GHZ_25.7MM">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND GND2"/>
+<connect gate="G$1" pin="SIGNAL" pad="ANT"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TRACE-15.2MM" package="TRACE_ANTENNA_2.4GHZ_15.2MM">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="SIGNAL" pad="ANT"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TRACE-TUNED" package="TRACE_ANTENNA_2.4GHZ_25.7MM_TUNED">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND GND2"/>
+<connect gate="G$1" pin="SIGNAL" pad="ANT"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -7795,10 +7962,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <parts>
 <part name="U$2" library="exixe_pogo" deviceset="STM32F030F4" device=""/>
 <part name="U1" library="Adafruit VL53L0X" deviceset="VL53L0X" device=""/>
-<part name="U$5" library="L1" deviceset="M3_MOUNTING_HOLE" device=""/>
-<part name="U$6" library="L1" deviceset="M3_MOUNTING_HOLE" device=""/>
-<part name="U$7" library="L1" deviceset="M3_MOUNTING_HOLE" device=""/>
-<part name="U$8" library="L1" deviceset="M3_MOUNTING_HOLE" device=""/>
 <part name="BT1" library="tx" deviceset="TX_SPARKFUN-BATTERIES_BATTERY" device="-24.5MM_PTH"/>
 <part name="S2" library="tx" deviceset="SWITCH-SPDT" device="TDFGDFG"/>
 <part name="U$3" library="nRF24L01-Chip-v13" deviceset="NRF24L01" device="ALT1"/>
@@ -7878,12 +8041,17 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="JP1" library="adafruit_changed" deviceset="PINHD-1X3" device="CB"/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="SJ2" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_2_NC_TRACE" device="_NO-SILK"/>
-<part name="+3V10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="U$4" library="my_usbc_16p" deviceset="USBC_16P" device=""/>
 <part name="R13" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="GND26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="U$1" library="3pos_slide_switch" deviceset="1206ANT_DEV" device=""/>
+<part name="E1" library="esp32-thing-temp" deviceset="ANTENNA" device="TRACE-TUNED" value="ANTENNA"/>
+<part name="GND18" library="clock" deviceset="GND" device=""/>
+<part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="U$1" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
+<part name="U$12" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
+<part name="U$13" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
+<part name="U$14" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7894,10 +8062,6 @@ I_CHG = 1000 / R_PROG</text>
 <instances>
 <instance part="U$2" gate="G$1" x="-15.24" y="-58.42"/>
 <instance part="U1" gate="G$1" x="45.72" y="25.4"/>
-<instance part="U$5" gate="G$1" x="-246.38" y="63.5"/>
-<instance part="U$6" gate="G$1" x="-246.38" y="48.26"/>
-<instance part="U$7" gate="G$1" x="-246.38" y="40.64"/>
-<instance part="U$8" gate="G$1" x="-246.38" y="55.88"/>
 <instance part="BT1" gate="G$1" x="-226.06" y="-86.36"/>
 <instance part="S2" gate="1" x="-198.12" y="-86.36" smashed="yes" rot="R180">
 <attribute name="NAME" x="-196.215" y="-80.01" size="1.778" layer="95" rot="R180"/>
@@ -7986,12 +8150,17 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="JP1" gate="A" x="22.86" y="-91.44" rot="R270"/>
 <instance part="+3V8" gate="G$1" x="25.4" y="45.72"/>
 <instance part="SJ2" gate="G$1" x="33.02" y="-38.1" rot="R180"/>
-<instance part="+3V10" gate="G$1" x="43.18" y="-35.56"/>
 <instance part="U$4" gate="G$1" x="-254" y="-27.94"/>
 <instance part="R13" gate="G$1" x="-33.02" y="-119.38" rot="R270"/>
 <instance part="GND26" gate="1" x="-33.02" y="-127"/>
 <instance part="+3V9" gate="G$1" x="15.24" y="-119.38"/>
-<instance part="U$1" gate="G$1" x="226.06" y="-55.88"/>
+<instance part="E1" gate="G$1" x="218.44" y="-55.88" rot="R270"/>
+<instance part="GND18" gate="1" x="200.66" y="-60.96"/>
+<instance part="GND27" gate="1" x="43.18" y="-40.64"/>
+<instance part="U$1" gate="G$1" x="-137.16" y="-144.78"/>
+<instance part="U$12" gate="G$1" x="-93.98" y="-147.32"/>
+<instance part="U$13" gate="G$1" x="-116.84" y="-182.88"/>
+<instance part="U$14" gate="G$1" x="-157.48" y="-170.18"/>
 </instances>
 <busses>
 </busses>
@@ -8184,6 +8353,16 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="R13" gate="G$1" pin="2"/>
 <pinref part="GND26" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="E1" gate="G$1" pin="GND"/>
+<pinref part="GND18" gate="1" pin="GND"/>
+<wire x1="200.66" y1="-58.42" x2="208.28" y2="-58.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SJ2" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="-38.1" x2="38.1" y2="-38.1" width="0.1524" layer="91"/>
+<pinref part="GND27" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -8262,11 +8441,6 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
 </segment>
 <segment>
-<pinref part="+3V10" gate="G$1" pin="+3V3"/>
-<pinref part="SJ2" gate="G$1" pin="1"/>
-<wire x1="43.18" y1="-38.1" x2="38.1" y2="-38.1" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U$10" gate="G$1" pin="4"/>
 <pinref part="U$10" gate="G$1" pin="1"/>
 <wire x1="7.62" y1="-121.92" x2="-22.86" y2="-121.92" width="0.1524" layer="91"/>
@@ -8313,7 +8487,7 @@ I_CHG = 1000 / R_PROG</text>
 <wire x1="180.34" y1="-55.88" x2="187.96" y2="-55.88" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="-55.88" x2="208.28" y2="-55.88" width="0.1524" layer="91"/>
 <junction x="187.96" y="-55.88"/>
-<pinref part="U$1" gate="G$1" pin="FEED"/>
+<pinref part="E1" gate="G$1" pin="SIGNAL"/>
 </segment>
 </net>
 <net name="N$6" class="0">

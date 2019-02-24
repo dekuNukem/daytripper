@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -167,14 +167,14 @@ int main(void)
 
   check_battery();
   HAL_ADC_MspDeInit(&hadc);
-  MX_IWDG_Init(); // where should this go?
+  // MX_IWDG_Init(); // where should this go?
   
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
 
   for (int i = 0; i < 4; i++)
   {
-    HAL_IWDG_Refresh(&hiwdg);
+    // HAL_IWDG_Refresh(&hiwdg);
     HAL_Delay(500);
   }
 
@@ -182,7 +182,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_IWDG_Refresh(&hiwdg);
+  // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
   setMeasurementTimingBudget(20000);
@@ -214,7 +214,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    HAL_IWDG_Refresh(&hiwdg);
+    // HAL_IWDG_Refresh(&hiwdg);
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
@@ -231,6 +231,7 @@ int main(void)
         if(nrf_status == NRF24_TRANSMISSON_OK)
         {
           printf("TX OK\n");
+          printf("> Retranmission count: %d\r\n",nrf24_retransmissionCount());
           break;
         }
         printf("TX failed, retry %d\n", i);
@@ -600,25 +601,15 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct;
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TEST_OUT_Pin|NRF_CE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-
-  /*Configure GPIO pin : TEST_OUT_Pin */
-  GPIO_InitStruct.Pin = TEST_OUT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(TEST_OUT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : USER_BUTTON_Pin */
   GPIO_InitStruct.Pin = USER_BUTTON_Pin;
@@ -626,12 +617,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(USER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : NRF_CE_Pin */
-  GPIO_InitStruct.Pin = NRF_CE_Pin;
+  /*Configure GPIO pins : TEST_OUT_Pin NRF_CE_Pin */
+  GPIO_InitStruct.Pin = TEST_OUT_Pin|NRF_CE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(NRF_CE_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;
