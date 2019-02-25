@@ -5702,8 +5702,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C1" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="GND12" library="clock" deviceset="GND" device=""/>
 <part name="R1" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
-<part name="C2" library="clock" deviceset="CAP" device="0805" value="2.2nF"/>
-<part name="C3" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C2" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C3" library="clock" deviceset="CAP" device="0805" value="33nF"/>
 <part name="GND2" library="clock" deviceset="GND" device=""/>
 <part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805" value="3.9nH"/>
 <part name="L2" library="basicBoard" deviceset="INDUCTOR" device="0805" value="8.2nH"/>
