@@ -8024,6 +8024,7 @@ Chip antenna with ground or secondary connection. Common with larger metal RF co
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C14" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="C15" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$10" library="3pos_slide_switch" deviceset="324_SW" device="324_SWITCH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE"/>
 <part name="R9" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
@@ -8051,7 +8052,6 @@ Chip antenna with ground or secondary connection. Common with larger metal RF co
 <part name="U$12" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="U$13" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="U$14" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
-<part name="R14" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="1 Ohm"/>
 </parts>
 <sheets>
 <sheet>
@@ -8068,7 +8068,7 @@ I_CHG = 1000 / R_PROG</text>
 <attribute name="VALUE" x="-195.58" y="-90.17" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$3" gate="G$1" x="99.06" y="-60.96"/>
-<instance part="+3V1" gate="G$1" x="96.52" y="-2.54"/>
+<instance part="+3V1" gate="G$1" x="96.52" y="-15.24"/>
 <instance part="GND1" gate="1" x="88.9" y="-91.44"/>
 <instance part="C1" gate="G$1" x="106.68" y="-30.48"/>
 <instance part="GND12" gate="1" x="106.68" y="-38.1"/>
@@ -8131,8 +8131,9 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="+3V7" gate="G$1" x="-38.1" y="-40.64"/>
 <instance part="GND21" gate="1" x="-38.1" y="-78.74"/>
 <instance part="GND22" gate="1" x="-203.2" y="-76.2" rot="R180"/>
-<instance part="C14" gate="G$1" x="127" y="-30.48"/>
+<instance part="C14" gate="G$1" x="-116.84" y="-91.44"/>
 <instance part="C15" gate="G$1" x="-106.68" y="-91.44"/>
+<instance part="GND23" gate="1" x="-116.84" y="-96.52"/>
 <instance part="GND24" gate="1" x="-106.68" y="-96.52"/>
 <instance part="U$10" gate="G$1" x="-7.62" y="-119.38"/>
 <instance part="R9" gate="G$1" x="38.1" y="-48.26" rot="R270"/>
@@ -8160,7 +8161,6 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="U$12" gate="G$1" x="-93.98" y="-147.32"/>
 <instance part="U$13" gate="G$1" x="-116.84" y="-182.88"/>
 <instance part="U$14" gate="G$1" x="-157.48" y="-170.18"/>
-<instance part="R14" gate="G$1" x="96.52" y="-15.24" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -8196,10 +8196,6 @@ I_CHG = 1000 / R_PROG</text>
 <wire x1="116.84" y1="-33.02" x2="116.84" y2="-35.56" width="0.1524" layer="91"/>
 <wire x1="116.84" y1="-35.56" x2="106.68" y2="-35.56" width="0.1524" layer="91"/>
 <junction x="106.68" y="-35.56"/>
-<pinref part="C14" gate="G$1" pin="2"/>
-<wire x1="127" y1="-33.02" x2="127" y2="-35.56" width="0.1524" layer="91"/>
-<wire x1="127" y1="-35.56" x2="116.84" y2="-35.56" width="0.1524" layer="91"/>
-<junction x="116.84" y="-35.56"/>
 </segment>
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
@@ -8327,6 +8323,10 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="GND22" gate="1" pin="GND"/>
 </segment>
 <segment>
+<pinref part="C14" gate="G$1" pin="2"/>
+<pinref part="GND23" gate="1" pin="GND"/>
+</segment>
+<segment>
 <pinref part="C15" gate="G$1" pin="2"/>
 <pinref part="GND24" gate="1" pin="GND"/>
 </segment>
@@ -8366,15 +8366,40 @@ I_CHG = 1000 / R_PROG</text>
 </net>
 <net name="+3V3" class="0">
 <segment>
+<pinref part="+3V1" gate="G$1" pin="+3V3"/>
+<pinref part="U$3" gate="G$1" pin="VDD@18"/>
+<wire x1="96.52" y1="-17.78" x2="96.52" y2="-22.86" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="VDD@15"/>
+<wire x1="96.52" y1="-22.86" x2="96.52" y2="-43.18" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="-22.86" x2="99.06" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="-22.86" x2="99.06" y2="-43.18" width="0.1524" layer="91"/>
+<junction x="96.52" y="-22.86"/>
+<pinref part="U$3" gate="G$1" pin="VDD@7"/>
+<wire x1="99.06" y1="-22.86" x2="101.6" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="-22.86" x2="101.6" y2="-43.18" width="0.1524" layer="91"/>
+<junction x="99.06" y="-22.86"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="-22.86" x2="106.68" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="-22.86" x2="106.68" y2="-25.4" width="0.1524" layer="91"/>
+<junction x="101.6" y="-22.86"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="106.68" y1="-22.86" x2="116.84" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="-22.86" x2="116.84" y2="-25.4" width="0.1524" layer="91"/>
+<junction x="106.68" y="-22.86"/>
+</segment>
+<segment>
 <pinref part="U$9" gate="G$1" pin="OUT"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
 <wire x1="-134.62" y1="-86.36" x2="-129.54" y2="-86.36" width="0.1524" layer="91"/>
 <pinref part="C12" gate="G$1" pin="1"/>
+<wire x1="-129.54" y1="-86.36" x2="-116.84" y2="-86.36" width="0.1524" layer="91"/>
 <junction x="-129.54" y="-86.36"/>
+<pinref part="C14" gate="G$1" pin="1"/>
+<wire x1="-116.84" y1="-86.36" x2="-106.68" y2="-86.36" width="0.1524" layer="91"/>
+<junction x="-116.84" y="-86.36"/>
 <pinref part="C15" gate="G$1" pin="1"/>
 <wire x1="-106.68" y1="-86.36" x2="-93.98" y2="-86.36" width="0.1524" layer="91"/>
 <junction x="-106.68" y="-86.36"/>
-<wire x1="-129.54" y1="-86.36" x2="-106.68" y2="-86.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R6" gate="G$1" pin="2"/>
@@ -8422,11 +8447,6 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="+3V9" gate="G$1" pin="+3V3"/>
 <wire x1="7.62" y1="-121.92" x2="15.24" y2="-121.92" width="0.1524" layer="91"/>
 <junction x="7.62" y="-121.92"/>
-</segment>
-<segment>
-<pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<pinref part="R14" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="-5.08" x2="96.52" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -8811,34 +8831,6 @@ I_CHG = 1000 / R_PROG</text>
 <wire x1="22.86" y1="-43.18" x2="22.86" y2="-38.1" width="0.1524" layer="91"/>
 <pinref part="SJ2" gate="G$1" pin="2"/>
 <wire x1="22.86" y1="-38.1" x2="27.94" y2="-38.1" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$37" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="VDD@18"/>
-<pinref part="U$3" gate="G$1" pin="VDD@15"/>
-<wire x1="96.52" y1="-22.86" x2="96.52" y2="-43.18" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="-22.86" x2="99.06" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="-22.86" x2="99.06" y2="-43.18" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="VDD@7"/>
-<wire x1="99.06" y1="-22.86" x2="101.6" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="-22.86" x2="101.6" y2="-43.18" width="0.1524" layer="91"/>
-<junction x="99.06" y="-22.86"/>
-<pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="-22.86" x2="106.68" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="-22.86" x2="106.68" y2="-25.4" width="0.1524" layer="91"/>
-<junction x="101.6" y="-22.86"/>
-<pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="-22.86" x2="116.84" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="-22.86" x2="116.84" y2="-25.4" width="0.1524" layer="91"/>
-<junction x="106.68" y="-22.86"/>
-<pinref part="R14" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="-20.32" x2="96.52" y2="-22.86" width="0.1524" layer="91"/>
-<junction x="96.52" y="-22.86"/>
-<wire x1="116.84" y1="-22.86" x2="127" y2="-22.86" width="0.1524" layer="91"/>
-<junction x="116.84" y="-22.86"/>
-<pinref part="C14" gate="G$1" pin="1"/>
-<wire x1="127" y1="-22.86" x2="127" y2="-25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
