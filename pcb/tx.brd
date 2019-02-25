@@ -189,8 +189,8 @@ FEB19</text>
 <text x="1.6256" y="7.366" size="1.27" layer="26" rot="MR270">OFF</text>
 <text x="10.5156" y="9.2456" size="1.27" layer="25" rot="R90">CHARGE</text>
 <text x="24.765" y="15.1384" size="2.54" layer="26" rot="MR0">-</text>
-<text x="-2.0574" y="27.9908" size="1.27" layer="25" rot="R180">STAT</text>
-<text x="23.1394" y="6.1214" size="0.8128" layer="26" rot="MR270">CH</text>
+<text x="6.5278" y="25.2222" size="1.27" layer="25" rot="R90">STAT</text>
+<text x="22.9616" y="6.0706" size="0.8128" layer="26" rot="MR270">CH</text>
 <text x="1.9304" y="22.7584" size="1.27" layer="26" rot="MR270">DFU</text>
 </plain>
 <libraries>
@@ -983,10 +983,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="6.0071" y="19.6342" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="R1" library="joyAnalog" package="0805" value="22K" x="8.2042" y="20.6756" smashed="yes" rot="R180">
-<attribute name="NAME" x="6.3246" y="21.5011" size="0.8128" layer="25"/>
+<attribute name="NAME" x="6.7183" y="20.1422" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="C2" library="clock" package="0805" value="2.2nF" x="10.668" y="23.368" smashed="yes" rot="R90">
-<attribute name="NAME" x="9.9695" y="22.8854" size="0.8128" layer="25" rot="R90"/>
+<attribute name="NAME" x="10.1727" y="22.8854" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="C3" library="clock" package="0805" value="100nF" x="8.2042" y="17.6276" smashed="yes" rot="R180">
 <attribute name="NAME" x="8.6614" y="16.0147" size="0.8128" layer="25"/>
@@ -998,10 +998,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="15.4305" y="22.4536" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="C4" library="clock" package="0805" value="1.5pF" x="12.3952" y="28.1686" smashed="yes" rot="R90">
-<attribute name="NAME" x="11.3665" y="27.7114" size="0.8128" layer="25" rot="R90"/>
+<attribute name="NAME" x="11.6332" y="27.8003" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="C5" library="clock" package="0805" value="1pF" x="14.0462" y="28.1686" smashed="yes" rot="R270">
-<attribute name="NAME" x="14.859" y="28.8925" size="0.8128" layer="25"/>
+<attribute name="NAME" x="15.5321" y="27.4828" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="L3" library="basicBoard" package="0805" value="2.7nH" x="14.0462" y="25.1968" smashed="yes" rot="R90">
 <attribute name="NAME" x="11.4681" y="24.9936" size="0.8128" layer="25" rot="R90"/>
@@ -1043,7 +1043,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="2.5273" y="16.7132" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="C12" library="clock" package="0805" value="4.7uF" x="5.3086" y="18.8214" smashed="yes" rot="R90">
-<attribute name="NAME" x="4.3307" y="17.653" size="0.8128" layer="25" rot="R90"/>
+<attribute name="NAME" x="4.5339" y="17.2466" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="D2" library="SparkFun-DiscreteSemi" package="SOD-323" value="BAT20J" x="5.9182" y="11.4554" smashed="yes" rot="R270">
 <attribute name="PROD_ID" value="DIO-11623" x="9.6012" y="14.6304" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1058,13 +1058,13 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="9.8806" y="10.668" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="R6" library="SparkFun-Passives" package="0805" value="5.1K" x="16.3576" y="13.8938" smashed="yes" rot="R90">
-<attribute name="NAME" x="16.891" y="17.2593" size="0.8128" layer="25" rot="R180"/>
+<attribute name="NAME" x="15.8877" y="16.5862" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="R7" library="SparkFun-Passives" package="0805" value="5.1K" x="16.3576" y="10.9982" smashed="yes" rot="R270">
 <attribute name="NAME" x="15.5829" y="8.8646" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="R8" library="SparkFun-Passives" package="0805" value="22K" x="11.5824" y="13.9954" smashed="yes" rot="R270">
-<attribute name="NAME" x="11.0998" y="11.5951" size="0.8128" layer="25"/>
+<attribute name="NAME" x="11.0236" y="15.4559" size="0.8128" layer="25"/>
 </element>
 <element name="C13" library="clock" package="0805" value="100nF" x="11.5824" y="10.9982" smashed="yes" rot="R270">
 <attribute name="NAME" x="11.303" y="8.7503" size="0.8128" layer="25"/>
@@ -1073,7 +1073,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="20.9296" y="21.3487" size="0.8128" layer="25"/>
 </element>
 <element name="C15" library="clock" package="0805" value="100nF" x="24.892" y="12.8524" smashed="yes" rot="R270">
-<attribute name="NAME" x="25.8953" y="9.4488" size="0.8128" layer="25" rot="R90"/>
+<attribute name="NAME" x="25.9842" y="11.4173" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE" x="1.5748" y="21.59" smashed="yes" rot="R90"/>
 <element name="R9" library="joyAnalog" package="0805" value="22K" x="24.1808" y="8.6868" smashed="yes">
@@ -1086,7 +1086,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="8.382" y="22.0472" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R12" library="joyAnalog" package="0805" value="5.1K" x="8.2042" y="24.638" smashed="yes" rot="R180">
-<attribute name="NAME" x="8.382" y="26.1239" size="0.8128" layer="25" rot="R180"/>
+<attribute name="NAME" x="9.1948" y="26.1493" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="U$11" library="adafruit_changed" package="1X02" value="PINHD1X2" x="26.67" y="21.336" smashed="yes" rot="R90"/>
 <element name="R10" library="SparkFun-Passives" package="0805" value="22K" x="8.8392" y="1.651" smashed="yes" rot="R90">
@@ -1101,13 +1101,21 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </element>
 <element name="SJ2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="23.9268" y="5.588" smashed="yes" rot="MR90"/>
 <element name="U$4" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="13.462" y="7.6962"/>
-<element name="R13" library="joyAnalog" package="0805" value="22K" x="4.1656" y="23.0632" rot="R90"/>
+<element name="R13" library="joyAnalog" package="0805" value="22K" x="4.1656" y="23.0632" smashed="yes" rot="R90">
+<attribute name="NAME" x="3.2893" y="21.6662" size="0.8128" layer="25" rot="R270"/>
+<attribute name="VALUE" x="5.5626" y="22.0472" size="0.4064" layer="27" rot="R90"/>
+<attribute name="VALUE" x="5.5626" y="22.0472" size="0.4064" layer="27" rot="R90"/>
+</element>
 <element name="E1" library="esp32-thing-temp" package="TRACE_ANTENNA_2.4GHZ_25.7MM_TUNED" value="ANTENNA" x="12.0904" y="29.1084"/>
 <element name="U$1" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="2.5" y="2.5"/>
 <element name="U$12" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="25.5" y="2.5"/>
 <element name="U$13" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="2.5" y="27"/>
 <element name="U$14" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="25.5" y="27"/>
-<element name="R14" library="joyAnalog" package="0805" value="1 Ohm" x="8.2042" y="22.1996"/>
+<element name="R14" library="joyAnalog" package="0805" value="1 Ohm" x="8.2042" y="22.1996" smashed="yes">
+<attribute name="NAME" x="9.2202" y="23.6855" size="0.8128" layer="25" rot="R180"/>
+<attribute name="VALUE" x="7.1882" y="20.8026" size="0.4064" layer="27"/>
+<attribute name="VALUE" x="7.1882" y="20.8026" size="0.4064" layer="27"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -1185,7 +1193,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="21.4884" y1="14.986" x2="24.0284" y2="14.986" width="0.254" layer="1"/>
 <wire x1="25.3884" y1="16.346" x2="26.5" y2="16.346" width="0.254" layer="1"/>
 <wire x1="24.0284" y1="14.986" x2="25.3884" y2="16.346" width="0.254" layer="1"/>
-<wire x1="21.007" y1="6.7812" x2="21.007" y2="2.6012" width="0.4064" layer="16"/>
 <wire x1="26.5" y1="16.346" x2="26.5" y2="13.9524" width="0.1524" layer="1"/>
 <wire x1="24.892" y1="12.3444" x2="24.892" y2="11.9524" width="0.1524" layer="1"/>
 <wire x1="26.5" y1="13.9524" x2="24.892" y2="12.3444" width="0.1524" layer="1"/>
@@ -1220,7 +1227,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <via x="10.668" y="26.416" extent="1-16" drill="0.381"/>
 <via x="0.9144" y="10.5664" extent="1-16" drill="0.381"/>
 <via x="4.318" y="5.4356" extent="1-16" drill="0.381"/>
-<via x="0.9652" y="3.9624" extent="1-16" drill="0.381"/>
+<via x="0.8382" y="4.0894" extent="1-16" drill="0.381"/>
 <via x="24.5872" y="10.3124" extent="1-16" drill="0.381"/>
 <via x="24.4348" y="19.2532" extent="1-16" drill="0.381"/>
 <via x="10.5664" y="21.2852" extent="1-16" drill="0.381"/>
@@ -1230,7 +1237,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <via x="8.636" y="14.7828" extent="1-16" drill="0.381"/>
 <wire x1="24.7396" y1="7.3262" x2="25.0808" y2="7.6674" width="0.3048" layer="1"/>
 <wire x1="25.0808" y1="7.6674" x2="25.0808" y2="8.6868" width="0.3048" layer="1"/>
-<via x="27.1272" y="5.1308" extent="1-16" drill="0.381"/>
+<via x="26.6446" y="4.7498" extent="1-16" drill="0.381"/>
 <via x="20.32" y="23.876" extent="1-16" drill="0.381"/>
 <via x="20.32" y="26.924" extent="1-16" drill="0.381"/>
 <via x="20.32" y="25.4" extent="1-16" drill="0.381"/>

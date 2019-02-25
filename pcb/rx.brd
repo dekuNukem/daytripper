@@ -188,7 +188,7 @@
 <text x="9.5508" y="28.3718" size="1.27" layer="26" font="vector" rot="MR0" align="center">git.io/daytripper</text>
 <text x="11.5148" y="31.5848" size="1.27" layer="25" font="vector" rot="R270">STAT</text>
 <text x="15.5448" y="28.8168" size="1.27" layer="25" font="vector">DFU</text>
-<text x="12.7376" y="17.2212" size="0.8128" layer="26" font="vector" rot="MR270">CH</text>
+<text x="12.827" y="13.0942" size="0.8128" layer="26" font="vector" rot="MR0">CH</text>
 <text x="9.6012" y="3.3396" size="1.27" layer="26" font="vector" rot="MR0" align="center">REV3
 FEB19</text>
 </plain>
@@ -874,7 +874,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="R4" library="joyAnalog" package="0805" value="5.1K" x="13.716" y="25.5656" smashed="yes" rot="R270">
 <attribute name="NAME" x="14.5415" y="26.0736" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="SJ1" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="12.0396" y="15.0528" smashed="yes" rot="MR270"/>
+<element name="SJ1" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NC_TRACE_NO-SILK" value="JUMPER-SMT_2_NC_TRACE_NO-SILK" x="12.5382" y="15.24" smashed="yes" rot="MR0"/>
 <element name="U$10" library="3pos_slide_switch" package="342_SWICH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE" x="17.3736" y="25.7942" smashed="yes" rot="R90"/>
 <element name="LED2" library="joyAnalog" package="CHIP-LED0805" value="" x="13.716" y="29.4518" smashed="yes">
 <attribute name="VALUE" x="16.256" y="28.1818" size="1.27" layer="27" rot="R90"/>
@@ -1077,7 +1077,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <via x="10.6172" y="10.4272" extent="1-16" drill="0.5"/>
 <via x="2.794" y="15.1008" extent="1-16" drill="0.4"/>
 <via x="13.716" y="13.8816" extent="1-16" drill="0.4"/>
-<wire x1="13.716" y1="14.483" x2="13.716" y2="13.8816" width="0.254" layer="1"/>
 <wire x1="12.3158" y1="15.1088" x2="14.157" y2="15.1088" width="0.254" layer="1"/>
 <wire x1="14.157" y1="15.1088" x2="14.2494" y2="15.0164" width="0.254" layer="1"/>
 <wire x1="10.861" y1="11.557" x2="10.033" y2="11.557" width="0.254" layer="1"/>
@@ -1094,7 +1093,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="4.0108" y1="5.946" x2="4.889" y2="5.0678" width="0.1524" layer="1"/>
 <wire x1="4.889" y1="5.0678" x2="5.2578" y2="5.0678" width="0.1524" layer="1"/>
 <wire x1="3.5516" y1="5.946" x2="4.0108" y2="5.946" width="0.1524" layer="1"/>
-<wire x1="14.2494" y1="15.0164" x2="13.716" y2="14.483" width="0.254" layer="1"/>
 <wire x1="5.2578" y1="5.0678" x2="7.9634" y2="5.0678" width="0.254" layer="16"/>
 <wire x1="7.9634" y1="5.0678" x2="10.6172" y2="7.7216" width="0.254" layer="16"/>
 <wire x1="10.6172" y1="7.7216" x2="10.6172" y2="10.4272" width="0.254" layer="16"/>
@@ -1120,6 +1118,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="1.905" y1="15.9898" x2="1.905" y2="19.3802" width="0.254" layer="1"/>
 <wire x1="1.905" y1="19.3802" x2="1.2822" y2="20.003" width="0.254" layer="1"/>
 <wire x1="1.2822" y1="20.003" x2="1.005" y2="20.003" width="0.254" layer="1"/>
+<wire x1="14.2494" y1="15.0164" x2="14.2494" y2="14.415" width="0.254" layer="1"/>
+<wire x1="14.2494" y1="14.415" x2="13.716" y2="13.8816" width="0.254" layer="1"/>
 </signal>
 <signal name="N$1">
 <contactref element="U$3" pad="19"/>
@@ -1499,8 +1499,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="12.3158" y1="13.8088" x2="11.261" y2="13.8088" width="0.1524" layer="1"/>
 <wire x1="11.261" y1="13.8088" x2="10.7696" y2="14.3002" width="0.1524" layer="1"/>
 <via x="10.7696" y="14.3002" extent="1-16" drill="0.381"/>
-<wire x1="10.7696" y1="14.3002" x2="11.0142" y2="14.5448" width="0.1524" layer="16"/>
-<wire x1="11.0142" y1="14.5448" x2="12.0396" y2="14.5448" width="0.1524" layer="16"/>
+<wire x1="12.0302" y1="15.24" x2="11.7094" y2="15.24" width="0.1524" layer="16"/>
+<wire x1="11.7094" y1="15.24" x2="10.7696" y2="14.3002" width="0.1524" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
