@@ -189,8 +189,8 @@
 <text x="11.5148" y="31.5848" size="1.27" layer="25" font="vector" rot="R270">STAT</text>
 <text x="15.5448" y="28.8168" size="1.27" layer="25" font="vector">DFU</text>
 <text x="12.827" y="13.0942" size="0.8128" layer="26" font="vector" rot="MR0">CH</text>
-<text x="9.6012" y="3.3396" size="1.27" layer="26" font="vector" rot="MR0" align="center">REV3
-FEB19</text>
+<text x="9.4742" y="1.968" size="1.27" layer="26" font="vector" rot="MR0" align="center">REV3
+FEB25 19</text>
 </plain>
 <libraries>
 <library name="nRF24L01-Chip-v13">
