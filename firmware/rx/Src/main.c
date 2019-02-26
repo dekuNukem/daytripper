@@ -56,19 +56,29 @@
 #include "nrf24.h"
 #include "helpers.h"
 #include "keyboard.h"
+#include "animation.h"
 
-#define NRF_PAYLOAD_SIZE 4
-#define NRF_CHANNEL 120
+#define DTPR_CMD_TEST 0x27
+#define DTPR_CMD_TRIG 0xbb
+#define DTPR_CMD_RET 0xcf
+#define NRF_PAYLOAD_SIZE 6
+#define NRF_CHANNEL 115
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
 
+TIM_HandleTypeDef htim14;
+TIM_HandleTypeDef htim17;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint8_t nrf_status;
+uint8_t received_data[NRF_PAYLOAD_SIZE];
+uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+uint8_t rx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,6 +86,11 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_TIM17_Init(void);
+static void MX_TIM14_Init(void);
+                                    
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                                
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -89,11 +104,11 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
-uint8_t nrf_status;
-uint8_t received_data[NRF_PAYLOAD_SIZE];
-uint8_t correct_packet[NRF_PAYLOAD_SIZE] = {70, 85, 67, 75};
-uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
-uint8_t rx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if(htim->Instance == TIM17)
+    animation_update();
+}
 
 /* USER CODE END 0 */
 
@@ -129,7 +144,18 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   MX_USB_DEVICE_Init();
+  MX_TIM17_Init();
+  MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
+
+  animation_init(&htim17, &htim14);
+  start_animation(ANIMATION_TYPE_BREATHING);
+
+  for (int i = 0; i < 4; i++)
+  {
+    // HAL_IWDG_Refresh(&hiwdg);
+    HAL_Delay(500);
+  }
 
   printf("initializing NRF...\n");
   nrf24_init();
@@ -137,6 +163,7 @@ int main(void)
   nrf24_tx_address(tx_address);
   nrf24_rx_address(rx_address);
   printf("done\n");
+  start_animation(ANIMATION_TYPE_CONST_OFF);
 
   /* USER CODE END 2 */
 
@@ -151,12 +178,10 @@ int main(void)
   /* USER CODE BEGIN 3 */
     if(nrf24_dataReady())
     {
-      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+      start_animation(ANIMATION_TYPE_DOUBLEFLASH);
       nrf24_getData(received_data);
-      if(strncmp(received_data, correct_packet, NRF_PAYLOAD_SIZE) != 0)
-        continue;
-      press_keys(get_slide_sw_pos());
-      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+      if(received_data[1] == DTPR_CMD_TRIG)
+        press_keys(get_slide_sw_pos());
     }
     
   }
@@ -244,6 +269,59 @@ static void MX_SPI1_Init(void)
 
 }
 
+/* TIM14 init function */
+static void MX_TIM14_Init(void)
+{
+
+  TIM_OC_InitTypeDef sConfigOC;
+
+  htim14.Instance = TIM14;
+  htim14.Init.Prescaler = 479;
+  htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim14.Init.Period = 255;
+  htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim14) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  if (HAL_TIM_PWM_Init(&htim14) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim14, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  HAL_TIM_MspPostInit(&htim14);
+
+}
+
+/* TIM17 init function */
+static void MX_TIM17_Init(void)
+{
+
+  htim17.Instance = TIM17;
+  htim17.Init.Prescaler = 47;
+  htim17.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim17.Init.Period = 16666;
+  htim17.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim17.Init.RepetitionCounter = 0;
+  htim17.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim17) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /* USART2 init function */
 static void MX_USART2_UART_Init(void)
 {
@@ -286,9 +364,6 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : USER_BUTTON_Pin */
@@ -309,12 +384,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SPI1_CS_Pin USER_LED_Pin */
-  GPIO_InitStruct.Pin = SPI1_CS_Pin|USER_LED_Pin;
+  /*Configure GPIO pin : SPI1_CS_Pin */
+  GPIO_InitStruct.Pin = SPI1_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(SPI1_CS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : NRF_CE_Pin */
   GPIO_InitStruct.Pin = NRF_CE_Pin;

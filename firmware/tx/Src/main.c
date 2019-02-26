@@ -47,13 +47,12 @@
 #include "nrf24.h"
 #include "VL53L0X.h"
 #include "animation.h"
+#include "sleepbutton.h"
 
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
-#define NRF_PAYLOAD_SIZE 4
-#define NRF_CHANNEL 120
+#define NRF_CHANNEL 115
 
-#define ADC_BUF_SIZE 4
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -75,10 +74,15 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 volatile uint32_t wakeup_count = 1;
-uint8_t nrf_status;
-uint8_t data_array[NRF_PAYLOAD_SIZE] = {70, 85, 67, 75};
+uint8_t data_array[NRF_PAYLOAD_SIZE];
 uint8_t tx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
 uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+
+uint16_t baseline, diff_threshold, this_reading;
+int16_t diff;
+uint8_t button_result;
+uint8_t current_state = STATE_IDLE;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -170,14 +174,7 @@ int main(void)
   // MX_IWDG_Init(); // where should this go?
   
   animation_init(&htim17, &htim2);
-  start_animation(ANIMATION_TYPE_BREATHING);
-
-  for (int i = 0; i < 4; i++)
-  {
-    // HAL_IWDG_Refresh(&hiwdg);
-    HAL_Delay(500);
-  }
-
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -194,19 +191,12 @@ int main(void)
   nrf24_rx_address(rx_address);
   printf("done\n");
 
-  printf("calibrating...\n");
-  int16_t baseline = get_baseline();
-  printf("done!\n");
-
-  uint16_t diff_threshold = get_trigger_threshold(baseline);
-  int16_t this_reading = 0;
-  int16_t diff = 0;
-  uint8_t current_state = STATE_IDLE;
+  tof_calibrate(&baseline, &diff_threshold);
 
   start_animation(ANIMATION_TYPE_CONST_OFF);
   MX_RTC_Init();
-  // HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
-  // HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
   while (1)
   {
@@ -215,39 +205,39 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
     // HAL_IWDG_Refresh(&hiwdg);
+
+    button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), wakeup_count);
+    if(button_result == 1)
+    {
+      tof_calibrate(&baseline, &diff_threshold);
+      current_state = STATE_IDLE;
+    }
+    else if(button_result == 2)
+    {
+      tx_test();
+      current_state = STATE_IDLE;
+    }
+
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
       start_animation(ANIMATION_TYPE_CONST_ON);
-      printf("triggered\n");
+      printf("triggered!\n base: %d, this: %d\n", baseline, this_reading);
 
-      for (int i = 0; i < 3; i++)
-      {
-        nrf24_send(data_array);
-        while(nrf24_isSending());
-        nrf_status = nrf24_lastMessageStatus();
-        if(nrf_status == NRF24_TRANSMISSON_OK)
-        {
-          printf("TX OK\n");
-          printf("> Retranmission count: %d\r\n",nrf24_retransmissionCount());
-          break;
-        }
-        printf("TX failed, retry %d\n", i);
-      }
+      build_packet(data_array, baseline, this_reading);
+      send_packet(data_array);
 
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
     {
       start_animation(ANIMATION_TYPE_CONST_OFF);
-      printf("returned\n");
       current_state = STATE_IDLE;
     }
-    HAL_Delay(200);
-    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
-    // HAL_GPIO_TogglePin(TEST_OUT_GPIO_Port, TEST_OUT_Pin);
+    // HAL_Delay(200);
+    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   }
   /* USER CODE END 3 */
 
@@ -508,7 +498,7 @@ static void MX_TIM2_Init(void)
   TIM_OC_InitTypeDef sConfigOC;
 
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 70;
+  htim2.Init.Prescaler = 79;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 255;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -606,7 +596,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, TEST_OUT_Pin|NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
@@ -614,15 +604,21 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : USER_BUTTON_Pin */
   GPIO_InitStruct.Pin = USER_BUTTON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : TEST_OUT_Pin NRF_CE_Pin */
-  GPIO_InitStruct.Pin = TEST_OUT_Pin|NRF_CE_Pin;
+  /*Configure GPIO pin : CH_JPR_Pin */
+  GPIO_InitStruct.Pin = CH_JPR_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(CH_JPR_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : NRF_CE_Pin */
+  GPIO_InitStruct.Pin = NRF_CE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(NRF_CE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;

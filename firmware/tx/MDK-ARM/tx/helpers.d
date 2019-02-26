@@ -43,3 +43,5 @@ tx\helpers.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
 tx\helpers.o: ../Inc/shared.h
 tx\helpers.o: ../Inc/VL53L0X.h
 tx\helpers.o: ../Inc/animation.h
+tx\helpers.o: ../Inc/nrf24.h
+tx\helpers.o: ../Inc/nRF24L01.h

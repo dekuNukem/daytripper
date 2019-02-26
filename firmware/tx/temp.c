@@ -1,10 +1,40 @@
 /*
+power consumption notes
+
+fully assembled REV2 tx board:
+
+battery current when processor is in stop mode: 1.66mA
+
+GPIO settings causes high power consumption
+*/
+
+
+/*
 hrtc.Init.AsynchPrediv = 32;
 hrtc.Init.SynchPrediv = 4;
 
 26 4 5Hz 0.2s
 32 4 4Hz 0.25s
 */
+printf("%d\n", reading);
+printf("released! duration: %d wakeups\n", );
+    for (int i = 0; i < 6; ++i)
+      printf("%d ", data[i]);
+    printf("\n");
+
+for (int i = 0; i < 3; i++)
+{
+  nrf24_send(data_array);
+  while(nrf24_isSending());
+  nrf_status = nrf24_lastMessageStatus();
+  if(nrf_status == NRF24_TRANSMISSON_OK)
+  {
+    printf("TX OK\n");
+    printf("> Retranmission count: %d\r\n",nrf24_retransmissionCount());
+    break;
+  }
+  printf("TX failed, retry %d\n", i);
+}
 
   printf("vbat = %d\n", result);
 

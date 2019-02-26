@@ -51,8 +51,8 @@
 
 #define USER_BUTTON_Pin GPIO_PIN_8
 #define USER_BUTTON_GPIO_Port GPIOB
-#define TEST_OUT_Pin GPIO_PIN_0
-#define TEST_OUT_GPIO_Port GPIOA
+#define CH_JPR_Pin GPIO_PIN_0
+#define CH_JPR_GPIO_Port GPIOA
 #define NRF_CE_Pin GPIO_PIN_4
 #define NRF_CE_GPIO_Port GPIOA
 #define SPI1_CS_Pin GPIO_PIN_1

@@ -5,10 +5,13 @@
 #include "helpers.h"
 #include "VL53L0X.h"
 #include "animation.h"
+#include "nrf24.h"
 
 #define BASELINE_SAMPLE_SIZE 16
+#define STM32_UUID ((uint32_t *)0x1FFFF7AC)
 
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
+uint8_t test_data[NRF_PAYLOAD_SIZE];
 
 uint16_t get_baseline(void)
 {
@@ -37,6 +40,21 @@ uint16_t get_baseline(void)
 
     printf("calibration failed - variance too large: %d, retrying...\n", variance);
   }
+}
+
+void tof_calibrate(uint16_t* base, uint16_t* threshold)
+{
+  start_animation(ANIMATION_TYPE_BREATHING);
+  for (int i = 0; i < 4; i++)
+  {
+    // HAL_IWDG_Refresh(&hiwdg);
+    HAL_Delay(500);
+  }
+  printf("calibrating...\n");
+  *base = get_baseline();
+  *threshold = get_trigger_threshold(*base);
+  printf("done!\n");
+  start_animation(ANIMATION_TYPE_CONST_OFF);
 }
 
 uint16_t get_trigger_threshold(uint16_t baseline)
@@ -76,5 +94,56 @@ void check_battery(void)
     HAL_UART_MspDeInit(&huart2);
 
     HAL_PWR_EnterSTANDBYMode();
+  }
+}
+
+void build_packet(uint8_t* data, uint16_t base, uint16_t this)
+{
+  data[0] = *STM32_UUID;
+  data[1] = DTPR_CMD_TRIG;
+  data[2] = base >> 8;
+  data[3] = base & 0xff;
+  data[4] = this >> 8;
+  data[5] = this & 0xff;
+}
+
+uint8_t send_packet(uint8_t* data)
+{
+  nrf24_send(data);
+  while(nrf24_isSending());
+  if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
+  {
+    printf("TX OK, retry: %d\n",nrf24_retransmissionCount());
+    return 0;
+  }
+  else
+  {
+    printf("TX failed\n");
+    return 1;
+  }
+}
+
+void tx_test(void)
+{
+  uint8_t count = 0;
+  test_data[0] = *STM32_UUID;
+  test_data[1] = DTPR_CMD_TEST;
+
+  while(1)
+  {
+    start_animation(ANIMATION_TYPE_CONST_ON);
+    memset(test_data+2, count, 4);
+    for (int i = 0; i < 6; ++i)
+      printf("%d ", test_data[i]);
+    printf("\n");
+    count++;
+    send_packet(test_data);
+    HAL_Delay(150);
+    start_animation(ANIMATION_TYPE_CONST_OFF);
+
+    if(count > 5 && HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin))
+      return;
+
+    HAL_Delay(850);
   }
 }

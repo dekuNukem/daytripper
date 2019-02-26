@@ -1,3 +1,17 @@
+for (int i = 0; i < 6; ++i)
+        printf("%d ", received_data[i]);
+      printf("\n");
+
+if(nrf24_dataReady())
+    {
+      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+      nrf24_getData(received_data);
+      if(strncmp(received_data, correct_packet, NRF_PAYLOAD_SIZE) != 0)
+        continue;
+      press_keys(get_slide_sw_pos());
+      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+    }
+
 nrf24_getStatus
 
     // HAL_Delay(500);
