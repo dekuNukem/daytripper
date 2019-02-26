@@ -12,6 +12,7 @@ void animation_init(TIM_HandleTypeDef* frame_tim, TIM_HandleTypeDef* pwm_tim)
 {
   frame_timer = frame_tim;
   pwm_timer = pwm_tim;
+  pwm_timer->Instance->CCR1 = 0;
 
   HAL_TIM_Base_Start(pwm_timer);
   HAL_TIM_PWM_Init(pwm_timer);
@@ -40,7 +41,7 @@ void animation_update(void)
   }
   else
   {
-    pwm_timer->Instance->CCR1 = 0;
+    pwm_timer->Instance->CCR1 = 3;
   }
 }
 
