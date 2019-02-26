@@ -30,7 +30,7 @@ void animation_update(void)
   {
       pwm_timer->Instance->CCR1 = 255;
   }
-  else if(current_animation == ANIMATION_TYPE_BREATHING)
+  else if(current_animation == ANIMATION_TYPE_BREATHING && curr_frame < 51 * 2)
   {
     pwm_timer->Instance->CCR1 = breathing_lookup[curr_frame % 51];
   }
