@@ -51,7 +51,6 @@
 
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
-#define NRF_CHANNEL 115
 
 /* USER CODE END Includes */
 
@@ -75,12 +74,12 @@ UART_HandleTypeDef huart2;
 /* Private variables ---------------------------------------------------------*/
 volatile uint32_t wakeup_count = 1;
 uint8_t data_array[NRF_PAYLOAD_SIZE];
-uint8_t tx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
-uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
+uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, diff_threshold, this_reading;
 int16_t diff;
-uint8_t button_result;
+uint8_t button_result, bat_reading, new_stat_packet;
 uint8_t current_state = STATE_IDLE;
 
 /* USER CODE END PV */
@@ -119,7 +118,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
-    check_battery();
+    check_battery(&bat_reading, &new_stat_packet);
     HAL_ADC_MspDeInit(&hadc);
   }
 }
@@ -169,16 +168,16 @@ int main(void)
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
 
-  check_battery();
-  HAL_ADC_MspDeInit(&hadc);
   // MX_IWDG_Init(); // where should this go?
-  
   animation_init(&htim17, &htim2);
-  
+  check_battery(&bat_reading, &new_stat_packet);
+  HAL_ADC_MspDeInit(&hadc);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
@@ -218,17 +217,27 @@ int main(void)
       current_state = STATE_IDLE;
     }
 
+    if(new_stat_packet)
+    {
+    	build_packet_stat(data_array, bat_reading, wakeup_count);
+    	printf("sending stat packet...\n");
+    	send_packet(data_array);
+    	new_stat_packet = 0;
+    }
+
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
+    if(this_reading <= 10)
+    	goto sleep;
+
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
-      start_animation(ANIMATION_TYPE_CONST_ON);
-      printf("triggered!\n base: %d, this: %d\n", baseline, this_reading);
-
-      build_packet(data_array, baseline, this_reading);
+      printf("triggered! base: %d, this: %d\n", baseline, this_reading);
+      build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
-
+      // turn on LED after to reduce PWM noise
+      start_animation(ANIMATION_TYPE_CONST_ON); 
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
@@ -236,7 +245,8 @@ int main(void)
       start_animation(ANIMATION_TYPE_CONST_OFF);
       current_state = STATE_IDLE;
     }
-    // HAL_Delay(200);
+
+    sleep:
     HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   }
   /* USER CODE END 3 */
@@ -498,7 +508,7 @@ static void MX_TIM2_Init(void)
   TIM_OC_InitTypeDef sConfigOC;
 
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 79;
+  htim2.Init.Prescaler = 399;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 255;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -562,7 +572,7 @@ static void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 19200;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

@@ -58,9 +58,11 @@
 #include "keyboard.h"
 #include "animation.h"
 
-#define DTPR_CMD_TEST 0x27
-#define DTPR_CMD_TRIG 0xbb
-#define DTPR_CMD_RET 0xcf
+#define DTPR_CMD_TEST 0xa1
+#define DTPR_CMD_TRIG 0xb2
+#define DTPR_CMD_RET 0xc3
+#define DTPR_CMD_STAT 0xd4
+
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
 /* USER CODE END Includes */
@@ -77,8 +79,8 @@ UART_HandleTypeDef huart2;
 /* Private variables ---------------------------------------------------------*/
 uint8_t nrf_status;
 uint8_t received_data[NRF_PAYLOAD_SIZE];
-uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
-uint8_t rx_address[5] = {0xDE,0xAD,0xBE,0xEF,0xBB};
+uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
+uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -182,6 +184,10 @@ int main(void)
       nrf24_getData(received_data);
       if(received_data[1] == DTPR_CMD_TRIG)
         press_keys(get_slide_sw_pos());
+      for (int i = 0; i < 6; ++i)
+        printf("%d ", received_data[i]);
+      printf("\n");
+      HAL_Delay(500);
     }
     
   }
@@ -276,7 +282,7 @@ static void MX_TIM14_Init(void)
   TIM_OC_InitTypeDef sConfigOC;
 
   htim14.Instance = TIM14;
-  htim14.Init.Prescaler = 479;
+  htim14.Init.Prescaler = 2399;
   htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim14.Init.Period = 255;
   htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

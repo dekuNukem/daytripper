@@ -42,6 +42,12 @@ uint16_t get_baseline(void)
   }
 }
 
+uint16_t get_trigger_threshold(uint16_t baseline)
+{
+  // smaller number narrower deadzone, more sensitive
+  return 0.333*baseline;
+}
+
 void tof_calibrate(uint16_t* base, uint16_t* threshold)
 {
   start_animation(ANIMATION_TYPE_BREATHING);
@@ -57,24 +63,27 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
   start_animation(ANIMATION_TYPE_CONST_OFF);
 }
 
-uint16_t get_trigger_threshold(uint16_t baseline)
+void check_battery(uint8_t* bat_reading, uint8_t* flag)
 {
-  // smaller number narrower deadzone, more sensitive
-  return 0.333*baseline;
-}
-
-void check_battery(void)
-{
-  return;
-  uint8_t result = 255;
+  *bat_reading = 255;
   HAL_ADC_Start(&hadc);
   if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
-    result = HAL_ADC_GetValue(&hadc);
+    *bat_reading = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  printf("vbat = %d\n", result);
-  if(result <= 135) // 3.6V
+  printf("vbat = %d\n", *bat_reading);
+  *flag = 1;
+  return;
+  if(*bat_reading <= 135) // 3.6V
   {
-    printf("low battery, shutting down...\n"); 
+    printf("low battery, shutting down...\n");
+
+    start_animation(ANIMATION_TYPE_FASTBLINK);
+    for (int i = 0; i < 8; i++)
+    {
+      // HAL_IWDG_Refresh(&hiwdg);
+      HAL_Delay(500);
+    }
+    start_animation(ANIMATION_TYPE_CONST_OFF);
 
     // turn off external chips
     HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
@@ -97,7 +106,7 @@ void check_battery(void)
   }
 }
 
-void build_packet(uint8_t* data, uint16_t base, uint16_t this)
+void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
 {
   data[0] = *STM32_UUID;
   data[1] = DTPR_CMD_TRIG;
@@ -105,6 +114,16 @@ void build_packet(uint8_t* data, uint16_t base, uint16_t this)
   data[3] = base & 0xff;
   data[4] = this >> 8;
   data[5] = this & 0xff;
+}
+
+void build_packet_stat(uint8_t* data, uint8_t bat, uint32_t wakeup)
+{
+  data[0] = *STM32_UUID;
+  data[1] = DTPR_CMD_STAT;
+  data[2] = bat;
+  data[3] = (wakeup >> 16) & 0xff;
+  data[4] = (wakeup >> 8) & 0xff;
+  data[5] = wakeup & 0xff;
 }
 
 uint8_t send_packet(uint8_t* data)
@@ -147,3 +166,4 @@ void tx_test(void)
     HAL_Delay(850);
   }
 }
+

@@ -5699,10 +5699,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C1" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C1" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="GND12" library="clock" deviceset="GND" device=""/>
 <part name="R1" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
-<part name="C2" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C2" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="C3" library="clock" deviceset="CAP" device="0805" value="33nF"/>
 <part name="GND2" library="clock" deviceset="GND" device=""/>
 <part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805" value="3.9nH"/>
@@ -5754,7 +5754,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="GND6" library="clock" deviceset="GND" device=""/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R6" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="1 Ohm"/>
-<part name="C14" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C14" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 </parts>
 <sheets>
 <sheet>

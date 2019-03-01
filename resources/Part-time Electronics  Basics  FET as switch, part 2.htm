@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html class="v2" dir="ltr" lang="fi"><head>
+<link href="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/2727757643-css_bundle_v2.css" rel="stylesheet" type="text/css">
+<meta content="width=1100" name="viewport">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="blogger" name="generator">
+<link href="http://parttimeelectronics.blogspot.com/favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="Part-time Electronics - Atom" href="http://parttimeelectronics.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Part-time Electronics - RSS" href="http://parttimeelectronics.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="Part-time Electronics - Atom" href="https://www.blogger.com/feeds/5157516932500928366/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="Part-time Electronics - Atom" href="http://parttimeelectronics.blogspot.com/feeds/3063828881188888963/comments/default">
+<!--[if IE]><script type="text/javascript" src="https://www.blogger.com/static/v1/jsbin/864213505-ieretrofit.js"></script>
+<![endif]-->
+<link href="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/pfet-1.png" rel="image_src">
+<meta content="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html" property="og:url">
+<meta content="Basics: FET as switch, part 2" property="og:title">
+<meta content=" Last time  I showed simple example where NFET was used to switch a load at negative (ground) side. Sometimes this won't do, and you'll want..." property="og:description">
+<meta content="https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/w1200-h630-p-k-no-nu/pfet-1.png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>Part-time Electronics: Basics: FET as switch, part 2</title>
+<style id="page-skin-1" type="text/css"><!--
+/*-----------------------------------------------
+Blogger Template Style
+Name:     Picture Window
+Designer: Blogger
+URL:      www.blogger.com
+----------------------------------------------- */
+
+/* Content
+----------------------------------------------- */
+body {
+font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+color: #5c5c5c;
+background: #575757 none no-repeat scroll center center;
+}
+html body .region-inner {
+min-width: 0;
+max-width: 100%;
+width: auto;
+}
+.content-outer {
+font-size: 90%;
+}
+a:link {
+text-decoration:none;
+color: #3c7fb4;
+}
+a:visited {
+text-decoration:none;
+color: #73a7d0;
+}
+a:hover {
+text-decoration:underline;
+color: #44bdff;
+}
+.content-outer {
+background: transparent none repeat scroll top left;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+margin: 20px auto;
+}
+.content-inner {
+padding: 0;
+}
+/* Header
+----------------------------------------------- */
+.header-outer {
+background: rgba(87, 87, 87, 0) none repeat-x scroll top left;
+_background-image: none;
+color: #ffffff;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.Header img, .Header #header-inner {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.header-inner .Header .titlewrapper,
+.header-inner .Header .descriptionwrapper {
+padding-left: 0;
+padding-right: 0;
+}
+.Header h1 {
+font: normal normal 36px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.Header h1 a {
+color: #ffffff;
+}
+.Header .description {
+font-size: 130%;
+}
+/* Tabs
+----------------------------------------------- */
+.tabs-inner {
+margin: .5em 20px 0;
+padding: 0;
+}
+.tabs-inner .section {
+margin: 0;
+}
+.tabs-inner .widget ul {
+padding: 0;
+background: rgba(87, 87, 87, 0) none repeat scroll bottom;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.tabs-inner .widget li {
+border: none;
+}
+.tabs-inner .widget li a {
+display: inline-block;
+padding: .5em 1em;
+margin-right: .25em;
+color: #ffffff;
+font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+-moz-border-radius: 10px 10px 0 0;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-goog-ms-border-radius: 10px 10px 0 0;
+border-radius: 10px 10px 0 0;
+background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left;
+border-right: 1px solid rgba(87, 87, 87, 0);
+}
+.tabs-inner .widget li:first-child a {
+padding-left: 1.25em;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomleft: 0;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-left-radius: 0;
+-goog-ms-border-top-left-radius: 10px;
+-goog-ms-border-bottom-left-radius: 0;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 0;
+}
+.tabs-inner .widget li.selected a,
+.tabs-inner .widget li a:hover {
+position: relative;
+z-index: 1;
+background: rgba(87, 87, 87, 0) url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll bottom;
+color: #336699;
+-moz-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+font: bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+text-transform: uppercase;
+color: #939393;
+margin: .5em 0;
+}
+/* Main
+----------------------------------------------- */
+.main-outer {
+background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left;
+-moz-border-radius: 20px 20px 0 0;
+-webkit-border-top-left-radius: 20px;
+-webkit-border-top-right-radius: 20px;
+-webkit-border-bottom-left-radius: 0;
+-webkit-border-bottom-right-radius: 0;
+-goog-ms-border-radius: 20px 20px 0 0;
+border-radius: 20px 20px 0 0;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+.main-inner {
+padding: 15px 20px 20px;
+}
+.main-inner .column-center-inner {
+padding: 0 0;
+}
+.main-inner .column-left-inner {
+padding-left: 0;
+}
+.main-inner .column-right-inner {
+padding-right: 0;
+}
+/* Posts
+----------------------------------------------- */
+h3.post-title {
+margin: 0;
+font: normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+}
+.comments h4 {
+margin: 1em 0 0;
+font: normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+}
+.date-header span {
+color: #5c5c5c;
+}
+.post-outer {
+background-color: #ffffff;
+border: solid 1px #e1e1e1;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+-goog-ms-border-radius: 5px;
+padding: 15px 20px;
+margin: 0 -20px 20px;
+}
+.post-body {
+line-height: 1.4;
+font-size: 110%;
+position: relative;
+}
+.post-header {
+margin: 0 0 1.5em;
+color: #a1a1a1;
+line-height: 1.6;
+}
+.post-footer {
+margin: .5em 0 0;
+color: #a1a1a1;
+line-height: 1.6;
+}
+#blog-pager {
+font-size: 140%
+}
+#comments .comment-author {
+padding-top: 1.5em;
+border-top: dashed 1px #ccc;
+border-top: dashed 1px rgba(128, 128, 128, .5);
+background-position: 0 1.5em;
+}
+#comments .comment-author:first-child {
+padding-top: 0;
+border-top: none;
+}
+.avatar-image-container {
+margin: .2em 0 0;
+}
+/* Comments
+----------------------------------------------- */
+.comments .comments-content .icon.blog-author {
+background-repeat: no-repeat;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
+}
+.comments .comments-content .loadmore a {
+border-top: 1px solid #44bdff;
+border-bottom: 1px solid #44bdff;
+}
+.comments .continue {
+border-top: 2px solid #44bdff;
+}
+/* Widgets
+----------------------------------------------- */
+.widget ul, .widget #ArchiveList ul.flat {
+padding: 0;
+list-style: none;
+}
+.widget ul li, .widget #ArchiveList ul.flat li {
+border-top: dashed 1px #ccc;
+border-top: dashed 1px rgba(128, 128, 128, .5);
+}
+.widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
+border-top: none;
+}
+.widget .post-body ul {
+list-style: disc;
+}
+.widget .post-body ul li {
+border: none;
+}
+/* Footer
+----------------------------------------------- */
+.footer-outer {
+color:#d1d1d1;
+background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left;
+-moz-border-radius: 0 0 20px 20px;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-webkit-border-bottom-left-radius: 20px;
+-webkit-border-bottom-right-radius: 20px;
+-goog-ms-border-radius: 0 0 20px 20px;
+border-radius: 0 0 20px 20px;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+.footer-inner {
+padding: 10px 20px 20px;
+}
+.footer-outer a {
+color: #a2d5ef;
+}
+.footer-outer a:visited {
+color: #82b8ef;
+}
+.footer-outer a:hover {
+color: #44bdff;
+}
+.footer-outer .widget h2 {
+color: #b1b1b1;
+}
+/* Mobile
+----------------------------------------------- */
+html body.mobile {
+height: auto;
+}
+html body.mobile {
+min-height: 480px;
+background-size: 100% auto;
+}
+.mobile .body-fauxcolumn-outer {
+background: transparent none repeat scroll top left;
+}
+html .mobile .mobile-date-outer, html .mobile .blog-pager {
+border-bottom: none;
+background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left;
+margin-bottom: 10px;
+}
+.mobile .date-outer {
+background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left;
+}
+.mobile .header-outer, .mobile .main-outer,
+.mobile .post-outer, .mobile .footer-outer {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.mobile .content-outer,
+.mobile .main-outer,
+.mobile .post-outer {
+background: inherit;
+border: none;
+}
+.mobile .content-outer {
+font-size: 100%;
+}
+.mobile-link-button {
+background-color: #3c7fb4;
+}
+.mobile-link-button a:link, .mobile-link-button a:visited {
+color: #ffffff;
+}
+.mobile-index-contents {
+color: #5c5c5c;
+}
+.mobile .tabs-inner .PageList .widget-content {
+background: rgba(87, 87, 87, 0) url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll bottom;
+color: #336699;
+}
+.mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
+border-left: 1px solid rgba(87, 87, 87, 0);
+}
+
+--></style>
+<style id="template-skin-1" type="text/css"><!--
+body {
+min-width: 1100px;
+}
+.content-outer, .content-fauxcolumn-outer, .region-inner {
+min-width: 1100px;
+max-width: 1100px;
+_width: 1100px;
+}
+.main-inner .columns {
+padding-left: 0;
+padding-right: 310px;
+}
+.main-inner .fauxcolumn-center-outer {
+left: 0;
+right: 310px;
+/* IE6 does not respect left and right together */
+_width: expression(this.parentNode.offsetWidth -
+parseInt("0") -
+parseInt("310px") + 'px');
+}
+.main-inner .fauxcolumn-left-outer {
+width: 0;
+}
+.main-inner .fauxcolumn-right-outer {
+width: 310px;
+}
+.main-inner .column-left-outer {
+width: 0;
+right: 100%;
+margin-left: -0;
+}
+.main-inner .column-right-outer {
+width: 310px;
+margin-right: -310px;
+}
+#layout {
+min-width: 0;
+}
+#layout .content-outer {
+min-width: 0;
+width: 800px;
+}
+#layout .region-inner {
+min-width: 0;
+width: auto;
+}
+body#layout div.add_widget {
+padding: 8px;
+}
+body#layout div.add_widget a {
+margin-left: 32px;
+}
+--></style>
+<link href="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/authorization.css" media="none" onload="if(media!='all')media='all'" rel="stylesheet"><span><link href="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/authorization.css" rel="stylesheet"></span>
+
+</head>
+<body class="loading variant-open">
+<div class="navbar section" id="navbar" name="Navigointipalkki"><div class="widget Navbar" data-version="1" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"></div>
+<script type="text/javascript" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/plusone.js"></script>
+<script type="text/javascript">
+      gapi.load("gapi.iframes:gapi.iframes.style.bubble", function() {
+        if (gapi.iframes && gapi.iframes.getContext) {
+          gapi.iframes.getContext().openChild({
+              url: 'https://www.blogger.com/navbar.g?targetBlogID\x3d5157516932500928366\x26blogName\x3dPart-time+Electronics\x26publishMode\x3dPUBLISH_MODE_BLOGSPOT\x26navbarType\x3dLIGHT\x26layoutType\x3dLAYOUTS\x26searchRoot\x3dhttps://parttimeelectronics.blogspot.com/search\x26blogLocale\x3dfi\x26v\x3d2\x26homepageUrl\x3dhttp://parttimeelectronics.blogspot.com/\x26targetPostID\x3d3063828881188888963\x26blogPostOrPageUrl\x3dhttp://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html\x26vt\x3d-6831731964926615203',
+              where: document.getElementById("navbar-iframe-container"),
+              id: "navbar-iframe"
+          });
+        }
+      });
+    </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<div class="body-fauxcolumns">
+<div class="fauxcolumn-outer body-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content">
+<div class="content-fauxcolumns">
+<div class="fauxcolumn-outer content-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content-outer">
+<div class="content-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left content-fauxborder-left">
+<div class="fauxborder-right content-fauxborder-right"></div>
+<div class="content-inner">
+<header>
+<div class="header-outer">
+<div class="header-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left header-fauxborder-left">
+<div class="fauxborder-right header-fauxborder-right"></div>
+<div class="region-inner header-inner">
+<div class="header section" id="header" name="Otsikko"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://parttimeelectronics.blogspot.com/">
+Part-time Electronics
+</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>Random thoughts about software, hardware and electronics. And other things too...</span></p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="header-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</header>
+<div class="tabs-outer">
+<div class="tabs-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left tabs-fauxborder-left">
+<div class="fauxborder-right tabs-fauxborder-right"></div>
+<div class="region-inner tabs-inner">
+<div class="tabs no-items section" id="crosscol" name="Kaikki sarakkeet"></div>
+<div class="tabs no-items section" id="crosscol-overflow" name="Cross-Column 2"></div>
+</div>
+</div>
+<div class="tabs-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="main-outer">
+<div class="main-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left main-fauxborder-left">
+<div class="fauxborder-right main-fauxborder-right"></div>
+<div class="region-inner main-inner">
+<div class="columns fauxcolumns">
+<div class="fauxcolumn-outer fauxcolumn-center-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-left-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-right-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<!-- corrects IE6 width calculation -->
+<div class="columns-inner">
+<div class="column-center-outer">
+<div class="column-center-inner">
+<div class="main section" id="main" name="Ensisijainen"><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+
+          <div class="date-outer">
+        
+<h2 class="date-header"><span>maanantai 27. kesäkuuta 2016</span></h2>
+
+          <div class="date-posts">
+        
+<div class="post-outer">
+<div class="post hentry uncustomized-post-template" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<meta content="https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/s400/pfet-1.png" itemprop="image_url">
+<meta content="5157516932500928366" itemprop="blogId">
+<meta content="3063828881188888963" itemprop="postId">
+<a name="3063828881188888963"></a>
+<h3 class="post-title entry-title" itemprop="name">
+Basics: FET as switch, part 2
+</h3>
+<div class="post-header">
+<div class="post-header-line-1"></div>
+</div>
+<div class="post-body entry-content" id="post-body-3063828881188888963" itemprop="description articleBody">
+<br>
+<a href="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch.html">Last time</a>
+ I showed simple example where NFET was used to switch a load at 
+negative (ground) side. Sometimes this won't do, and you'll want to 
+switch something - like, say, external radio that uses lots of current 
+but is needed for just a few seconds every hour or so - on positive 
+supply side. In that case you'll need to use P-channel FET, like below.<br>
+&nbsp; <br>
+<br>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/s1600/pfet-1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/pfet-1.png" width="328" height="400" border="0"></a></div>
+Here I'm using a P-channel FET (Q1), for example BSH203. Like before, 
+all FETs mentioned here refer to enchantment mode N- and P-channel FETs 
+exclusively. <br>
+<br>
+So what happens here? Without any control (control line floating) R2 pulls gate voltage up to
+ VCC, making gate-source voltage (Vgs) zero and turning FET off. When control 
+pulls gate down, Vgs grows and FET is turned on, allowing 
+current to be passed to controlled chip.<br>
+<br>
+R1 again is there to limit gate current somewhat (why? well, gate forms a
+ small capacitor, and switching FET on or off involves either charging 
+or discharging said capacitor, which may involve momentary high currents
+ if not limited by gate resistor), and R2 is mainly there to make sure 
+that gate is always in controlled state - i.e. high (off) when MCU isn't
+ actively driving control. Again, you'll always want to have a pull-up 
+or pull-down when using FETs to make sure it's always in well-defined 
+state, be it off (like here) or on (with pull-down instead of pull-up in
+ above circuit).<br>
+<br>This works nicely when you only have one voltage to your circuit - 
+i.e. when driven VCC is same as MCU's VCC. If voltage you want to drive 
+is higher, however, a bit more complex circuit is needed as R2 (in off 
+state) pulls gate voltage (and thus MCU pin) above MCU's operating 
+voltage, which in worst case may even damage your MCU. So in that case 
+you'll neeed something like this:<br>
+<br>
+(yes, I'm mixing different FET symbols here, sorry about that - I just picked some suitable parts from the library quickly)<br>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-vfoyz-8EGvQ/V2kn-hFTfKI/AAAAAAAAAjQ/ylsNRkWUJRAr-HygcFobci9O2MXptdT5QCLcB/s1600/pfet-2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/pfet-2.png" width="400" height="385" border="0"></a></div>
+Here I'm using a PFET (Q2) to control the voltage to the load, and NFET 
+(Q3) to control the PFET's gate. When control is low or floating the 
+NFET is in OFF state, allowing R12 to pull PFET's gate high, turning it 
+off. When NFET's gate is driven high, NFET turns on, pulling the gate of
+ PFET down, turning in turn it on and allowing current to pass through.<br>
+<br>
+Here also the size of PFET's pull-up starts to matter; since you can't 
+drive the gate of PFET high directly (only via pull-up) the pull-up is 
+absolutely required. Also large value of pull-up makes switcing PFET off
+ slower, limiting maximum frequency you can achieve. In this case a 
+value of 10kohm or so might be better, but my example load here is 
+controlled slowly enough for 1Mohm to easily suffice. <br>
+<br>
+In addition of ratings mentioned in last post you'll need to pay attention to following;<br>
+-maximum gate-source voltage of PFET: this must be at least maximum voltage in circuit, in this case 12v, preferably more.<br>
+-maximum drain-source voltage of NFET: when NFET is off, this is same as maximum voltage of circuit, 12v. <br>
+<br>
+When working with relatively low voltages, like 12v here, these aren't 
+that critical, but if you need to control higher voltages, past 25 volts
+ or so, you'll find out that many (cheaper) FETs can't handle that high 
+Vgs voltages, so you'll need to get more expensive parts or design 
+circuit to limit maximum stresses. But those are topic for another time.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Lähettänyt
+<span class="fn" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+<meta content="https://plus.google.com/100677446243674564372" itemprop="url">
+<a class="g-profile" href="https://plus.google.com/100677446243674564372" rel="author" title="author profile">
+<span itemprop="name">Toni Räsänen</span>
+</a>
+</span>
+</span>
+<span class="post-timestamp">
+klo
+<meta content="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html" itemprop="url">
+<a class="timestamp-link" href="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html" rel="bookmark" title="permanent link"><abbr class="published" itemprop="datePublished" title="2016-06-27T23:11:00-07:00">23.11</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-840480388">
+<a href="https://www.blogger.com/post-edit.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;from=pencil" title="Muokkaa tekstiä">
+<img alt="" class="icon-action" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/icon18_edit_allbkg.gif" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="post-share-buttons goog-inline-block">
+<a class="goog-inline-block share-button sb-email" href="https://www.blogger.com/share-post.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;target=email" target="_blank" title="Kohteen lähettäminen sähköpostitse"><span class="share-button-link-text">Kohteen lähettäminen sähköpostitse</span></a><a class="goog-inline-block share-button sb-blog" href="https://www.blogger.com/share-post.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;target=blog" onclick='window.open(this.href, "_blank", "height=270,width=475"); return false;' target="_blank" title="Bloggaa tästä!"><span class="share-button-link-text">Bloggaa tästä!</span></a><a class="goog-inline-block share-button sb-twitter" href="https://www.blogger.com/share-post.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;target=twitter" target="_blank" title="Jaa Twitteriin"><span class="share-button-link-text">Jaa Twitteriin</span></a><a class="goog-inline-block share-button sb-facebook" href="https://www.blogger.com/share-post.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;target=facebook" onclick='window.open(this.href, "_blank", "height=430,width=640"); return false;' target="_blank" title="Jaa Facebookiin"><span class="share-button-link-text">Jaa Facebookiin</span></a><a class="goog-inline-block share-button sb-pinterest" href="https://www.blogger.com/share-post.g?blogID=5157516932500928366&amp;postID=3063828881188888963&amp;target=pinterest" target="_blank" title="Jaa Pinterestiin"><span class="share-button-link-text">Jaa Pinterestiin</span></a>
+</div>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>Ei kommentteja:</h4>
+<div id="Blog1_comments-block-wrapper">
+<dl class="avatar-comment-indent" id="comments-block">
+</dl>
+</div>
+<p class="comment-footer">
+</p><div class="comment-form">
+<a name="comment-form"></a>
+<h4 id="comment-post-message">Lähetä kommentti</h4>
+<p>
+</p>
+<a href="https://www.blogger.com/comment-iframe.g?blogID=5157516932500928366&amp;postID=3063828881188888963" id="comment-editor-src"></a>
+<iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" id="comment-editor" name="comment-editor" src="" width="100%" height="410px" frameborder="0"></iframe>
+<script src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/55386745-comment_from_post_iframe.js" type="text/javascript"></script>
+<script type="text/javascript">
+      BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');
+    </script>
+</div>
+<p></p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+</div>
+<div class="inline-ad">
+<script type="text/javascript">
+    google_ad_client = "ca-pub-6386413983838668";
+    google_ad_host = "ca-host-pub-1556223355139109";
+    google_ad_host_channel = "L0007";
+    google_ad_slot = "3800994637";
+    google_ad_width = 300;
+    google_ad_height = 250;
+</script>
+<!-- parttimeelectronics_main_Blog1_300x250_as -->
+<script type="text/javascript" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/show_ads.js">
+</script>
+</div>
+
+        </div></div>
+      
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://parttimeelectronics.blogspot.com/2016/07/login-failed.html" id="Blog1_blog-pager-newer-link" title="Uudempi teksti">Uudempi teksti</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://parttimeelectronics.blogspot.com/2016/06/lost-bt-receiver.html" id="Blog1_blog-pager-older-link" title="Vanhempi viesti">Vanhempi viesti</a>
+</span>
+<a class="home-link" href="http://parttimeelectronics.blogspot.com/">Etusivu</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Tilaa:
+<a class="feed-link" href="http://parttimeelectronics.blogspot.com/feeds/3063828881188888963/comments/default" target="_blank" type="application/atom+xml">Lähetä kommentteja (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="column-left-outer">
+<div class="column-left-inner">
+<aside>
+</aside>
+</div>
+</div>
+<div class="column-right-outer">
+<div class="column-right-inner">
+<aside>
+<div class="sidebar section" id="sidebar-right-1"><div class="widget AdSense" data-version="1" id="AdSense1">
+<div class="widget-content">
+<script type="text/javascript">
+    google_ad_client = "ca-pub-6386413983838668";
+    google_ad_host = "ca-host-pub-1556223355139109";
+    google_ad_host_channel = "L0001";
+    google_ad_slot = "1896971435";
+    google_ad_width = 250;
+    google_ad_height = 250;
+</script>
+<!-- parttimeelectronics_sidebar-right-1_AdSense1_250x250_as -->
+<script type="text/javascript" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/show_ads.js">
+</script>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=5157516932500928366&amp;widgetType=AdSense&amp;widgetId=AdSense1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick='return _WidgetManager._PopupConfig(document.getElementById("AdSense1"));' rel="nofollow" target="configAdSense1" title="Muokkaa">
+<img alt="" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" data-version="1" id="BlogArchive1">
+<h2>Blogiarkisto</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2019/">
+2019
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2019/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2019/01/">
+tammikuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/">
+2018
+</a>
+<span class="post-count" dir="ltr">(36)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/12/">
+joulukuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/11/">
+marraskuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/10/">
+lokakuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/08/">
+elokuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/07/">
+heinäkuuta
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/06/">
+kesäkuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/05/">
+toukokuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/04/">
+huhtikuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/03/">
+maaliskuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2018/01/">
+tammikuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/">
+2017
+</a>
+<span class="post-count" dir="ltr">(48)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/12/">
+joulukuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/11/">
+marraskuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/10/">
+lokakuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/09/">
+syyskuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/08/">
+elokuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/07/">
+heinäkuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/06/">
+kesäkuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/05/">
+toukokuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/04/">
+huhtikuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/03/">
+maaliskuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2017/01/">
+tammikuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/">
+2016
+</a>
+<span class="post-count" dir="ltr">(80)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/12/">
+joulukuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/11/">
+marraskuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/10/">
+lokakuuta
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/09/">
+syyskuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/08/">
+elokuuta
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/07/">
+heinäkuuta
+</a>
+<span class="post-count" dir="ltr">(10)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/06/">
+kesäkuuta
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="posts">
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html">Basics: FET as switch, part 2</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/lost-bt-receiver.html">Lost the BT receiver</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch.html">Basics: FET as a switch</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/when-google-doesnt-help.html">When google doesn't help</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/removal-of-headphone-jack.html">Removal of headphone jack</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/travelling-for-work.html">Travelling for work</a></li>
+<li><a href="http://parttimeelectronics.blogspot.com/2016/06/inadequate-tools.html">Inadequate tools</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/05/">
+toukokuuta
+</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/04/">
+huhtikuuta
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/03/">
+maaliskuuta
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2016/01/">
+tammikuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/">
+2015
+</a>
+<span class="post-count" dir="ltr">(59)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/12/">
+joulukuuta
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/11/">
+marraskuuta
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/10/">
+lokakuuta
+</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/09/">
+syyskuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/08/">
+elokuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/07/">
+heinäkuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/06/">
+kesäkuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/05/">
+toukokuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/04/">
+huhtikuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/03/">
+maaliskuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2015/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/">
+2014
+</a>
+<span class="post-count" dir="ltr">(40)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/11/">
+marraskuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/10/">
+lokakuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/09/">
+syyskuuta
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/08/">
+elokuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/06/">
+kesäkuuta
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/05/">
+toukokuuta
+</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/04/">
+huhtikuuta
+</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/03/">
+maaliskuuta
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/02/">
+helmikuuta
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2014/01/">
+tammikuuta
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2013/">
+2013
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://parttimeelectronics.blogspot.com/2013/12/">
+joulukuuta
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=5157516932500928366&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' rel="nofollow" target="configBlogArchive1" title="Muokkaa">
+<img alt="" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+<table class="section-columns columns-2" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td class="first columns-cell">
+<div class="sidebar section" id="sidebar-right-2-1"><div class="widget Profile" data-version="1" id="Profile1">
+<h2>Tietoja minusta</h2>
+<div class="widget-content">
+<a href="https://plus.google.com/100677446243674564372"><img alt="Oma valokuva" class="profile-img" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/photo.jpg" width="80" height="80"></a>
+<dl class="profile-datablock">
+<dt class="profile-data">
+<a class="profile-name-link g-profile" href="https://plus.google.com/100677446243674564372" rel="author" style="background-image: url(//www.google.com/images/icons/ui/gprofile_button-16.png);">
+Toni Räsänen
+</a>
+<br>
+<div class="g-follow" data-annotation="bubble" data-height="20" data-href="https://plus.google.com/100677446243674564372"></div>
+</dt>
+</dl>
+<a class="profile-link" href="https://plus.google.com/100677446243674564372" rel="author">Tarkastele profiilia</a>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=5157516932500928366&amp;widgetType=Profile&amp;widgetId=Profile1&amp;action=editWidget&amp;sectionId=sidebar-right-2-1" onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' rel="nofollow" target="configProfile1" title="Muokkaa">
+<img alt="" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</td>
+<td class="columns-cell">
+<div class="sidebar no-items section" id="sidebar-right-2-2"></div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sidebar no-items section" id="sidebar-right-3"></div>
+</aside>
+</div>
+</div>
+</div>
+<div style="clear: both"></div>
+<!-- columns -->
+</div>
+<!-- main -->
+</div>
+</div>
+<div class="main-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<footer>
+<div class="footer-outer">
+<div class="footer-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left footer-fauxborder-left">
+<div class="fauxborder-right footer-fauxborder-right"></div>
+<div class="region-inner footer-inner">
+<div class="foot no-items section" id="footer-1"></div>
+<table class="section-columns columns-2" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td class="first columns-cell">
+<div class="foot no-items section" id="footer-2-1"></div>
+</td>
+<td class="columns-cell">
+<div class="foot no-items section" id="footer-2-2"></div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- outside of the include in order to lock Attribution widget -->
+<div class="foot section" id="footer-3" name="Alatunniste"><div class="widget Attribution" data-version="1" id="Attribution1">
+<div class="widget-content" style="text-align: center;">
+Teema: Picture Window. Sisällön tarjoaa <a href="https://www.blogger.com/" target="_blank">Blogger</a>.
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=5157516932500928366&amp;widgetType=Attribution&amp;widgetId=Attribution1&amp;action=editWidget&amp;sectionId=footer-3" onclick='return _WidgetManager._PopupConfig(document.getElementById("Attribution1"));' rel="nofollow" target="configAttribution1" title="Muokkaa">
+<img alt="" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+<div class="footer-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</footer>
+<!-- content -->
+</div>
+</div>
+<div class="content-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    window.setTimeout(function() {
+        document.body.className = document.body.className.replace('loading', '');
+      }, 10);
+  </script>
+<script src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/plusone.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="Part-time%20Electronics%20%20Basics%20%20FET%20as%20switch,%20part%202_files/613741347-widgets.js"></script>
+<script type="text/javascript">
+window['__wavt'] = 'AOuZoY6c9-BsHfLuG4SXBX5SwOxfRmbffw:1551354306075';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d5157516932500928366','//parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html','5157516932500928366');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '5157516932500928366', 'title': 'Part-time Electronics', 'url': 'http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html', 'canonicalUrl': 'http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html', 'homepageUrl': 'http://parttimeelectronics.blogspot.com/', 'searchUrl': 'http://parttimeelectronics.blogspot.com/search', 'canonicalHomepageUrl': 'http://parttimeelectronics.blogspot.com/', 'blogspotFaviconUrl': 'http://parttimeelectronics.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'fi', 'localeUnderscoreDelimited': 'fi', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Part-time Electronics - Atom\x22 href\x3d\x22http://parttimeelectronics.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22Part-time Electronics - RSS\x22 href\x3d\x22http://parttimeelectronics.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Part-time Electronics - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/5157516932500928366/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Part-time Electronics - Atom\x22 href\x3d\x22http://parttimeelectronics.blogspot.com/feeds/3063828881188888963/comments/default\x22 /\x3e\n', 'meTag': '', 'adsenseClientId': 'ca-pub-6386413983838668', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': true, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/864213505-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/5ce0c5848ff70777', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Hae linkki', 'key': 'link', 'shareMessage': 'Hae linkki', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Jaa: Facebook', 'target': 'facebook'}, {'name': 'Bloggaa tästä!', 'key': 'blogThis', 'shareMessage': 'Bloggaa tästä!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Jaa: Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Jaa: Pinterest', 'target': 'pinterest'}, {'name': 'Sähköposti', 'key': 'email', 'shareMessage': 'Sähköposti', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27fi\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Lue lisää', 'pageType': 'item', 'postId': '3063828881188888963', 'postImageThumbnailUrl': 'https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/s72-c/pfet-1.png', 'postImageUrl': 'https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/s400/pfet-1.png', 'pageName': 'Basics: FET as switch, part 2', 'pageTitle': 'Part-time Electronics: Basics: FET as switch, part 2'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Muokkaa', 'linkCopiedToClipboard': 'Linkki kopioitiin leikepöydälle!', 'ok': 'OK', 'postLink': 'Tekstin linkki'}}, {'name': 'template', 'data': {'name': 'Picture Window', 'localizedName': 'Picture Window', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': false, 'variant': 'open', 'variantId': 'open'}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Basics: FET as switch, part 2', 'description': ' Last time  I showed simple example where NFET was used to switch a load at negative (ground) side. Sometimes this won\x27t do, and you\x27ll want...', 'featuredImage': 'https://1.bp.blogspot.com/-y3P4J0A7JBU/V2kn-99cAGI/AAAAAAAAAjU/fpTVPzSrY_4gkcxmuMYxffD8GROIT4CEgCLcB/s400/pfet-1.png', 'url': 'http://parttimeelectronics.blogspot.com/2016/06/basics-fet-as-switch-part-2.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 3063828881188888963}}]);
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/240498493-lbx__fi.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AdSenseView', new _WidgetInfo('AdSense1', 'sidebar-right-1', document.getElementById('AdSense1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar-right-1', document.getElementById('BlogArchive1'), {'languageDirection': 'ltr', 'loadingMessage': 'Ladataan\x26hellip;'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar-right-2-1', document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AttributionView', new _WidgetInfo('Attribution1', 'footer-3', document.getElementById('Attribution1'), {}, 'displayModeFull'));
+</script>
+
+</body></html>

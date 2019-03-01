@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rx\rx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rx\rx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Feb 26 20:51:42 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Feb 28 22:39:48 2019
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -184,8 +184,8 @@ Global Symbols
 <P><STRONG><a name="[43]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_update
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_update
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_DataInStage
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
@@ -309,8 +309,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[56]"></a>HAL_NVIC_EnableIRQ</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f0xx_hal_cortex.o(i.HAL_NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
+<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
 </UL>
 
 <P><STRONG><a name="[45]"></a>HAL_NVIC_SetPriority</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, stm32f0xx_hal_cortex.o(i.HAL_NVIC_SetPriority))
@@ -318,10 +318,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 </UL>
 
@@ -368,8 +368,8 @@ Global Symbols
 <P><STRONG><a name="[8c]"></a>HAL_PCD_EP_Receive</STRONG> (Thumb, 244 bytes, Stack size 20 bytes, stm32f0xx_hal_pcd.o(i.HAL_PCD_EP_Receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = HAL_PCD_EP_Receive
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_PrepareReceive
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_PrepareReceive
 </UL>
 
 <P><STRONG><a name="[af]"></a>HAL_PCD_EP_SetStall</STRONG> (Thumb, 136 bytes, Stack size 20 bytes, stm32f0xx_hal_pcd.o(i.HAL_PCD_EP_SetStall))
@@ -383,19 +383,19 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_WritePMA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_Transmit
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_Transmit
 </UL>
 
 <P><STRONG><a name="[4d]"></a>HAL_PCD_IRQHandler</STRONG> (Thumb, 238 bytes, Stack size 16 bytes, stm32f0xx_hal_pcd.o(i.HAL_PCD_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212<LI>Call Chain = HAL_PCD_IRQHandler &rArr; HAL_PCD_ResumeCallback &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetAddress
+<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetAddress
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SuspendCallback
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SOFCallback
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResumeCallback
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResetCallback
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_IRQHandler
 </UL>
@@ -411,8 +411,8 @@ Global Symbols
 <P><STRONG><a name="[55]"></a>HAL_PCD_MspInit</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usbd_conf.o(i.HAL_PCD_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_PCD_MspInit &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_Init
 </UL>
@@ -444,8 +444,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[50]"></a>HAL_PCD_SetAddress</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, stm32f0xx_hal_pcd.o(i.HAL_PCD_SetAddress))
-<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_SetUSBAddress
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_IRQHandler
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_SetUSBAddress
 </UL>
 
 <P><STRONG><a name="[5c]"></a>HAL_PCD_SetupStageCallback</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, usbd_conf.o(i.HAL_PCD_SetupStageCallback))
@@ -583,8 +583,8 @@ Global Symbols
 <P><STRONG><a name="[6b]"></a>HAL_TIM_Base_MspInit</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, stm32f0xx_hal_msp.o(i.HAL_TIM_Base_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_TIM_Base_MspInit &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 </UL>
@@ -644,8 +644,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_MspInit
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_init
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM14_Init
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM14_Init
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_init
 </UL>
 
 <P><STRONG><a name="[7c]"></a>HAL_TIM_PWM_MspInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_hal_tim.o(i.HAL_TIM_PWM_MspInit))
@@ -722,8 +722,8 @@ Global Symbols
 <P><STRONG><a name="[4c]"></a>PCD_WritePMA</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, stm32f0xx_hal_pcd.o(i.PCD_WritePMA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PCD_WritePMA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
 </UL>
 
 <P><STRONG><a name="[11]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(i.PendSV_Handler))
@@ -752,8 +752,8 @@ Global Symbols
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResumeCallback
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResumeCallback
 </UL>
 
 <P><STRONG><a name="[2f]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, system_stm32f0xx.o(i.SystemInit))
@@ -769,8 +769,8 @@ Global Symbols
 <P><STRONG><a name="[6c]"></a>TIM_Base_SetConfig</STRONG> (Thumb, 112 bytes, Stack size 20 bytes, stm32f0xx_hal_tim.o(i.TIM_Base_SetConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM_Base_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
 </UL>
 
 <P><STRONG><a name="[7e]"></a>TIM_CCxChannelCmd</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, stm32f0xx_hal_tim.o(i.TIM_CCxChannelCmd))
@@ -993,9 +993,9 @@ Global Symbols
 <P><STRONG><a name="[a3]"></a>USBD_LL_Init</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, usbd_conf.o(i.USBD_LL_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = USBD_LL_Init &rArr; HAL_PCD_Init &rArr; HAL_PCD_MspInit &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_Init
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_Init
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCDEx_PMAConfig
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_Init
 </UL>
@@ -1174,8 +1174,8 @@ Global Symbols
 <P><STRONG><a name="[a7]"></a>_Error_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i._Error_Handler))
 <BR><BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_Init
 </UL>
 
 <P><STRONG><a name="[b6]"></a>__0printf$5</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
@@ -1206,8 +1206,8 @@ Global Symbols
 <P><STRONG><a name="[b8]"></a>animation_init</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, animation.o(i.animation_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = animation_init &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start
 </UL>
@@ -1259,12 +1259,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 </UL>
 
-<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 182 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 210 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_init
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_DEVICE_Init
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_DEVICE_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
@@ -1272,6 +1270,8 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM14_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_init
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_slide_sw_pos
@@ -1498,13 +1498,13 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[85]"></a>MX_TIM14_Init</STRONG> (Thumb, 86 bytes, Stack size 40 bytes, main.o(i.MX_TIM14_Init))
+<P><STRONG><a name="[85]"></a>MX_TIM14_Init</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, main.o(i.MX_TIM14_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = MX_TIM14_Init &rArr; HAL_TIM_MspPostInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_MspPostInit
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1520,13 +1520,13 @@ Local Symbols
 <P><STRONG><a name="[4e]"></a>PCD_EP_ISR_Handler</STRONG> (Thumb, 802 bytes, Stack size 40 bytes, stm32f0xx_hal_pcd.o(i.PCD_EP_ISR_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = PCD_EP_ISR_Handler &rArr; HAL_PCD_SetupStageCallback &rArr; USBD_LL_SetupStage &rArr; USBD_StdDevReq &rArr; USBD_GetDescriptor &rArr; USBD_CtlSendData &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; PCD_WritePMA
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
+<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_WritePMA
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_ReadPMA
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Receive
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetupStageCallback
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataOutStageCallback
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataInStageCallback
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_WritePMA
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_ReadPMA
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_IRQHandler
 </UL>

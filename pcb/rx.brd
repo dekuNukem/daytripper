@@ -813,13 +813,13 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <elements>
 <element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="5.969" y="22.543" smashed="yes" rot="R90"/>
 <element name="U$1" library="3pos_slide_switch" package="SW_3POS_FOOT_OFFICIAL" value="SW_3POS_DEVSW_3POS_OFFICIAL" x="0.7016" y="12.746" smashed="yes" rot="R270"/>
-<element name="C1" library="clock" package="0805" value="100nF" x="1.905" y="23.305" smashed="yes" rot="R180">
+<element name="C1" library="clock" package="0805" value="4.7uF" x="1.905" y="23.305" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.0828" y="28.3215" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="R1" library="joyAnalog" package="0805" value="22K" x="1.905" y="24.956" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.2352" y="30.0614" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C2" library="clock" package="0805" value="100nF" x="1.905" y="26.607" smashed="yes" rot="R180">
+<element name="C2" library="clock" package="0805" value="4.7uF" x="1.905" y="26.607" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.0574" y="31.56" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="C3" library="clock" package="0805" value="33nF" x="1.905" y="21.654" smashed="yes" rot="R180">
@@ -903,7 +903,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="0.889" y="18.606" size="0.4064" layer="27"/>
 <attribute name="VALUE" x="0.889" y="18.606" size="0.4064" layer="27"/>
 </element>
-<element name="C14" library="clock" package="0805" value="100nF" x="1.905" y="18.352" smashed="yes" rot="R180">
+<element name="C14" library="clock" package="0805" value="4.7uF" x="1.905" y="18.352" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.3876" y="15.3929" size="0.8128" layer="25" rot="R180"/>
 </element>
 </elements>

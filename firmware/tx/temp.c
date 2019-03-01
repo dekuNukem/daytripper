@@ -8,7 +8,19 @@ battery current when processor is in stop mode: 1.66mA
 GPIO settings causes high power consumption
 */
 
+/*
+standby with stm32: 1.2mA
 
+standby without stm32: 1.2mA
+
+it is the NRF chip thats causing the excess current consumption!!
+
+*/
+
+printf("sending stat packet...\n");
+      for (int i = 0; i < 6; ++i)
+        printf("%d ", data_array[i]);
+      printf("\n");
 /*
 hrtc.Init.AsynchPrediv = 32;
 hrtc.Init.SynchPrediv = 4;
