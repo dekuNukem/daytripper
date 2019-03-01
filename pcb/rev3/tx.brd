@@ -979,13 +979,13 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="U$3" library="nRF24L01-Chip-v13" package="QFN20_ALT1" value="NRF24L01ALT1" x="12.827" y="19.4818" smashed="yes" rot="R90">
 <attribute name="NAME" x="11.938" y="18.2118" size="0.4064" layer="25" rot="R90"/>
 </element>
-<element name="C1" library="clock" package="0805" value="100nF" x="8.2042" y="19.1516" smashed="yes" rot="R180">
+<element name="C1" library="clock" package="0805" value="4.7uF" x="8.2042" y="19.1516" smashed="yes" rot="R180">
 <attribute name="NAME" x="6.0071" y="19.6342" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="R1" library="joyAnalog" package="0805" value="22K" x="8.2042" y="20.6756" smashed="yes" rot="R180">
 <attribute name="NAME" x="6.7183" y="20.1422" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="C2" library="clock" package="0805" value="2.2nF" x="10.668" y="23.368" smashed="yes" rot="R90">
+<element name="C2" library="clock" package="0805" value="4.7uF" x="10.668" y="23.368" smashed="yes" rot="R90">
 <attribute name="NAME" x="10.1727" y="22.8854" size="0.8128" layer="25" rot="R90"/>
 </element>
 <element name="C3" library="clock" package="0805" value="100nF" x="8.2042" y="17.6276" smashed="yes" rot="R180">
@@ -1013,8 +1013,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C7" library="clock" package="0805" value="4.7pF" x="16.5608" y="24.7142" smashed="yes">
 <attribute name="NAME" x="18.2372" y="24.1681" size="0.8128" layer="25"/>
 </element>
-<element name="C8" library="clock" package="0805" value="22pF" x="19.9898" y="19.812" smashed="yes" rot="R90">
-<attribute name="NAME" x="19.431" y="21.3487" size="0.8128" layer="25"/>
+<element name="C8" library="clock" package="0805" value="22pF" x="20.0152" y="19.812" smashed="yes" rot="R90">
+<attribute name="NAME" x="19.4564" y="21.3487" size="0.8128" layer="25"/>
 </element>
 <element name="C9" library="clock" package="0805" value="22pF" x="17.4498" y="23.0886" smashed="yes">
 <attribute name="NAME" x="18.923" y="22.6441" size="0.8128" layer="25"/>
@@ -1069,7 +1069,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C13" library="clock" package="0805" value="100nF" x="11.5824" y="10.9982" smashed="yes" rot="R270">
 <attribute name="NAME" x="11.303" y="8.7503" size="0.8128" layer="25"/>
 </element>
-<element name="C14" library="clock" package="0805" value="100nF" x="21.59" y="19.812" smashed="yes" rot="R90">
+<element name="C14" library="clock" package="0805" value="4.7uF" x="21.59" y="19.812" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.9296" y="21.3487" size="0.8128" layer="25"/>
 </element>
 <element name="C15" library="clock" package="0805" value="100nF" x="24.892" y="12.8524" smashed="yes" rot="R270">
@@ -1461,7 +1461,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="14.7524" y1="19.9749" x2="17.7695" y2="19.9749" width="0.2032" layer="1"/>
 <wire x1="18.274" y1="19.4704" x2="18.274" y2="18.9164" width="0.2032" layer="1"/>
 <wire x1="17.7695" y1="19.9749" x2="18.274" y2="19.4704" width="0.2032" layer="1"/>
-<wire x1="19.9898" y1="18.912" x2="18.2784" y2="18.912" width="0.2032" layer="1"/>
+<wire x1="20.0152" y1="18.912" x2="18.2784" y2="18.912" width="0.2032" layer="1"/>
 <wire x1="18.2784" y1="18.912" x2="18.274" y2="18.9164" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$9">

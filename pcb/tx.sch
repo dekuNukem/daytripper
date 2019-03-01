@@ -7529,106 +7529,6 @@ B340A  3A 40V SMA &lt;br&gt;</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="SparkFun-Jumpers">
-<description>&lt;h3&gt;SparkFun Jumpers&lt;/h3&gt;
-In this library you'll find jumpers, or other semipermanent means of changing current paths. The least permanent form is the solder jumper. These can be changed by adding, removing, or moving solder. In cases that are less likely to be changed we have jumpers that are connected with traces. These can be cut with a razor, or reconnected with solder. Reference designator JP.
-&lt;br&gt;
-&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
-&lt;br&gt;
-&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;
-&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="SMT-JUMPER_2_NC_TRACE_NO-SILK">
-<smd name="1" x="-0.508" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
-<smd name="2" x="0.508" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
-<text x="0" y="1.143" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-1.143" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-<polygon width="0.127" layer="29">
-<vertex x="-0.1905" y="0.127"/>
-<vertex x="0.1905" y="0.127"/>
-<vertex x="0.1905" y="-0.127"/>
-<vertex x="-0.1905" y="-0.127"/>
-</polygon>
-<rectangle x1="-0.2032" y1="-0.127" x2="0.2032" y2="0.127" layer="1"/>
-</package>
-<package name="SMT-JUMPER_2_NC_TRACE_SILK">
-<wire x1="0.762" y1="-1.016" x2="-0.762" y2="-1.016" width="0.1524" layer="21"/>
-<wire x1="0.762" y1="1.016" x2="1.2192" y2="0.5588" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-1.2192" y1="0.5588" x2="-0.762" y2="1.016" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-1.2192" y1="-0.5588" x2="-0.762" y2="-1.016" width="0.1524" layer="21" curve="90"/>
-<wire x1="0.762" y1="-1.016" x2="1.2192" y2="-0.5588" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.2192" y1="-0.5588" x2="1.2192" y2="0.5588" width="0.1524" layer="21"/>
-<wire x1="-1.2192" y1="-0.5588" x2="-1.2192" y2="0.5588" width="0.1524" layer="21"/>
-<wire x1="-0.762" y1="1.016" x2="0.762" y2="1.016" width="0.1524" layer="21"/>
-<smd name="1" x="-0.508" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
-<smd name="2" x="0.508" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
-<text x="0" y="1.143" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-1.143" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-<polygon width="0.127" layer="29">
-<vertex x="-0.1905" y="0.127"/>
-<vertex x="0.1905" y="0.127"/>
-<vertex x="0.1905" y="-0.127"/>
-<vertex x="-0.1905" y="-0.127"/>
-</polygon>
-<rectangle x1="-0.2032" y1="-0.127" x2="0.2032" y2="0.127" layer="1"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SMT-JUMPER_2_NC_TRACE">
-<wire x1="0.381" y1="0.635" x2="1.016" y2="0" width="1.27" layer="94" curve="-90" cap="flat"/>
-<wire x1="1.016" y1="0" x2="0.381" y2="-0.635" width="1.27" layer="94" curve="-90" cap="flat"/>
-<wire x1="-0.381" y1="-0.635" x2="-0.381" y2="0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
-<wire x1="2.54" y1="0" x2="1.651" y2="0" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="0" x2="-1.651" y2="0" width="0.1524" layer="94"/>
-<text x="-2.54" y="2.54" size="1.778" layer="95" font="vector">&gt;NAME</text>
-<text x="-2.54" y="-2.54" size="1.778" layer="96" font="vector" align="top-left">&gt;VALUE</text>
-<pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
-<pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
-<wire x1="-0.762" y1="0" x2="1.016" y2="0" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="JUMPER-SMT_2_NC_TRACE" prefix="JP">
-<description>&lt;h3&gt;Normally closed trace jumper&lt;/h3&gt;
-&lt;p&gt;This jumper has a trace between two pads so it's normally closed (NC). Use a razor knife to open the connection. For best results follow the IPC guidelines for cutting traces:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Cutout at least 0.063 mm (0.005 in).&lt;/li&gt;
-&lt;li&gt;Remove all loose material to clean up the cut area.&lt;/li&gt;
-&lt;li&gt;Seal the cut with an approved epoxy.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Reapply solder to reclose the connection.&lt;/p&gt;</description>
-<gates>
-<gate name="G$1" symbol="SMT-JUMPER_2_NC_TRACE" x="0" y="0"/>
-</gates>
-<devices>
-<device name="_NO-SILK" package="SMT-JUMPER_2_NC_TRACE_NO-SILK">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_SILK" package="SMT-JUMPER_2_NC_TRACE_SILK">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="my_usbc_16p">
 <packages>
 <package name="USBC_16P_FOOT">
@@ -7950,6 +7850,93 @@ Chip antenna with ground or secondary connection. Common with larger metal RF co
 </deviceset>
 </devicesets>
 </library>
+<library name="transistor-small-signal">
+<description>&lt;b&gt;Small Signal Transistors&lt;/b&gt;&lt;p&gt;
+Packages from :&lt;br&gt;
+www.infineon.com; &lt;br&gt;
+www.semiconductors.com;&lt;br&gt;
+www.irf.com&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SOT23">
+<description>&lt;b&gt;SOT-23&lt;/b&gt;</description>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="1.4224" y1="-0.6604" x2="-1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.6604" x2="-1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<smd name="3" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="2" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="1" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="P-MOS">
+<wire x1="0" y1="0" x2="-1.016" y2="0.381" width="0.1524" layer="94"/>
+<wire x1="-1.016" y1="0.381" x2="-1.016" y2="-0.381" width="0.1524" layer="94"/>
+<wire x1="-1.016" y1="-0.381" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="2.032" x2="0" y2="2.794" width="0.1524" layer="94"/>
+<wire x1="-1.524" y1="0" x2="-0.508" y2="0" width="0.1524" layer="94"/>
+<wire x1="-0.508" y1="0" x2="-0.381" y2="0" width="0.1524" layer="94"/>
+<wire x1="-0.381" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="-3.048" x2="1.27" y2="-3.048" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="-3.048" x2="1.27" y2="-0.254" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="-0.254" x2="1.27" y2="0" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="2.794" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="2.794" x2="0" y2="2.794" width="0.1524" layer="94"/>
+<wire x1="0.762" y1="-0.762" x2="1.778" y2="-0.762" width="0.1524" layer="94"/>
+<wire x1="1.778" y1="-0.762" x2="1.27" y2="0" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="0" x2="0.762" y2="-0.762" width="0.1524" layer="94"/>
+<wire x1="0.762" y1="0" x2="1.778" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.524" y1="-2.032" x2="0" y2="-2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="-2.032" x2="0" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="-1.524" y1="2.032" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="-0.381" y1="0" x2="-0.889" y2="-0.127" width="0.254" layer="94"/>
+<wire x1="-0.889" y1="-0.127" x2="-0.889" y2="0.127" width="0.254" layer="94"/>
+<wire x1="-0.889" y1="0.127" x2="-0.508" y2="0" width="0.254" layer="94"/>
+<wire x1="1.016" y1="-0.635" x2="1.524" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="1.524" y1="-0.635" x2="1.27" y2="-0.254" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-0.254" x2="1.016" y2="-0.635" width="0.254" layer="94"/>
+<circle x="0" y="2.794" radius="0.3592" width="0" layer="94"/>
+<circle x="0" y="2.032" radius="0.3592" width="0" layer="94"/>
+<circle x="0" y="-3.048" radius="0.3592" width="0" layer="94"/>
+<text x="2.54" y="0" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="-2.54" x2="-1.524" y2="-1.27" layer="94"/>
+<rectangle x1="-2.032" y1="1.27" x2="-1.524" y2="2.54" layer="94"/>
+<rectangle x1="-2.032" y1="-0.762" x2="-1.524" y2="0.762" layer="94"/>
+<pin name="G" x="-5.08" y="2.54" visible="off" length="short" direction="pas"/>
+<pin name="D" x="0" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="S" x="0" y="5.08" visible="off" length="short" direction="pas" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="BSS84" prefix="Q">
+<description>&lt;b&gt;P-CHANNEL MOS FET&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="P-MOS" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT23">
+<connects>
+<connect gate="G$1" pin="D" pad="3"/>
+<connect gate="G$1" pin="G" pad="1"/>
+<connect gate="G$1" pin="S" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8039,19 +8026,19 @@ Chip antenna with ground or secondary connection. Common with larger metal RF co
 <part name="GND30" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP1" library="adafruit_changed" deviceset="PINHD-1X3" device="CB"/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="SJ2" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_2_NC_TRACE" device="_NO-SILK"/>
 <part name="U$4" library="my_usbc_16p" deviceset="USBC_16P" device=""/>
 <part name="R13" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="GND26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="E1" library="esp32-thing-temp" deviceset="ANTENNA" device="TRACE-TUNED" value="ANTENNA"/>
 <part name="GND18" library="clock" deviceset="GND" device=""/>
-<part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$1" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="U$12" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="U$13" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="U$14" library="3pos_slide_switch" deviceset="M2_SCREW_DEV" device=""/>
 <part name="R14" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="1 Ohm"/>
+<part name="Q1" library="transistor-small-signal" deviceset="BSS84" device=""/>
+<part name="R15" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 </parts>
 <sheets>
 <sheet>
@@ -8068,7 +8055,7 @@ I_CHG = 1000 / R_PROG</text>
 <attribute name="VALUE" x="-195.58" y="-90.17" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$3" gate="G$1" x="99.06" y="-60.96"/>
-<instance part="+3V1" gate="G$1" x="96.52" y="-2.54"/>
+<instance part="+3V1" gate="G$1" x="96.52" y="17.78" rot="MR0"/>
 <instance part="GND1" gate="1" x="88.9" y="-91.44"/>
 <instance part="C1" gate="G$1" x="106.68" y="-30.48"/>
 <instance part="GND12" gate="1" x="106.68" y="-38.1"/>
@@ -8148,19 +8135,19 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="GND30" gate="1" x="-162.56" y="-71.12"/>
 <instance part="JP1" gate="A" x="22.86" y="-91.44" rot="R270"/>
 <instance part="+3V8" gate="G$1" x="25.4" y="45.72"/>
-<instance part="SJ2" gate="G$1" x="33.02" y="-38.1" rot="R180"/>
 <instance part="U$4" gate="G$1" x="-254" y="-27.94"/>
 <instance part="R13" gate="G$1" x="-33.02" y="-119.38" rot="R270"/>
 <instance part="GND26" gate="1" x="-33.02" y="-127"/>
 <instance part="+3V9" gate="G$1" x="15.24" y="-119.38"/>
 <instance part="E1" gate="G$1" x="218.44" y="-55.88" rot="R270"/>
 <instance part="GND18" gate="1" x="200.66" y="-60.96"/>
-<instance part="GND27" gate="1" x="43.18" y="-40.64"/>
 <instance part="U$1" gate="G$1" x="-137.16" y="-144.78"/>
 <instance part="U$12" gate="G$1" x="-93.98" y="-147.32"/>
 <instance part="U$13" gate="G$1" x="-116.84" y="-182.88"/>
 <instance part="U$14" gate="G$1" x="-157.48" y="-170.18"/>
 <instance part="R14" gate="G$1" x="96.52" y="-15.24" rot="R270"/>
+<instance part="Q1" gate="G$1" x="96.52" y="-2.54"/>
+<instance part="R15" gate="G$1" x="91.44" y="7.62" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -8358,11 +8345,6 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="GND18" gate="1" pin="GND"/>
 <wire x1="200.66" y1="-58.42" x2="208.28" y2="-58.42" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="SJ2" gate="G$1" pin="1"/>
-<wire x1="43.18" y1="-38.1" x2="38.1" y2="-38.1" width="0.1524" layer="91"/>
-<pinref part="GND27" gate="1" pin="GND"/>
-</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -8424,9 +8406,13 @@ I_CHG = 1000 / R_PROG</text>
 <junction x="7.62" y="-121.92"/>
 </segment>
 <segment>
+<pinref part="Q1" gate="G$1" pin="S"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<pinref part="R14" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="-5.08" x2="96.52" y2="-10.16" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="15.24" x2="96.52" y2="12.7" width="0.1524" layer="91"/>
+<pinref part="R15" gate="G$1" pin="1"/>
+<wire x1="96.52" y1="12.7" x2="96.52" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="12.7" x2="96.52" y2="12.7" width="0.1524" layer="91"/>
+<junction x="96.52" y="12.7"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -8804,15 +8790,6 @@ I_CHG = 1000 / R_PROG</text>
 <junction x="-269.24" y="-20.32"/>
 </segment>
 </net>
-<net name="N$36" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="PA0"/>
-<wire x1="5.08" y1="-43.18" x2="22.86" y2="-43.18" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="-43.18" x2="22.86" y2="-38.1" width="0.1524" layer="91"/>
-<pinref part="SJ2" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="-38.1" x2="27.94" y2="-38.1" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$37" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="VDD@18"/>
@@ -8839,6 +8816,25 @@ I_CHG = 1000 / R_PROG</text>
 <junction x="116.84" y="-22.86"/>
 <pinref part="C14" gate="G$1" pin="1"/>
 <wire x1="127" y1="-22.86" x2="127" y2="-25.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$38" class="0">
+<segment>
+<pinref part="R14" gate="G$1" pin="1"/>
+<pinref part="Q1" gate="G$1" pin="D"/>
+<wire x1="96.52" y1="-7.62" x2="96.52" y2="-10.16" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="R15" gate="G$1" pin="2"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
+<wire x1="91.44" y1="2.54" x2="91.44" y2="0" width="0.1524" layer="91"/>
+<pinref part="U$2" gate="G$1" pin="PA0"/>
+<wire x1="5.08" y1="-43.18" x2="25.4" y2="-43.18" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-43.18" x2="25.4" y2="0" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="0" x2="91.44" y2="0" width="0.1524" layer="91"/>
+<junction x="91.44" y="0"/>
 </segment>
 </net>
 </nets>
