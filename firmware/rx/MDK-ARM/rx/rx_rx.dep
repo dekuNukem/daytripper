@@ -204,7 +204,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5B9BDDDF)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5B9BDDDF)
 I (../Inc/shared.h)(0x5BE30207)
 F (..\Inc\animation.h)(0x5C7527D3)()
-F (../Src/main.c)(0x5C77F2AF)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc-I.\RTE\_rx-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F042x6 -DUSE_HAL_DRIVER -DSTM32F042x6-o rx\main.o --omf_browse rx\main.crf --depend rx\main.d)
+F (../Src/main.c)(0x5C7A78BB)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc-I.\RTE\_rx-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F042x6 -DUSE_HAL_DRIVER -DSTM32F042x6-o rx\main.o --omf_browse rx\main.crf --depend rx\main.d)
 I (../Inc/main.h)(0x5C774DD5)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5B9BDDDE)
 I (../Inc/stm32f0xx_hal_conf.h)(0x5C774DD5)

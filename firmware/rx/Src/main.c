@@ -81,6 +81,8 @@ uint8_t nrf_status;
 uint8_t received_data[NRF_PAYLOAD_SIZE];
 uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
+
+uint16_t baseline, this_reading, vbat_mV, stat_count;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,6 +112,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim->Instance == TIM17)
     animation_update();
+}
+
+uint16_t eight2sixteen(uint8_t msb, uint8_t lsb)
+{
+  return (msb << 8) | lsb;
 }
 
 /* USER CODE END 0 */
@@ -182,12 +189,31 @@ int main(void)
     {
       start_animation(ANIMATION_TYPE_DOUBLEFLASH);
       nrf24_getData(received_data);
-      if(received_data[1] == DTPR_CMD_TRIG)
-        press_keys(get_slide_sw_pos());
+
+      printf("received: ");
       for (int i = 0; i < 6; ++i)
-        printf("%d ", received_data[i]);
+        printf("0x%x ", received_data[i]);
       printf("\n");
-      HAL_Delay(500);
+
+      if(received_data[1] == DTPR_CMD_TRIG)
+      {
+        press_keys(get_slide_sw_pos());
+        baseline = eight2sixteen(received_data[2], received_data[3]);
+        this_reading = eight2sixteen(received_data[4], received_data[5]);
+        printf("trigger packet, base: %d, this: %d\n", baseline, this_reading);
+      }
+
+      else if(received_data[1] == DTPR_CMD_STAT)
+      {
+        vbat_mV = eight2sixteen(received_data[2], received_data[3]);
+        stat_count = eight2sixteen(received_data[4], received_data[5]);
+        printf("status packet, vbat_mV: %d, stat_count: %d\n", vbat_mV, stat_count);
+      }
+
+      else if(received_data[1] == DTPR_CMD_TEST)
+        printf("test packet \n");
+
+      printf("\n");
     }
     
   }

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [tx\tx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image tx\tx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Feb 28 21:48:18 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Mar 02 20:13:19 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -171,8 +171,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_update
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_battery
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMicrosecondsToMclks
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMclksToMicroseconds
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMclksToMicroseconds
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConfigChannel
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
@@ -309,8 +310,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_DeInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmAEventCallback
+<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmAEventCallback
 </UL>
 
 <P><STRONG><a name="[3a]"></a>HAL_ADC_MspInit</STRONG> (Thumb, 54 bytes, Stack size 32 bytes, stm32f0xx_hal_msp.o(i.HAL_ADC_MspInit))
@@ -354,7 +354,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_test
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tof_calibrate
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
 </UL>
 
 <P><STRONG><a name="[3c]"></a>HAL_GPIO_DeInit</STRONG> (Thumb, 182 bytes, Stack size 20 bytes, stm32f0xx_hal_gpio.o(i.HAL_GPIO_DeInit))
@@ -392,7 +392,7 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeContinuousMillimeters
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;performSingleRefCalibration
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSpadInfo
@@ -456,7 +456,7 @@ Global Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_TransferConfig
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_RequestMemoryRead
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readMulti
 </UL>
@@ -1020,14 +1020,13 @@ Global Symbols
 
 <P><STRONG><a name="[eb]"></a>__1printf$1</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1), UNUSED)
 
-<P><STRONG><a name="[af]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1))
+<P><STRONG><a name="[b7]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf1.o(i.__0printf$1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_test
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tof_calibrate
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_packet
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_battery
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1060,7 +1059,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 </UL>
 
-<P><STRONG><a name="[c2]"></a>build_packet_stat</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, helpers.o(i.build_packet_stat))
+<P><STRONG><a name="[c2]"></a>build_packet_stat</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, helpers.o(i.build_packet_stat))
 <BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1074,17 +1073,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5e]"></a>check_battery</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, helpers.o(i.check_battery))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = check_battery &rArr; HAL_ADC_Start &rArr; ADC_Enable &rArr; __aeabi_uidivmod
+<P><STRONG><a name="[5e]"></a>check_battery</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, helpers.o(i.check_battery))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = check_battery &rArr; HAL_ADC_Start &rArr; ADC_Enable &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Stop
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_PollForConversion
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_GetValue
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmAEventCallback
+<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmAEventCallback
 </UL>
 
 <P><STRONG><a name="[24]"></a>fputc</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, main.o(i.fputc))
@@ -1097,13 +1095,13 @@ Global Symbols
 <P><STRONG><a name="[a6]"></a>getMeasurementTimingBudget</STRONG> (Thumb, 110 bytes, Stack size 48 bytes, vl53l0x.o(i.getMeasurementTimingBudget))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = getMeasurementTimingBudget &rArr; getSequenceStepTimeouts &rArr; getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
+<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_init
 </UL>
 
-<P><STRONG><a name="[b0]"></a>getSequenceStepEnables</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, vl53l0x.o(i.getSequenceStepEnables))
+<P><STRONG><a name="[af]"></a>getSequenceStepEnables</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, vl53l0x.o(i.getSequenceStepEnables))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = getSequenceStepEnables &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
@@ -1112,14 +1110,14 @@ Global Symbols
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 </UL>
 
-<P><STRONG><a name="[b1]"></a>getSequenceStepTimeouts</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, vl53l0x.o(i.getSequenceStepTimeouts))
+<P><STRONG><a name="[b0]"></a>getSequenceStepTimeouts</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, vl53l0x.o(i.getSequenceStepTimeouts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = getSequenceStepTimeouts &rArr; getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getVcselPulsePeriod
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMclksToMicroseconds
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decodeTimeout
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getVcselPulsePeriod
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMclksToMicroseconds
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decodeTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
@@ -1135,20 +1133,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_init
 </UL>
 
-<P><STRONG><a name="[b2]"></a>getVcselPulsePeriod</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, vl53l0x.o(i.getVcselPulsePeriod))
+<P><STRONG><a name="[b1]"></a>getVcselPulsePeriod</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, vl53l0x.o(i.getVcselPulsePeriod))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
-<P><STRONG><a name="[b6]"></a>get_baseline</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, helpers.o(i.get_baseline))
+<P><STRONG><a name="[b5]"></a>get_baseline</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, helpers.o(i.get_baseline))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = get_baseline &rArr; readRangeSingleMillimeters &rArr; readRangeContinuousMillimeters &rArr; writeReg &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tof_calibrate
 </UL>
@@ -1163,7 +1161,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tof_calibrate
 </UL>
 
-<P><STRONG><a name="[21]"></a>main</STRONG> (Thumb, 382 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[21]"></a>main</STRONG> (Thumb, 366 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = main &rArr; VL53L0X_init &rArr; setMeasurementTimingBudget &rArr; getSequenceStepTimeouts &rArr; getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
@@ -1180,7 +1178,6 @@ Global Symbols
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_test
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tof_calibrate
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_packet
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_battery
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;build_packet_trig
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;build_packet_stat
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_tx_address
@@ -1189,14 +1186,13 @@ Global Symbols
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_config
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_init
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PWR_EnterSTOPMode
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_MspDeInit
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -1397,13 +1393,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
 </UL>
 
-<P><STRONG><a name="[b7]"></a>readRangeSingleMillimeters</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, vl53l0x.o(i.readRangeSingleMillimeters))
+<P><STRONG><a name="[b6]"></a>readRangeSingleMillimeters</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, vl53l0x.o(i.readRangeSingleMillimeters))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = readRangeSingleMillimeters &rArr; readRangeContinuousMillimeters &rArr; writeReg &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
@@ -1411,7 +1407,7 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeContinuousMillimeters
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1420,23 +1416,23 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeContinuousMillimeters
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;performSingleRefCalibration
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getVcselPulsePeriod
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getVcselPulsePeriod
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSpadInfo
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_init
 </UL>
 
-<P><STRONG><a name="[b4]"></a>readReg16Bit</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, vl53l0x.o(i.readReg16Bit))
+<P><STRONG><a name="[b3]"></a>readReg16Bit</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, vl53l0x.o(i.readReg16Bit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = readReg16Bit &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeContinuousMillimeters
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
 <P><STRONG><a name="[c3]"></a>send_packet</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, helpers.o(i.send_packet))
@@ -1446,7 +1442,7 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_retransmissionCount
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_lastMessageStatus
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_isSending
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_test
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1456,8 +1452,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = setMeasurementTimingBudget &rArr; getSequenceStepTimeouts &rArr; getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg16Bit
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepEnables
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMicrosecondsToMclks
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encodeTimeout
 </UL>
@@ -1502,8 +1498,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_trigger_threshold
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1515,7 +1511,7 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_packet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1534,7 +1530,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeSingleMillimeters
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRangeContinuousMillimeters
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;performSingleRefCalibration
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSpadInfo
@@ -1553,20 +1549,20 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[b5]"></a>decodeTimeout</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, vl53l0x.o(i.decodeTimeout))
-<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<P><STRONG><a name="[b4]"></a>decodeTimeout</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, vl53l0x.o(i.decodeTimeout))
+<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
 <P><STRONG><a name="[d7]"></a>encodeTimeout</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, vl53l0x.o(i.encodeTimeout))
 <BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 </UL>
 
-<P><STRONG><a name="[b3]"></a>timeoutMclksToMicroseconds</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, vl53l0x.o(i.timeoutMclksToMicroseconds))
+<P><STRONG><a name="[b2]"></a>timeoutMclksToMicroseconds</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, vl53l0x.o(i.timeoutMclksToMicroseconds))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = timeoutMclksToMicroseconds &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
+<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
 <P><STRONG><a name="[d6]"></a>timeoutMicrosecondsToMclks</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, vl53l0x.o(i.timeoutMicrosecondsToMclks))
@@ -1577,7 +1573,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 </UL>
 
-<P><STRONG><a name="[5d]"></a>MX_ADC_Init</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, main.o(i.MX_ADC_Init))
+<P><STRONG><a name="[5d]"></a>MX_ADC_Init</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, main.o(i.MX_ADC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = MX_ADC_Init &rArr; HAL_ADC_Init &rArr; HAL_ADC_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
@@ -1606,7 +1602,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>MX_RTC_Init</STRONG> (Thumb, 148 bytes, Stack size 80 bytes, main.o(i.MX_RTC_Init))
+<P><STRONG><a name="[94]"></a>MX_RTC_Init</STRONG> (Thumb, 146 bytes, Stack size 80 bytes, main.o(i.MX_RTC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = MX_RTC_Init &rArr; HAL_RTC_SetTime &rArr; RTC_EnterInitMode
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_SetTime

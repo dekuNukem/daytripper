@@ -10,6 +10,7 @@
 #define BASELINE_SAMPLE_SIZE 16
 #define STM32_UUID ((uint32_t *)0x1FFFF7AC)
 
+uint16_t stat_packet_count;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
 
@@ -63,17 +64,21 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
   start_animation(ANIMATION_TYPE_CONST_OFF);
 }
 
-void check_battery(uint8_t* bat_reading, uint8_t* flag)
+void check_battery(uint32_t* vbat_mV, uint8_t* flag)
 {
-  *bat_reading = 255;
+  uint8_t vbat_8b, vrefint;
   HAL_ADC_Start(&hadc);
-  if(HAL_ADC_PollForConversion(&hadc, 100) == HAL_OK)
-    *bat_reading = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 100);
+  vbat_8b = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 100);
+  vrefint = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  printf("vbat = %d\n", *bat_reading);
+
+  *vbat_mV = (1200 / vrefint) * vbat_8b * 2;
   *flag = 1;
+  // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
   return;
-  if(*bat_reading <= 135) // 3.6V
+  if(*vbat_mV <= 3400)
   {
     printf("low battery, shutting down...\n");
 
@@ -116,14 +121,15 @@ void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
   data[5] = this & 0xff;
 }
 
-void build_packet_stat(uint8_t* data, uint8_t bat, uint32_t wakeup)
+void build_packet_stat(uint8_t* data, uint32_t vbat_mV)
 {
   data[0] = *STM32_UUID;
   data[1] = DTPR_CMD_STAT;
-  data[2] = bat;
-  data[3] = (wakeup >> 16) & 0xff;
-  data[4] = (wakeup >> 8) & 0xff;
-  data[5] = wakeup & 0xff;
+  data[2] = (vbat_mV >> 8) & 0xff;;
+  data[3] = vbat_mV & 0xff;
+  data[4] = (stat_packet_count >> 8) & 0xff;
+  data[5] = stat_packet_count & 0xff;
+  stat_packet_count++;
 }
 
 uint8_t send_packet(uint8_t* data)

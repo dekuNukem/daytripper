@@ -72,15 +72,16 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-volatile uint32_t wakeup_count = 1;
+volatile uint32_t wakeup_count;
 uint8_t data_array[NRF_PAYLOAD_SIZE];
 uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, diff_threshold, this_reading;
 int16_t diff;
-uint8_t button_result, bat_reading, new_stat_packet;
+uint8_t button_result, new_stat_packet;
 uint8_t current_state = STATE_IDLE;
+uint32_t vbat_mV;
 
 /* USER CODE END PV */
 
@@ -113,14 +114,14 @@ int fputc(int ch, FILE *f)
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
-  wakeup_count++;
-  if(wakeup_count % 5000 == 0) // 5000 * 0.2 = 16.6 minutes
+  if(wakeup_count % 50 == 0) // 6000 * 0.2 = 20 minutes
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
-    check_battery(&bat_reading, &new_stat_packet);
+    check_battery(&vbat_mV, &new_stat_packet);
     HAL_ADC_MspDeInit(&hadc);
   }
+  wakeup_count++;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -170,9 +171,6 @@ int main(void)
 
   // MX_IWDG_Init(); // where should this go?
   animation_init(&htim17, &htim2);
-  check_battery(&bat_reading, &new_stat_packet);
-  HAL_ADC_MspDeInit(&hadc);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -219,7 +217,7 @@ int main(void)
 
     if(new_stat_packet)
     {
-    	build_packet_stat(data_array, bat_reading, wakeup_count);
+    	build_packet_stat(data_array, vbat_mV);
     	printf("sending stat packet...\n");
     	send_packet(data_array);
     	new_stat_packet = 0;
@@ -233,11 +231,10 @@ int main(void)
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
+    	start_animation(ANIMATION_TYPE_CONST_ON); 
       printf("triggered! base: %d, this: %d\n", baseline, this_reading);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
-      // turn on LED after to reduce PWM noise
-      start_animation(ANIMATION_TYPE_CONST_ON); 
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
@@ -325,10 +322,10 @@ static void MX_ADC_Init(void)
   hadc.Init.Resolution = ADC_RESOLUTION_8B;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc.Init.ScanConvMode = ADC_SCAN_DIRECTION_FORWARD;
-  hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc.Init.LowPowerAutoWait = DISABLE;
   hadc.Init.LowPowerAutoPowerOff = DISABLE;
-  hadc.Init.ContinuousConvMode = DISABLE;
+  hadc.Init.ContinuousConvMode = ENABLE;
   hadc.Init.DiscontinuousConvMode = DISABLE;
   hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
@@ -344,6 +341,14 @@ static void MX_ADC_Init(void)
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
   sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**Configure for the selected ADC regular channel to be converted. 
+    */
+  sConfig.Channel = ADC_CHANNEL_VREFINT;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -420,8 +425,8 @@ static void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 26;
-  hrtc.Init.SynchPrediv = 4;
+  hrtc.Init.AsynchPrediv = 125;
+  hrtc.Init.SynchPrediv = 0;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
   hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;

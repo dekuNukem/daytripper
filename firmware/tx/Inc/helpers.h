@@ -17,12 +17,12 @@
 #define NRF_CHANNEL 115
 
 uint16_t get_baseline(void);
-void check_battery(uint8_t* bat_reading, uint8_t* flag);
+void check_battery(uint32_t* bat_reading, uint8_t* flag);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
 void tof_calibrate(uint16_t* base, uint16_t* threshold);
 void tx_test(void);
 uint8_t send_packet(uint8_t* data);
-void build_packet_stat(uint8_t* data, uint8_t bat, uint32_t wakeup);
+void build_packet_stat(uint8_t* data, uint32_t vbat);
 
 #ifdef __cplusplus
 }

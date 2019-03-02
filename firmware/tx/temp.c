@@ -17,7 +17,45 @@ it is the NRF chip thats causing the excess current consumption!!
 
 */
 
+/*
+
+hrtc.Init.AsynchPrediv = 26;
+hrtc.Init.SynchPrediv = 4;
+period = 0.2118s
+
+hrtc.Init.AsynchPrediv = 16;
+hrtc.Init.SynchPrediv = 4;
+peroid = 0.1333
+
+hrtc.Init.AsynchPrediv = 32;
+hrtc.Init.SynchPrediv = 2;
+peroid = 0.1555
+
+hrtc.Init.AsynchPrediv = 64;
+hrtc.Init.SynchPrediv = 0;
+peroid = 0.102
+
+hrtc.Init.AsynchPrediv = 96;
+hrtc.Init.SynchPrediv = 0;
+period = 0.1552
+
+hrtc.Init.AsynchPrediv = 120;
+hrtc.Init.SynchPrediv = 0;
+period = 0.1898
+
+hrtc.Init.AsynchPrediv = 127;
+hrtc.Init.SynchPrediv = 0;
+period = 0.2008
+
+hrtc.Init.AsynchPrediv = 125;
+hrtc.Init.SynchPrediv = 0;
+period = 0.1976ms
+*/
+
 printf("sending stat packet...\n");
+  for (int i = 0; i < 6; ++i)
+    printf("0x%x ", data[i]);
+  printf("\n");
       for (int i = 0; i < 6; ++i)
         printf("%d ", data_array[i]);
       printf("\n");
