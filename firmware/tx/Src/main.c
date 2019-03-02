@@ -179,7 +179,7 @@ int main(void)
   // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(20000);
+  setMeasurementTimingBudget(25000);
   
   printf("initializing NRF...\n");
   nrf24_init();

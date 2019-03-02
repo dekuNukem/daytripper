@@ -83,6 +83,8 @@ uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, this_reading, vbat_mV, stat_count;
+uint8_t rx_avaliable;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -117,6 +119,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 uint16_t eight2sixteen(uint8_t msb, uint8_t lsb)
 {
   return (msb << 8) | lsb;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  rx_avaliable = 1;
 }
 
 /* USER CODE END 0 */
@@ -185,7 +192,10 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    if(nrf24_dataReady())
+    if(!rx_avaliable)
+      continue;
+
+    while(nrf24_dataReady())
     {
       start_animation(ANIMATION_TYPE_DOUBLEFLASH);
       nrf24_getData(received_data);
@@ -200,22 +210,22 @@ int main(void)
         press_keys(get_slide_sw_pos());
         baseline = eight2sixteen(received_data[2], received_data[3]);
         this_reading = eight2sixteen(received_data[4], received_data[5]);
-        printf("trigger packet, base: %d, this: %d\n", baseline, this_reading);
+        printf("cmd type: trigger\nbase: %d, this: %d\n", baseline, this_reading);
       }
 
       else if(received_data[1] == DTPR_CMD_STAT)
       {
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
         stat_count = eight2sixteen(received_data[4], received_data[5]);
-        printf("status packet, vbat_mV: %d, stat_count: %d\n", vbat_mV, stat_count);
+        printf("cmd type: status\nvbat_mV: %d, stat_count: %d\n", vbat_mV, stat_count);
       }
 
       else if(received_data[1] == DTPR_CMD_TEST)
-        printf("test packet \n");
+        printf("cmd type: test\n");
 
       printf("\n");
     }
-    
+    rx_avaliable = 0;
   }
   /* USER CODE END 3 */
 
@@ -410,11 +420,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(SW_D_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW_B_Pin PCB_JUMPER_Pin */
-  GPIO_InitStruct.Pin = SW_B_Pin|PCB_JUMPER_Pin;
+  /*Configure GPIO pin : SW_B_Pin */
+  GPIO_InitStruct.Pin = SW_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(SW_B_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : NRF_IRQ_Pin */
+  GPIO_InitStruct.Pin = NRF_IRQ_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(NRF_IRQ_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;
@@ -429,6 +445,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(NRF_CE_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 
 }
 

@@ -1,3 +1,5 @@
+printf("cmd type: trigger\nbase: %d, this: %d\n, switch: %d", baseline, this_reading, get_slide_sw_pos());
+
 for (int i = 0; i < 6; ++i)
         printf("%d ", received_data[i]);
       printf("\n");

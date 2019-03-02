@@ -65,8 +65,9 @@
 #define SW_D_GPIO_Port GPIOF
 #define SW_B_Pin GPIO_PIN_0
 #define SW_B_GPIO_Port GPIOA
-#define PCB_JUMPER_Pin GPIO_PIN_1
-#define PCB_JUMPER_GPIO_Port GPIOA
+#define NRF_IRQ_Pin GPIO_PIN_1
+#define NRF_IRQ_GPIO_Port GPIOA
+#define NRF_IRQ_EXTI_IRQn EXTI0_1_IRQn
 #define SPI1_CS_Pin GPIO_PIN_3
 #define SPI1_CS_GPIO_Port GPIOA
 #define NRF_CE_Pin GPIO_PIN_1
