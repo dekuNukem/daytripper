@@ -39,6 +39,10 @@ void animation_update(void)
   {
     pwm_timer->Instance->CCR1 = doubleflash_lookup[curr_frame];
   }
+  else if(current_animation == ANIMATION_TYPE_BLINK)
+  {
+    pwm_timer->Instance->CCR1 = doubleflash_lookup[curr_frame % 16];
+  }
   else
   {
     pwm_timer->Instance->CCR1 = 3;

@@ -179,7 +179,10 @@ int main(void)
   // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(25000);
+  // setSignalRateLimit(0.1);
+  // setVcselPulsePeriod(VcselPeriodPreRange, 18);
+  // setVcselPulsePeriod(VcselPeriodFinalRange, 14);
+  setMeasurementTimingBudget(20000);
   
   printf("initializing NRF...\n");
   nrf24_init();
@@ -217,21 +220,24 @@ int main(void)
 
     if(new_stat_packet)
     {
-    	build_packet_stat(data_array, vbat_mV);
-    	printf("sending stat packet...\n");
-    	send_packet(data_array);
-    	new_stat_packet = 0;
+      build_packet_stat(data_array, vbat_mV);
+      printf("sending stat packet...\n");
+      send_packet(data_array);
+      new_stat_packet = 0;
     }
 
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
-    if(this_reading <= 10)
-    	goto sleep;
+    if(this_reading <= 10 || this_reading > 10000)
+    {
+      printf("invalid reading: %d\n", this_reading);
+      goto sleep;
+    }
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
-    	start_animation(ANIMATION_TYPE_CONST_ON); 
+      start_animation(ANIMATION_TYPE_CONST_ON); 
       printf("triggered! base: %d, this: %d\n", baseline, this_reading);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);

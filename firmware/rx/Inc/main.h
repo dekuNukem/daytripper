@@ -61,6 +61,7 @@
 
 #define USER_BUTTON_Pin GPIO_PIN_8
 #define USER_BUTTON_GPIO_Port GPIOB
+#define USER_BUTTON_EXTI_IRQn EXTI4_15_IRQn
 #define SW_D_Pin GPIO_PIN_0
 #define SW_D_GPIO_Port GPIOF
 #define SW_B_Pin GPIO_PIN_0

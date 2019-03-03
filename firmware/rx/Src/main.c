@@ -65,6 +65,8 @@
 
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
+
+#define PRINT_BUF_SIZE 128
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -81,9 +83,9 @@ uint8_t nrf_status;
 uint8_t received_data[NRF_PAYLOAD_SIZE];
 uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
-
+char print_buf[PRINT_BUF_SIZE];
 uint16_t baseline, this_reading, vbat_mV, stat_count;
-uint8_t rx_avaliable;
+uint8_t rx_avaliable, button_pressed;
 
 /* USER CODE END PV */
 
@@ -123,7 +125,21 @@ uint16_t eight2sixteen(uint8_t msb, uint8_t lsb)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  rx_avaliable = 1;
+  if(GPIO_Pin == NRF_IRQ_Pin)
+    rx_avaliable = 1;
+  else if(GPIO_Pin == USER_BUTTON_Pin)
+    button_pressed = 1;
+}
+
+void print_status(void)
+{
+  if(button_pressed == 0)
+    return;
+  memset(print_buf, 0, PRINT_BUF_SIZE);
+  sprintf(print_buf, "\ntransmitter ID: 0x%x\nbaseline: %dmm\nlast trigger distance: %dmm\ninput voltage: %dmV\npower-on time: %d minutes\n", received_data[0], baseline, this_reading, vbat_mV, stat_count * 20);
+  kb_print(print_buf, 20);
+  keyboard_release_all();
+  button_pressed = 0;
 }
 
 /* USER CODE END 0 */
@@ -192,6 +208,8 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    print_status();
+
     if(!rx_avaliable)
       continue;
 
@@ -218,6 +236,11 @@ int main(void)
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
         stat_count = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: status\nvbat_mV: %d, stat_count: %d\n", vbat_mV, stat_count);
+        if(vbat_mV < 3500)
+        {
+          printf("LOW BATTERY!!!!!!\n");
+          start_animation(ANIMATION_TYPE_BLINK);
+        }
       }
 
       else if(received_data[1] == DTPR_CMD_TEST)
@@ -410,7 +433,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : USER_BUTTON_Pin */
   GPIO_InitStruct.Pin = USER_BUTTON_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
@@ -449,6 +472,9 @@ static void MX_GPIO_Init(void)
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_15_IRQn, 2, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
 
