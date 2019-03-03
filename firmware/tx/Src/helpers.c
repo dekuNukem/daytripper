@@ -78,7 +78,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   *flag = 1;
   // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
   return;
-  if(*vbat_mV <= 3400)
+  if(*vbat_mV <= 3200)
   {
     printf("low battery, shutting down...\n");
 

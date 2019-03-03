@@ -114,7 +114,7 @@ int fputc(int ch, FILE *f)
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
-  if(wakeup_count % 50 == 0) // 6000 * 0.2 = 20 minutes
+  if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
@@ -229,7 +229,7 @@ int main(void)
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
-    if(this_reading <= 10 || this_reading > 10000)
+    if(this_reading <= 10 || this_reading > 8200)
     {
       printf("invalid reading: %d\n", this_reading);
       goto sleep;
