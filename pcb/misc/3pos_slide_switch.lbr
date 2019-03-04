@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
@@ -1801,8 +1801,8 @@ Metric Code Size 5664</description>
 <wire x1="-2.2" y1="7" x2="7.3" y2="7" width="0.2032" layer="21"/>
 <wire x1="7.3" y1="-7" x2="-2.2" y2="-7" width="0.2032" layer="21"/>
 <pad name="PLUS" x="0" y="0" drill="1.95"/>
-<text x="12" y="0.4" size="3.81" layer="21" align="center">+</text>
-<text x="35" y="0.4" size="3.81" layer="21" align="center">-</text>
+<text x="3.491" y="0.4" size="3.81" layer="21" align="center">+</text>
+<text x="44.017" y="0.4" size="3.81" layer="21" align="center">-</text>
 <pad name="PLUS1" x="7" y="0" drill="1.95"/>
 <pad name="MINUS" x="40.5" y="0" drill="1.95"/>
 <pad name="MINUS1" x="47.5" y="0" drill="1.95"/>
@@ -1823,7 +1823,6 @@ chip</description>
 <package name="M2_SCREW_FOOT">
 <hole x="0" y="0" drill="2.3"/>
 <circle x="0" y="0" radius="1.6" width="0.127" layer="51"/>
-<circle x="0" y="0" radius="2.828" width="0.127" layer="51"/>
 </package>
 </packages>
 <packages3d>
