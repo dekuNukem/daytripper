@@ -15,6 +15,9 @@
 
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
+ 	
+#define NRF_ON() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET)
+#define NRF_OFF() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET)
 
 uint16_t get_baseline(void);
 void check_battery(uint32_t* bat_reading, uint8_t* flag);
@@ -22,7 +25,7 @@ void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
 void tof_calibrate(uint16_t* base, uint16_t* threshold);
 void tx_test(void);
 uint8_t send_packet(uint8_t* data);
-void build_packet_stat(uint8_t* data, uint32_t vbat);
+void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);
 
 #ifdef __cplusplus
 }

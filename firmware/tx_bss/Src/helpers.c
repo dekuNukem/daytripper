@@ -8,11 +8,27 @@
 #include "nrf24.h"
 
 #define BASELINE_SAMPLE_SIZE 16
+#define CHOP_SIZE 3
 #define STM32_UUID ((uint32_t *)0x1FFFF7AC)
 
-uint16_t stat_packet_count;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
+
+void swap(uint16_t *xp, uint16_t *yp) 
+{ 
+    uint16_t temp = *xp; 
+    *xp = *yp; 
+    *yp = temp; 
+} 
+
+void bubbleSort(uint16_t arr[], uint16_t n) 
+{ 
+   uint16_t i, j; 
+   for (i = 0; i < n-1; i++)       
+       for (j = 0; j < n-i-1; j++)  
+           if (arr[j] > arr[j+1]) 
+              swap(&arr[j], &arr[j+1]); 
+} 
 
 uint16_t get_baseline(void)
 {
@@ -22,16 +38,20 @@ uint16_t get_baseline(void)
     for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
     {
       baseline_data[i] = readRangeSingleMillimeters();
-      mean += baseline_data[i];
       // HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
-    mean /= BASELINE_SAMPLE_SIZE;
+
+    bubbleSort(baseline_data, BASELINE_SAMPLE_SIZE);
+
+    for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
+      mean += baseline_data[i];
+    mean /= (BASELINE_SAMPLE_SIZE - CHOP_SIZE * 2);
 
     uint32_t variance = 0;
-    for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+    for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
       variance += (baseline_data[i] - mean) * (baseline_data[i] - mean);
-    variance /= BASELINE_SAMPLE_SIZE;
+    variance /= (BASELINE_SAMPLE_SIZE - CHOP_SIZE * 2);
 
     if(variance <= 300)
     {
@@ -40,7 +60,7 @@ uint16_t get_baseline(void)
     }
     
     printf("calibration failed - variance too large: %d, samples:\n", variance);
-    for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+    for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
       printf("%d ", baseline_data[i]);
     printf("\n");
   }
@@ -79,14 +99,13 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
 
   *vbat_mV = (1200 / vrefint) * vbat_8b * 2;
   *flag = 1;
-  // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
-  return;
-  if(*vbat_mV <= 3200)
+  printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+  if(*vbat_mV <= 2900)
   {
     printf("low battery, shutting down...\n");
 
     start_animation(ANIMATION_TYPE_FASTBLINK);
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 6; i++)
     {
       // HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(500);
@@ -94,6 +113,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
     start_animation(ANIMATION_TYPE_CONST_OFF);
 
     // turn off external chips
+    nrf24_powerDown();
     HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
@@ -124,35 +144,27 @@ void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
   data[5] = this & 0xff;
 }
 
-void build_packet_stat(uint8_t* data, uint32_t vbat_mV)
+void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot)
 {
   data[0] = *STM32_UUID;
   data[1] = DTPR_CMD_STAT;
   data[2] = (vbat_mV >> 8) & 0xff;;
   data[3] = vbat_mV & 0xff;
-  data[4] = (stat_packet_count >> 8) & 0xff;
-  data[5] = stat_packet_count & 0xff;
-  stat_packet_count++;
+  data[4] = (pot >> 8) & 0xff;
+  data[5] = pot & 0xff;
 }
 
 uint8_t send_packet(uint8_t* data)
 {
-  HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET);
-  uint8_t ret;
   nrf24_send(data);
   while(nrf24_isSending());
   if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
   {
     printf("TX OK, retry: %d\n",nrf24_retransmissionCount());
-    ret = 0;
+    return 0;
   }
-  else
-  {
-    printf("TX failed\n");
-    ret = 1;
-  }
-  HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET);
-  return ret;
+  printf("TX failed\n");
+  return 1;
 }
 
 void tx_test(void)

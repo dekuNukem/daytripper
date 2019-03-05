@@ -51,7 +51,12 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
-
+printf("mean: %d, variance: %d\n", mean, variance);
+    while(1);
+    for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
+      printf("%d ", baseline_data[i]);
+    printf("\n");
+printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 printf("sending stat packet...\n");
   for (int i = 0; i < 6; ++i)
     printf("0x%x ", data[i]);
@@ -59,6 +64,9 @@ printf("sending stat packet...\n");
       for (int i = 0; i < 6; ++i)
         printf("%d ", data_array[i]);
       printf("\n");
+  // setSignalRateLimit(0.1);
+  // setVcselPulsePeriod(VcselPeriodPreRange, 18);
+  // setVcselPulsePeriod(VcselPeriodFinalRange, 14);
 /*
 hrtc.Init.AsynchPrediv = 32;
 hrtc.Init.SynchPrediv = 4;

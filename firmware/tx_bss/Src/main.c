@@ -82,6 +82,7 @@ int16_t diff;
 uint8_t button_result, new_stat_packet;
 uint8_t current_state = STATE_IDLE;
 uint32_t vbat_mV;
+uint16_t power_on_time_5s;
 
 /* USER CODE END PV */
 
@@ -121,6 +122,8 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
     check_battery(&vbat_mV, &new_stat_packet);
     HAL_ADC_MspDeInit(&hadc);
   }
+  if(wakeup_count % 25 == 0) // 25 * 0.2 = 5 seconds
+    power_on_time_5s++;
   wakeup_count++;
 }
 
@@ -169,8 +172,11 @@ int main(void)
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
 
-  // MX_IWDG_Init(); // where should this go?
   animation_init(&htim17, &htim2);
+  check_battery(&vbat_mV, &new_stat_packet);
+  HAL_ADC_MspDeInit(&hadc);
+
+  // MX_IWDG_Init(); // where should this go?
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -179,14 +185,13 @@ int main(void)
   // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
-  // setSignalRateLimit(0.1);
-  // setVcselPulsePeriod(VcselPeriodPreRange, 18);
-  // setVcselPulsePeriod(VcselPeriodFinalRange, 14);
   setMeasurementTimingBudget(33000);
 
   // turn on the chip and charge up the capacitors
-  HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET);
-  HAL_Delay(100);
+  NRF_OFF();
+  HAL_Delay(50);
+  NRF_ON();
+  HAL_Delay(50);
   
   printf("initializing NRF...\n");
   nrf24_init();
@@ -198,19 +203,16 @@ int main(void)
   tof_calibrate(&baseline, &diff_threshold);
 
   start_animation(ANIMATION_TYPE_CONST_OFF);
-  MX_RTC_Init();
+  
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-
-  HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET);
+  MX_RTC_Init();
   while (1)
   {
-
+    // HAL_IWDG_Refresh(&hiwdg);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    // HAL_IWDG_Refresh(&hiwdg);
-
     button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), wakeup_count);
     if(button_result == 1)
     {
@@ -225,7 +227,7 @@ int main(void)
 
     if(new_stat_packet)
     {
-      build_packet_stat(data_array, vbat_mV);
+      build_packet_stat(data_array, vbat_mV, power_on_time_5s);
       printf("sending stat packet...\n");
       send_packet(data_array);
       new_stat_packet = 0;
@@ -255,6 +257,7 @@ int main(void)
     }
 
     sleep:
+    nrf24_powerDown();
     HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   }
   /* USER CODE END 3 */
@@ -501,7 +504,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -636,12 +639,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : NRF_VCC_Pin NRF_CE_Pin */
-  GPIO_InitStruct.Pin = NRF_VCC_Pin|NRF_CE_Pin;
+  /*Configure GPIO pin : NRF_VCC_Pin */
+  GPIO_InitStruct.Pin = NRF_VCC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(NRF_VCC_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : NRF_CE_Pin */
+  GPIO_InitStruct.Pin = NRF_CE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(NRF_CE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;
