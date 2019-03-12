@@ -51,6 +51,15 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+
+void iwdg_wait(uint32_t msec, uint8_t ani_type)
+{
+  start_animation(ani_type);
+  uint32_t start = HAL_GetTick();
+  while(HAL_GetTick() - start <= msec)
+    HAL_IWDG_Refresh(&hiwdg);
+}
+
 printf("mean: %d, variance: %d\n", mean, variance);
     while(1);
     for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)

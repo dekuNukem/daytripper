@@ -70,6 +70,8 @@
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+IWDG_HandleTypeDef hiwdg;
+
 SPI_HandleTypeDef hspi1;
 
 TIM_HandleTypeDef htim14;
@@ -84,7 +86,7 @@ uint8_t received_data[NRF_PAYLOAD_SIZE];
 uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 char print_buf[PRINT_BUF_SIZE];
-uint16_t baseline, this_reading, vbat_mV, stat_count;
+uint16_t baseline, this_reading, vbat_mV, power_on_time;
 uint8_t rx_avaliable, button_pressed;
 
 /* USER CODE END PV */
@@ -96,7 +98,8 @@ static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_TIM17_Init(void);
 static void MX_TIM14_Init(void);
-                                    
+static void MX_IWDG_Init(void);
+
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                                 
 
@@ -136,7 +139,7 @@ void print_status(void)
   if(button_pressed == 0)
     return;
   memset(print_buf, 0, PRINT_BUF_SIZE);
-  sprintf(print_buf, "\ntransmitter ID: 0x%x\nbaseline: %dmm\nlast trigger distance: %dmm\ninput voltage: %dmV\npower-on time: %d minutes\n", received_data[0], baseline, this_reading, vbat_mV, stat_count * 20);
+  sprintf(print_buf, "\ntransmitter ID: 0x%x\nbaseline: %dmm\nlatest trigger: %dmm\ninput voltage: %dmV\npower-on time: %d minutes\n", received_data[0], baseline, this_reading, vbat_mV, power_on_time * 5 / 60);
   kb_print(print_buf, 20);
   keyboard_release_all();
   button_pressed = 0;
@@ -175,19 +178,15 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI1_Init();
-  MX_USB_DEVICE_Init();
   MX_TIM17_Init();
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
-
+  MX_IWDG_Init();
   animation_init(&htim17, &htim14);
-  start_animation(ANIMATION_TYPE_BREATHING);
 
-  for (int i = 0; i < 4; i++)
-  {
-    // HAL_IWDG_Refresh(&hiwdg);
-    HAL_Delay(500);
-  }
+  printf("\n\ndaytripper RX\ndekuNukem 2019\n\n");
+  iwdg_wait(2000, ANIMATION_TYPE_BREATHING);
+  MX_USB_DEVICE_Init();
 
   printf("initializing NRF...\n");
   nrf24_init();
@@ -208,6 +207,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+  	HAL_IWDG_Refresh(&hiwdg);
     print_status();
 
     if(!rx_avaliable)
@@ -234,9 +234,9 @@ int main(void)
       else if(received_data[1] == DTPR_CMD_STAT)
       {
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
-        stat_count = eight2sixteen(received_data[4], received_data[5]);
-        printf("cmd type: status\nvbat_mV: %d, stat_count: %d\n", vbat_mV, stat_count);
-        if(vbat_mV < 3500)
+        power_on_time = eight2sixteen(received_data[4], received_data[5]);
+        printf("cmd type: status\nvbat_mV: %d, power-on time: %d minutes\n", vbat_mV, power_on_time * 5 / 60);
+        if(vbat_mV <= 3000)
         {
           printf("LOW BATTERY!!!!!!\n");
           start_animation(ANIMATION_TYPE_BLINK);
@@ -246,7 +246,7 @@ int main(void)
       else if(received_data[1] == DTPR_CMD_TEST)
         printf("cmd type: test\n");
 
-      printf("\n");
+      printf("\n\n");
     }
     rx_avaliable = 0;
   }
@@ -267,8 +267,9 @@ void SystemClock_Config(void)
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -306,6 +307,21 @@ void SystemClock_Config(void)
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+/* IWDG init function */
+static void MX_IWDG_Init(void)
+{
+
+  hiwdg.Instance = IWDG;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_8;
+  hiwdg.Init.Window = 4095;
+  hiwdg.Init.Reload = 4095;
+  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
 }
 
 /* SPI1 init function */

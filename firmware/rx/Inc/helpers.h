@@ -14,6 +14,7 @@
 
 uint8_t get_slide_sw_pos(void);
 void press_keys(uint8_t index);
+void iwdg_wait(uint32_t msec, uint8_t ani_type);
 
 #ifdef __cplusplus
 }

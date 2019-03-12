@@ -8,6 +8,7 @@
 #define ANIMATION_TYPE_BREATHING 2
 #define ANIMATION_TYPE_DOUBLEFLASH 3
 #define ANIMATION_TYPE_BLINK 4
+#define ANIMATION_TYPE_NOCHANGE 255
 
 void animation_init(TIM_HandleTypeDef* frame_tim, TIM_HandleTypeDef* pwm_tim);
 void animation_update(void);

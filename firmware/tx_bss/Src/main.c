@@ -72,7 +72,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-volatile uint32_t wakeup_count;
+volatile uint32_t wakeup_count = 1;
 uint8_t data_array[NRF_PAYLOAD_SIZE];
 uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
@@ -171,45 +171,45 @@ int main(void)
   MX_TIM17_Init();
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
-
+  printf("\n\ndaytripper TX\ndekuNukem 2019\n\n");
   animation_init(&htim17, &htim2);
+  start_animation(ANIMATION_TYPE_BREATHING);
+  HAL_Delay(2000);
   check_battery(&vbat_mV, &new_stat_packet);
   HAL_ADC_MspDeInit(&hadc);
 
-  // MX_IWDG_Init(); // where should this go?
+  MX_IWDG_Init(); // this should be behind check_battery, so it can completely shut down in low battery situation
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  // HAL_IWDG_Refresh(&hiwdg);
   VL53L0X_init();
   setTimeout(500);
   setMeasurementTimingBudget(33000);
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();
-  HAL_Delay(50);
+  iwdg_wait(100, ANIMATION_TYPE_NOCHANGE);
   NRF_ON();
-  HAL_Delay(50);
+  iwdg_wait(100, ANIMATION_TYPE_NOCHANGE);
   
   printf("initializing NRF...\n");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
   nrf24_tx_address(tx_address);
   nrf24_rx_address(rx_address);
+  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
   printf("done\n");
 
   tof_calibrate(&baseline, &diff_threshold);
-
   start_animation(ANIMATION_TYPE_CONST_OFF);
   
-  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
   MX_RTC_Init();
   while (1)
   {
-    // HAL_IWDG_Refresh(&hiwdg);
+    HAL_IWDG_Refresh(&hiwdg);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -236,7 +236,7 @@ int main(void)
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
-    if(this_reading <= 10 || this_reading > 8200)
+    if(this_reading <= 10 || this_reading > 8190)
     {
       printf("invalid reading: %d\n", this_reading);
       goto sleep;

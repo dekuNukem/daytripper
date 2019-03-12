@@ -47,7 +47,8 @@ void animation_update(void)
 
 void start_animation(uint8_t ani_type)
 {
-  current_animation = ani_type;
+  if(ani_type != ANIMATION_TYPE_NOCHANGE)
+    current_animation = ani_type;
 }
 
 

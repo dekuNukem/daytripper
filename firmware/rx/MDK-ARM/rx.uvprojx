@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F042x6</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;              ../Drivers/STM32F0xx_HAL_Driver/Inc;              ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;              ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;              ../Drivers/CMSIS/Include;        ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;        ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</IncludePath>
+              <IncludePath>../Inc;               ../Drivers/STM32F0xx_HAL_Driver/Inc;               ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;               ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;               ../Drivers/CMSIS/Include;         ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;         ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -490,6 +490,11 @@
               <FileName>stm32f0xx_hal_pcd_ex.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pcd_ex.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_hal_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_iwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f0xx_hal_spi.c</FileName>

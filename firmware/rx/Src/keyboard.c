@@ -4,6 +4,7 @@
 #include "usb_device.h"
 #include "usbd_hid.h"
 #include "keyboard.h"
+#include "shared.h"
 
 #define SHIFT 0x80
 const uint8_t _asciimap[128] =
@@ -244,12 +245,16 @@ void keyboard_release(uint8_t k)
 
 void kb_print(char* msg, uint16_t chardelay)
 {
+  HAL_IWDG_Refresh(&hiwdg);
   for (int i = 0; i < strlen(msg); ++i)
   {
     keyboard_press(msg[i], 1);
     HAL_Delay(chardelay);
+    HAL_IWDG_Refresh(&hiwdg);
+    
     keyboard_release(msg[i]);
     HAL_Delay(chardelay);
+    HAL_IWDG_Refresh(&hiwdg);
   }
 }
 

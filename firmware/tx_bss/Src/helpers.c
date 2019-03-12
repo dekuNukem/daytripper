@@ -28,7 +28,7 @@ void bubbleSort(uint16_t arr[], uint16_t n)
        for (j = 0; j < n-i-1; j++)  
            if (arr[j] > arr[j+1]) 
               swap(&arr[j], &arr[j+1]); 
-} 
+}
 
 uint16_t get_baseline(void)
 {
@@ -38,7 +38,7 @@ uint16_t get_baseline(void)
     for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
     {
       baseline_data[i] = readRangeSingleMillimeters();
-      // HAL_IWDG_Refresh(&hiwdg);
+      HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
 
@@ -72,21 +72,23 @@ uint16_t get_trigger_threshold(uint16_t baseline)
   return 0.333*baseline;
 }
 
+void iwdg_wait(uint32_t msec, uint8_t ani_type)
+{
+  start_animation(ani_type);
+  uint32_t start = HAL_GetTick();
+  while(HAL_GetTick() - start <= msec)
+    HAL_IWDG_Refresh(&hiwdg);
+}
+
 void tof_calibrate(uint16_t* base, uint16_t* threshold)
 {
-  start_animation(ANIMATION_TYPE_BREATHING);
-  for (int i = 0; i < 4; i++)
-  {
-    // HAL_IWDG_Refresh(&hiwdg);
-    HAL_Delay(500);
-  }
   printf("calibrating...\n");
   *base = get_baseline();
   *threshold = get_trigger_threshold(*base);
   printf("done!\n");
-  start_animation(ANIMATION_TYPE_CONST_OFF);
 }
 
+// put this before IWDG_init so it can turn off after reset?
 void check_battery(uint32_t* vbat_mV, uint8_t* flag)
 {
   uint8_t vbat_8b, vrefint;
@@ -100,20 +102,18 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   *vbat_mV = (1200 / vrefint) * vbat_8b * 2;
   *flag = 1;
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+
   if(*vbat_mV <= 2900)
   {
     printf("low battery, shutting down...\n");
 
     start_animation(ANIMATION_TYPE_FASTBLINK);
-    for (int i = 0; i < 6; i++)
-    {
-      // HAL_IWDG_Refresh(&hiwdg);
-      HAL_Delay(500);
-    }
+    HAL_Delay(3000);
     start_animation(ANIMATION_TYPE_CONST_OFF);
 
     // turn off external chips
     nrf24_powerDown();
+    NRF_OFF();
     HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
@@ -178,17 +178,17 @@ void tx_test(void)
     start_animation(ANIMATION_TYPE_CONST_ON);
     memset(test_data+2, count, 4);
     for (int i = 0; i < 6; ++i)
-      printf("%d ", test_data[i]);
+      printf("0x%x ", test_data[i]);
     printf("\n");
     count++;
     send_packet(test_data);
-    HAL_Delay(150);
+    iwdg_wait(150, ANIMATION_TYPE_NOCHANGE);
     start_animation(ANIMATION_TYPE_CONST_OFF);
 
     if(count > 5 && HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin))
       return;
 
-    HAL_Delay(850);
+    iwdg_wait(850, ANIMATION_TYPE_NOCHANGE);
   }
 }
 

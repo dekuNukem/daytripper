@@ -26,6 +26,7 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold);
 void tx_test(void);
 uint8_t send_packet(uint8_t* data);
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);
+void iwdg_wait(uint32_t msec, uint8_t ani_type);
 
 #ifdef __cplusplus
 }
