@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
@@ -223,24 +223,24 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 </package>
 <package name="1X05">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<pad name="1" x="-5.08" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="2" x="-2.54" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="3" x="0" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="4" x="2.54" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="5" x="5.08" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
+<pad name="1" x="-5.08" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="2" x="-2.54" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="3" x="0" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="4" x="2.54" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="5" x="5.08" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
 <text x="-6.4262" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
 <package name="1X03">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<pad name="1" x="-2.54" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="2" x="0" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="3" x="2.54" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
+<pad name="1" x="-2.54" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="2" x="0" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
 <text x="-3.8862" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
 <package name="1X02">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<pad name="1" x="-1.27" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
-<pad name="2" x="1.27" y="0" drill="1.65" diameter="1.7" shape="long" rot="R90"/>
+<pad name="1" x="-1.27" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
 <text x="-2.6162" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
 <package name="AAAWTF">
@@ -1798,20 +1798,20 @@ Metric Code Size 5664</description>
 <rectangle x1="2.2" y1="-3.15" x2="2.8" y2="3.15" layer="51"/>
 </package>
 <package name="AA_FOOT">
-<wire x1="-2.2" y1="7" x2="7.3" y2="7" width="0.2032" layer="21"/>
-<wire x1="7.3" y1="-7" x2="-2.2" y2="-7" width="0.2032" layer="21"/>
+<wire x1="-2.2" y1="7" x2="7.3" y2="7" width="0.2032" layer="51"/>
+<wire x1="7.3" y1="-7" x2="-2.2" y2="-7" width="0.2032" layer="51"/>
 <pad name="PLUS" x="0" y="0" drill="1.95"/>
-<text x="3.491" y="0.4" size="3.81" layer="21" align="center">+</text>
-<text x="44.017" y="0.4" size="3.81" layer="21" align="center">-</text>
+<text x="3" y="0.4" size="3.81" layer="21" align="center">+</text>
+<text x="44.5" y="0.4" size="3.81" layer="21" align="center">-</text>
 <pad name="PLUS1" x="7" y="0" drill="1.95"/>
 <pad name="MINUS" x="40.5" y="0" drill="1.95"/>
 <pad name="MINUS1" x="47.5" y="0" drill="1.95"/>
-<wire x1="-2.2" y1="-7" x2="-2.2" y2="7" width="0.2032" layer="21"/>
-<wire x1="7.3" y1="7" x2="7.3" y2="-7" width="0.2032" layer="21"/>
-<wire x1="49.7" y1="7" x2="49.7" y2="-7" width="0.2032" layer="21"/>
-<wire x1="40.2" y1="7" x2="40.2" y2="-7" width="0.2032" layer="21"/>
-<wire x1="49.7" y1="-7" x2="40.2" y2="-7" width="0.2032" layer="21"/>
-<wire x1="49.7" y1="7" x2="40.2" y2="7" width="0.2032" layer="21"/>
+<wire x1="-2.2" y1="-7" x2="-2.2" y2="7" width="0.2032" layer="51"/>
+<wire x1="7.3" y1="7" x2="7.3" y2="-7" width="0.2032" layer="51"/>
+<wire x1="49.7" y1="7" x2="49.7" y2="-7" width="0.2032" layer="51"/>
+<wire x1="40.2" y1="7" x2="40.2" y2="-7" width="0.2032" layer="51"/>
+<wire x1="49.7" y1="-7" x2="40.2" y2="-7" width="0.2032" layer="51"/>
+<wire x1="49.7" y1="7" x2="40.2" y2="7" width="0.2032" layer="51"/>
 </package>
 <package name="GPS1003_FOOT">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
@@ -2022,32 +2022,6 @@ chip</description>
 <connect gate="G$1" pin="3" pad="P$3"/>
 <connect gate="G$1" pin="4" pad="P$4"/>
 </connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="POGO-1X8" prefix="JP" uservalue="yes">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<gates>
-<gate name="A" symbol="PINHD8" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="1X08">
-<connects>
-<connect gate="A" pin="1" pad="1"/>
-<connect gate="A" pin="2" pad="2"/>
-<connect gate="A" pin="3" pad="3"/>
-<connect gate="A" pin="4" pad="4"/>
-<connect gate="A" pin="5" pad="5"/>
-<connect gate="A" pin="6" pad="6"/>
-<connect gate="A" pin="7" pad="7"/>
-<connect gate="A" pin="8" pad="8"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:22409/2"/>
-</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>

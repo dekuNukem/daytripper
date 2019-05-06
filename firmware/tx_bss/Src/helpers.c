@@ -99,7 +99,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   vrefint = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
 
-  *vbat_mV = (1200 / vrefint) * vbat_8b * 2;
+  *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
   *flag = 1;
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
