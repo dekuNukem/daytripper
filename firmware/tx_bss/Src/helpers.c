@@ -103,7 +103,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   *flag = 1;
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
-  if(*vbat_mV <= 2900)
+  if(*vbat_mV <= 2900) // 2900 after diode drop is about 3.3V
   {
     printf("low battery, shutting down...\n");
 
@@ -175,20 +175,14 @@ void tx_test(void)
 
   while(1)
   {
-    start_animation(ANIMATION_TYPE_CONST_ON);
     memset(test_data+2, count, 4);
     for (int i = 0; i < 6; ++i)
       printf("0x%x ", test_data[i]);
     printf("\n");
     count++;
     send_packet(test_data);
-    iwdg_wait(150, ANIMATION_TYPE_NOCHANGE);
-    start_animation(ANIMATION_TYPE_CONST_OFF);
-
-    if(count > 5 && HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin))
-      return;
-
-    iwdg_wait(850, ANIMATION_TYPE_NOCHANGE);
+    iwdg_wait(150, ANIMATION_TYPE_CONST_ON);
+    iwdg_wait(850, ANIMATION_TYPE_CONST_OFF);
   }
 }
 

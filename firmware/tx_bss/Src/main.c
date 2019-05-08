@@ -186,7 +186,7 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(33000);
+  setMeasurementTimingBudget(33000); // default 33000
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();
@@ -216,14 +216,13 @@ int main(void)
     button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), wakeup_count);
     if(button_result == 1)
     {
+      iwdg_wait(20, ANIMATION_TYPE_BREATHING);
       tof_calibrate(&baseline, &diff_threshold);
+      iwdg_wait(20, ANIMATION_TYPE_CONST_OFF);
       current_state = STATE_IDLE;
     }
     else if(button_result == 2)
-    {
       tx_test();
-      current_state = STATE_IDLE;
-    }
 
     if(new_stat_packet)
     {

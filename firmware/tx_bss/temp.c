@@ -52,6 +52,35 @@ hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
 
+void tx_test(void)
+{
+  uint8_t count = 0;
+  test_data[0] = *STM32_UUID;
+  test_data[1] = DTPR_CMD_TEST;
+
+  while(1)
+  {
+    start_animation(ANIMATION_TYPE_CONST_ON);
+    memset(test_data+2, count, 4);
+    for (int i = 0; i < 6; ++i)
+      printf("0x%x ", test_data[i]);
+    printf("\n");
+    count++;
+    send_packet(test_data);
+    iwdg_wait(150, ANIMATION_TYPE_NOCHANGE);
+    start_animation(ANIMATION_TYPE_CONST_OFF);
+
+    if(count > 5 && HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin))
+      return;
+
+    iwdg_wait(850, ANIMATION_TYPE_NOCHANGE);
+  }
+}
+else if(button_result == 2)
+    {
+      tx_test();
+      current_state = STATE_IDLE;
+    }
 void iwdg_wait(uint32_t msec, uint8_t ani_type)
 {
   start_animation(ani_type);

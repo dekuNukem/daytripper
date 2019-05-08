@@ -25,7 +25,7 @@ void press_keys(uint8_t index)
     case SLIDE_SW_POS_MINI:
       keyboard_press(KEY_LEFT_GUI, 0);
       HAL_Delay(34);
-      keyboard_press('d', 0);
+      keyboard_press('m', 0);
       HAL_Delay(34);
       keyboard_release_all();
       HAL_Delay(34);
