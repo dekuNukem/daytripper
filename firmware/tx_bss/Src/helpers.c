@@ -103,7 +103,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   *flag = 1;
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
-  if(*vbat_mV <= 2900) // 2900 after diode drop is about 3.3V
+  if(*vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
   {
     printf("low battery, shutting down...\n");
 
