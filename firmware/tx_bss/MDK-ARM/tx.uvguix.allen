@@ -3605,9 +3605,9 @@
       </Doc>
       <Doc>
         <Name>..\Src\helpers.c</Name>
-        <ColumnNumber>35</ColumnNumber>
+        <ColumnNumber>22</ColumnNumber>
         <TopLine>121</TopLine>
-        <CurrentLine>151</CurrentLine>
+        <CurrentLine>143</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

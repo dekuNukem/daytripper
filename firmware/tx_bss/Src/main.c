@@ -186,7 +186,7 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(33000); // default 33000
+  setMeasurementTimingBudget(20000); // default 33000
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();
@@ -240,7 +240,6 @@ int main(void)
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
-      
       uint8_t count = 0;
       uint16_t this;
       printf("trig: %d ", this_reading);
@@ -248,7 +247,7 @@ int main(void)
       {
         this = readRangeSingleMillimeters();
         printf("%d ", this);
-        if(this <= 10 || this > 8190)
+        if(this <= 10 || this > 8190) // invalid reading
           continue;
         if(abs(baseline - this) <= diff_threshold)
         {
