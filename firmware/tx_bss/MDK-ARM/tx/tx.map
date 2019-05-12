@@ -2198,29 +2198,29 @@ Image Symbol Table
     i.performSingleRefCalibration            0x08004a80   Section        0  vl53l0x.o(i.performSingleRefCalibration)
     i.readMulti                              0x08004ad4   Section        0  vl53l0x.o(i.readMulti)
     i.readRangeContinuousMillimeters         0x08004af8   Section        0  vl53l0x.o(i.readRangeContinuousMillimeters)
-    i.readRangeSingleMillimeters             0x08004b48   Section        0  vl53l0x.o(i.readRangeSingleMillimeters)
-    i.readReg                                0x08004bcc   Section        0  vl53l0x.o(i.readReg)
-    i.readReg16Bit                           0x08004bf8   Section        0  vl53l0x.o(i.readReg16Bit)
-    i.send_packet                            0x08004c2c   Section        0  helpers.o(i.send_packet)
-    i.setMeasurementTimingBudget             0x08004c7c   Section        0  vl53l0x.o(i.setMeasurementTimingBudget)
-    i.setSignalRateLimit                     0x08004d38   Section        0  vl53l0x.o(i.setSignalRateLimit)
-    i.spi_transfer                           0x08004d68   Section        0  nrf24.o(i.spi_transfer)
-    i.start_animation                        0x08004d8c   Section        0  animation.o(i.start_animation)
-    i.swap                                   0x08004d9c   Section        0  helpers.o(i.swap)
-    i.timeoutMclksToMicroseconds             0x08004da8   Section        0  vl53l0x.o(i.timeoutMclksToMicroseconds)
-    timeoutMclksToMicroseconds               0x08004da9   Thumb Code    38  vl53l0x.o(i.timeoutMclksToMicroseconds)
-    i.timeoutMicrosecondsToMclks             0x08004dd4   Section        0  vl53l0x.o(i.timeoutMicrosecondsToMclks)
-    timeoutMicrosecondsToMclks               0x08004dd5   Thumb Code    38  vl53l0x.o(i.timeoutMicrosecondsToMclks)
-    i.tof_calibrate                          0x08004e00   Section        0  helpers.o(i.tof_calibrate)
-    i.tx_test                                0x08004e38   Section        0  helpers.o(i.tx_test)
-    i.writeMulti                             0x08004e9c   Section        0  vl53l0x.o(i.writeMulti)
-    i.writeReg                               0x08004ec0   Section        0  vl53l0x.o(i.writeReg)
-    i.writeReg16Bit                          0x08004eec   Section        0  vl53l0x.o(i.writeReg16Bit)
-    .constdata                               0x08004f1c   Section       61  animation.o(.constdata)
-    breathing_lookup                         0x08004f1c   Data          51  animation.o(.constdata)
-    faskblink_lookup                         0x08004f4f   Data          10  animation.o(.constdata)
-    .constdata                               0x08004f59   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x08004f69   Section        8  system_stm32f0xx.o(.constdata)
+    i.readRangeSingleMillimeters             0x08004b60   Section        0  vl53l0x.o(i.readRangeSingleMillimeters)
+    i.readReg                                0x08004be4   Section        0  vl53l0x.o(i.readReg)
+    i.readReg16Bit                           0x08004c10   Section        0  vl53l0x.o(i.readReg16Bit)
+    i.send_packet                            0x08004c44   Section        0  helpers.o(i.send_packet)
+    i.setMeasurementTimingBudget             0x08004c94   Section        0  vl53l0x.o(i.setMeasurementTimingBudget)
+    i.setSignalRateLimit                     0x08004d50   Section        0  vl53l0x.o(i.setSignalRateLimit)
+    i.spi_transfer                           0x08004d80   Section        0  nrf24.o(i.spi_transfer)
+    i.start_animation                        0x08004da4   Section        0  animation.o(i.start_animation)
+    i.swap                                   0x08004db4   Section        0  helpers.o(i.swap)
+    i.timeoutMclksToMicroseconds             0x08004dc0   Section        0  vl53l0x.o(i.timeoutMclksToMicroseconds)
+    timeoutMclksToMicroseconds               0x08004dc1   Thumb Code    38  vl53l0x.o(i.timeoutMclksToMicroseconds)
+    i.timeoutMicrosecondsToMclks             0x08004dec   Section        0  vl53l0x.o(i.timeoutMicrosecondsToMclks)
+    timeoutMicrosecondsToMclks               0x08004ded   Thumb Code    38  vl53l0x.o(i.timeoutMicrosecondsToMclks)
+    i.tof_calibrate                          0x08004e18   Section        0  helpers.o(i.tof_calibrate)
+    i.tx_test                                0x08004e50   Section        0  helpers.o(i.tx_test)
+    i.writeMulti                             0x08004eb4   Section        0  vl53l0x.o(i.writeMulti)
+    i.writeReg                               0x08004ed8   Section        0  vl53l0x.o(i.writeReg)
+    i.writeReg16Bit                          0x08004f04   Section        0  vl53l0x.o(i.writeReg16Bit)
+    .constdata                               0x08004f34   Section       61  animation.o(.constdata)
+    breathing_lookup                         0x08004f34   Data          51  animation.o(.constdata)
+    faskblink_lookup                         0x08004f67   Data          10  animation.o(.constdata)
+    .constdata                               0x08004f71   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x08004f81   Section        8  system_stm32f0xx.o(.constdata)
     .data                                    0x20000000   Section       12  vl53l0x.o(.data)
     .data                                    0x2000000c   Section        1  nrf24.o(.data)
     .data                                    0x2000000d   Section        6  helpers.o(.data)
@@ -2497,25 +2497,25 @@ Image Symbol Table
     nrf24_writeRegister                      0x08004a57   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
     performSingleRefCalibration              0x08004a81   Thumb Code    78  vl53l0x.o(i.performSingleRefCalibration)
     readMulti                                0x08004ad5   Thumb Code    26  vl53l0x.o(i.readMulti)
-    readRangeContinuousMillimeters           0x08004af9   Thumb Code    72  vl53l0x.o(i.readRangeContinuousMillimeters)
-    readRangeSingleMillimeters               0x08004b49   Thumb Code   122  vl53l0x.o(i.readRangeSingleMillimeters)
-    readReg                                  0x08004bcd   Thumb Code    36  vl53l0x.o(i.readReg)
-    readReg16Bit                             0x08004bf9   Thumb Code    44  vl53l0x.o(i.readReg16Bit)
-    send_packet                              0x08004c2d   Thumb Code    48  helpers.o(i.send_packet)
-    setMeasurementTimingBudget               0x08004c7d   Thumb Code   164  vl53l0x.o(i.setMeasurementTimingBudget)
-    setSignalRateLimit                       0x08004d39   Thumb Code    42  vl53l0x.o(i.setSignalRateLimit)
-    spi_transfer                             0x08004d69   Thumb Code    32  nrf24.o(i.spi_transfer)
-    start_animation                          0x08004d8d   Thumb Code    10  animation.o(i.start_animation)
-    swap                                     0x08004d9d   Thumb Code    10  helpers.o(i.swap)
-    tof_calibrate                            0x08004e01   Thumb Code    32  helpers.o(i.tof_calibrate)
-    tx_test                                  0x08004e39   Thumb Code    76  helpers.o(i.tx_test)
-    writeMulti                               0x08004e9d   Thumb Code    26  vl53l0x.o(i.writeMulti)
-    writeReg                                 0x08004ec1   Thumb Code    34  vl53l0x.o(i.writeReg)
-    writeReg16Bit                            0x08004eed   Thumb Code    38  vl53l0x.o(i.writeReg16Bit)
-    AHBPrescTable                            0x08004f59   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x08004f69   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08004f74   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004f94   Number         0  anon$$obj.o(Region$$Table)
+    readRangeContinuousMillimeters           0x08004af9   Thumb Code    86  vl53l0x.o(i.readRangeContinuousMillimeters)
+    readRangeSingleMillimeters               0x08004b61   Thumb Code   122  vl53l0x.o(i.readRangeSingleMillimeters)
+    readReg                                  0x08004be5   Thumb Code    36  vl53l0x.o(i.readReg)
+    readReg16Bit                             0x08004c11   Thumb Code    44  vl53l0x.o(i.readReg16Bit)
+    send_packet                              0x08004c45   Thumb Code    48  helpers.o(i.send_packet)
+    setMeasurementTimingBudget               0x08004c95   Thumb Code   164  vl53l0x.o(i.setMeasurementTimingBudget)
+    setSignalRateLimit                       0x08004d51   Thumb Code    42  vl53l0x.o(i.setSignalRateLimit)
+    spi_transfer                             0x08004d81   Thumb Code    32  nrf24.o(i.spi_transfer)
+    start_animation                          0x08004da5   Thumb Code    10  animation.o(i.start_animation)
+    swap                                     0x08004db5   Thumb Code    10  helpers.o(i.swap)
+    tof_calibrate                            0x08004e19   Thumb Code    32  helpers.o(i.tof_calibrate)
+    tx_test                                  0x08004e51   Thumb Code    76  helpers.o(i.tx_test)
+    writeMulti                               0x08004eb5   Thumb Code    26  vl53l0x.o(i.writeMulti)
+    writeReg                                 0x08004ed9   Thumb Code    34  vl53l0x.o(i.writeReg)
+    writeReg16Bit                            0x08004f05   Thumb Code    38  vl53l0x.o(i.writeReg16Bit)
+    AHBPrescTable                            0x08004f71   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x08004f81   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08004f8c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004fac   Number         0  anon$$obj.o(Region$$Table)
     address                                  0x20000000   Data           1  vl53l0x.o(.data)
     did_timeout                              0x20000001   Data           1  vl53l0x.o(.data)
     stop_variable                            0x20000002   Data           1  vl53l0x.o(.data)
@@ -2566,9 +2566,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004ff4, Max: 0x00008000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000500c, Max: 0x00008000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004f94, Max: 0x00008000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004fac, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2789,48 +2789,48 @@ Memory Map of the image
     0x08004a7e   0x08004a7e   0x00000002   PAD
     0x08004a80   0x08004a80   0x00000054   Code   RO           21    i.performSingleRefCalibration  vl53l0x.o
     0x08004ad4   0x08004ad4   0x00000024   Code   RO           22    i.readMulti         vl53l0x.o
-    0x08004af8   0x08004af8   0x00000050   Code   RO           23    i.readRangeContinuousMillimeters  vl53l0x.o
-    0x08004b48   0x08004b48   0x00000084   Code   RO           24    i.readRangeSingleMillimeters  vl53l0x.o
-    0x08004bcc   0x08004bcc   0x0000002c   Code   RO           25    i.readReg           vl53l0x.o
-    0x08004bf8   0x08004bf8   0x00000034   Code   RO           26    i.readReg16Bit      vl53l0x.o
-    0x08004c2c   0x08004c2c   0x00000050   Code   RO          503    i.send_packet       helpers.o
-    0x08004c7c   0x08004c7c   0x000000bc   Code   RO           29    i.setMeasurementTimingBudget  vl53l0x.o
-    0x08004d38   0x08004d38   0x00000030   Code   RO           30    i.setSignalRateLimit  vl53l0x.o
-    0x08004d68   0x08004d68   0x00000024   Code   RO          371    i.spi_transfer      nrf24.o
-    0x08004d8c   0x08004d8c   0x00000010   Code   RO          597    i.start_animation   animation.o
-    0x08004d9c   0x08004d9c   0x0000000a   Code   RO          504    i.swap              helpers.o
-    0x08004da6   0x08004da6   0x00000002   PAD
-    0x08004da8   0x08004da8   0x0000002c   Code   RO           34    i.timeoutMclksToMicroseconds  vl53l0x.o
-    0x08004dd4   0x08004dd4   0x0000002c   Code   RO           35    i.timeoutMicrosecondsToMclks  vl53l0x.o
-    0x08004e00   0x08004e00   0x00000038   Code   RO          505    i.tof_calibrate     helpers.o
-    0x08004e38   0x08004e38   0x00000064   Code   RO          506    i.tx_test           helpers.o
-    0x08004e9c   0x08004e9c   0x00000024   Code   RO           37    i.writeMulti        vl53l0x.o
-    0x08004ec0   0x08004ec0   0x0000002c   Code   RO           38    i.writeReg          vl53l0x.o
-    0x08004eec   0x08004eec   0x00000030   Code   RO           39    i.writeReg16Bit     vl53l0x.o
-    0x08004f1c   0x08004f1c   0x0000003d   Data   RO          598    .constdata          animation.o
-    0x08004f59   0x08004f59   0x00000010   Data   RO         4413    .constdata          system_stm32f0xx.o
-    0x08004f69   0x08004f69   0x00000008   Data   RO         4414    .constdata          system_stm32f0xx.o
-    0x08004f71   0x08004f71   0x00000003   PAD
-    0x08004f74   0x08004f74   0x00000020   Data   RO         4765    Region$$Table       anon$$obj.o
+    0x08004af8   0x08004af8   0x00000068   Code   RO           23    i.readRangeContinuousMillimeters  vl53l0x.o
+    0x08004b60   0x08004b60   0x00000084   Code   RO           24    i.readRangeSingleMillimeters  vl53l0x.o
+    0x08004be4   0x08004be4   0x0000002c   Code   RO           25    i.readReg           vl53l0x.o
+    0x08004c10   0x08004c10   0x00000034   Code   RO           26    i.readReg16Bit      vl53l0x.o
+    0x08004c44   0x08004c44   0x00000050   Code   RO          503    i.send_packet       helpers.o
+    0x08004c94   0x08004c94   0x000000bc   Code   RO           29    i.setMeasurementTimingBudget  vl53l0x.o
+    0x08004d50   0x08004d50   0x00000030   Code   RO           30    i.setSignalRateLimit  vl53l0x.o
+    0x08004d80   0x08004d80   0x00000024   Code   RO          371    i.spi_transfer      nrf24.o
+    0x08004da4   0x08004da4   0x00000010   Code   RO          597    i.start_animation   animation.o
+    0x08004db4   0x08004db4   0x0000000a   Code   RO          504    i.swap              helpers.o
+    0x08004dbe   0x08004dbe   0x00000002   PAD
+    0x08004dc0   0x08004dc0   0x0000002c   Code   RO           34    i.timeoutMclksToMicroseconds  vl53l0x.o
+    0x08004dec   0x08004dec   0x0000002c   Code   RO           35    i.timeoutMicrosecondsToMclks  vl53l0x.o
+    0x08004e18   0x08004e18   0x00000038   Code   RO          505    i.tof_calibrate     helpers.o
+    0x08004e50   0x08004e50   0x00000064   Code   RO          506    i.tx_test           helpers.o
+    0x08004eb4   0x08004eb4   0x00000024   Code   RO           37    i.writeMulti        vl53l0x.o
+    0x08004ed8   0x08004ed8   0x0000002c   Code   RO           38    i.writeReg          vl53l0x.o
+    0x08004f04   0x08004f04   0x00000030   Code   RO           39    i.writeReg16Bit     vl53l0x.o
+    0x08004f34   0x08004f34   0x0000003d   Data   RO          598    .constdata          animation.o
+    0x08004f71   0x08004f71   0x00000010   Data   RO         4413    .constdata          system_stm32f0xx.o
+    0x08004f81   0x08004f81   0x00000008   Data   RO         4414    .constdata          system_stm32f0xx.o
+    0x08004f89   0x08004f89   0x00000003   PAD
+    0x08004f8c   0x08004f8c   0x00000020   Data   RO         4765    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004f94, Size: 0x000006a0, Max: 0x00001800, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004fac, Size: 0x000006a0, Max: 0x00001800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08004f94   0x0000000c   Data   RW           41    .data               vl53l0x.o
-    0x2000000c   0x08004fa0   0x00000001   Data   RW          372    .data               nrf24.o
-    0x2000000d   0x08004fa1   0x00000006   Data   RW          508    .data               helpers.o
-    0x20000013   0x08004fa7   0x00000001   PAD
-    0x20000014   0x08004fa8   0x00000010   Data   RW          599    .data               animation.o
-    0x20000024   0x08004fb8   0x00000008   Data   RW          632    .data               sleepybutton.o
-    0x2000002c   0x08004fc0   0x00000028   Data   RW          671    .data               main.o
-    0x20000054   0x08004fe8   0x00000004   Data   RW         3718    .data               stm32f0xx_hal.o
-    0x20000058   0x08004fec   0x00000004   Data   RW         4415    .data               system_stm32f0xx.o
-    0x2000005c   0x08004ff0   0x00000004   Data   RW         4743    .data               mc_p.l(stdout.o)
+    0x20000000   0x08004fac   0x0000000c   Data   RW           41    .data               vl53l0x.o
+    0x2000000c   0x08004fb8   0x00000001   Data   RW          372    .data               nrf24.o
+    0x2000000d   0x08004fb9   0x00000006   Data   RW          508    .data               helpers.o
+    0x20000013   0x08004fbf   0x00000001   PAD
+    0x20000014   0x08004fc0   0x00000010   Data   RW          599    .data               animation.o
+    0x20000024   0x08004fd0   0x00000008   Data   RW          632    .data               sleepybutton.o
+    0x2000002c   0x08004fd8   0x00000028   Data   RW          671    .data               main.o
+    0x20000054   0x08005000   0x00000004   Data   RW         3718    .data               stm32f0xx_hal.o
+    0x20000058   0x08005004   0x00000004   Data   RW         4415    .data               system_stm32f0xx.o
+    0x2000005c   0x08005008   0x00000004   Data   RW         4743    .data               mc_p.l(stdout.o)
     0x20000060        -       0x00000020   Zero   RW          507    .bss                helpers.o
     0x20000080        -       0x0000021c   Zero   RW          670    .bss                main.o
-    0x2000029c   0x08004ff4   0x00000004   PAD
+    0x2000029c   0x0800500c   0x00000004   PAD
     0x200002a0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f042x6.o
 
 
@@ -2866,10 +2866,10 @@ Image component sizes
       1026         32          0          0          0       5981   stm32f0xx_hal_uart.o
         52         12          0          0          0       2991   stm32f0xx_it.o
         92         14         24          4          0       1147   system_stm32f0xx.o
-      2482        154          0         12          0     508206   vl53l0x.o
+      2506        164          0         12          0     508218   vl53l0x.o
 
     ----------------------------------------------------------------------
-     18084       1406        312         92       1600     639214   Object Totals
+     18108       1416        312         92       1600     639226   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          3          1          4          0   (incl. Padding)
 
@@ -2925,15 +2925,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20060       1500        312         96       1600     632086   Grand Totals
-     20060       1500        312         96       1600     632086   ELF Image Totals
-     20060       1500        312         96          0          0   ROM Totals
+     20084       1510        312         96       1600     632098   Grand Totals
+     20084       1510        312         96       1600     632098   ELF Image Totals
+     20084       1510        312         96          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                20372 (  19.89kB)
+    Total RO  Size (Code + RO Data)                20396 (  19.92kB)
     Total RW  Size (RW Data + ZI Data)              1696 (   1.66kB)
-    Total ROM Size (Code + RO Data + RW Data)      20468 (  19.99kB)
+    Total ROM Size (Code + RO Data + RW Data)      20492 (  20.01kB)
 
 ==============================================================================
 
