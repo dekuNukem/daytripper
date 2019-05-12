@@ -235,16 +235,30 @@ int main(void)
     this_reading = readRangeSingleMillimeters();
     diff = abs(baseline - this_reading);
 
-    if(this_reading <= 10 || this_reading > 8190)
-    {
-      printf("invalid reading: %d\n", this_reading);
+    if(this_reading > 8190)
       goto sleep;
-    }
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
-      start_animation(ANIMATION_TYPE_CONST_ON); 
-      printf("triggered! base: %d, this: %d\n", baseline, this_reading);
+      
+      uint8_t count = 0;
+      uint16_t this;
+      printf("trig: %d ", this_reading);
+      while(count < WINDOW_SIZE)
+      {
+        this = readRangeSingleMillimeters();
+        printf("%d ", this);
+        if(this <= 10 || this > 8190)
+          continue;
+        if(abs(baseline - this) <= diff_threshold)
+        {
+          printf("false\n");
+          goto sleep;
+        }
+        count++;
+      }
+      printf("\n");
+      start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
       current_state = STATE_TRIGGERED;

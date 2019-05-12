@@ -51,6 +51,25 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+    if(this_reading > 8190)
+    {
+      printf("invalid reading: %d\n", this_reading);
+      goto sleep;
+    }
+
+if(count > 20)
+        {
+          printf("too many trigger errors\n");
+          goto sleep
+        }
+for (int i = 0; i < WINDOW_SIZE; ++i)
+      {
+        uint16_t tdiff = readRangeSingleMillimeters() - ;
+
+      }
+printf("triggered! base: %d, this: %d\n", baseline, this_reading);
+      for (int i = 0; i < 5; ++i)
+        printf("%d\n", readRangeSingleMillimeters());
 
 void tx_test(void)
 {
