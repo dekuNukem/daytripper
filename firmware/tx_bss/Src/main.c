@@ -119,7 +119,8 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
   {
     HAL_ADC_MspInit(&hadc);
     MX_ADC_Init();
-    check_battery(&vbat_mV, &new_stat_packet);
+    check_battery(&vbat_mV);
+    new_stat_packet = 1;
     HAL_ADC_MspDeInit(&hadc);
   }
   if(wakeup_count % 25 == 0) // 25 * 0.2 = 5 seconds
@@ -175,7 +176,8 @@ int main(void)
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
-  check_battery(&vbat_mV, &new_stat_packet);
+  check_battery(&vbat_mV);
+  new_stat_packet = 1;
   HAL_ADC_MspDeInit(&hadc);
 
   MX_IWDG_Init(); // this should be behind check_battery, so it can completely shut down in low battery situation

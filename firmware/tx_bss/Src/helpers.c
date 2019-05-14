@@ -9,7 +9,10 @@
 
 #define BASELINE_SAMPLE_SIZE 16
 #define CHOP_SIZE 3
-#define STM32_UUID ((uint32_t *)0x1FFFF7AC)
+
+#define STM32F0_UUID0 ((uint32_t *)0x1FFFF7AC)
+#define STM32F0_UUID1 ((uint32_t *)0x1FFFF7B0)
+#define STM32F0_UUID2 ((uint32_t *)0x1FFFF7B4)
 
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
@@ -89,7 +92,7 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
 }
 
 // put this before IWDG_init so it can turn off after reset?
-void check_battery(uint32_t* vbat_mV, uint8_t* flag)
+void check_battery(uint32_t* vbat_mV)
 {
   uint8_t vbat_8b, vrefint;
   HAL_ADC_Start(&hadc);
@@ -100,7 +103,6 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
   HAL_ADC_Stop(&hadc);
 
   *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
-  *flag = 1;
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
   if(*vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
@@ -136,7 +138,7 @@ void check_battery(uint32_t* vbat_mV, uint8_t* flag)
 
 void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
 {
-  data[0] = *STM32_UUID;
+  data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
   data[1] = DTPR_CMD_TRIG;
   data[2] = base >> 8;
   data[3] = base & 0xff;
@@ -146,7 +148,7 @@ void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
 
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot)
 {
-  data[0] = *STM32_UUID;
+  data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
   data[1] = DTPR_CMD_STAT;
   data[2] = (vbat_mV >> 8) & 0xff;;
   data[3] = vbat_mV & 0xff;
@@ -170,7 +172,7 @@ uint8_t send_packet(uint8_t* data)
 void tx_test(void)
 {
   uint8_t count = 0;
-  test_data[0] = *STM32_UUID;
+  test_data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
   test_data[1] = DTPR_CMD_TEST;
 
   while(1)

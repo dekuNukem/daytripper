@@ -23,7 +23,7 @@
 #define MININUM_WAKEUP_DURATION_MS 50
 
 uint16_t get_baseline(void);
-void check_battery(uint32_t* bat_reading, uint8_t* flag);
+void check_battery(uint32_t* vbat_mV);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
 void tof_calibrate(uint16_t* base, uint16_t* threshold);
 void tx_test(void);

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [tx\tx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image tx\tx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun May 12 11:46:45 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 14 12:12:50 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -649,8 +649,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[60]"></a>HAL_RTC_AlarmAEventCallback</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(i.HAL_RTC_AlarmAEventCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[60]"></a>HAL_RTC_AlarmAEventCallback</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.HAL_RTC_AlarmAEventCallback))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_ADC_Init
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_MspDeInit
@@ -662,7 +662,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[63]"></a>HAL_RTC_AlarmIRQHandler</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, stm32f0xx_hal_rtc.o(i.HAL_RTC_AlarmIRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = HAL_RTC_AlarmIRQHandler &rArr; HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = HAL_RTC_AlarmIRQHandler &rArr; HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmAEventCallback
 </UL>
@@ -996,7 +996,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8]"></a>RTC_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, stm32f0xx_it.o(i.RTC_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = RTC_IRQHandler &rArr; HAL_RTC_AlarmIRQHandler &rArr; HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = RTC_IRQHandler &rArr; HAL_RTC_AlarmIRQHandler &rArr; HAL_RTC_AlarmAEventCallback &rArr; check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmIRQHandler
 </UL>
@@ -1167,12 +1167,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
 </UL>
 
-<P><STRONG><a name="[d2]"></a>build_packet_stat</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, helpers.o(i.build_packet_stat))
-<BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[d2]"></a>build_packet_stat</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, helpers.o(i.build_packet_stat))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = build_packet_stat
+</UL>
+<BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d4]"></a>build_packet_trig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, helpers.o(i.build_packet_trig))
-<BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[d4]"></a>build_packet_trig</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, helpers.o(i.build_packet_trig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = build_packet_trig
+</UL>
+<BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[d0]"></a>button_update</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, sleepybutton.o(i.button_update))
@@ -1181,8 +1185,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[62]"></a>check_battery</STRONG> (Thumb, 250 bytes, Stack size 32 bytes, helpers.o(i.check_battery))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[62]"></a>check_battery</STRONG> (Thumb, 242 bytes, Stack size 24 bytes, helpers.o(i.check_battery))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
@@ -1665,7 +1669,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d1]"></a>tx_test</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, helpers.o(i.tx_test))
+<P><STRONG><a name="[d1]"></a>tx_test</STRONG> (Thumb, 84 bytes, Stack size 0 bytes, helpers.o(i.tx_test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = tx_test &rArr; send_packet &rArr; nrf24_retransmissionCount &rArr; nrf24_readRegister &rArr; nrf24_transferSync &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_packet
