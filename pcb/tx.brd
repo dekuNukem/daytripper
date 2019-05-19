@@ -1015,13 +1015,13 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C7" library="clock" package="0805" value="4.7pF" x="16.5608" y="24.7142" smashed="yes">
 <attribute name="NAME" x="18.2372" y="24.1681" size="0.8128" layer="25"/>
 </element>
-<element name="C8" library="clock" package="0805" value="22pF" x="20.0152" y="19.812" smashed="yes" rot="R90">
+<element name="C8" library="clock" package="0805" value="12pF" x="20.0152" y="19.812" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.4089" y="17.1196" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="C9" library="clock" package="0805" value="22pF" x="17.4498" y="23.0886" smashed="yes">
+<element name="C9" library="clock" package="0805" value="12pF" x="17.4498" y="23.0886" smashed="yes">
 <attribute name="NAME" x="16.0655" y="22.225" size="0.8128" layer="25" rot="R90"/>
 </element>
-<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="17.399" y="20.0914" smashed="yes" rot="R90">
+<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="16MHz_12pF" x="17.399" y="20.0914" smashed="yes" rot="R90">
 <attribute name="PROD_ID" value="XTAL-12454" x="44.704" y="-0.4826" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R3" library="joyAnalog" package="0805" value="5.1K" x="20.32" y="6.604" smashed="yes" rot="R90">

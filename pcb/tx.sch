@@ -7971,11 +7971,11 @@ www.irf.com&lt;p&gt;
 <part name="GND4" library="clock" deviceset="GND" device=""/>
 <part name="GND5" library="clock" deviceset="GND" device=""/>
 <part name="GND8" library="clock" deviceset="GND" device=""/>
-<part name="C8" library="clock" deviceset="CAP" device="0805" value="22pF"/>
+<part name="C8" library="clock" deviceset="CAP" device="0805" value="12pF"/>
 <part name="GND10" library="clock" deviceset="GND" device=""/>
-<part name="C9" library="clock" deviceset="CAP" device="0805" value="22pF"/>
+<part name="C9" library="clock" deviceset="CAP" device="0805" value="12pF"/>
 <part name="GND11" library="clock" deviceset="GND" device=""/>
-<part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5"/>
+<part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5" value="16MHz_12pF"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="R3" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5.1K"/>
 <part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5.1K"/>

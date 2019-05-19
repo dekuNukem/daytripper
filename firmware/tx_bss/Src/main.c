@@ -248,17 +248,17 @@ int main(void)
       while(count < WINDOW_SIZE)
       {
         this = readRangeSingleMillimeters();
-        printf("%d ", this);
+        // printf("%d ", this);
         if(this <= 10 || this > 8190) // invalid reading
           continue;
         if(abs(baseline - this) <= diff_threshold)
         {
-          printf("false\n");
+          // printf("false\n");
           goto sleep;
         }
         count++;
       }
-      printf("\n");
+      // printf("\n");
       start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
@@ -271,6 +271,7 @@ int main(void)
     }
 
     sleep:
+    HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
     HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   }

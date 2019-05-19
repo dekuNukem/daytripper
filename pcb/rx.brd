@@ -815,7 +815,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C2" library="clock" package="0805" value="4.7uF" x="1.905" y="26.607" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.0574" y="31.56" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C3" library="clock" package="0805" value="33nF" x="1.905" y="21.654" smashed="yes" rot="R180">
+<element name="C3" library="clock" package="0805" value="100nF" x="1.905" y="21.654" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.0828" y="17.3233" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="L1" library="basicBoard" package="0805" value="3.9nH" x="5.207" y="28.258" smashed="yes" rot="R90">
@@ -839,10 +839,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C7" library="clock" package="0805" value="4.7pF" x="9.525" y="27.4198" smashed="yes">
 <attribute name="NAME" x="11.0617" y="27.6738" size="0.8128" layer="25" rot="R270"/>
 </element>
-<element name="C8" library="clock" package="0805" value="22pF" x="13.8684" y="21.7302" smashed="yes">
+<element name="C8" library="clock" package="0805" value="12pF" x="13.8684" y="21.7302" smashed="yes">
 <attribute name="NAME" x="12.0904" y="20.0157" size="0.8128" layer="25"/>
 </element>
-<element name="C9" library="clock" package="0805" value="22pF" x="10.541" y="25.718" smashed="yes">
+<element name="C9" library="clock" package="0805" value="12pF" x="10.541" y="25.718" smashed="yes">
 <attribute name="NAME" x="7.8994" y="25.3243" size="0.8128" layer="25"/>
 </element>
 <element name="U$4" library="3pos_slide_switch" package="SOT23R_INFINEON" value="XC6206_DEV" x="11.811" y="10.557" smashed="yes" rot="R180"/>
@@ -852,7 +852,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C11" library="clock" package="0805" value="4.7uF" x="8.6614" y="10.6332" smashed="yes" rot="R180">
 <attribute name="NAME" x="7.112" y="10.8237" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="CRYSTAL-26MHZSMD-3.2X2.5" x="10.541" y="22.924" smashed="yes" rot="R90">
+<element name="Y1" library="SparkFun-Clocks" package="CRYSTAL-SMD-3.2X2.5MM" value="16MHz_12pF" x="10.541" y="22.924" smashed="yes" rot="R90">
 <attribute name="PROD_ID" value="XTAL-12454" x="10.541" y="22.924" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R2" library="joyAnalog" package="0805" value="22K" x="17.0688" y="21.7048" smashed="yes">

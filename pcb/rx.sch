@@ -6639,7 +6639,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="GND12" library="clock" deviceset="GND" device=""/>
 <part name="R1" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="C2" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
-<part name="C3" library="clock" deviceset="CAP" device="0805" value="33nF"/>
+<part name="C3" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="GND2" library="clock" deviceset="GND" device=""/>
 <part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805" value="3.9nH"/>
 <part name="L2" library="basicBoard" deviceset="INDUCTOR" device="0805" value="8.2nH"/>
@@ -6652,16 +6652,16 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="GND4" library="clock" deviceset="GND" device=""/>
 <part name="GND5" library="clock" deviceset="GND" device=""/>
 <part name="GND8" library="clock" deviceset="GND" device=""/>
-<part name="C8" library="clock" deviceset="CAP" device="0805" value="22pF"/>
+<part name="C8" library="clock" deviceset="CAP" device="0805" value="12pF"/>
 <part name="GND10" library="clock" deviceset="GND" device=""/>
-<part name="C9" library="clock" deviceset="CAP" device="0805" value="22pF"/>
+<part name="C9" library="clock" deviceset="CAP" device="0805" value="12pF"/>
 <part name="GND11" library="clock" deviceset="GND" device=""/>
 <part name="U$4" library="3pos_slide_switch" deviceset="XC6206_DEV" device=""/>
 <part name="C10" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="C11" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5"/>
+<part name="Y1" library="SparkFun-Clocks" deviceset="CRYSTAL-26MHZ" device="SMD-3.2X2.5" value="16MHz_12pF"/>
 <part name="R2" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
@@ -6723,7 +6723,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="C8" gate="G$1" x="132.08" y="-35.56"/>
 <instance part="GND10" gate="1" x="132.08" y="-45.72"/>
 <instance part="C9" gate="G$1" x="147.32" y="-30.48" rot="R90"/>
-<instance part="GND11" gate="1" x="152.4" y="-33.02"/>
+<instance part="GND11" gate="1" x="162.56" y="-33.02"/>
 <instance part="U$4" gate="G$1" x="-116.84" y="-7.62"/>
 <instance part="C10" gate="G$1" x="-137.16" y="-10.16"/>
 <instance part="C11" gate="G$1" x="-99.06" y="-10.16"/>
@@ -6830,7 +6830,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="GND11" gate="1" pin="GND"/>
-<wire x1="152.4" y1="-30.48" x2="149.86" y2="-30.48" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="-30.48" x2="149.86" y2="-30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
