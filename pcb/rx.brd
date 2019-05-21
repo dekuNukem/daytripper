@@ -871,7 +871,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="14.5415" y="26.0736" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="SW2" library="3pos_slide_switch" package="342_SWICH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE" x="17.3736" y="25.7942" smashed="yes" rot="R90"/>
-<element name="LED2" library="joyAnalog" package="CHIP-LED0805" value="" x="13.716" y="29.4518" smashed="yes">
+<element name="LED1" library="joyAnalog" package="CHIP-LED0805" value="" x="13.716" y="29.4518" smashed="yes">
 <attribute name="VALUE" x="16.256" y="28.1818" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="16.256" y="28.1818" size="1.27" layer="27" rot="R90"/>
 <attribute name="VALUE" x="16.256" y="28.1818" size="1.27" layer="27" rot="R90"/>
@@ -952,7 +952,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="5.969" y1="22.3012" x2="5.969" y2="22.543" width="0.3048" layer="1"/>
 <wire x1="9.666" y1="21.749" x2="8.872" y2="22.543" width="0.254" layer="1"/>
 <wire x1="8.872" y1="22.543" x2="7.8944" y2="22.543" width="0.254" layer="1"/>
-<contactref element="LED2" pad="C"/>
+<contactref element="LED1" pad="C"/>
 <wire x1="14.7684" y1="21.7302" x2="13.727" y2="20.6888" width="0.1524" layer="1"/>
 <wire x1="13.727" y1="20.6888" x2="10.5664" y2="20.6888" width="0.1524" layer="1"/>
 <wire x1="10.5664" y1="20.6888" x2="9.666" y2="21.5892" width="0.254" layer="1"/>
@@ -1258,7 +1258,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </signal>
 <signal name="N$18">
 <contactref element="R4" pad="1"/>
-<contactref element="LED2" pad="A"/>
+<contactref element="LED1" pad="A"/>
 <wire x1="13.716" y1="28.4018" x2="13.716" y2="26.4656" width="0.1524" layer="1"/>
 </signal>
 <signal name="+5V">

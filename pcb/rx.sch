@@ -6680,7 +6680,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="R4" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="5.1K"/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="SW2" library="3pos_slide_switch" deviceset="324_SW" device="324_SWITCH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE"/>
-<part name="LED2" library="joyAnalog" deviceset="LED" device="CHIP-LED0805"/>
+<part name="LED1" library="joyAnalog" deviceset="LED" device="CHIP-LED0805"/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="IC1" library="tx" deviceset="STM32F042F4" device=""/>
 <part name="GND18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -6748,7 +6748,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="R4" gate="G$1" x="30.48" y="43.18"/>
 <instance part="P+1" gate="1" x="-137.16" y="0"/>
 <instance part="SW2" gate="G$1" x="-17.78" y="-27.94"/>
-<instance part="LED2" gate="G$1" x="17.78" y="43.18" rot="R270"/>
+<instance part="LED1" gate="G$1" x="17.78" y="43.18" rot="R270"/>
 <instance part="GND22" gate="1" x="7.62" y="40.64"/>
 <instance part="IC1" gate="G$1" x="30.48" y="10.16"/>
 <instance part="GND18" gate="1" x="12.7" y="-10.16"/>
@@ -6872,7 +6872,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </segment>
 <segment>
 <pinref part="GND22" gate="1" pin="GND"/>
-<pinref part="LED2" gate="G$1" pin="C"/>
+<pinref part="LED1" gate="G$1" pin="C"/>
 <wire x1="7.62" y1="43.18" x2="12.7" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -7086,7 +7086,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="20.32" y1="43.18" x2="25.4" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="LED2" gate="G$1" pin="A"/>
+<pinref part="LED1" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="+5V" class="0">

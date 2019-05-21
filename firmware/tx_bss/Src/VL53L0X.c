@@ -850,7 +850,7 @@ uint16_t readRangeContinuousMillimeters(void)
 
   writeReg(SYSTEM_INTERRUPT_CLEAR, 0x01);
 
-  if(range > 1200 && range <= 8190)
+  if(range > 1200)
     range = 1200;
 
   return range;

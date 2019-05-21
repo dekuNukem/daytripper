@@ -236,7 +236,7 @@ int main(void)
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
         power_on_time = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: status\nvbat_mV: %d, power-on time: %d minutes\n", vbat_mV, power_on_time * 5 / 60);
-        if(vbat_mV <= 3000)
+        if(vbat_mV <= 3300)
         {
           printf("LOW BATTERY!!!!!!\n");
           start_animation(ANIMATION_TYPE_BLINK);
