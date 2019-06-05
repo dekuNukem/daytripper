@@ -3,7 +3,7 @@
 <title>Static Call Graph - [tx\tx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image tx\tx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 21 11:01:38 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Jun 03 00:01:19 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -536,7 +536,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c7]"></a>HAL_IWDG_Refresh</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f0xx_hal_iwdg.o(i.HAL_IWDG_Refresh))
-<BR><BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iwdg_wait
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_packet
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iwdg_wait
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_baseline
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1598,10 +1599,11 @@ Global Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
-<P><STRONG><a name="[d3]"></a>send_packet</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, helpers.o(i.send_packet))
+<P><STRONG><a name="[d3]"></a>send_packet</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, helpers.o(i.send_packet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = send_packet &rArr; nrf24_retransmissionCount &rArr; nrf24_readRegister &rArr; nrf24_transferSync &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_send
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IWDG_Refresh
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_send
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_retransmissionCount
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_lastMessageStatus
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_isSending

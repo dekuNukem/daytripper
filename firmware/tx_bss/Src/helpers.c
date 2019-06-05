@@ -159,7 +159,8 @@ void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot)
 uint8_t send_packet(uint8_t* data)
 {
   nrf24_send(data);
-  while(nrf24_isSending());
+  while(nrf24_isSending())
+    HAL_IWDG_Refresh(&hiwdg);
   if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
   {
     printf("TX OK, retry: %d\n",nrf24_retransmissionCount());
