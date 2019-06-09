@@ -188,7 +188,7 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(33000); // default 33000
+  setMeasurementTimingBudget(20000); // 20000 26500 default 33000
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();

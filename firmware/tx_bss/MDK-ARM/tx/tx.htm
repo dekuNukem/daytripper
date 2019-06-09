@@ -3,7 +3,7 @@
 <title>Static Call Graph - [tx\tx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image tx\tx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Jun 03 00:01:19 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jun 09 16:16:50 2019
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1186,7 +1186,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[62]"></a>check_battery</STRONG> (Thumb, 242 bytes, Stack size 24 bytes, helpers.o(i.check_battery))
+<P><STRONG><a name="[62]"></a>check_battery</STRONG> (Thumb, 256 bytes, Stack size 24 bytes, helpers.o(i.check_battery))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = check_battery &rArr; nrf24_powerDown &rArr; nrf24_configRegister &rArr; spi_transfer &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation

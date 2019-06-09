@@ -7822,7 +7822,7 @@ www.irf.com&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
-<library name="my_usbc_16p_centered">
+<library name="my_usbc_16p">
 <packages>
 <package name="USBC_16P_FOOT">
 <smd name="A1B12" x="-3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
@@ -7845,44 +7845,44 @@ www.irf.com&lt;p&gt;
 <pad name="P$16" x="4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
 <wire x1="-4.725" y1="-3.8475" x2="4.775" y2="-3.8475" width="0.127" layer="51"/>
 <polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="2.45865625"/>
-<vertex x="4.02513125" y="3.43865625" curve="-90"/>
-<vertex x="4.22513125" y="3.69865625"/>
-<vertex x="4.36513125" y="3.69865625" curve="-90"/>
-<vertex x="4.62513125" y="3.43865625"/>
-<vertex x="4.62513125" y="2.41865625" curve="-90"/>
-<vertex x="4.34513125" y="2.17865625"/>
-<vertex x="4.24513125" y="2.17865625" curve="-90"/>
+<vertex x="4.07593125" y="2.45865625"/>
+<vertex x="4.07593125" y="3.43865625" curve="-90"/>
+<vertex x="4.22513125" y="3.64785625"/>
+<vertex x="4.36513125" y="3.64785625" curve="-90"/>
+<vertex x="4.57433125" y="3.43865625"/>
+<vertex x="4.57433125" y="2.41865625" curve="-90"/>
+<vertex x="4.37053125" y="2.22945625"/>
+<vertex x="4.27053125" y="2.22945625" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="2.43865625"/>
-<vertex x="-4.61486875" y="3.41865625" curve="-90"/>
-<vertex x="-4.41486875" y="3.67865625"/>
-<vertex x="-4.27486875" y="3.67865625" curve="-90"/>
-<vertex x="-4.01486875" y="3.41865625"/>
-<vertex x="-4.01486875" y="2.39865625" curve="-90"/>
-<vertex x="-4.29486875" y="2.15865625"/>
-<vertex x="-4.39486875" y="2.15865625" curve="-90"/>
+<vertex x="-4.56406875" y="2.41325625"/>
+<vertex x="-4.56406875" y="3.39325625" curve="-90"/>
+<vertex x="-4.41486875" y="3.62785625"/>
+<vertex x="-4.27486875" y="3.62785625" curve="-90"/>
+<vertex x="-4.06566875" y="3.41865625"/>
+<vertex x="-4.06566875" y="2.39865625" curve="-90"/>
+<vertex x="-4.29486875" y="2.20945625"/>
+<vertex x="-4.39486875" y="2.20945625" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="-1.72134375"/>
-<vertex x="4.02513125" y="-0.74134375" curve="-90"/>
-<vertex x="4.22513125" y="-0.48134375"/>
-<vertex x="4.36513125" y="-0.48134375" curve="-90"/>
-<vertex x="4.62513125" y="-0.74134375"/>
-<vertex x="4.62513125" y="-1.76134375" curve="-90"/>
-<vertex x="4.34513125" y="-2.00134375"/>
-<vertex x="4.24513125" y="-2.00134375" curve="-90"/>
+<vertex x="4.07593125" y="-1.74674375"/>
+<vertex x="4.07593125" y="-0.76674375" curve="-90"/>
+<vertex x="4.22513125" y="-0.53214375"/>
+<vertex x="4.36513125" y="-0.53214375" curve="-90"/>
+<vertex x="4.57433125" y="-0.74134375"/>
+<vertex x="4.57433125" y="-1.76134375" curve="-90"/>
+<vertex x="4.31973125" y="-1.95054375"/>
+<vertex x="4.21973125" y="-1.95054375" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="-1.72134375"/>
-<vertex x="-4.61486875" y="-0.74134375" curve="-90"/>
-<vertex x="-4.41486875" y="-0.48134375"/>
-<vertex x="-4.27486875" y="-0.48134375" curve="-90"/>
-<vertex x="-4.01486875" y="-0.74134375"/>
-<vertex x="-4.01486875" y="-1.76134375" curve="-90"/>
-<vertex x="-4.29486875" y="-2.00134375"/>
-<vertex x="-4.39486875" y="-2.00134375" curve="-90"/>
+<vertex x="-4.56406875" y="-1.72134375"/>
+<vertex x="-4.56406875" y="-0.74134375" curve="-90"/>
+<vertex x="-4.41486875" y="-0.53214375"/>
+<vertex x="-4.27486875" y="-0.53214375" curve="-90"/>
+<vertex x="-4.06566875" y="-0.74134375"/>
+<vertex x="-4.06566875" y="-1.76134375" curve="-90"/>
+<vertex x="-4.29486875" y="-1.95054375"/>
+<vertex x="-4.39486875" y="-1.95054375" curve="-90"/>
 </polygon>
 <rectangle x1="-4.7998" y1="1.9679" x2="-3.8346" y2="3.8983" layer="31"/>
 <rectangle x1="-4.7998" y1="-2.1977" x2="-3.8346" y2="-0.2673" layer="31"/>
@@ -7911,7 +7911,7 @@ www.irf.com&lt;p&gt;
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="USBC_16P_CENTERED">
+<deviceset name="USBC_16P">
 <gates>
 <gate name="G$1" symbol="USBC_16P_SYM" x="0" y="-10.16"/>
 </gates>
@@ -8038,7 +8038,7 @@ www.irf.com&lt;p&gt;
 <part name="R14" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="1 Ohm"/>
 <part name="Q1" library="transistor-small-signal" deviceset="BSS84" device=""/>
 <part name="R15" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="22K"/>
-<part name="U2" library="my_usbc_16p_centered" deviceset="USBC_16P_CENTERED" device=""/>
+<part name="U2" library="my_usbc_16p" deviceset="USBC_16P" device=""/>
 </parts>
 <sheets>
 <sheet>

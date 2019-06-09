@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5.3" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
@@ -239,8 +239,8 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 </package>
 <package name="1X02">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<pad name="1" x="-1.27" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
-<pad name="2" x="1.27" y="0" drill="1.85" diameter="2" shape="long" rot="R90"/>
+<pad name="1" x="-1.27" y="0" drill="1.78" diameter="2" shape="long" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1.78" diameter="2" shape="long" rot="R90"/>
 <text x="-2.6162" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
 <package name="AAAWTF">

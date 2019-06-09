@@ -53,7 +53,7 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
@@ -524,7 +524,30 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </package3d>
 </packages3d>
 </library>
-<library name="my_usbc_16p_centered">
+<library name="3pos_slide_switch_centered">
+<packages>
+<package name="SW_3POS_FOOT_OFFICIAL">
+<smd name="P$1" x="-5.3" y="-1.05" dx="0.9" dy="0.8" layer="1"/>
+<smd name="P$2" x="-5.3" y="1.05" dx="0.9" dy="0.8" layer="1"/>
+<smd name="P$3" x="-3" y="1.8" dx="0.7" dy="1.5" layer="1"/>
+<smd name="P$4" x="5.3" y="1.05" dx="0.9" dy="0.8" layer="1"/>
+<smd name="P$5" x="5.3" y="-1.05" dx="0.9" dy="0.8" layer="1"/>
+<hole x="-2.5" y="0.05" drill="0.9"/>
+<hole x="2.5" y="0.05" drill="0.9"/>
+<smd name="P$6" x="-1.5" y="1.8" dx="0.7" dy="1.5" layer="1"/>
+<smd name="P$7" x="1.5" y="1.8" dx="0.7" dy="1.5" layer="1"/>
+<smd name="P$8" x="3" y="1.8" dx="0.7" dy="1.5" layer="1"/>
+<wire x1="-5.3" y1="1.15" x2="-5.3" y2="-1.35" width="0.127" layer="21"/>
+<wire x1="-5.3" y1="-1.35" x2="5.3" y2="-1.35" width="0.127" layer="21"/>
+<wire x1="5.3" y1="-1.35" x2="5.3" y2="1.15" width="0.127" layer="21"/>
+<wire x1="5.3" y1="1.15" x2="-5.3" y2="1.15" width="0.127" layer="21"/>
+<wire x1="-0.5" y1="-2.95" x2="-0.5" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-0.5" y1="-2.95" x2="0.5" y2="-2.95" width="0.127" layer="51"/>
+<wire x1="0.5" y1="-2.95" x2="0.5" y2="-1.45" width="0.127" layer="51"/>
+</package>
+</packages>
+</library>
+<library name="my_usbc_16p">
 <packages>
 <package name="USBC_16P_FOOT">
 <smd name="A1B12" x="-3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
@@ -547,72 +570,49 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pad name="P$16" x="4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
 <wire x1="-4.725" y1="-3.8475" x2="4.775" y2="-3.8475" width="0.127" layer="51"/>
 <polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="2.45865625"/>
-<vertex x="4.02513125" y="3.43865625" curve="-90"/>
-<vertex x="4.22513125" y="3.69865625"/>
-<vertex x="4.36513125" y="3.69865625" curve="-90"/>
-<vertex x="4.62513125" y="3.43865625"/>
-<vertex x="4.62513125" y="2.41865625" curve="-90"/>
-<vertex x="4.34513125" y="2.17865625"/>
-<vertex x="4.24513125" y="2.17865625" curve="-90"/>
+<vertex x="4.07593125" y="2.45865625"/>
+<vertex x="4.07593125" y="3.43865625" curve="-90"/>
+<vertex x="4.22513125" y="3.64785625"/>
+<vertex x="4.36513125" y="3.64785625" curve="-90"/>
+<vertex x="4.57433125" y="3.43865625"/>
+<vertex x="4.57433125" y="2.41865625" curve="-90"/>
+<vertex x="4.37053125" y="2.22945625"/>
+<vertex x="4.27053125" y="2.22945625" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="2.43865625"/>
-<vertex x="-4.61486875" y="3.41865625" curve="-90"/>
-<vertex x="-4.41486875" y="3.67865625"/>
-<vertex x="-4.27486875" y="3.67865625" curve="-90"/>
-<vertex x="-4.01486875" y="3.41865625"/>
-<vertex x="-4.01486875" y="2.39865625" curve="-90"/>
-<vertex x="-4.29486875" y="2.15865625"/>
-<vertex x="-4.39486875" y="2.15865625" curve="-90"/>
+<vertex x="-4.56406875" y="2.41325625"/>
+<vertex x="-4.56406875" y="3.39325625" curve="-90"/>
+<vertex x="-4.41486875" y="3.62785625"/>
+<vertex x="-4.27486875" y="3.62785625" curve="-90"/>
+<vertex x="-4.06566875" y="3.41865625"/>
+<vertex x="-4.06566875" y="2.39865625" curve="-90"/>
+<vertex x="-4.29486875" y="2.20945625"/>
+<vertex x="-4.39486875" y="2.20945625" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="-1.72134375"/>
-<vertex x="4.02513125" y="-0.74134375" curve="-90"/>
-<vertex x="4.22513125" y="-0.48134375"/>
-<vertex x="4.36513125" y="-0.48134375" curve="-90"/>
-<vertex x="4.62513125" y="-0.74134375"/>
-<vertex x="4.62513125" y="-1.76134375" curve="-90"/>
-<vertex x="4.34513125" y="-2.00134375"/>
-<vertex x="4.24513125" y="-2.00134375" curve="-90"/>
+<vertex x="4.07593125" y="-1.74674375"/>
+<vertex x="4.07593125" y="-0.76674375" curve="-90"/>
+<vertex x="4.22513125" y="-0.53214375"/>
+<vertex x="4.36513125" y="-0.53214375" curve="-90"/>
+<vertex x="4.57433125" y="-0.74134375"/>
+<vertex x="4.57433125" y="-1.76134375" curve="-90"/>
+<vertex x="4.31973125" y="-1.95054375"/>
+<vertex x="4.21973125" y="-1.95054375" curve="-90"/>
 </polygon>
 <polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="-1.72134375"/>
-<vertex x="-4.61486875" y="-0.74134375" curve="-90"/>
-<vertex x="-4.41486875" y="-0.48134375"/>
-<vertex x="-4.27486875" y="-0.48134375" curve="-90"/>
-<vertex x="-4.01486875" y="-0.74134375"/>
-<vertex x="-4.01486875" y="-1.76134375" curve="-90"/>
-<vertex x="-4.29486875" y="-2.00134375"/>
-<vertex x="-4.39486875" y="-2.00134375" curve="-90"/>
+<vertex x="-4.56406875" y="-1.72134375"/>
+<vertex x="-4.56406875" y="-0.74134375" curve="-90"/>
+<vertex x="-4.41486875" y="-0.53214375"/>
+<vertex x="-4.27486875" y="-0.53214375" curve="-90"/>
+<vertex x="-4.06566875" y="-0.74134375"/>
+<vertex x="-4.06566875" y="-1.76134375" curve="-90"/>
+<vertex x="-4.29486875" y="-1.95054375"/>
+<vertex x="-4.39486875" y="-1.95054375" curve="-90"/>
 </polygon>
 <rectangle x1="-4.7998" y1="1.9679" x2="-3.8346" y2="3.8983" layer="31"/>
 <rectangle x1="-4.7998" y1="-2.1977" x2="-3.8346" y2="-0.2673" layer="31"/>
 <rectangle x1="3.8362" y1="-2.1977" x2="4.8014" y2="-0.2673" layer="31"/>
 <rectangle x1="3.8362" y1="1.9679" x2="4.8014" y2="3.8983" layer="31"/>
-</package>
-</packages>
-</library>
-<library name="3pos_slide_switch_centered">
-<packages>
-<package name="SW_3POS_FOOT_OFFICIAL">
-<smd name="P$1" x="-5.3" y="-1.05" dx="0.9" dy="0.8" layer="1"/>
-<smd name="P$2" x="-5.3" y="1.05" dx="0.9" dy="0.8" layer="1"/>
-<smd name="P$3" x="-3" y="1.8" dx="0.7" dy="1.5" layer="1"/>
-<smd name="P$4" x="5.3" y="1.05" dx="0.9" dy="0.8" layer="1"/>
-<smd name="P$5" x="5.3" y="-1.05" dx="0.9" dy="0.8" layer="1"/>
-<hole x="-2.5" y="0.05" drill="0.9"/>
-<hole x="2.5" y="0.05" drill="0.9"/>
-<smd name="P$6" x="-1.5" y="1.8" dx="0.7" dy="1.5" layer="1"/>
-<smd name="P$7" x="1.5" y="1.8" dx="0.7" dy="1.5" layer="1"/>
-<smd name="P$8" x="3" y="1.8" dx="0.7" dy="1.5" layer="1"/>
-<wire x1="-5.3" y1="1.15" x2="-5.3" y2="-1.35" width="0.127" layer="21"/>
-<wire x1="-5.3" y1="-1.35" x2="5.3" y2="-1.35" width="0.127" layer="21"/>
-<wire x1="5.3" y1="-1.35" x2="5.3" y2="1.15" width="0.127" layer="21"/>
-<wire x1="5.3" y1="1.15" x2="-5.3" y2="1.15" width="0.127" layer="21"/>
-<wire x1="-0.5" y1="-2.95" x2="-0.5" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="-0.5" y1="-2.95" x2="0.5" y2="-2.95" width="0.127" layer="51"/>
-<wire x1="0.5" y1="-2.95" x2="0.5" y2="-1.45" width="0.127" layer="51"/>
 </package>
 </packages>
 </library>
@@ -904,7 +904,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="TP_SIGNAL_NAME" value="" x="11.2268" y="11.938" size="1" layer="38" rot="MR0"/>
 <attribute name="VALUE" x="11.7348" y="13.843" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="U1" library="my_usbc_16p_centered" package="USBC_16P_FOOT" value="USBC_16P_CENTERED" x="9.5" y="3.9"/>
+<element name="U1" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="9.5" y="3.9"/>
 <element name="SW1" library="3pos_slide_switch_centered" package="SW_3POS_FOOT_OFFICIAL" value="SW_3POS_DEVSW_3POS_OFFICIAL" x="1.7526" y="7.0612" rot="R270"/>
 </elements>
 <signals>

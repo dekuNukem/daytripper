@@ -6430,121 +6430,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
-<library name="my_usbc_16p_centered">
-<packages>
-<package name="USBC_16P_FOOT">
-<smd name="A1B12" x="-3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
-<smd name="A4B9" x="-2.425" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
-<smd name="A6" x="-0.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="B7" x="-0.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="A5" x="-1.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="B8" x="-1.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="A7" x="0.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="B6" x="0.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="A8" x="1.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="B5" x="1.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
-<smd name="B4A9" x="2.425" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
-<smd name="B11A12" x="3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
-<hole x="-2.89" y="2.4025" drill="0.65"/>
-<hole x="2.89" y="2.4025" drill="0.65"/>
-<pad name="P$13" x="-4.32" y="2.9325" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
-<pad name="P$14" x="4.32" y="2.9325" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
-<pad name="P$15" x="-4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
-<pad name="P$16" x="4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
-<wire x1="-4.725" y1="-3.8475" x2="4.775" y2="-3.8475" width="0.127" layer="51"/>
-<polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="2.45865625"/>
-<vertex x="4.02513125" y="3.43865625" curve="-90"/>
-<vertex x="4.22513125" y="3.69865625"/>
-<vertex x="4.36513125" y="3.69865625" curve="-90"/>
-<vertex x="4.62513125" y="3.43865625"/>
-<vertex x="4.62513125" y="2.41865625" curve="-90"/>
-<vertex x="4.34513125" y="2.17865625"/>
-<vertex x="4.24513125" y="2.17865625" curve="-90"/>
-</polygon>
-<polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="2.43865625"/>
-<vertex x="-4.61486875" y="3.41865625" curve="-90"/>
-<vertex x="-4.41486875" y="3.67865625"/>
-<vertex x="-4.27486875" y="3.67865625" curve="-90"/>
-<vertex x="-4.01486875" y="3.41865625"/>
-<vertex x="-4.01486875" y="2.39865625" curve="-90"/>
-<vertex x="-4.29486875" y="2.15865625"/>
-<vertex x="-4.39486875" y="2.15865625" curve="-90"/>
-</polygon>
-<polygon width="0.1524" layer="46">
-<vertex x="4.02513125" y="-1.72134375"/>
-<vertex x="4.02513125" y="-0.74134375" curve="-90"/>
-<vertex x="4.22513125" y="-0.48134375"/>
-<vertex x="4.36513125" y="-0.48134375" curve="-90"/>
-<vertex x="4.62513125" y="-0.74134375"/>
-<vertex x="4.62513125" y="-1.76134375" curve="-90"/>
-<vertex x="4.34513125" y="-2.00134375"/>
-<vertex x="4.24513125" y="-2.00134375" curve="-90"/>
-</polygon>
-<polygon width="0.1524" layer="46">
-<vertex x="-4.61486875" y="-1.72134375"/>
-<vertex x="-4.61486875" y="-0.74134375" curve="-90"/>
-<vertex x="-4.41486875" y="-0.48134375"/>
-<vertex x="-4.27486875" y="-0.48134375" curve="-90"/>
-<vertex x="-4.01486875" y="-0.74134375"/>
-<vertex x="-4.01486875" y="-1.76134375" curve="-90"/>
-<vertex x="-4.29486875" y="-2.00134375"/>
-<vertex x="-4.39486875" y="-2.00134375" curve="-90"/>
-</polygon>
-<rectangle x1="-4.7998" y1="1.9679" x2="-3.8346" y2="3.8983" layer="31"/>
-<rectangle x1="-4.7998" y1="-2.1977" x2="-3.8346" y2="-0.2673" layer="31"/>
-<rectangle x1="3.8362" y1="-2.1977" x2="4.8014" y2="-0.2673" layer="31"/>
-<rectangle x1="3.8362" y1="1.9679" x2="4.8014" y2="3.8983" layer="31"/>
-</package>
-</packages>
-<symbols>
-<symbol name="USBC_16P_SYM">
-<wire x1="-10.16" y1="17.78" x2="-10.16" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-2.54" x2="12.7" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-2.54" x2="12.7" y2="22.86" width="0.254" layer="94"/>
-<wire x1="12.7" y1="22.86" x2="-10.16" y2="22.86" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="22.86" x2="-10.16" y2="20.32" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="20.32" x2="-10.16" y2="17.78" width="0.254" layer="94"/>
-<pin name="VBUS" x="-15.24" y="20.32" length="middle"/>
-<pin name="GND" x="-15.24" y="0" length="middle"/>
-<pin name="CC1" x="17.78" y="15.24" length="middle" rot="R180"/>
-<pin name="CC2" x="17.78" y="12.7" length="middle" rot="R180"/>
-<pin name="SBU1" x="17.78" y="7.62" length="middle" rot="R180"/>
-<pin name="SBU2" x="17.78" y="5.08" length="middle" rot="R180"/>
-<pin name="DP1" x="-15.24" y="15.24" length="middle"/>
-<pin name="DN1" x="-15.24" y="7.62" length="middle"/>
-<pin name="DP2" x="-15.24" y="12.7" length="middle"/>
-<pin name="DN2" x="-15.24" y="5.08" length="middle"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="USBC_16P_CENTERED">
-<gates>
-<gate name="G$1" symbol="USBC_16P_SYM" x="0" y="-10.16"/>
-</gates>
-<devices>
-<device name="" package="USBC_16P_FOOT">
-<connects>
-<connect gate="G$1" pin="CC1" pad="A5"/>
-<connect gate="G$1" pin="CC2" pad="B5"/>
-<connect gate="G$1" pin="DN1" pad="A7"/>
-<connect gate="G$1" pin="DN2" pad="B7"/>
-<connect gate="G$1" pin="DP1" pad="A6"/>
-<connect gate="G$1" pin="DP2" pad="B6"/>
-<connect gate="G$1" pin="GND" pad="A1B12 B11A12 P$13 P$14 P$15 P$16"/>
-<connect gate="G$1" pin="SBU1" pad="A8"/>
-<connect gate="G$1" pin="SBU2" pad="B8"/>
-<connect gate="G$1" pin="VBUS" pad="A4B9 B4A9"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="3pos_slide_switch_centered">
 <packages>
 <package name="SW_3POS_FOOT">
@@ -6626,6 +6511,121 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="my_usbc_16p">
+<packages>
+<package name="USBC_16P_FOOT">
+<smd name="A1B12" x="-3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
+<smd name="A4B9" x="-2.425" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
+<smd name="A6" x="-0.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="B7" x="-0.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="A5" x="-1.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="B8" x="-1.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="A7" x="0.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="B6" x="0.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="A8" x="1.25" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="B5" x="1.75" y="3.8475" dx="1.45" dy="0.3" layer="1" rot="R90"/>
+<smd name="B4A9" x="2.425" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
+<smd name="B11A12" x="3.225" y="3.8475" dx="1.45" dy="0.6" layer="1" rot="R90"/>
+<hole x="-2.89" y="2.4025" drill="0.65"/>
+<hole x="2.89" y="2.4025" drill="0.65"/>
+<pad name="P$13" x="-4.32" y="2.9325" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
+<pad name="P$14" x="4.32" y="2.9325" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
+<pad name="P$15" x="-4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
+<pad name="P$16" x="4.32" y="-1.2475" drill="0.6" diameter="1" shape="long" rot="R90" thermals="no"/>
+<wire x1="-4.725" y1="-3.8475" x2="4.775" y2="-3.8475" width="0.127" layer="51"/>
+<polygon width="0.1524" layer="46">
+<vertex x="4.07593125" y="2.45865625"/>
+<vertex x="4.07593125" y="3.43865625" curve="-90"/>
+<vertex x="4.22513125" y="3.64785625"/>
+<vertex x="4.36513125" y="3.64785625" curve="-90"/>
+<vertex x="4.57433125" y="3.43865625"/>
+<vertex x="4.57433125" y="2.41865625" curve="-90"/>
+<vertex x="4.37053125" y="2.22945625"/>
+<vertex x="4.27053125" y="2.22945625" curve="-90"/>
+</polygon>
+<polygon width="0.1524" layer="46">
+<vertex x="-4.56406875" y="2.41325625"/>
+<vertex x="-4.56406875" y="3.39325625" curve="-90"/>
+<vertex x="-4.41486875" y="3.62785625"/>
+<vertex x="-4.27486875" y="3.62785625" curve="-90"/>
+<vertex x="-4.06566875" y="3.41865625"/>
+<vertex x="-4.06566875" y="2.39865625" curve="-90"/>
+<vertex x="-4.29486875" y="2.20945625"/>
+<vertex x="-4.39486875" y="2.20945625" curve="-90"/>
+</polygon>
+<polygon width="0.1524" layer="46">
+<vertex x="4.07593125" y="-1.74674375"/>
+<vertex x="4.07593125" y="-0.76674375" curve="-90"/>
+<vertex x="4.22513125" y="-0.53214375"/>
+<vertex x="4.36513125" y="-0.53214375" curve="-90"/>
+<vertex x="4.57433125" y="-0.74134375"/>
+<vertex x="4.57433125" y="-1.76134375" curve="-90"/>
+<vertex x="4.31973125" y="-1.95054375"/>
+<vertex x="4.21973125" y="-1.95054375" curve="-90"/>
+</polygon>
+<polygon width="0.1524" layer="46">
+<vertex x="-4.56406875" y="-1.72134375"/>
+<vertex x="-4.56406875" y="-0.74134375" curve="-90"/>
+<vertex x="-4.41486875" y="-0.53214375"/>
+<vertex x="-4.27486875" y="-0.53214375" curve="-90"/>
+<vertex x="-4.06566875" y="-0.74134375"/>
+<vertex x="-4.06566875" y="-1.76134375" curve="-90"/>
+<vertex x="-4.29486875" y="-1.95054375"/>
+<vertex x="-4.39486875" y="-1.95054375" curve="-90"/>
+</polygon>
+<rectangle x1="-4.7998" y1="1.9679" x2="-3.8346" y2="3.8983" layer="31"/>
+<rectangle x1="-4.7998" y1="-2.1977" x2="-3.8346" y2="-0.2673" layer="31"/>
+<rectangle x1="3.8362" y1="-2.1977" x2="4.8014" y2="-0.2673" layer="31"/>
+<rectangle x1="3.8362" y1="1.9679" x2="4.8014" y2="3.8983" layer="31"/>
+</package>
+</packages>
+<symbols>
+<symbol name="USBC_16P_SYM">
+<wire x1="-10.16" y1="17.78" x2="-10.16" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-2.54" x2="12.7" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-2.54" x2="12.7" y2="22.86" width="0.254" layer="94"/>
+<wire x1="12.7" y1="22.86" x2="-10.16" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="22.86" x2="-10.16" y2="20.32" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="20.32" x2="-10.16" y2="17.78" width="0.254" layer="94"/>
+<pin name="VBUS" x="-15.24" y="20.32" length="middle"/>
+<pin name="GND" x="-15.24" y="0" length="middle"/>
+<pin name="CC1" x="17.78" y="15.24" length="middle" rot="R180"/>
+<pin name="CC2" x="17.78" y="12.7" length="middle" rot="R180"/>
+<pin name="SBU1" x="17.78" y="7.62" length="middle" rot="R180"/>
+<pin name="SBU2" x="17.78" y="5.08" length="middle" rot="R180"/>
+<pin name="DP1" x="-15.24" y="15.24" length="middle"/>
+<pin name="DN1" x="-15.24" y="7.62" length="middle"/>
+<pin name="DP2" x="-15.24" y="12.7" length="middle"/>
+<pin name="DN2" x="-15.24" y="5.08" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="USBC_16P">
+<gates>
+<gate name="G$1" symbol="USBC_16P_SYM" x="0" y="-10.16"/>
+</gates>
+<devices>
+<device name="" package="USBC_16P_FOOT">
+<connects>
+<connect gate="G$1" pin="CC1" pad="A5"/>
+<connect gate="G$1" pin="CC2" pad="B5"/>
+<connect gate="G$1" pin="DN1" pad="A7"/>
+<connect gate="G$1" pin="DN2" pad="B7"/>
+<connect gate="G$1" pin="DP1" pad="A6"/>
+<connect gate="G$1" pin="DP2" pad="B6"/>
+<connect gate="G$1" pin="GND" pad="A1B12 B11A12 P$13 P$14 P$15 P$16"/>
+<connect gate="G$1" pin="SBU1" pad="A8"/>
+<connect gate="G$1" pin="SBU2" pad="B8"/>
+<connect gate="G$1" pin="VBUS" pad="A4B9 B4A9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -6696,7 +6696,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="R6" library="joyAnalog" deviceset="RESISTOR" device="0805-RES" value="1 Ohm"/>
 <part name="C14" library="clock" deviceset="CAP" device="0805" value="4.7uF"/>
 <part name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP12R" package3d_urn="urn:adsk.eagle:package:27963/1"/>
-<part name="U1" library="my_usbc_16p_centered" deviceset="USBC_16P_CENTERED" device=""/>
+<part name="U1" library="my_usbc_16p" deviceset="USBC_16P" device=""/>
 <part name="SW1" library="3pos_slide_switch_centered" deviceset="SW_3POS_DEV" device="SW_3POS_OFFICIAL"/>
 </parts>
 <sheets>

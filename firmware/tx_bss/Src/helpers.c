@@ -96,16 +96,19 @@ void check_battery(uint32_t* vbat_mV)
 {
   uint8_t vbat_8b, vrefint;
   HAL_ADC_Start(&hadc);
-  HAL_ADC_PollForConversion(&hadc, 100);
+  HAL_ADC_PollForConversion(&hadc, 500);
   vbat_8b = HAL_ADC_GetValue(&hadc);
-  HAL_ADC_PollForConversion(&hadc, 100);
+  HAL_ADC_PollForConversion(&hadc, 500);
   vrefint = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
+
+  if(vrefint == 0) // just in case
+    return;
 
   *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
-  if(*vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
+  if(*vbat_mV >= 2000 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
   {
     printf("low battery, shutting down...\n");
 
