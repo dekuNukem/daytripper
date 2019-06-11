@@ -117,11 +117,8 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes
   {
-    HAL_ADC_MspInit(&hadc);
-    MX_ADC_Init();
     check_battery(&vbat_mV);
     new_stat_packet = 1;
-    HAL_ADC_MspDeInit(&hadc);
   }
   if(wakeup_count % 25 == 0) // 25 * 0.2 = 5 seconds
     power_on_time_5s++;
@@ -178,7 +175,6 @@ int main(void)
   HAL_Delay(2000);
   check_battery(&vbat_mV);
   new_stat_packet = 1;
-  HAL_ADC_MspDeInit(&hadc);
 
   MX_IWDG_Init(); // this should be behind check_battery, so it can completely shut down in low battery situation
   /* USER CODE END 2 */
@@ -188,7 +184,7 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(20000); // 20000 26500 default 33000
+  setMeasurementTimingBudget(25000); // 20000 25000 26500 default 33000
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();
@@ -196,14 +192,14 @@ int main(void)
   NRF_ON();
   iwdg_wait(100, ANIMATION_TYPE_NOCHANGE);
   
-  printf("initializing NRF...\n");
+  printf("initializing NRF...");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
   nrf24_tx_address(tx_address);
   nrf24_rx_address(rx_address);
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-  printf("done\n");
+  printf(" done\n");
 
   tof_calibrate(&baseline, &diff_threshold);
   start_animation(ANIMATION_TYPE_CONST_OFF);
@@ -229,37 +225,37 @@ int main(void)
     if(new_stat_packet)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
-      printf("sending stat packet...\n");
+      printf("sending stat packet... ");
       send_packet(data_array);
       new_stat_packet = 0;
     }
 
-    this_reading = readRangeSingleMillimeters();
+    this_reading = get_single_distance_reading(&is_reading_valid);
     diff = abs(baseline - this_reading);
 
-    if(this_reading <= 15)
+    if(is_reading_valid == 0)
       goto sleep;
 
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
       uint8_t count = 0;
       uint16_t this;
-      printf("trig: %d ", this_reading);
+      printf(">>> b:%d t0:%d ", baseline, this_reading);
       while(count < WINDOW_SIZE)
       {
       	HAL_IWDG_Refresh(&hiwdg);
-        this = readRangeSingleMillimeters();
-        // printf("%d ", this);
-        if(this <= 15) // invalid reading
+        this = get_single_distance_reading(&is_reading_valid);
+        printf("t%d:%d ", count+1, this);
+        if(is_reading_valid == 0)
           continue;
         if(abs(baseline - this) <= diff_threshold)
         {
-          // printf("false\n");
+          printf("X\n");
           goto sleep;
         }
         count++;
       }
-      // printf("\n");
+      printf("\n");
       start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);

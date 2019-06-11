@@ -14,6 +14,7 @@
 #define STM32F0_UUID1 ((uint32_t *)0x1FFFF7B0)
 #define STM32F0_UUID2 ((uint32_t *)0x1FFFF7B4)
 
+uint8_t is_reading_valid;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
 
@@ -33,6 +34,17 @@ void bubbleSort(uint16_t arr[], uint16_t n)
               swap(&arr[j], &arr[j+1]); 
 }
 
+uint16_t get_single_distance_reading(uint8_t* is_valid)
+{
+  uint16_t result = readRangeSingleMillimeters();
+  *is_valid = 1;
+  if(result > 1200)
+    result = 1200;
+  if(result < 20)
+    *is_valid = 0;
+  return result;
+}
+
 uint16_t get_baseline(void)
 {
   while(1)
@@ -40,7 +52,7 @@ uint16_t get_baseline(void)
     uint32_t mean = 0;
     for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
     {
-      baseline_data[i] = readRangeSingleMillimeters();
+      baseline_data[i] = get_single_distance_reading(&is_reading_valid);
       HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
@@ -58,11 +70,11 @@ uint16_t get_baseline(void)
 
     if(variance <= 300)
     {
-      printf("mean: %d\n", mean);
+      printf("baseline: %d\n", mean);
       return mean;
     }
     
-    printf("calibration failed - variance too large: %d, samples:\n", variance);
+    printf("\ncalibration failed - variance too large: %d, samples:\n", variance);
     for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
       printf("%d ", baseline_data[i]);
     printf("\n");
@@ -85,58 +97,58 @@ void iwdg_wait(uint32_t msec, uint8_t ani_type)
 
 void tof_calibrate(uint16_t* base, uint16_t* threshold)
 {
-  printf("calibrating...\n");
+  printf("VL53L0X calibrating... ");
   *base = get_baseline();
   *threshold = get_trigger_threshold(*base);
-  printf("done!\n");
 }
 
 // put this before IWDG_init so it can turn off after reset?
 void check_battery(uint32_t* vbat_mV)
 {
-  uint8_t vbat_8b, vrefint;
-  HAL_ADC_Start(&hadc);
-  HAL_ADC_PollForConversion(&hadc, 500);
-  vbat_8b = HAL_ADC_GetValue(&hadc);
-  HAL_ADC_PollForConversion(&hadc, 500);
-  vrefint = HAL_ADC_GetValue(&hadc);
-  HAL_ADC_Stop(&hadc);
+  *vbat_mV = 3800;
+  // uint8_t vbat_8b, vrefint;
+  // HAL_ADC_Start(&hadc);
+  // HAL_ADC_PollForConversion(&hadc, 500);
+  // vbat_8b = HAL_ADC_GetValue(&hadc);
+  // HAL_ADC_PollForConversion(&hadc, 500);
+  // vrefint = HAL_ADC_GetValue(&hadc);
+  // HAL_ADC_Stop(&hadc);
 
-  if(vrefint == 0) // just in case
-    return;
+  // if(vrefint == 0) // just in case
+  //   return;
 
-  *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
-  printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+  // *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
+  // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
 
-  if(*vbat_mV >= 2000 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
-  {
-    printf("low battery, shutting down...\n");
+  // if(*vbat_mV >= 2000 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
+  // {
+  //   printf("low battery, shutting down...\n");
 
-    start_animation(ANIMATION_TYPE_FASTBLINK);
-    HAL_Delay(3000);
-    start_animation(ANIMATION_TYPE_CONST_OFF);
+  //   start_animation(ANIMATION_TYPE_FASTBLINK);
+  //   HAL_Delay(3000);
+  //   start_animation(ANIMATION_TYPE_CONST_OFF);
 
-    // turn off external chips
-    nrf24_powerDown();
-    NRF_OFF();
-    HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+  //   // turn off external chips
+  //   nrf24_powerDown();
+  //   NRF_OFF();
+  //   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  //   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
-    // disable all interrupts
-    for (int i = 0; i <= 31; i++)
-      HAL_NVIC_DisableIRQ(i);
+  //   // disable all interrupts
+  //   for (int i = 0; i <= 31; i++)
+  //     HAL_NVIC_DisableIRQ(i);
 
-    // turn off periphrials
-    HAL_ADC_MspDeInit(&hadc);
-    HAL_I2C_MspDeInit(&hi2c1);
-    HAL_RTC_MspDeInit(&hrtc);
-    HAL_SPI_MspDeInit(&hspi1);
-    HAL_TIM_Base_MspDeInit(&htim2);
-    HAL_TIM_Base_MspDeInit(&htim17);
-    HAL_UART_MspDeInit(&huart2);
+  //   // turn off periphrials
+  //   HAL_ADC_MspDeInit(&hadc);
+  //   HAL_I2C_MspDeInit(&hi2c1);
+  //   HAL_RTC_MspDeInit(&hrtc);
+  //   HAL_SPI_MspDeInit(&hspi1);
+  //   HAL_TIM_Base_MspDeInit(&htim2);
+  //   HAL_TIM_Base_MspDeInit(&htim17);
+  //   HAL_UART_MspDeInit(&huart2);
 
-    HAL_PWR_EnterSTANDBYMode();
-  }
+  //   HAL_PWR_EnterSTANDBYMode();
+  // }
 }
 
 void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)

@@ -1,4 +1,26 @@
 /*
+disable battery check and see if still restarts
+
+resample 3 times? budget 20ms
+
+budget 15ms moew samples? 8 HZ?
+
+
+done:
+ADC always on now
+
+TODO
+API get reading wrapper?
+different sensitivity for different baselines?
+
+SCRAP
+increased rtc wake up rate from 5hz to around 6HZ
+reduced laser timing budget from 25ms to 15ms
+increased resample count from 2 to 3
+
+*/
+
+/*
 power consumption notes
 
 fully assembled REV2 tx board:
