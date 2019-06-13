@@ -113,6 +113,7 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
+// this happens every 200ms
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes

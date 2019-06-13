@@ -8,12 +8,12 @@ budget 15ms moew samples? 8 HZ?
 
 done:
 ADC always on now
+API reading wrapper
 
 TODO
-API get reading wrapper?
 different sensitivity for different baselines?
 
-SCRAP
+IDEAS
 increased rtc wake up rate from 5hz to around 6HZ
 reduced laser timing budget from 25ms to 15ms
 increased resample count from 2 to 3
