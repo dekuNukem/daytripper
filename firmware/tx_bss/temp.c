@@ -1,4 +1,8 @@
 /*
+battery ADC glitch returns vbat_mv = 2400 from time to time
+*/
+
+/*
 disable battery check and see if still restarts
 
 resample 3 times? budget 20ms
@@ -73,6 +77,71 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+
+void check_battery(uint32_t* vbat_mV)
+{
+  *vbat_mV = 3800;
+  while(1)
+  {
+    HAL_Delay(500);
+    printf("hello\n");
+  }
+  // uint8_t vbat_8b, vrefint;
+  // HAL_ADC_Start(&hadc);
+  // HAL_ADC_PollForConversion(&hadc, 500);
+  // vbat_8b = HAL_ADC_GetValue(&hadc);
+  // HAL_ADC_PollForConversion(&hadc, 500);
+  // vrefint = HAL_ADC_GetValue(&hadc);
+  // HAL_ADC_Stop(&hadc);
+
+  // if(vrefint == 0) // just in case
+  //   return;
+
+  // *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
+  // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+
+  // if(*vbat_mV >= 2000 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
+  // {
+  //   printf("low battery, shutting down...\n");
+
+  //   start_animation(ANIMATION_TYPE_FASTBLINK);
+  //   HAL_Delay(3000);
+  //   start_animation(ANIMATION_TYPE_CONST_OFF);
+
+  //   // turn off external chips
+  //   nrf24_powerDown();
+  //   NRF_OFF();
+  //   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  //   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
+  //   // disable all interrupts
+  //   for (int i = 0; i <= 31; i++)
+  //     HAL_NVIC_DisableIRQ(i);
+
+  //   // turn off periphrials
+  //   HAL_ADC_MspDeInit(&hadc);
+  //   HAL_I2C_MspDeInit(&hi2c1);
+  //   HAL_RTC_MspDeInit(&hrtc);
+  //   HAL_SPI_MspDeInit(&hspi1);
+  //   HAL_TIM_Base_MspDeInit(&htim2);
+  //   HAL_TIM_Base_MspDeInit(&htim17);
+  //   HAL_UART_MspDeInit(&huart2);
+
+  //   HAL_PWR_EnterSTANDBYMode();
+  // }
+}
+  while(1)
+  {
+    HAL_Delay(500);
+    HAL_ADC_Start(&hadc);
+    HAL_ADC_PollForConversion(&hadc, 500);
+    vbat_8b = HAL_ADC_GetValue(&hadc);
+    HAL_ADC_PollForConversion(&hadc, 500);
+    vrefint = HAL_ADC_GetValue(&hadc);
+    HAL_ADC_Stop(&hadc);
+    *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
+    printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+  }
     if(this_reading > 8190)
     {
       printf("invalid reading: %d\n", this_reading);

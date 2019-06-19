@@ -2118,34 +2118,34 @@ Image Symbol Table
     i.keyboard_release                       0x08003d60   Section        0  keyboard.o(i.keyboard_release)
     i.keyboard_release_all                   0x08003dd0   Section        0  keyboard.o(i.keyboard_release_all)
     i.main                                   0x08003df4   Section        0  main.o(i.main)
-    i.media_key_press                        0x08004054   Section        0  keyboard.o(i.media_key_press)
-    i.nrf24_ce_digitalWrite                  0x08004094   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    i.nrf24_config                           0x080040b0   Section        0  nrf24.o(i.nrf24_config)
-    i.nrf24_configRegister                   0x08004128   Section        0  nrf24.o(i.nrf24_configRegister)
-    i.nrf24_csn_digitalWrite                 0x0800414c   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    i.nrf24_dataReady                        0x08004166   Section        0  nrf24.o(i.nrf24_dataReady)
-    i.nrf24_getData                          0x08004180   Section        0  nrf24.o(i.nrf24_getData)
-    i.nrf24_getStatus                        0x080041b0   Section        0  nrf24.o(i.nrf24_getStatus)
-    i.nrf24_init                             0x080041ca   Section        0  nrf24.o(i.nrf24_init)
-    i.nrf24_powerUpRx                        0x080041da   Section        0  nrf24.o(i.nrf24_powerUpRx)
-    i.nrf24_readRegister                     0x0800420c   Section        0  nrf24.o(i.nrf24_readRegister)
-    i.nrf24_rxFifoEmpty                      0x08004234   Section        0  nrf24.o(i.nrf24_rxFifoEmpty)
-    i.nrf24_rx_address                       0x0800424a   Section        0  nrf24.o(i.nrf24_rx_address)
-    i.nrf24_transferSync                     0x08004266   Section        0  nrf24.o(i.nrf24_transferSync)
-    i.nrf24_transmitSync                     0x08004284   Section        0  nrf24.o(i.nrf24_transmitSync)
-    i.nrf24_tx_address                       0x0800429e   Section        0  nrf24.o(i.nrf24_tx_address)
-    i.nrf24_writeRegister                    0x080042b8   Section        0  nrf24.o(i.nrf24_writeRegister)
-    i.press_keys                             0x080042e0   Section        0  helpers.o(i.press_keys)
-    i.print_status                           0x08004340   Section        0  main.o(i.print_status)
-    i.spi_transfer                           0x08004398   Section        0  nrf24.o(i.spi_transfer)
-    i.start_animation                        0x080043bc   Section        0  animation.o(i.start_animation)
-    .constdata                               0x080043d0   Section      128  keyboard.o(.constdata)
-    .constdata                               0x08004450   Section       67  animation.o(.constdata)
-    breathing_lookup                         0x08004450   Data          51  animation.o(.constdata)
-    doubleflash_lookup                       0x08004483   Data          16  animation.o(.constdata)
-    .constdata                               0x08004493   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x080044a3   Section        8  system_stm32f0xx.o(.constdata)
-    .conststring                             0x080044ac   Section      105  main.o(.conststring)
+    i.media_key_press                        0x0800405c   Section        0  keyboard.o(i.media_key_press)
+    i.nrf24_ce_digitalWrite                  0x0800409c   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    i.nrf24_config                           0x080040b8   Section        0  nrf24.o(i.nrf24_config)
+    i.nrf24_configRegister                   0x08004130   Section        0  nrf24.o(i.nrf24_configRegister)
+    i.nrf24_csn_digitalWrite                 0x08004154   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    i.nrf24_dataReady                        0x0800416e   Section        0  nrf24.o(i.nrf24_dataReady)
+    i.nrf24_getData                          0x08004188   Section        0  nrf24.o(i.nrf24_getData)
+    i.nrf24_getStatus                        0x080041b8   Section        0  nrf24.o(i.nrf24_getStatus)
+    i.nrf24_init                             0x080041d2   Section        0  nrf24.o(i.nrf24_init)
+    i.nrf24_powerUpRx                        0x080041e2   Section        0  nrf24.o(i.nrf24_powerUpRx)
+    i.nrf24_readRegister                     0x08004214   Section        0  nrf24.o(i.nrf24_readRegister)
+    i.nrf24_rxFifoEmpty                      0x0800423c   Section        0  nrf24.o(i.nrf24_rxFifoEmpty)
+    i.nrf24_rx_address                       0x08004252   Section        0  nrf24.o(i.nrf24_rx_address)
+    i.nrf24_transferSync                     0x0800426e   Section        0  nrf24.o(i.nrf24_transferSync)
+    i.nrf24_transmitSync                     0x0800428c   Section        0  nrf24.o(i.nrf24_transmitSync)
+    i.nrf24_tx_address                       0x080042a6   Section        0  nrf24.o(i.nrf24_tx_address)
+    i.nrf24_writeRegister                    0x080042c0   Section        0  nrf24.o(i.nrf24_writeRegister)
+    i.press_keys                             0x080042e8   Section        0  helpers.o(i.press_keys)
+    i.print_status                           0x08004348   Section        0  main.o(i.print_status)
+    i.spi_transfer                           0x080043a0   Section        0  nrf24.o(i.spi_transfer)
+    i.start_animation                        0x080043c4   Section        0  animation.o(i.start_animation)
+    .constdata                               0x080043d8   Section      128  keyboard.o(.constdata)
+    .constdata                               0x08004458   Section       67  animation.o(.constdata)
+    breathing_lookup                         0x08004458   Data          51  animation.o(.constdata)
+    doubleflash_lookup                       0x0800448b   Data          16  animation.o(.constdata)
+    .constdata                               0x0800449b   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x080044ab   Section        8  system_stm32f0xx.o(.constdata)
+    .conststring                             0x080044b4   Section      105  main.o(.conststring)
     .data                                    0x20000000   Section        1  nrf24.o(.data)
     .data                                    0x20000001   Section        5  keyboard.o(.data)
     .data                                    0x20000008   Section       24  animation.o(.data)
@@ -2429,33 +2429,33 @@ Image Symbol Table
     keyboard_press                           0x08003cd9   Thumb Code   124  keyboard.o(i.keyboard_press)
     keyboard_release                         0x08003d61   Thumb Code   100  keyboard.o(i.keyboard_release)
     keyboard_release_all                     0x08003dd1   Thumb Code    28  keyboard.o(i.keyboard_release_all)
-    main                                     0x08003df5   Thumb Code   352  main.o(i.main)
-    media_key_press                          0x08004055   Thumb Code    56  keyboard.o(i.media_key_press)
-    nrf24_ce_digitalWrite                    0x08004095   Thumb Code    24  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    nrf24_config                             0x080040b1   Thumb Code   116  nrf24.o(i.nrf24_config)
-    nrf24_configRegister                     0x08004129   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
-    nrf24_csn_digitalWrite                   0x0800414d   Thumb Code    26  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    nrf24_dataReady                          0x08004167   Thumb Code    26  nrf24.o(i.nrf24_dataReady)
-    nrf24_getData                            0x08004181   Thumb Code    44  nrf24.o(i.nrf24_getData)
-    nrf24_getStatus                          0x080041b1   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
-    nrf24_init                               0x080041cb   Thumb Code    16  nrf24.o(i.nrf24_init)
-    nrf24_powerUpRx                          0x080041db   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
-    nrf24_readRegister                       0x0800420d   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
-    nrf24_rxFifoEmpty                        0x08004235   Thumb Code    22  nrf24.o(i.nrf24_rxFifoEmpty)
-    nrf24_rx_address                         0x0800424b   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
-    nrf24_transferSync                       0x08004267   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
-    nrf24_transmitSync                       0x08004285   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
-    nrf24_tx_address                         0x0800429f   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
-    nrf24_writeRegister                      0x080042b9   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
-    press_keys                               0x080042e1   Thumb Code    94  helpers.o(i.press_keys)
-    print_status                             0x08004341   Thumb Code    74  main.o(i.print_status)
-    spi_transfer                             0x08004399   Thumb Code    32  nrf24.o(i.spi_transfer)
-    start_animation                          0x080043bd   Thumb Code    14  animation.o(i.start_animation)
-    _asciimap                                0x080043d0   Data         128  keyboard.o(.constdata)
-    AHBPrescTable                            0x08004493   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x080044a3   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08004518   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004538   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08003df5   Thumb Code   358  main.o(i.main)
+    media_key_press                          0x0800405d   Thumb Code    56  keyboard.o(i.media_key_press)
+    nrf24_ce_digitalWrite                    0x0800409d   Thumb Code    24  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    nrf24_config                             0x080040b9   Thumb Code   116  nrf24.o(i.nrf24_config)
+    nrf24_configRegister                     0x08004131   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
+    nrf24_csn_digitalWrite                   0x08004155   Thumb Code    26  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    nrf24_dataReady                          0x0800416f   Thumb Code    26  nrf24.o(i.nrf24_dataReady)
+    nrf24_getData                            0x08004189   Thumb Code    44  nrf24.o(i.nrf24_getData)
+    nrf24_getStatus                          0x080041b9   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
+    nrf24_init                               0x080041d3   Thumb Code    16  nrf24.o(i.nrf24_init)
+    nrf24_powerUpRx                          0x080041e3   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
+    nrf24_readRegister                       0x08004215   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
+    nrf24_rxFifoEmpty                        0x0800423d   Thumb Code    22  nrf24.o(i.nrf24_rxFifoEmpty)
+    nrf24_rx_address                         0x08004253   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
+    nrf24_transferSync                       0x0800426f   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
+    nrf24_transmitSync                       0x0800428d   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
+    nrf24_tx_address                         0x080042a7   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
+    nrf24_writeRegister                      0x080042c1   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
+    press_keys                               0x080042e9   Thumb Code    94  helpers.o(i.press_keys)
+    print_status                             0x08004349   Thumb Code    74  main.o(i.print_status)
+    spi_transfer                             0x080043a1   Thumb Code    32  nrf24.o(i.spi_transfer)
+    start_animation                          0x080043c5   Thumb Code    14  animation.o(i.start_animation)
+    _asciimap                                0x080043d8   Data         128  keyboard.o(.constdata)
+    AHBPrescTable                            0x0800449b   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x080044ab   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08004520   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004540   Number         0  anon$$obj.o(Region$$Table)
     payload_len                              0x20000000   Data           1  nrf24.o(.data)
     kb_buf                                   0x20000001   Data           5  keyboard.o(.data)
     current_animation                        0x20000008   Data           1  animation.o(.data)
@@ -2499,9 +2499,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000467c, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00004608])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004684, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00004610])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004538, Max: 0x00008000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004540, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2714,40 +2714,40 @@ Memory Map of the image
     0x08003cd8   0x08003cd8   0x00000088   Code   RO          353    i.keyboard_press    keyboard.o
     0x08003d60   0x08003d60   0x00000070   Code   RO          354    i.keyboard_release  keyboard.o
     0x08003dd0   0x08003dd0   0x00000024   Code   RO          355    i.keyboard_release_all  keyboard.o
-    0x08003df4   0x08003df4   0x00000260   Code   RO          484    i.main              main.o
-    0x08004054   0x08004054   0x00000040   Code   RO          356    i.media_key_press   keyboard.o
-    0x08004094   0x08004094   0x0000001c   Code   RO          277    i.nrf24_ce_digitalWrite  radiopinfunctions.o
-    0x080040b0   0x080040b0   0x00000078   Code   RO           12    i.nrf24_config      nrf24.o
-    0x08004128   0x08004128   0x00000024   Code   RO           13    i.nrf24_configRegister  nrf24.o
-    0x0800414c   0x0800414c   0x0000001a   Code   RO          278    i.nrf24_csn_digitalWrite  radiopinfunctions.o
-    0x08004166   0x08004166   0x0000001a   Code   RO           14    i.nrf24_dataReady   nrf24.o
-    0x08004180   0x08004180   0x00000030   Code   RO           15    i.nrf24_getData     nrf24.o
-    0x080041b0   0x080041b0   0x0000001a   Code   RO           16    i.nrf24_getStatus   nrf24.o
-    0x080041ca   0x080041ca   0x00000010   Code   RO           17    i.nrf24_init        nrf24.o
-    0x080041da   0x080041da   0x00000032   Code   RO           23    i.nrf24_powerUpRx   nrf24.o
-    0x0800420c   0x0800420c   0x00000028   Code   RO           25    i.nrf24_readRegister  nrf24.o
-    0x08004234   0x08004234   0x00000016   Code   RO           27    i.nrf24_rxFifoEmpty  nrf24.o
-    0x0800424a   0x0800424a   0x0000001c   Code   RO           28    i.nrf24_rx_address  nrf24.o
-    0x08004266   0x08004266   0x0000001e   Code   RO           30    i.nrf24_transferSync  nrf24.o
-    0x08004284   0x08004284   0x0000001a   Code   RO           31    i.nrf24_transmitSync  nrf24.o
-    0x0800429e   0x0800429e   0x0000001a   Code   RO           32    i.nrf24_tx_address  nrf24.o
-    0x080042b8   0x080042b8   0x00000028   Code   RO           33    i.nrf24_writeRegister  nrf24.o
-    0x080042e0   0x080042e0   0x0000005e   Code   RO          305    i.press_keys        helpers.o
-    0x0800433e   0x0800433e   0x00000002   PAD
-    0x08004340   0x08004340   0x00000058   Code   RO          485    i.print_status      main.o
-    0x08004398   0x08004398   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
-    0x080043bc   0x080043bc   0x00000014   Code   RO          440    i.start_animation   animation.o
-    0x080043d0   0x080043d0   0x00000080   Data   RO          358    .constdata          keyboard.o
-    0x08004450   0x08004450   0x00000043   Data   RO          441    .constdata          animation.o
-    0x08004493   0x08004493   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
-    0x080044a3   0x080044a3   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
-    0x080044ab   0x080044ab   0x00000001   PAD
-    0x080044ac   0x080044ac   0x00000069   Data   RO          487    .conststring        main.o
-    0x08004515   0x08004515   0x00000003   PAD
-    0x08004518   0x08004518   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
+    0x08003df4   0x08003df4   0x00000268   Code   RO          484    i.main              main.o
+    0x0800405c   0x0800405c   0x00000040   Code   RO          356    i.media_key_press   keyboard.o
+    0x0800409c   0x0800409c   0x0000001c   Code   RO          277    i.nrf24_ce_digitalWrite  radiopinfunctions.o
+    0x080040b8   0x080040b8   0x00000078   Code   RO           12    i.nrf24_config      nrf24.o
+    0x08004130   0x08004130   0x00000024   Code   RO           13    i.nrf24_configRegister  nrf24.o
+    0x08004154   0x08004154   0x0000001a   Code   RO          278    i.nrf24_csn_digitalWrite  radiopinfunctions.o
+    0x0800416e   0x0800416e   0x0000001a   Code   RO           14    i.nrf24_dataReady   nrf24.o
+    0x08004188   0x08004188   0x00000030   Code   RO           15    i.nrf24_getData     nrf24.o
+    0x080041b8   0x080041b8   0x0000001a   Code   RO           16    i.nrf24_getStatus   nrf24.o
+    0x080041d2   0x080041d2   0x00000010   Code   RO           17    i.nrf24_init        nrf24.o
+    0x080041e2   0x080041e2   0x00000032   Code   RO           23    i.nrf24_powerUpRx   nrf24.o
+    0x08004214   0x08004214   0x00000028   Code   RO           25    i.nrf24_readRegister  nrf24.o
+    0x0800423c   0x0800423c   0x00000016   Code   RO           27    i.nrf24_rxFifoEmpty  nrf24.o
+    0x08004252   0x08004252   0x0000001c   Code   RO           28    i.nrf24_rx_address  nrf24.o
+    0x0800426e   0x0800426e   0x0000001e   Code   RO           30    i.nrf24_transferSync  nrf24.o
+    0x0800428c   0x0800428c   0x0000001a   Code   RO           31    i.nrf24_transmitSync  nrf24.o
+    0x080042a6   0x080042a6   0x0000001a   Code   RO           32    i.nrf24_tx_address  nrf24.o
+    0x080042c0   0x080042c0   0x00000028   Code   RO           33    i.nrf24_writeRegister  nrf24.o
+    0x080042e8   0x080042e8   0x0000005e   Code   RO          305    i.press_keys        helpers.o
+    0x08004346   0x08004346   0x00000002   PAD
+    0x08004348   0x08004348   0x00000058   Code   RO          485    i.print_status      main.o
+    0x080043a0   0x080043a0   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
+    0x080043c4   0x080043c4   0x00000014   Code   RO          440    i.start_animation   animation.o
+    0x080043d8   0x080043d8   0x00000080   Data   RO          358    .constdata          keyboard.o
+    0x08004458   0x08004458   0x00000043   Data   RO          441    .constdata          animation.o
+    0x0800449b   0x0800449b   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
+    0x080044ab   0x080044ab   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
+    0x080044b3   0x080044b3   0x00000001   PAD
+    0x080044b4   0x080044b4   0x00000069   Data   RO          487    .conststring        main.o
+    0x0800451d   0x0800451d   0x00000003   PAD
+    0x08004520   0x08004520   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004538, Size: 0x00000d80, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004540, Size: 0x00000d80, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2785,7 +2785,7 @@ Image component sizes
        164         20         67         24          0       2325   animation.o
        190          8          0          0          0       1684   helpers.o
        440         44        128          5          0       8872   keyboard.o
-      1346        340        105         26        484       7541   main.o
+      1354        342        105         26        484       7541   main.o
        570         12          0          1          0     482331   nrf24.o
         54          4          0          0          0       1045   radiopinfunctions.o
         88         38        192          0       1024        644   startup_stm32f042x6.o
@@ -2813,7 +2813,7 @@ Image component sizes
        108          0          0          0          0       3636   usbd_ioreq.o
 
     ----------------------------------------------------------------------
-     15924       1242        552        320       3132     624011   Object Totals
+     15932       1244        552        320       3132     624011   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         38          0          4         11          0          0   (incl. Padding)
 
@@ -2861,15 +2861,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17168       1314        552        324       3132     616707   Grand Totals
-     17168       1314        552        208       3132     616707   ELF Image Totals (compressed)
-     17168       1314        552        208          0          0   ROM Totals
+     17176       1316        552        324       3132     616707   Grand Totals
+     17176       1316        552        208       3132     616707   ELF Image Totals (compressed)
+     17176       1316        552        208          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                17720 (  17.30kB)
+    Total RO  Size (Code + RO Data)                17728 (  17.31kB)
     Total RW  Size (RW Data + ZI Data)              3456 (   3.38kB)
-    Total ROM Size (Code + RO Data + RW Data)      17928 (  17.51kB)
+    Total ROM Size (Code + RO Data + RW Data)      17936 (  17.52kB)
 
 ==============================================================================
 

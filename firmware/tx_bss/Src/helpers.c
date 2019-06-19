@@ -105,50 +105,51 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
 // put this before IWDG_init so it can turn off after reset?
 void check_battery(uint32_t* vbat_mV)
 {
-  *vbat_mV = 3800;
-  // uint8_t vbat_8b, vrefint;
-  // HAL_ADC_Start(&hadc);
-  // HAL_ADC_PollForConversion(&hadc, 500);
-  // vbat_8b = HAL_ADC_GetValue(&hadc);
-  // HAL_ADC_PollForConversion(&hadc, 500);
-  // vrefint = HAL_ADC_GetValue(&hadc);
-  // HAL_ADC_Stop(&hadc);
+  uint8_t vbat_8b, vrefint;
+  uint32_t this_mV;
 
-  // if(vrefint == 0) // just in case
-  //   return;
+  HAL_ADC_Start(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 500);
+  vbat_8b = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 500);
+  vrefint = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_Stop(&hadc);
+  this_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
+  printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, this_mV);
 
-  // *vbat_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
-  // printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, *vbat_mV);
+  if(this_mV == 2400)
+    return;
+  *vbat_mV = this_mV;
 
-  // if(*vbat_mV >= 2000 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
-  // {
-  //   printf("low battery, shutting down...\n");
+  if(this_mV >= 2500 && this_mV <= 3250) // 3250 after diode drop is about 3.5V
+  {
+    printf("low battery, shutting down...\n");
 
-  //   start_animation(ANIMATION_TYPE_FASTBLINK);
-  //   HAL_Delay(3000);
-  //   start_animation(ANIMATION_TYPE_CONST_OFF);
+    start_animation(ANIMATION_TYPE_FASTBLINK);
+    HAL_Delay(3000);
+    start_animation(ANIMATION_TYPE_CONST_OFF);
 
-  //   // turn off external chips
-  //   nrf24_powerDown();
-  //   NRF_OFF();
-  //   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
-  //   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+    // turn off external chips
+    nrf24_powerDown();
+    HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+    NRF_OFF();
 
-  //   // disable all interrupts
-  //   for (int i = 0; i <= 31; i++)
-  //     HAL_NVIC_DisableIRQ(i);
+    // disable all interrupts
+    for (int i = 0; i <= 31; i++)
+      HAL_NVIC_DisableIRQ(i);
 
-  //   // turn off periphrials
-  //   HAL_ADC_MspDeInit(&hadc);
-  //   HAL_I2C_MspDeInit(&hi2c1);
-  //   HAL_RTC_MspDeInit(&hrtc);
-  //   HAL_SPI_MspDeInit(&hspi1);
-  //   HAL_TIM_Base_MspDeInit(&htim2);
-  //   HAL_TIM_Base_MspDeInit(&htim17);
-  //   HAL_UART_MspDeInit(&huart2);
+    // turn off periphrials
+    HAL_ADC_MspDeInit(&hadc);
+    HAL_I2C_MspDeInit(&hi2c1);
+    HAL_RTC_MspDeInit(&hrtc);
+    HAL_SPI_MspDeInit(&hspi1);
+    HAL_TIM_Base_MspDeInit(&htim2);
+    HAL_TIM_Base_MspDeInit(&htim17);
+    HAL_UART_MspDeInit(&huart2);
 
-  //   HAL_PWR_EnterSTANDBYMode();
-  // }
+    HAL_PWR_EnterSTANDBYMode();
+  }
 }
 
 void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
