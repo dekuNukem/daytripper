@@ -13,9 +13,10 @@ https://www.tindie.com/products/dekuNukem/daytripper/
 
 ## Features
 
-* Three trigger behaviors: Minimize, Lock, or Custom
-* USB Type-C connector
+* Minimize or lock your computer when triggered.
 * 40-hour battery life, rechargeable.
+* USB Type-C connector
+* Custom action also supported. 
 * 120cm (47 inches) detection range
 
 ## Getting Started
@@ -28,7 +29,7 @@ For how to use Daytripper, see this:
 
 [Quick Start Guide](/quick_start_guide.md)
 
-For advanced features like custom actions, multiple modules, and on-air packet capture, read this:
+For advanced features such as custom actions, multiple modules, firmware updates, read this:
 
 [Advanced Usage](/advanced_usage.md)
 
@@ -54,7 +55,7 @@ For performing custom actions, see [Advanced Usage Guide](/advanced_usage.md).
 
 The laser ToF sensor can detect motion within a range of 120cm (47 inches).
 
-The open-air wireless communication range between transmitter and receiver should be around 120m (130 yards). Might be less in indoor environments. 
+The open-air wireless communication range between transmitter and receiver should be around 100 (330 feet). Might be less in indoor environments. 
 
 ### How is the battery life?
 

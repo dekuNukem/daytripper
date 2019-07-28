@@ -12,7 +12,7 @@ If yours is already assembled, please move on to the [Quick Start Guide](/quick_
 
 A pliers and a small phillips-head screwdriver is recommended.
 
-However this is perfect doable with your bare hands, so don't sweat if you don't have the tools.
+However this is perfectly doable with your bare hands, so don't sweat if you don't have the tools.
 
 ![Alt text](resources/photos/tools.jpg)
 
@@ -28,7 +28,7 @@ Of course you don't have to do it if you like the unpeeled look.
 
 ![Alt text](resources/photos/film.jpg)
 
-Gather the `Acrylic Back Plate`, `4x M2 Standoffs 6mm`, and `4x M2 Screws 18mm`
+Gather the `Acrylic Back Plate`, `4x M2 Standoffs 6mm`, and `4x M2 Screws 18mm`.
 
 ![Alt text](resources/photos/back.jpg)
 
@@ -38,7 +38,7 @@ Do not overtighten the standoff! Doing so might crack the acrylic plate. Finger-
 
 ![Alt text](resources/photos/back_in.jpg)
 
-Install the TX board as shown:
+Install the `TX board` as shown:
 
 ![Alt text](resources/photos/tx_in.jpg)
 
