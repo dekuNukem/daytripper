@@ -1,8 +1,6 @@
 # Daytripper Kit Assembly Guide
 
-[Daytripper Main Page](/README.md)
-
-[Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
+[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
 
 Thanks for purchasing Daytripper! Here is a short guide on how to put everything together.
 
@@ -54,7 +52,9 @@ Put on the nuts. Again don't overtighten. Might be easier with pilers.
 
 ![Alt text](resources/photos/tx_nut.jpg)
 
-Roll it over, peel the metal plate from the white side to expose the adhesives.
+Flip it over. Clean the backplate with a dry cloth if dirty.
+
+Peel the metal plate from the white side to expose the adhesives.
 
 ![Alt text](resources/photos/metal_peel.jpg)
 
