@@ -78,12 +78,22 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 
 ## Troubleshoot / Lights Meaning
 
-both TX and RX have a blue LED for status light. The meanings are detailed in tables below. 
+Both TX and RX have a blue status LED. The meanings are detailed in tables below. 
 
 ![Alt text](resources/photos/lights_meaning.png)
 
-TX board also have a yellow LED, which comes on when the battery is charging. 
+TX boards also have a yellow LED, which comes on when the battery is charging.
 
 ## Disclaimers
 
-Personal project, although made every effort, not a safety device, not responsible for consequences, no guarantees, use at own risk
+Although I have spent a lot of time on this project, I cannot guarantee its functionality in every condition.
+
+This is not a safety device, do not use it for safety critical applications. 
+
+I am not responsible for the consequences of using this device. Use it at your own risk. 
+
+## Questions or Comments?
+
+Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
+
+You can also email me at `dekunukem gmail com` for inquires.
