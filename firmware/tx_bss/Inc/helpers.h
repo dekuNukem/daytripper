@@ -10,8 +10,7 @@
 
 #define DTPR_CMD_TEST 0xa1
 #define DTPR_CMD_TRIG 0xb2
-#define DTPR_CMD_RET 0xc3
-#define DTPR_CMD_STAT 0xd4
+#define DTPR_CMD_STAT 0xc3
 
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
