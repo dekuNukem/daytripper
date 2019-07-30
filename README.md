@@ -13,6 +13,8 @@ https://www.tindie.com/products/dekuNukem/daytripper/
 
 ## Features
 
+comes in two parts, TX and RX, TX has a laser tof sensor on it and sends a wireless signal to RX, which acts like a USB keyboard and press shortcut keys to minimize or lock your computer. 
+
 * Minimize or lock your computer when triggered.
 * 40-hour battery life, rechargeable.
 * USB Type-C connector
@@ -55,7 +57,7 @@ For performing custom actions, see [Advanced Usage Guide](/advanced_usage.md).
 
 The laser ToF sensor can detect motion within a range of 120cm (47 inches).
 
-The open-air wireless communication range between transmitter and receiver should be around 100 (330 feet). Might be less in indoor environments. 
+The open-air wireless communication range between transmitter and receiver should be around 100 meters (330 feet). Might be less in indoor environments. 
 
 ### How is the battery life?
 
