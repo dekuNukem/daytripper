@@ -2,6 +2,8 @@
 
 [Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
 
+------
+
 Thanks for purchasing Daytripper! Here is a short guide on how to put everything together.
 
 If yours is already assembled, please move on to the [Quick Start Guide](/quick_start_guide.md).
@@ -66,3 +68,13 @@ Peel off the blue protective film, and we're done!
 
 
 Now your Daytripper is ready to use! Head over to the [Quick Start Guide](/quick_start_guide.md) to get going.
+
+## Questions or Comments?
+
+Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
+
+You can also email me at `dekunukem gmail com` for inquires.
+
+------
+
+[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)

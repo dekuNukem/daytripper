@@ -2,6 +2,8 @@
 
 [Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
 
+------
+
 If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/quick_start_guide.md) first.
 
 ## Custom Actions
@@ -10,7 +12,7 @@ Instead of hiding windows, you can perform custom actions when TX is triggered.
 
 `photo of RX backside`
 
-Slide the Mode Select Switch on RX to `CUSTOM`, middle position. After this, `ALT + PAUSE` will be pressed when TX is triggered. 
+Slide the Mode Select Switch on RX to `CUSTOM`, middle position. Now `ALT + PAUSE` will be pressed when TX is triggered. 
 
 This key combo normally doesn't do anything, but you can capture it with a software and then perform your own actions. 
 
@@ -56,9 +58,57 @@ Daytripper TX sends 6-byte packets, details below:
 
 * The `vbat_mV` is about 300mV lower than the actual battery voltage, due to the diode drop. 
 
+## Debug Modes
+
+There is a user button on both TX and RX board. Usually they are unused:
+
+![Alt text](resources/photos/buttons.jpg)
+
+For TX, a short press (less than 2 seconds) recalibrates the baseline. A long press (more than 2 seconds) enters Test Mode, where it sends test packets with incrementing sequence number as payload every second. It can be used to test communication range. Turn it off then on again to exit Test Mode. 
+
+For RX, a press on the button types out some debug messages. Make sure you open a text editor first. 
+
+## USB Firmware Updates
+
+You can update Daytripper's firmware via USB, for bug fixes and and/or new features. 
+
+To do this, download and install the [STM32 DfuSe tool](https://www.st.com/en/development-tools/stsw-stm32080.html) from the official website. Or if you don't want to give them your email, you can download it [from this repo](resources/en.stsw-stm32080_stm32_DfuSe.zip).
+
+To update firmware, **`make sure the board is powered off, then press and hold down the user button while plugging it into a computer`**.
+
+If it all goes well, the status LED would stay off, and you will see a `STM Device in DFU Mode` in Device Manager:
+
+![Alt text](resources/photos/dm.png)
+
+Then you can launch the `DfuSe Demo` software:
+
+![Alt text](resources/photos/dfu_start.png)
+
+Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
+
+![Alt text](resources/photos/dfu_choose.png)
+
+Press `Upgrade` button to start uploading the new firmware into the microcontroller.
+
+![Alt text](resources/photos/dfu_upgrade.png)
+
+And now the firmware is being updated!
+
+![Alt text](resources/photos/dfu_uploading.png)
+
+It could take anywhere between a few seconds to a few minutes. Try using different USB ports if it is particularly slow. 
+
+After uploading is complete, unplug and turn it back on to start using the new firmware. 
+
+-----
+
+If you generated a `.hex` file yourself, you can convert it to a `.dfu` file with the `Dfu file manager` and then upload this way. 
+
+This method is nice for occasional firmware updates, but quite cumbersome if you want to do extensive reprogramming. It's faster to get a ST-Link programmer and use the Keil uVision IDE. [See this guide](https://github.com/dekuNukem/STM32_tutorials) for more information on STM32 developments.
+
 ## Using Multiple Modules
 
-Daytripper wasn't designed with multiple TX/RX boards in mind. And I haven't done any extensive testings.
+Daytripper wasn't designed with multiple TX/RX boards in mind. And I haven't done any extensive testings on this subject.
 
 ### Single RX Multiple TX
 
@@ -70,32 +120,14 @@ Here ALL of RX will react when TX fires.
 
 ### Multiple TX Multiple RX
 
-Untested, probably a mess.   
+Untested, probably a mess. 
 
-## Debug Modes
+## Questions or Comments?
 
-There is a user button on both TX and RX board. Usually they are unused:
+Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
 
-![Alt text](resources/photos/buttons.jpg)
+You can also email me at `dekunukem gmail com` for inquires.
 
-For TX, a short press (less than 2 seconds) recalibrates the baseline. A long press (more than 2 seconds) enters Test Mode, where it sends test packets with incrementing sequence number as payload every second. It can be used to test communication range. Turn it off then on again to exit Test Mode. 
+------
 
-For RX a press on the button types out some debug messages. Make sure you open a text editor first. 
-
-## USB DFU Firmware Updates
-
-The above two buttons also acts controls Device Firmware Update (DFU) through USB. 
-
-how to enter
-
-download the app.
-
-select dfu files, how to create them. 
-
-## tech specs
-
-
-
-battery capacity
-charge current
-pinouts
+[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)

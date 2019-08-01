@@ -4,6 +4,8 @@ Daytripper is a laser tripwire that hides all your windows when triggered.
 
 `daytripper gif`
 
+![Alt text](resources/photos/face_notext.jpg)
+
 comes in two parts, TX and RX, TX has a laser tof sensor on it and sends a wireless signal to RX, which acts like a USB keyboard and press shortcut keys to minimize or lock your computer. 
 
 ## Buy Daytripper on Tindie!
@@ -51,3 +53,9 @@ The wireless communication range between transmitter and receiver should be arou
 ### How is the battery life?
 
 Around 40 hours, depending on the number of triggers. Rechargeable via USB Type-C connector.
+
+## Questions or Comments?
+
+Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
+
+You can also email me at `dekunukem gmail com` for inquires.

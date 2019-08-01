@@ -2,6 +2,8 @@
 
 [Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
 
+------
+
 This guide shows you how to use the Daytripper.
 
 If yours hasn't been assembled yet, please [see this guide to put it together](/assembly_guide.md)
@@ -97,3 +99,7 @@ I am not responsible for the consequences of using this device. Use it at your o
 Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
 
 You can also email me at `dekunukem gmail com` for inquires.
+
+------
+
+[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
