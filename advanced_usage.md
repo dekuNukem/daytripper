@@ -22,7 +22,9 @@ You can use [autohotkey](https://www.autohotkey.com). Here's a [sample configura
 
 ### MacOS
 
-You can write an applescript and then make an App Shortcut:
+Go to `System Preferences` -> `Keyboard` -> `Shortcuts` -> `App Shortcuts`
+
+You can then add a shortcut to launch an application, or execute an applescript:
 
 ![Alt text](resources/photos/applescript.png)
 

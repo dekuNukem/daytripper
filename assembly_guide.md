@@ -10,11 +10,19 @@ If yours is already assembled, please move on to the [Quick Start Guide](/quick_
 
 ## Recommended Tools
 
-A pliers and a small phillips-head screwdriver is recommended.
+A pliers and a small Phillips-head screwdriver is recommended.
 
 However this is perfectly doable with your bare hands, so don't sweat if you don't have the tools.
 
 ![Alt text](resources/photos/tools.jpg)
+
+## Handling Bare Circuit Boards
+
+You're going to handle a bare circuit board in this assembly, and there is a risk of electrostatic discharge, where the static electricity(SE) on your body discharges and damages the board. This is especially a concern during dry weather.
+
+My suggestion is simply **wash your hands**, by doing so you release the existing SE through the metal water pipe, your hands are moist to prevent further SE build-up, and your clean hands won't leave greasy fingerprints all over the place, win-win-win!
+
+Of course, your hands can't be dripping wet either, otherwise the water is going to damage the board.
 
 ## Assembly Steps
 
@@ -38,7 +46,7 @@ Do not overtighten the standoff! Doing so might crack the acrylic plate. Finger-
 
 ![Alt text](resources/photos/back_in.jpg)
 
-Install the `TX board` as shown:
+Wash your hands, grab the circuit board by its edge, and install the `TX board` as shown:
 
 ![Alt text](resources/photos/tx_in.jpg)
 
@@ -65,7 +73,6 @@ Stick the metal plate to the back plate, preferably where the battery is.
 Peel off the blue protective film, and we're done!
 
 ![Alt text](resources/photos/done.jpg)
-
 
 Now your Daytripper is ready to use! Head over to the [Quick Start Guide](/quick_start_guide.md) to get going.
 

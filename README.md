@@ -6,7 +6,13 @@ Daytripper is a laser tripwire that hides all your windows when triggered.
 
 ![Alt text](resources/photos/face_notext.jpg)
 
-comes in two parts, TX and RX, TX has a laser tof sensor on it and sends a wireless signal to RX, which acts like a USB keyboard and press shortcut keys to minimize or lock your computer. 
+Daytripper consists of a Transmitter (TX) and a Receiver (RX):
+
+TX features a continuous-scan laser rangefinder, and sends a signal to RX when triggered. You place it wherever you want.
+
+RX plugs into your PC, acts like a standard USB keyboard, and presses `Win + M` upon receiving the signal, hiding all windows.
+
+RX can also lock your computer or execute custom scripts. 
 
 ## Buy Daytripper on Tindie!
 
@@ -48,7 +54,7 @@ See [Advanced Usage Guide](/advanced_usage.md).
 
 The laser ToF sensor can detect motion within 120cm (47 inches).
 
-The wireless communication range between transmitter and receiver should be around 100 meters (330 feet) open air. Might be less in indoor environments. 
+The wireless communication range between TX and RX should be around 100 meters (330 feet) open air. Less in indoor environments. 
 
 ### How is the battery life?
 
