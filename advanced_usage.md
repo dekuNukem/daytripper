@@ -10,15 +10,15 @@ If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/
 
 Instead of hiding windows, you can perform custom actions when TX is triggered.
 
-`photo of RX backside`
+![Alt text](resources/photos/rxback.jpg)
 
-Slide the Mode Select Switch on RX to `CUSTOM`, middle position. Now `ALT + PAUSE` will be pressed when TX is triggered. 
+Slide the `Mode Select` Switch on RX to `CUSTOM`, middle position. Now `ALT + PAUSE` will be pressed when TX is triggered. 
 
 This key combo normally doesn't do anything, but you can capture it with a software and then perform your own actions. 
 
 ### Windows 
 
-You can use [autohotkey](https://www.autohotkey.com). Here's a [sample configuration file](resources/AutoHotkey.ahk) upon which you can tinker with.
+You can use [autohotkey](https://www.autohotkey.com). Check out the [official tutorials](https://www.autohotkey.com/docs_1.0/Tutorial.htm), and here's a [sample configuration file](resources/AutoHotkey.ahk) upon which you can tinker with. 
 
 ### MacOS
 

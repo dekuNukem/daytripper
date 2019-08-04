@@ -16,11 +16,11 @@ Please observe the various names that will be referred to later:
 
 ![Alt text](resources/photos/face.jpg)
 
-Your RX board might have a translucent protective cover on it, don't peel it off!
+Your RX board might have a translucent protective cover, don't remove it!
 
-Plug the RX into your computer. The blue LED should be breathing then go dim, and the computer should recognize it as an USB keyboard.
+Plug the RX into your computer. The blue LED should be breathing then go dim, and your PC should recognize it as an USB keyboard.
 
-`rx plug in video`
+![Alt text](resources/photos/rxplug.jpg)
 
 Put the TX flat on the table, make sure there is **no obstructions in front of the sensor window**.
 
@@ -28,11 +28,11 @@ Turn on the TX using the power switch. The blue LED should start breathing as it
 
 The blue LED should eventually go out, that means TX is armed and ready. 
 
-`video of turning on TX laying on the table`
+![Alt text](resources/photos/txon.gif)
 
 Now put your hand in front of the sensor window, the LEDs on both board should flash, and all your windows should be minimized instantly.
 
-`video of windows on a laptop screen being minimized`
+![Alt text](resources/photos/rick.gif)
 
 That's pretty much the gist of it! However please do keep reading for more information.
 
@@ -40,15 +40,15 @@ That's pretty much the gist of it! However please do keep reading for more infor
 
 Now you know how Daytripper works, time to make it useful by mounting the TX at a desired location.
 
-If you're trying to detect someone walking by, you can mount it to a wall using the magnet. Tape the magnet to the wall, then you can attach and detach the TX with ease.
+If you're trying to detect someone walking by, you can mount it to a wall using the magnet. Tape the magnet to the wall, then you can attach and detach the TX with ease. If you can find a metal surface, it's even easier:
 
-`video of a magnet on wall, and TX being attached to it`
+![Alt text](resources/photos/mount.gif)
 
-If you're trying to detect a door opening, simply put it on the ground near the door.
+If you're trying to detect a door opening, simply put it on the ground so the door opens into it.
 
-`photo of TX on the ground near a door`
+![Alt text](resources/photos/door.jpg)
 
-Of course those are just suggestions, and you can get creative.
+Those are just two suggestions, you can get as creative as you want!
 
 ## Best Practices (Important!!!)
 
@@ -72,9 +72,11 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 
 * Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
 
-* Actually test your setup! The mounting, and the application/game you're trying to hide.
+* Test your setup! Test the mounting and the application/game you're trying to hide.
 
 * If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead.
+
+![Alt text](resources/photos/rxback.jpg)
 
 * There is also a `Custom` option on the `Mode Select` switch, but that's for [advanced usages](/advanced_usage.md).
 
@@ -85,6 +87,10 @@ Both TX and RX have a blue status LED. The meanings are detailed in tables below
 ![Alt text](resources/photos/lights_meaning.png)
 
 TX boards also have a yellow LED, which comes on when the battery is charging.
+
+## Advanced Usages
+
+Once you're familiar with how Daytripper works, you can take a look at the [Advanced Usage Guide](/advanced_usage.md) for some additional features that might be of interest.
 
 ## Disclaimers
 

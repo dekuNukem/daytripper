@@ -1,3 +1,3 @@
 LAlt & Pause::
-	Send #{d}
+	Msgbox, hello world!
 	return
