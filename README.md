@@ -1,24 +1,30 @@
 # Daytripper: Hide-My-Windows Laser Tripwire
 
-Daytripper is a laser tripwire that hides all your windows when triggered.
-
 `daytripper gif`
 
 ![Alt text](resources/photos/face_notext.jpg)
 
-Daytripper consists of a Transmitter (TX) and a Receiver (RX):
+Daytripper is a laser tripwire that, upon triggering, can:
 
-TX features a continuous-scan laser rangefinder, and sends a signal to RX when triggered. You place it wherever you want.
-
-RX plugs into your PC, acts like a standard USB keyboard, and presses `Win + M` upon receiving the signal, hiding all windows.
-
-RX can also lock your computer or execute custom scripts. 
+* Hide all your windows
+* Lock your computer
+* Execute a custom script
 
 ## Buy Daytripper on Tindie!
 
 I did a small production run and you can buy them directly on Tindie:
 
 https://www.tindie.com/products/dekuNukem/daytripper/
+
+## How it works
+
+Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
+
+Mount the TX anywhere you want. Plug RX into your computer.
+
+When TX detects motion, RX will press `Win + M` and instantly hide what you're doing.
+
+Alternatively, RX can also lock your PC or execute a custom script. 
 
 ## Getting Started
 
@@ -30,7 +36,7 @@ For how to use Daytripper, see this:
 
 [Quick Start Guide](/quick_start_guide.md)
 
-For advanced features such as custom actions, multiple modules, and firmware updates, read this:
+For advanced features such as custom actions and firmware updates, read this:
 
 [Advanced Usage](/advanced_usage.md)
 

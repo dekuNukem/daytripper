@@ -18,19 +18,19 @@ Please observe the various names that will be referred to later:
 
 Your RX board might have a translucent protective cover, don't remove it!
 
-Plug the RX into your computer. The blue LED should be breathing then go dim, and your PC should recognize it as an USB keyboard.
+Plug the RX into your computer. The blue LED should start breathing then go dim, and your PC should recognize it as an USB keyboard.
 
 ![Alt text](resources/photos/rxplug.jpg)
 
 Put the TX flat on the table, make sure there is **no obstructions in front of the sensor window**.
 
-Turn on the TX using the power switch. The blue LED should start breathing as it gets a baseline reading.
+Turn on the TX (gently!) using the power switch. The blue LED should start breathing as it gets a baseline reading.
 
 The blue LED should eventually go out, that means TX is armed and ready. 
 
 ![Alt text](resources/photos/txon.gif)
 
-Now put your hand in front of the sensor window, the LEDs on both board should flash, and all your windows should be minimized instantly.
+Now put your hand in front of the sensor window, all your windows should be minimized instantly.
 
 ![Alt text](resources/photos/rick.gif)
 
