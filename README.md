@@ -1,6 +1,6 @@
 # Daytripper: Hide-My-Windows Laser Tripwire
 
-`daytripper gif`
+![Alt text](resources/photos/promo.gif)
 
 ![Alt text](resources/photos/face_notext.jpg)
 
@@ -22,9 +22,9 @@ Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
 
 Mount the TX anywhere you want. Plug RX into your computer.
 
-When TX detects motion, RX will press `Win + M` and instantly hide what you're doing.
+When motion is detected, Daytripper will press `Win + M` and instantly hide what you're doing.
 
-Alternatively, RX can also lock your PC or execute a custom script. 
+Alternatively, it can also lock your PC or execute a custom script.
 
 ## Getting Started
 
@@ -42,9 +42,9 @@ For advanced features such as custom actions and firmware updates, read this:
 
 ## FAQ
 
-### What operating system is Daytripper compatible with?
+### What operating system is supported?
 
-Daytripper works out-of-box with Windows, from XP to 10.
+Daytripper works out-of-box with Windows, from XP to 10. No driver needed.
 
 It is also compatible with anything that supports USB keyboards, such as Linux, MacOS, Android, iOS, and more.
 
