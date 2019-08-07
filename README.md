@@ -1,6 +1,6 @@
 # Daytripper: Hide-My-Windows Laser Tripwire
 
-Do you always slack off on your computer and worry about getting busted by your boss/parent?
+Do you always slack off on your computer and worry about getting busted?
 
 Not anymore because Daytripper is here to save the day!
 
@@ -16,7 +16,7 @@ Daytripper is a laser tripwire that can, upon triggering:
 
 I did a small production run, and you can buy them directly on Tindie:
 
-https://www.tindie.com/products/dekuNukem/daytripper (Approval pending, should go live very soon)
+https://www.tindie.com/products/dekuNukem/daytripper
 
 ## How it works
 
