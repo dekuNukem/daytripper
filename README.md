@@ -1,5 +1,9 @@
 # Daytripper: Hide-My-Windows Laser Tripwire
 
+Do you always slack off on your computer and worry about getting busted by your boss/parent?
+
+Not anymore because Daytripper is here to save the day!
+
 ![Alt text](resources/photos/promo.gif)
 
 Daytripper is a laser tripwire that can, upon triggering:
