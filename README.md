@@ -12,9 +12,7 @@ Daytripper is a laser tripwire that can, upon triggering:
 
 I did a small production run, and you can buy them directly on Tindie:
 
-https://www.tindie.com/products/dekuNukem/daytripper
-
-(Approval pending, should go live very soon)
+https://www.tindie.com/products/dekuNukem/daytripper (Approval pending, should go live very soon)
 
 ## How it works
 
@@ -27,6 +25,24 @@ Mount the TX anywhere you want. Plug RX into your computer.
 When motion is detected, RX will press `Win + M` and instantly hide what you're doing.
 
 Alternatively, it can also lock your PC or execute a custom script.
+
+## Features
+
+Daytripper...
+
+* Can detect motion within 120cm (4 ft).
+
+* Has 5Hz scan rate, works best indoors.
+
+* Works out-of-box with Windows, compatible with all major OSs.
+
+* Has a 40-hour battery life, rechargeable via USB-C.
+
+* Has a 100 meter (330 ft) communication range between TX and RX, open-air.
+
+* Comes with a magnetic mounting kit.
+
+* See [Quick Start Guide](https://github.com/dekuNukem/daytripper/blob/master/quick_start_guide.md) and [Advanced Usage Guide](https://github.com/dekuNukem/daytripper/blob/master/advanced_usage.md) for more details.
 
 ## Getting Started
 
@@ -62,7 +78,7 @@ See [Advanced Usage Guide](/advanced_usage.md).
 
 The laser ToF sensor can detect motion within 120cm (4 ft).
 
-The wireless communication range between TX and RX should be around 100 meters (330 feet) open air. Less in indoor environments. 
+The wireless communication range between TX and RX should be around 100 meters (330 feet) open air. Might be less in indoor environments. 
 
 ### How is the battery life?
 
