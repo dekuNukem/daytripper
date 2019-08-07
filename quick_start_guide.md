@@ -24,7 +24,7 @@ Sometimes the system will install a driver, wait for it to finish.
 
 ![Alt text](resources/photos/rxplug.jpg)
 
-Put the TX flat on the table, make sure there is **no obstructions in front of the sensor window**.
+Put the TX flat on the table, make sure there is **no obstruction in front of the sensor window**.
 
 Turn on the TX (gently!) using the power switch. The blue LED should start breathing as it gets a baseline reading.
 
@@ -32,7 +32,7 @@ The blue LED should eventually go out, that means TX is armed and ready.
 
 ![Alt text](resources/photos/txon.gif)
 
-Now put your hand in front of the sensor window, all your windows should be minimized instantly.
+Now put your hand in front of the sensor window, all your windows should be instantly minimized.
 
 ![Alt text](resources/photos/rick.gif)
 
@@ -69,6 +69,8 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 * The transmission range between TX and RX is around 100 meters (330 feet) in open air. Although it is likely to be shorter in indoor environments with walls and other wireless interferences.
 
 * The battery on TX should last around 40 hours, depending on the number of triggers. You can recharge it using a USB Type-C cable.
+
+* Don't touch the components on the circuit board with your bare hands, especially the laser sensor!
 
 ## Tips and Tricks
 

@@ -2,23 +2,25 @@
 
 ![Alt text](resources/photos/promo.gif)
 
-Daytripper is a laser tripwire that, upon triggering, can:
+Daytripper is a laser tripwire that can, upon triggering:
 
 * Hide all your windows
 * Lock your computer
 * Execute a custom script
 
-![Alt text](resources/photos/face_notext.jpg)
-
 ## Buy Daytripper on Tindie!
 
-I did a small production run and you can buy them directly on Tindie:
+I did a small production run, and you can buy them directly on Tindie:
 
-https://www.tindie.com/products/dekuNukem/daytripper/
+https://www.tindie.com/products/dekuNukem/daytripper
+
+(Approval pending, should go live very soon)
 
 ## How it works
 
 Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
+
+![Alt text](resources/photos/face_note.jpg)
 
 Mount the TX anywhere you want. Plug RX into your computer.
 
@@ -46,7 +48,7 @@ For advanced features such as custom actions and firmware updates, read this:
 
 Daytripper works out-of-box with Windows, from XP to 10. No driver needed.
 
-It is also compatible with anything that supports USB keyboards, such as Linux, MacOS, Android, iOS, and more.
+It is also compatible with anything that supports USB keyboards, such as Linux, MacOS, Android, and more.
 
 Read [Advanced Usage Guide](/advanced_usage.md) to see how to use it on other systems.
 
@@ -58,7 +60,7 @@ See [Advanced Usage Guide](/advanced_usage.md).
 
 ### What is the range of Daytripper?
 
-The laser ToF sensor can detect motion within 120cm (47 inches).
+The laser ToF sensor can detect motion within 120cm (4 ft).
 
 The wireless communication range between TX and RX should be around 100 meters (330 feet) open air. Less in indoor environments. 
 

@@ -12,7 +12,7 @@ If yours is already assembled, please move on to the [Quick Start Guide](/quick_
 
 A pliers and a small Phillips-head screwdriver is recommended.
 
-However this is perfectly doable with your bare hands, so don't sweat if you don't have the tools.
+However this is perfectly doable with your bare hands, so don't sweat if you don't have them.
 
 ![Alt text](resources/photos/tools.jpg)
 
@@ -22,17 +22,15 @@ You're going to handle a bare circuit board in this assembly, and there is a ris
 
 My suggestion is simply **wash your hands**, by doing so you release the existing SE through the metal water pipe, your hands are moist to prevent further SE build-up, and your clean hands won't leave greasy fingerprints all over the place, win-win-win!
 
-Of course, your hands can't be dripping wet either, otherwise the water is going to damage the board.
+Of course, your hands can't be dripping wet either, but that's just common sense.
 
 ## Assembly Steps
 
-You should have the following components, keep a note of their names as I'm going to refer to them later. 
+You should have the following parts, keep a note of their names as I'm going to refer to them later. 
 
 ![Alt text](resources/photos/components.jpg)
 
-First off peel off the protective film on the `Acrylic Front and Back plate`. 
-
-Of course you don't have to do it if you like the unpeeled look. 
+First off peel off the protective film on the `Acrylic Front and Back plate`. You don't have to do it if you like the unpeeled look. 
 
 ![Alt text](resources/photos/film.jpg)
 
@@ -42,7 +40,7 @@ Gather the `Acrylic Back Plate`, `4x M2 Standoffs 6mm`, and `4x M2 Screws 18mm`.
 
 Thread the screw through the hole, then screw on the standoffs.
 
-Do not overtighten the standoff! Doing so might crack the acrylic plate. Finger-tight is OK, just make sure it's not loose and doesn't rattle.
+Do not overtighten the standoff! Doing so might crack the acrylic plate. Finger-tight is OK, just make sure they're not loose and doesn't rattle.
 
 ![Alt text](resources/photos/back_in.jpg)
 
