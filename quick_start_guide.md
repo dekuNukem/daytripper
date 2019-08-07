@@ -20,6 +20,8 @@ Your RX board might have a translucent protective cover, don't remove it!
 
 Plug the RX into your computer. The blue LED should start breathing then go dim, and your PC should recognize it as an USB keyboard.
 
+Sometimes the system will install a driver, wait for it to finish.
+
 ![Alt text](resources/photos/rxplug.jpg)
 
 Put the TX flat on the table, make sure there is **no obstructions in front of the sensor window**.
@@ -80,7 +82,7 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 
 * There is also a `Custom` option on the `Mode Select` switch, but that's for [advanced usages](/advanced_usage.md).
 
-## Troubleshoot / Lights Meaning
+## Troubleshooting / Lights Meaning
 
 Both TX and RX have a blue status LED. The meanings are detailed in tables below. 
 

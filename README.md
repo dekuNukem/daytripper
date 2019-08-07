@@ -2,13 +2,13 @@
 
 ![Alt text](resources/photos/promo.gif)
 
-![Alt text](resources/photos/face_notext.jpg)
-
 Daytripper is a laser tripwire that, upon triggering, can:
 
 * Hide all your windows
 * Lock your computer
 * Execute a custom script
+
+![Alt text](resources/photos/face_notext.jpg)
 
 ## Buy Daytripper on Tindie!
 
@@ -22,7 +22,7 @@ Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
 
 Mount the TX anywhere you want. Plug RX into your computer.
 
-When motion is detected, Daytripper will press `Win + M` and instantly hide what you're doing.
+When motion is detected, RX will press `Win + M` and instantly hide what you're doing.
 
 Alternatively, it can also lock your PC or execute a custom script.
 
