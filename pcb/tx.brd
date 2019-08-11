@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
+<grid distance="1" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -199,6 +199,17 @@
 <circle x="25.5" y="27" radius="2.25" width="0" layer="30"/>
 <circle x="2.5" y="2.5" radius="2.25" width="0" layer="30"/>
 <circle x="25.5" y="2.5" radius="2.25" width="0" layer="30"/>
+<polygon width="0.1524" layer="41">
+<vertex x="0.8382" y="18.5928"/>
+<vertex x="2.2098" y="18.5928"/>
+<vertex x="2.794" y="18.0086"/>
+<vertex x="2.794" y="14.4272"/>
+<vertex x="2.5146" y="14.1478"/>
+<vertex x="0.5588" y="14.1478"/>
+<vertex x="0.3556" y="14.351"/>
+<vertex x="0.3556" y="18.1356"/>
+<vertex x="0.8128" y="18.5928"/>
+</polygon>
 </plain>
 <libraries>
 <library name="exixe_pogo">
@@ -1334,6 +1345,9 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="U2" pad="P$15"/>
 <contactref element="U2" pad="P$13"/>
 <contactref element="U2" pad="A1B12"/>
+<wire x1="4.0386" y1="16.5972" x2="3.048" y2="15.6066" width="0.1524" layer="1"/>
+<wire x1="3.048" y1="13.6752" x2="2.8018" y2="13.429" width="0.1524" layer="1"/>
+<wire x1="3.048" y1="15.6066" x2="3.048" y2="13.6752" width="0.1524" layer="1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="U4" pad="2"/>
@@ -1945,9 +1959,9 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="10.287" y1="10.7442" x2="9.525" y2="11.5062" width="0.1524" layer="16"/>
 <wire x1="9.525" y1="11.5062" x2="9.525" y2="11.8872" width="0.1524" layer="16"/>
 <wire x1="9.525" y1="11.8872" x2="5.6896" y2="15.7226" width="0.1524" layer="16"/>
-<wire x1="5.1562" y1="15.7226" x2="4.8006" y2="16.0782" width="0.1524" layer="16"/>
-<wire x1="4.8006" y1="16.0782" x2="4.8006" y2="16.5354" width="0.1524" layer="16"/>
-<wire x1="4.8006" y1="16.5354" x2="3.81" y2="17.526" width="0.1524" layer="16"/>
+<wire x1="5.1562" y1="15.7226" x2="4.6736" y2="16.2052" width="0.1524" layer="16"/>
+<wire x1="4.6736" y1="16.2052" x2="4.6736" y2="16.6624" width="0.1524" layer="16"/>
+<wire x1="4.6736" y1="16.6624" x2="3.81" y2="17.526" width="0.1524" layer="16"/>
 <wire x1="3.81" y1="17.526" x2="3.2512" y2="17.526" width="0.1524" layer="16"/>
 <wire x1="3.2512" y1="17.526" x2="2.794" y2="17.9832" width="0.1524" layer="16"/>
 <wire x1="2.794" y1="17.9832" x2="2.794" y2="18.3896" width="0.1524" layer="16"/>
