@@ -78,7 +78,7 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 
 * Test your setup! Test the mounting and the application/game you're trying to hide.
 
-* If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead.
+* If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead. Please be gentle with the switches or the plastic tab might break off and render it useless.
 
 ![Alt text](resources/photos/rxback.jpg)
 

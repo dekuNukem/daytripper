@@ -24,6 +24,12 @@ My suggestion is simply **wash your hands**, by doing so you release the existin
 
 Of course, your hands can't be dripping wet either, but that's just common sense.
 
+## Mind the Switches!
+
+During assembly, be careful not to accidentally break off the handles of the switches on the two circuit boards!
+
+![Alt text](resources/photos/switches.jpg)
+
 ## Assembly Steps
 
 You should have the following parts, keep a note of their names as I'm going to refer to them later. 
