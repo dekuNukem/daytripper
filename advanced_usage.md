@@ -74,7 +74,7 @@ For RX, a press on the button types out some debug messages. Make sure you open 
 
 You can update Daytripper's firmware via USB, for bug fixes and and/or new features. 
 
-To do this, download and install the [STM32 DfuSe tool](resources/en.stsw-stm32080_stm32_DfuSe.zip) from this repo. You can download it from [the official website too](https://www.st.com/en/development-tools/stsw-stm32080.html) but it requires creating an account.
+To do this, download and install the [STM32 DfuSe tool](resources/en.stsw-stm32080_stm32_DfuSe.zip) from this repo. You can download it from [the official website](https://www.st.com/en/development-tools/stsw-stm32080.html) too, but it requires creating an account.
 
 First, locate the user button on the board:
 
@@ -86,13 +86,15 @@ To update firmware:
 
 * **Press and hold down the user button** while plugging it into a computer
 
-If it all goes well, the status LED should stay off.
+If it all goes well, the blue LED should stay off.
 
 Now launch the `DfuSeDemo` software:
 
 ![Alt text](resources/photos/dfu_start.png)
 
 In the `Available DUF Devices` section at top left corner, you should see a `STM Device in DFU Mode`.
+
+![Alt text](resources/photos/dfu_available.png)
 
 Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
 
