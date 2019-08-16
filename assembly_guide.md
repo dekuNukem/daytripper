@@ -10,23 +10,31 @@ If yours is already assembled, please move on to the [Quick Start Guide](/quick_
 
 ## Recommended Tools
 
-A pliers and a small Phillips-head screwdriver is recommended.
+A pliers and a small Phillips-head screwdriver would make tightening the fasteners easier.
 
-However this is perfectly doable with your bare hands, so don't sweat if you don't have them.
+However this assembly is perfectly doable with your bare hands, so don't sweat if you don't have them.
 
 ![Alt text](resources/photos/tools.jpg)
 
 ## Handling Bare Circuit Boards
 
-You're going to handle a bare circuit board in this assembly, and there is a risk of electrostatic discharge, where the static electricity(SE) on your body discharges and damages the board. This is especially a concern during dry weather.
+When handling the bare circuit board, it would be great if you can:
 
-My suggestion is simply **wash your hands**, by doing so you release the existing SE through the metal water pipe, your hands are moist to prevent further SE build-up, and your clean hands won't leave greasy fingerprints all over the place, win-win-win!
+* Wash your hands first
+
+* Always hold the circuit board by its edge
+
+* Don't touch the components
+
+The reason for hand-washing is to reduce the risk of electrostatic discharge. The static electricity(SE) on your body might zap the board and damages it, especially in dry weather.
+
+By washing your hands, you release the existing SE through the metal water pipe, your hands are moist to prevent further SE build-up, and your clean hands won't leave greasy fingerprints all over the place, win-win-win!
 
 Of course, your hands can't be dripping wet either, but that's just common sense.
 
 ## Mind the Switches!
 
-During assembly, be careful not to accidentally break off the handles of the switches on the two circuit boards!
+During assembly, be careful not to accidentally break off the handles of the switches on the two circuit boards:
 
 ![Alt text](resources/photos/switches.jpg)
 
