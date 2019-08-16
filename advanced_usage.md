@@ -86,7 +86,9 @@ To update firmware:
 
 * **Press and hold down the user button** while plugging it into a computer
 
-If it all goes well, the status LED should stay off. Launch the `DfuSe Demo` software:
+If it all goes well, the status LED should stay off.
+
+Now launch the `DfuSeDemo` software:
 
 ![Alt text](resources/photos/dfu_start.png)
 
