@@ -54,17 +54,17 @@ Those are just two suggestions, you can get as creative as you want!
 
 ## Best Practices (Important!!!)
 
-Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an eye-safe laser and measures the amount of time for the light to bounce back, thus calculating the distance. As a result, there are a number of best practices to keep in mind: 
+Daytripper works by firing a eye-safe laser, wait for it to bounce back, then calculating the distance. As a result, there are a number of best practices to keep in mind: 
 
 * The laser works between 2cm to 120cm (0.8 to 47 inches), so make sure the motion happens within this range. 
 
 * Daytripper works best in indoor conditions. Harsh ambient lighting such as direct sunlight might overwhelm the laser and affect detection range and sensitivity. 
 
-* Certain materials might absorb the laser light instead of reflecting it back, affecting sensitivity. Those materials tends to be very deep black in color with a soft texture. 
+* Certain materials might absorb the laser instead of reflecting it back, affecting performance. Those materials tends to be very deep black in color with a soft texture. 
 
 * Daytripper is most sensitive if the laser can be bounced straight back from the subject instead of at an angle.
 
-* The ToF sensor scans at 5 times a second, so it might miss a very fast-moving subject.
+* The laser sensor scans at 5 times a second, so it might miss a very fast-moving subject.
 
 * The transmission range between TX and RX is around 100 meters (330 feet) in open air. Although it is likely to be shorter in indoor environments with walls and other wireless interferences.
 
@@ -76,9 +76,9 @@ Daytripper works by utilizing a laser time-of-flight(ToF) sensor. It emits an ey
 
 * Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
 
-* Test your setup! Test the mounting and the application/game you're trying to hide.
+* **Test your setup before using it for real!** Test the mounting with the actual application/game you're trying to hide.
 
-* If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead. Please be gentle with the switches or the plastic tab might break off and render it useless.
+* If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead. Please be gentle with the switch or the plastic tab might break off and render it useless.
 
 ![Alt text](resources/photos/rxback.jpg)
 
