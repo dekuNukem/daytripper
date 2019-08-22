@@ -189,8 +189,8 @@
 <text x="11.5148" y="31.5848" size="1.27" layer="25" font="vector" rot="R270">STAT</text>
 <text x="15.8242" y="28.766" size="1.27" layer="25" font="vector">DFU</text>
 <text x="8.6614" y="14.3632" size="0.8128" layer="26" font="vector" rot="MR180">PF1</text>
-<text x="9.5" y="3.5" size="1.27" layer="26" font="vector" rot="MR0" align="center">PD1
-190523</text>
+<text x="9.5" y="3.5" size="1.27" layer="26" font="vector" rot="MR0" align="center">PD2
+190823</text>
 </plain>
 <libraries>
 <library name="nRF24L01-Chip-v13">

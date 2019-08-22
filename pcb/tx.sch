@@ -401,28 +401,28 @@ by exp-lbrs.ulp</description>
 &lt;h4&gt;Devices Using&lt;/h4&gt;
 &lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
 <circle x="0" y="0" radius="12.25" width="0.2032" layer="51"/>
-<pad name="1" x="-12.5" y="0" drill="1.27" shape="long" rot="R90"/>
-<pad name="2" x="12.5" y="0" drill="1.27" shape="long" rot="R90"/>
+<pad name="1" x="-12.754" y="0" drill="1.27" shape="long" rot="R90"/>
+<pad name="2" x="12.754" y="0" drill="1.27" shape="long" rot="R90"/>
 <text x="-10.16" y="1.524" size="2.54" layer="21" font="vector" align="top-center">+</text>
 <polygon width="0.127" layer="46">
-<vertex x="-12.8016" y="1.6256"/>
-<vertex x="-12.2428" y="1.6256"/>
-<vertex x="-11.8872" y="1.2192"/>
-<vertex x="-11.8872" y="-1.2192"/>
-<vertex x="-12.2428" y="-1.6256"/>
-<vertex x="-12.8016" y="-1.6256"/>
-<vertex x="-13.1064" y="-1.2192"/>
-<vertex x="-13.1064" y="1.2192"/>
+<vertex x="-13.0556" y="1.3716"/>
+<vertex x="-12.4968" y="1.3716"/>
+<vertex x="-12.2682" y="1.2192"/>
+<vertex x="-12.2682" y="-1.0922"/>
+<vertex x="-12.4968" y="-1.3716"/>
+<vertex x="-12.9286" y="-1.3716"/>
+<vertex x="-13.2334" y="-1.0922"/>
+<vertex x="-13.2334" y="1.2192"/>
 </polygon>
 <polygon width="0.127" layer="46">
-<vertex x="12.2428" y="1.6256"/>
-<vertex x="12.8016" y="1.6256"/>
-<vertex x="13.1064" y="1.27"/>
-<vertex x="13.1064" y="-1.1684"/>
-<vertex x="12.8016" y="-1.6256"/>
-<vertex x="12.2428" y="-1.6256"/>
-<vertex x="11.8872" y="-1.2192"/>
-<vertex x="11.8872" y="1.2192"/>
+<vertex x="12.4968" y="1.3716"/>
+<vertex x="13.0556" y="1.3716"/>
+<vertex x="13.2334" y="1.143"/>
+<vertex x="13.2334" y="-1.0414"/>
+<vertex x="13.0556" y="-1.2446"/>
+<vertex x="12.4968" y="-1.2446"/>
+<vertex x="12.2682" y="-1.0922"/>
+<vertex x="12.2682" y="1.0922"/>
 </polygon>
 </package>
 <package name="TX_SPARKFUN-BATTERIES_BATTCON-6.8MM">
