@@ -52,6 +52,8 @@ If you're trying to detect a door opening, simply put it on the ground so the do
 
 Those are just two suggestions, you can get as creative as you want!
 
+Word of warning though, the Neodymium magnet is rather brittle, so don't let it smash into metal objects or it might chip or shatter.
+
 ## Best Practices (Important!!!)
 
 Daytripper works by firing a eye-safe laser, wait for it to bounce back, then calculating the distance. As a result, there are a number of best practices to keep in mind: 
