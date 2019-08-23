@@ -18,7 +18,7 @@ However this assembly is perfectly doable with your bare hands, so don't sweat i
 
 ## Handling Bare Circuit Boards
 
-When handling the bare circuit board, it would be great if you can:
+When handling the bare circuit board, remember to:
 
 * Wash your hands first
 
@@ -26,7 +26,7 @@ When handling the bare circuit board, it would be great if you can:
 
 * Don't touch the components
 
-The reason for hand-washing is to reduce the risk of electrostatic discharge. The static electricity(SE) on your body might zap the board and damages it, especially in dry weather.
+The reason for hand-washing is to reduce the risk of static electricity(SE) on your body zapping the board and damage it, especially in dry weather.
 
 By washing your hands, you release the existing SE through the metal water pipe, your hands are moist to prevent further SE build-up, and your clean hands won't leave greasy fingerprints all over the place, win-win-win!
 
