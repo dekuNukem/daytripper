@@ -10,7 +10,7 @@ Daytripper is a laser tripwire that can, upon triggering:
 
 * Hide all your windows
 * Lock your computer
-* Execute a custom script
+* Execute a custom script to do whatever you want!
 
 ## Buy Daytripper on Tindie!
 
