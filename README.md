@@ -48,7 +48,7 @@ Daytripper...
 
 * See [Quick Start Guide](https://github.com/dekuNukem/daytripper/blob/master/quick_start_guide.md) and [Advanced Usage Guide](https://github.com/dekuNukem/daytripper/blob/master/advanced_usage.md) for more details.
 
-## Getting Started
+## Getting Started / More Information
 
 If you received your Daytripper in kit form, follow this to put it together:
 
