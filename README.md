@@ -4,7 +4,7 @@ Do you always slack off on your computer and worry about getting busted?
 
 Not anymore because Daytripper is here to save the day!
 
-![Alt text](resources/photos/promo.gif)
+![Alt text](resources/photos/promo_new.gif)
 
 Daytripper is a laser tripwire that can, upon triggering:
 
