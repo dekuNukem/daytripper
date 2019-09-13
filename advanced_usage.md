@@ -22,13 +22,23 @@ You can use [autohotkey](https://www.autohotkey.com). Check out the [official tu
 
 ### MacOS
 
-Go to `System Preferences` -> `Keyboard` -> `Shortcuts` -> `App Shortcuts`
-
-You can then add a shortcut to launch an application, or execute an applescript:
+Go to `System Preferences` -> `Keyboard` -> `Shortcuts` -> `App Shortcuts`:
 
 ![Alt text](resources/photos/applescript.png)
 
-Of course there's always [bettertouchtool](https://folivora.ai) as well.
+Click the box to the right of `Keyboard Shortcut`, trigger the TX, and it will fill in the box for you.
+
+You can then add a shortcut to launch an application, or execute an applescript.
+
+For more advanced scripting needs, you can try [bettertouchtool](https://folivora.ai) as well.
+
+### Android
+
+Believe it or not Daytripper also works on Android!
+
+You can use [Tasker](https://tasker.joaoapps.com) with [Autoinput plugin](https://joaoapps.com/autoinput/).
+
+Here is a tutorial: https://forum.joaoapps.com/index.php?resources/react-to-keys-from-a-real-keyboard.79/
 
 ### Linux
 
