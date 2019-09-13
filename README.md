@@ -24,7 +24,7 @@ Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
 
 ![Alt text](resources/photos/face_note.jpg)
 
-Mount the TX anywhere you want. Plug RX into your computer.
+Mount the TX in the path of incoming threat. Plug RX into your computer.
 
 When motion is detected, RX will press `Win + M` and instantly hide what you're doing.
 
