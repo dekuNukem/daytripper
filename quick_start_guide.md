@@ -52,7 +52,7 @@ If you're trying to detect a door opening, simply put it on the ground so the do
 
 Those are just two suggestions, you can get as creative as you want!
 
-Word of warning though, the Neodymium magnet is rather brittle, so don't let it smash into metal objects or it might chip or shatter.
+Word of warning though, the Neodymium magnet is rather brittle, so don't let it smash into metal objects, or it might chip or shatter.
 
 ## Best Practices (Important!!!)
 
@@ -78,7 +78,7 @@ Daytripper works by firing a eye-safe laser, wait for it to bounce back, then ca
 
 * Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
 
-* **Test your setup before using it for real!** Test the mounting with the actual application/game you're trying to hide.
+* **Test your setup before using it for real!** Test the mounting with the actual application/game you're trying to hide. Test it multiple times to be sure!
 
 * If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead. Please be gentle with the switch or the plastic tab might break off and render it useless.
 
