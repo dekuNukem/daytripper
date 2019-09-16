@@ -79,7 +79,8 @@ uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, diff_threshold, this_reading;
 int16_t diff;
-uint8_t button_result, new_stat_packet;
+uint8_t button_result;
+uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
 uint32_t vbat_mV;
 uint16_t power_on_time_5s;
@@ -175,9 +176,9 @@ int main(void)
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
   check_battery(&vbat_mV);
-  new_stat_packet = 1;
 
-  MX_IWDG_Init(); // this should be behind check_battery, so it can completely shut down in low battery situation
+  // this should be behind check_battery, so it can completely shut down in low battery situation
+  MX_IWDG_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -185,7 +186,8 @@ int main(void)
 
   VL53L0X_init();
   setTimeout(500);
-  setMeasurementTimingBudget(25000); // 20000 25000 26500 default 33000
+  // in microseconds, longer time better accruacy, but consumes more power
+  setMeasurementTimingBudget(25000); // default 33000
 
   // turn on the chip and charge up the capacitors
   NRF_OFF();
@@ -231,17 +233,20 @@ int main(void)
       new_stat_packet = 0;
     }
 
+    // get a new distance reading from laser ToF sensor
     this_reading = get_single_distance_reading(&is_reading_valid);
     diff = abs(baseline - this_reading);
 
     if(is_reading_valid == 0)
       goto sleep;
 
+    // if the change in distance is big enough...
     if(current_state == STATE_IDLE && diff > diff_threshold)
     {
       uint8_t count = 0;
       uint16_t this;
-      printf(">>> b:%d t0:%d ", baseline, this_reading);
+      printf(">> b:%d t0:%d ", baseline, this_reading);
+      // .. take another two readings back-to-back, to make sure the it's not sensor noise
       while(count < WINDOW_SIZE)
       {
       	HAL_IWDG_Refresh(&hiwdg);

@@ -51,6 +51,15 @@ uint16_t get_single_distance_reading(uint8_t* is_valid)
   return result;
 }
 
+/*
+get a baseline distance reading when powering up
+
+first it takes BASELINE_SAMPLE_SIZE sample readings, 100ms apart
+then the array containing the readings is sorted
+then the first and last CHOP_SIZE samples are discarded from the sorted array
+then the mean and variance is calculated 
+if variance is too large, it means readings are unstable, try again
+*/
 uint16_t get_baseline(void)
 {
   while(1)
@@ -114,6 +123,12 @@ void check_battery(uint32_t* vbat_mV)
   uint8_t vbat_8b, vrefint;
   uint32_t this_mV;
 
+  /*
+	two ADC channels to check
+	ADC channel 1 is connected to a resistor divider that halves the battery voltage
+	ADC vrefint is the internal reference voltage at 1.2V
+  */
+
   HAL_ADC_Start(&hadc);
   HAL_ADC_PollForConversion(&hadc, 500);
   vbat_8b = HAL_ADC_GetValue(&hadc);
@@ -123,8 +138,9 @@ void check_battery(uint32_t* vbat_mV)
   this_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
   printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, this_mV);
 
-  if(this_mV == 2400)
+  if(this_mV == 2400) // don't mind me
     return;
+
   *vbat_mV = this_mV;
 
   if(this_mV >= 2500 && this_mV <= 3250) // 3250 after diode drop is about 3.5V
@@ -185,13 +201,15 @@ uint8_t send_packet(uint8_t* data)
     HAL_IWDG_Refresh(&hiwdg);
   if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
   {
-    printf("TX OK, retry: %d\n",nrf24_retransmissionCount());
+    printf("TX OK, retry %d times\n", nrf24_retransmissionCount());
     return 0;
   }
   printf("TX failed\n");
   return 1;
 }
 
+// TX test mode, sends test packets every second
+// can be used to test comm range
 void tx_test(void)
 {
   uint8_t count = 0;
