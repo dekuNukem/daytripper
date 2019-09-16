@@ -18,6 +18,12 @@ uint8_t is_reading_valid;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
 
+uint8_t get_uuid(void)
+{
+	uint32_t sum = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
+    return ((sum >> 24) ^ (sum >> 16) ^ (sum >> 8) ^ sum) & 0xff;
+}
+
 void swap(uint16_t *xp, uint16_t *yp) 
 { 
     uint16_t temp = *xp; 
@@ -154,7 +160,7 @@ void check_battery(uint32_t* vbat_mV)
 
 void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
 {
-  data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
+  data[0] = get_uuid();
   data[1] = DTPR_CMD_TRIG;
   data[2] = base >> 8;
   data[3] = base & 0xff;
@@ -164,7 +170,7 @@ void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
 
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot)
 {
-  data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
+  data[0] = get_uuid();
   data[1] = DTPR_CMD_STAT;
   data[2] = (vbat_mV >> 8) & 0xff;;
   data[3] = vbat_mV & 0xff;
@@ -189,7 +195,7 @@ uint8_t send_packet(uint8_t* data)
 void tx_test(void)
 {
   uint8_t count = 0;
-  test_data[0] = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
+  test_data[0] = get_uuid();
   test_data[1] = DTPR_CMD_TEST;
 
   while(1)
