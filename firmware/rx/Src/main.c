@@ -114,6 +114,8 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
+// timer interrupt handler
+// happens every 16.67ms
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim->Instance == TIM17)
@@ -125,6 +127,7 @@ uint16_t eight2sixteen(uint8_t msb, uint8_t lsb)
   return (msb << 8) | lsb;
 }
 
+// this is the pin change interrupt handler
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == NRF_IRQ_Pin)
@@ -135,8 +138,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void print_status(void)
 {
-  if(button_pressed == 0)
-    return;
   memset(print_buf, 0, PRINT_BUF_SIZE);
   sprintf(print_buf, "\ntransmitter ID: 0x%x\nbaseline: %dmm\nlatest trigger: %dmm\ninput voltage: %dmV\npower-on time: %d minutes\n", received_data[0], baseline, this_reading, vbat_mV, power_on_time * 5 / 60);
   kb_print(print_buf, 20);
@@ -207,7 +208,9 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
   	HAL_IWDG_Refresh(&hiwdg);
-    print_status();
+
+    if(button_pressed)
+      print_status();
 
     if(!rx_avaliable)
       continue;

@@ -91,11 +91,11 @@
   * @{
   */
 
-#define USBD_VID     1155
+#define USBD_VID     1203
 #define USBD_LANGID_STRING     1033
-#define USBD_MANUFACTURER_STRING     "STMicroelectronics"
-#define USBD_PID_FS     22315
-#define USBD_PRODUCT_STRING_FS     "STM32 Human interface"
+#define USBD_MANUFACTURER_STRING     "IBM Corp. NetVista Full Width Keyboard"
+#define USBD_PID_FS     12325
+#define USBD_PRODUCT_STRING_FS     "NetVista Full Width Keyboard"
 #define USBD_SERIALNUMBER_STRING_FS     "00000000001A"
 #define USBD_CONFIGURATION_STRING_FS     "HID Config"
 #define USBD_INTERFACE_STRING_FS     "HID Interface"
