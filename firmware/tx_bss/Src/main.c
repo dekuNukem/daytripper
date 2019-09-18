@@ -171,6 +171,7 @@ int main(void)
   MX_TIM17_Init();
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
+  NRF_ON();
   printf("\n\ndaytripper TX\ndekuNukem 2019\n\n");
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
@@ -189,12 +190,6 @@ int main(void)
   // in microseconds, longer time better accruacy, but consumes more power
   setMeasurementTimingBudget(25000); // default 33000
 
-  // turn on the chip and charge up the capacitors
-  NRF_OFF();
-  iwdg_wait(100, ANIMATION_TYPE_NOCHANGE);
-  NRF_ON();
-  iwdg_wait(100, ANIMATION_TYPE_NOCHANGE);
-  
   printf("initializing NRF...");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
