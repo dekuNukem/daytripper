@@ -183,8 +183,8 @@
 <text x="25.273" y="6.731" size="1.27" layer="26" rot="MR0">TX</text>
 <text x="14" y="31.017" size="1.27" layer="26" font="vector" rot="MR0" align="center">dekuNukem 2019</text>
 <text x="14" y="33.205" size="1.524" layer="26" rot="MR0" align="center">git.io/daytripper</text>
-<text x="14" y="2.7432" size="1.27" layer="26" rot="MR0" align="center">PD3
-191005</text>
+<text x="14" y="2.7432" size="1.27" layer="26" rot="MR0" align="center">PD2
+190823</text>
 <text x="1.6256" y="13.9192" size="1.27" layer="26" rot="MR270">ON</text>
 <text x="1.6256" y="7.366" size="1.27" layer="26" rot="MR270">OFF</text>
 <text x="10.541" y="9.5504" size="1.27" layer="25" rot="R90">CHARGE</text>
@@ -1693,9 +1693,15 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="6.8834" y1="6.4008" x2="7.239" y2="6.7564" width="0.254" layer="1"/>
 <wire x1="8.4074" y1="6.7564" x2="7.239" y2="6.7564" width="0.254" layer="1"/>
 <wire x1="6.8834" y1="4.2418" x2="6.8834" y2="6.4008" width="0.254" layer="1"/>
+<wire x1="9.4234" y1="5.2324" x2="8.9027" y2="5.7531" width="0.1524" layer="1"/>
 <wire x1="20.193" y1="1.3606" x2="19.9754" y2="1.143" width="0.1524" layer="1"/>
-<wire x1="19.9754" y1="1.143" x2="13.5128" y2="1.143" width="0.1524" layer="1"/>
-<wire x1="13.5128" y1="1.143" x2="8.9027" y2="5.7531" width="0.1524" layer="1"/>
+<wire x1="19.9754" y1="1.143" x2="11.4046" y2="1.143" width="0.1524" layer="1"/>
+<wire x1="11.4046" y1="1.143" x2="10.8458" y2="1.7018" width="0.1524" layer="1"/>
+<wire x1="10.8458" y1="1.7018" x2="10.8458" y2="3.5052" width="0.1524" layer="1"/>
+<wire x1="10.8458" y1="3.5052" x2="10.3886" y2="3.9624" width="0.1524" layer="1"/>
+<wire x1="10.3886" y1="3.9624" x2="9.779" y2="3.9624" width="0.1524" layer="1"/>
+<wire x1="9.779" y1="3.9624" x2="9.4234" y2="4.318" width="0.1524" layer="1"/>
+<wire x1="9.4234" y1="4.318" x2="9.4234" y2="5.2324" width="0.1524" layer="1"/>
 <wire x1="9.1526" y1="8.6614" x2="9.1526" y2="8.2636" width="0.254" layer="1"/>
 <wire x1="9.1526" y1="8.2636" x2="8.5852" y2="7.6962" width="0.254" layer="1"/>
 <wire x1="8.5852" y1="7.6962" x2="8.5852" y2="6.9342" width="0.254" layer="1"/>
