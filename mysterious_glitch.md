@@ -42,6 +42,8 @@ From now on...
 
 * Insulating materials will be added between the battery and circuit board
 
+* Washers will be used so the back plate is less likely to push against the battery
+
 * Visual inspection will be carried out to spot problem boards before shipping
 
 * Traces will be rerouted away from potentially scratch-prone area in the future production run
