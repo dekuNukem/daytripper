@@ -70,7 +70,7 @@ Daytripper works by firing a eye-safe laser, wait for it to bounce back, then ca
 
 * The transmission range between TX and RX is around 100 meters (330 feet) in open air. Although it is likely to be shorter in indoor environments with walls and other wireless interferences.
 
-* The battery on TX should last around 40 hours, depending on the number of triggers. You can recharge it using a USB Type-C cable.
+* The battery on TX should last around 40 hours, depending on the number of triggers. You can recharge it using a USB Type-C cable. You can also leave it plugged in at all times if needed.
 
 * Don't touch the components on the circuit board with your bare hands, especially the laser sensor!
 
