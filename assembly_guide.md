@@ -62,7 +62,7 @@ Wash your hands, grab the circuit board by its edge, and install the `TX board` 
 
 ![Alt text](resources/photos/tx_in.jpg)
 
-Screw on the `4x M2 Standoff 4mm`. Make sure to tighten. 
+Screw on the `4x M2 Standoff 4mm`. As usual, don't overtighten, finger tight is OK. 
 
 ![Alt text](resources/photos/tx_m2.jpg)
 
