@@ -4,13 +4,13 @@
 
 Recently a few of my customer told me that the daytripper they received didn't work properly after assembled. Once turned on, the LED on the TX unit would breath for a few seconds, then go completely dead and not responding to objects in front of the sensors. 
 
-I provided them with free replacements right away, however it did make me wonder how in the world did it happen, since I personally test every single board before mailing them out.
+I provided them with free replacements right away, however it did make me wonder how did it happen, since I personally test every single board before mailing them out.
 
 One of the customers told me that the affected TX would work fine on its own as a bare circuit board, but go bad once assembled with front and back plates, which was even more baffling. How could some screws and two acrylic plates affect the functionality of the circuit board?
 
 ## Investigation
 
-I put together a handful of TX boards trying to replicate the problem, testing to make sure they work both before and after. I assembled about 20 of them before finally got one that's misbehaving. The board would work fine on its own, but stop working once the upper standoff was tightened to a certain degree.
+I put together a handful of TX boards trying to replicate the problem, testing to make sure they work both before and after. I assembled about 20 of them before finally got one that's misbehaving. The board would work fine on its own, but stop working once the upper standoffs were tightened to a certain degree.
 
 At first I thought the screws and standoffs were shorting some traces, but checking the board layout I don't see traces anywhere near the screw holes on the circuit board, as I did take it into consideration during the design phrase.
 
@@ -34,7 +34,7 @@ But on the affected boards, the protruding battery terminal is very nearly touch
 
 ![Alt text](resources/photos/glitch4.jpeg)
 
-Since they were not *actually* touching, everything would work fine when I test the bare circuit board myself. But when installed with fasteners, the back plate would push the terminal into the circuit board, scratching it, and shorting out the SPI data line. As a result, the firmware would get `0x0` from SPI, and stuck on waiting for a response.
+Since they were not *actually* touching, everything would work fine when I test the bare circuit board myself. But when installed with fasteners, the back plate would push the terminal into the circuit board, scratching it, and grounding the SPI data line. As a result, the firmware would get `0x0` from SPI, and stuck on waiting for a response.
 
 ## Remedy
 
@@ -50,6 +50,22 @@ From now on...
 
 ## Existing Customers
 
-This problem only affects a very small number of TX boards. If your daytripper is working fine, then you don't have to do anything.
+This problem only affects a very small number of TX boards. If your daytripper is working fine, you don't have to do anything.
 
-If you do encounter a similar problem as described in the beginning of this article, please contact me with your Tindie order number, and I'll be happy to offer you a full refund or mail you another set for free.
+If you do encounter a similar problem, there are a number of ways to sort this out:
+
+### Try Fixing It Yourself
+
+* First disassemble the TX to bare circuit board
+
+* Hold it like the above photos, check the gap and see if battery is touching the board
+
+* Try inserting a piece of paper between the two to prevent them from touching, gently pull the battery up a bit to widen the gap, then slide the paper in.
+
+* If it works, congrats! Feel free to contact me for a partial refund for the trouble.
+
+* If not...
+
+### Contact Me
+
+If you weren't able to fix it yourself, do feel free to contact me with your Tindie order number. I'll be happy to offer you a full refund or mail you another set for free.
