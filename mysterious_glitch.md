@@ -2,7 +2,7 @@
 
 ## Discovery
 
-Recently a few of my customer told me that the daytripper they received didn't work properly after assembled. The TX unit would turn on, LED breathing while calibrating, then go completely dead and not responding to objects in front of the sensors. 
+Recently a few of my customer told me that the daytripper they received didn't work properly after assembled. Once turned on, the LED on the TX unit would breath for a few seconds, then go completely dead and not responding to objects in front of the sensors. 
 
 I provided them with free replacements right away, however it did make me wonder how in the world did it happen, since I personally test every single board before mailing them out.
 
@@ -10,7 +10,7 @@ One of the customers told me that the affected TX would work fine on its own as 
 
 ## Investigation
 
-I put together a handful of TX boards trying to replicate the problem. Testing to make sure they work as a bare board, then assemble them with fasteners and plates, and check if they work afterwards. I assembled 20 of them before finally got one that's misbehaving. The board would work fine on its own, but stop working once the upper standoff was tightened to a certain degree.
+I put together a handful of TX boards trying to replicate the problem, testing to make sure they work both before and after. I assembled about 20 of them before finally got one that's misbehaving. The board would work fine on its own, but stop working once the upper standoff was tightened to a certain degree.
 
 At first I thought the screws and standoffs were shorting some traces, but checking the board layout I don't see traces anywhere near the screw holes on the circuit board, as I did take it into consideration during the design phrase.
 
@@ -18,7 +18,7 @@ Then I hooked up a debugger and tried to find where it was stuck in the firmware
 
 I didn't think too much of it, and kept on messing around. At one point I desoldered the battery to see if it would help, and miraculously it did! The TX would work no matter how much the standoffs were tightened. 
 
-Things became clear once I looked at the circuit board more closely. Here is the back of the TX board, and you can just barely see a scratch mark near the center:
+Things became clear once I looked at the circuit board more closely. Here is the back of the affected TX board, you can just barely see a scratch mark near the center:
 
 ![Alt text](resources/photos/glitch1.jpeg)
 
@@ -40,7 +40,7 @@ Since they were not *actually* touching, everything would work fine when I test 
 
 From now on...
 
-* Insulating material will be added between the battery and circuit board
+* Insulating materials will be added between the battery and circuit board
 
 * Visual inspection will be carried out to spot problem boards before shipping
 
