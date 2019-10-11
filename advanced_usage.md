@@ -18,9 +18,13 @@ This key combo normally doesn't do anything, but you can capture it with a softw
 
 ### Windows 
 
-You can use [autohotkey](https://www.autohotkey.com). Check out the [official tutorials](https://www.autohotkey.com/docs_1.0/Tutorial.htm), and here's a [sample configuration file](resources/AutoHotkey.ahk) upon which you can tinker with. 
+You can use [autohotkey](https://www.autohotkey.com). It is a powerful open-source keyboard automation program, where you can write a script to do anything you want when `ALT + PAUSE` is pressed by RX.
+
+Check out the [official tutorials](https://www.autohotkey.com/docs_1.0/Tutorial.htm), and here's a [sample configuration file](resources/AutoHotkey.ahk) upon which you can tinker with. 
 
 ### MacOS
+
+When you first plug RX into your mac, a window might pop up asking to identify keyboard layout, simply close it.
 
 Go to `System Preferences` -> `Keyboard` -> `Shortcuts` -> `App Shortcuts`:
 
@@ -30,7 +34,7 @@ Click the box to the right of `Keyboard Shortcut`, trigger the TX, and it will f
 
 You can then add a shortcut to launch an application, or execute an applescript.
 
-For more advanced scripting needs, you can try [bettertouchtool](https://folivora.ai) as well.
+For more advanced scripting needs, you can try [bettertouchtool](https://folivora.ai), which can be considered macOS equivalent of autohotkey.
 
 ### Android
 
@@ -60,7 +64,7 @@ Daytripper TX sends 6-byte packets, details below:
 
 * Second byte (byte 1) denotes what this packet is about. It can be either a test packet, trigger packet, or status update packet.
 
-* The rest 4 bytes are payloads, the meaning depending on the command type. 
+* The rest 4 bytes are payloads, their meaning depending on the command type (byte 1).
 
 * For a `Test` packet, the 4 bytes are the same incrementing sequence number repeated 4 times. 
 
@@ -136,7 +140,7 @@ This method is nice for occasional firmware updates, but quite cumbersome if you
 
 ## Using Multiple Modules
 
-Daytripper wasn't designed with multiple TX/RX boards in mind. And I haven't done any extensive testings on this subject.
+Daytripper wasn't really designed with multiple TX/RX boards in mind. And I haven't done any extensive testings on this subject.
 
 ### Single RX Multiple TX
 
