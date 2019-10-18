@@ -6,6 +6,18 @@
 
 If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/quick_start_guide.md) first.
 
+## Table of Contents
+
+[Creating Custom Actions](#custom-actions)
+
+[On-Air Packet Format](#on-air-packet-format)
+
+[Debug Mode](#debug-modes)
+
+[USB Firmware Update](#usb-firmware-updates)
+
+[Using Multiple Modules](#using-multiple-modules)
+
 ## Custom Actions
 
 Instead of hiding windows, you can perform custom actions when TX is triggered.

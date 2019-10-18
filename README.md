@@ -28,7 +28,7 @@ Mount the TX in the path of incoming threat. Plug RX into your computer.
 
 When motion is detected, RX will press `Win + M` and instantly hide what you're doing.
 
-Alternatively, it can also lock your PC or execute a custom script.
+Alternatively, it can also lock your PC or [execute a custom script](/advanced_usage.md).
 
 ## Features
 
@@ -48,7 +48,7 @@ Daytripper...
 
 * See [Quick Start Guide](https://github.com/dekuNukem/daytripper/blob/master/quick_start_guide.md) and [Advanced Usage Guide](https://github.com/dekuNukem/daytripper/blob/master/advanced_usage.md) for more details.
 
-## Getting Started | Additional Information
+## Getting Started
 
 If you received your Daytripper in kit form, follow this to put it together:
 
