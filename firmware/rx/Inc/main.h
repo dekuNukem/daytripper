@@ -64,6 +64,8 @@
 #define USER_BUTTON_EXTI_IRQn EXTI4_15_IRQn
 #define SW_D_Pin GPIO_PIN_0
 #define SW_D_GPIO_Port GPIOF
+#define TRIGGER_OUT_Pin GPIO_PIN_1
+#define TRIGGER_OUT_GPIO_Port GPIOF
 #define SW_B_Pin GPIO_PIN_0
 #define SW_B_GPIO_Port GPIOA
 #define NRF_IRQ_Pin GPIO_PIN_1

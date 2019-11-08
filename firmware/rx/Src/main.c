@@ -227,10 +227,13 @@ int main(void)
 
       if(received_data[1] == DTPR_CMD_TRIG)
       {
+        HAL_GPIO_WritePin(TRIGGER_OUT_GPIO_Port, TRIGGER_OUT_Pin, GPIO_PIN_SET);
         press_keys(get_slide_sw_pos());
         baseline = eight2sixteen(received_data[2], received_data[3]);
         this_reading = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: trigger\nbase: %d, this: %d\n", baseline, this_reading);
+        // HAL_Delay(33);
+        HAL_GPIO_WritePin(TRIGGER_OUT_GPIO_Port, TRIGGER_OUT_Pin, GPIO_PIN_RESET);
       }
 
       else if(received_data[1] == DTPR_CMD_STAT)
@@ -338,7 +341,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -444,6 +447,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(TRIGGER_OUT_GPIO_Port, TRIGGER_OUT_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
@@ -460,6 +466,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(SW_D_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : TRIGGER_OUT_Pin */
+  GPIO_InitStruct.Pin = TRIGGER_OUT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(TRIGGER_OUT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SW_B_Pin */
   GPIO_InitStruct.Pin = SW_B_Pin;

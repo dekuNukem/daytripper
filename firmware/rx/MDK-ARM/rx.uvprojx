@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F042x6</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                ../Drivers/STM32F0xx_HAL_Driver/Inc;                ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                ../Drivers/CMSIS/Include;          ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;          ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</IncludePath>
+              <IncludePath>../Inc;                  ../Drivers/STM32F0xx_HAL_Driver/Inc;                  ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                  ../Drivers/CMSIS/Include;            ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;            ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

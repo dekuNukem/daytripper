@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rx\rx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rx\rx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Sep 16 20:57:15 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 08 15:48:40 2019
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -297,7 +297,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8a]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f0xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<BR><BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_csn_digitalWrite
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_ce_digitalWrite
 </UL>
@@ -1378,7 +1379,7 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 </UL>
 
-<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 364 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 386 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_DEVICE_Init
@@ -1397,6 +1398,7 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iwdg_wait
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_slide_sw_pos
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_tx_address
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_rx_address
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf24_init
@@ -1617,7 +1619,7 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[89]"></a>MX_GPIO_Init</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, main.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[89]"></a>MX_GPIO_Init</STRONG> (Thumb, 246 bytes, Stack size 48 bytes, main.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
