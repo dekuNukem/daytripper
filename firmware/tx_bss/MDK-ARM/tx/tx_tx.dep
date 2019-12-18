@@ -127,12 +127,12 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5DA30397)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5DA30397)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5DA30397)
 I (../Inc/shared.h)(0x5DA30397)
-F (..\Inc\helpers.h)(0x5DA30397)()
+F (..\Inc\helpers.h)(0x5DFA450C)()
 F (..\Src\helpers.c)(0x5DDFD906)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_tx-IC:\Users\allen\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\allen\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F042x6 -DUSE_HAL_DRIVER -DSTM32F042x6-o tx\helpers.o --omf_browse tx\helpers.crf --depend tx\helpers.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B429A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9B4298)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9B429A)
-I (../Inc/helpers.h)(0x5DA30397)
+I (../Inc/helpers.h)(0x5DFA450C)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5DA30397)
 I (../Inc/stm32f0xx_hal_conf.h)(0x5DA30397)
 I (../Inc/main.h)(0x5DA30397)
@@ -220,7 +220,7 @@ F (..\Src\sleepybutton.c)(0x5DF8D6E0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B429A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9B4298)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9B429A)
-I (../Inc/helpers.h)(0x5DA30397)
+I (../Inc/helpers.h)(0x5DFA450C)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5DA30397)
 I (../Inc/stm32f0xx_hal_conf.h)(0x5DA30397)
 I (../Inc/main.h)(0x5DA30397)
@@ -259,7 +259,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5DA30397)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5DA30397)
 I (../Inc/shared.h)(0x5DA30397)
 I (../Inc/sleepbutton.h)(0x5DA30397)
-F (../Src/main.c)(0x5DFA0D0C)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_tx-IC:\Users\allen\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\allen\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F042x6 -DUSE_HAL_DRIVER -DSTM32F042x6-o tx\main.o --omf_browse tx\main.crf --depend tx\main.d)
+F (../Src/main.c)(0x5DFA459A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_tx-IC:\Users\allen\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\allen\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F042x6 -DUSE_HAL_DRIVER -DSTM32F042x6-o tx\main.o --omf_browse tx\main.crf --depend tx\main.d)
 I (../Inc/main.h)(0x5DA30397)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5DA30397)
 I (../Inc/stm32f0xx_hal_conf.h)(0x5DA30397)
@@ -299,7 +299,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5DA30397)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5DA30397)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9B429A)
 I (../Inc/shared.h)(0x5DA30397)
-I (../Inc/helpers.h)(0x5DA30397)
+I (../Inc/helpers.h)(0x5DFA450C)
 I (../Inc/nrf24.h)(0x5DA30397)
 I (../Inc/nRF24L01.h)(0x5DA30397)
 I (../Inc/VL53L0X.h)(0x5DA30397)

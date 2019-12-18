@@ -243,7 +243,7 @@ int main(void)
       uint8_t count = 0;
       uint16_t this;
       printf(">> b:%d t0:%d ", baseline, this_reading);
-      // .. take another two readings back-to-back, to make sure the it's not sensor noise
+      // .. take another reading back-to-back, to make sure it's not sensor noise
       while(count < WINDOW_SIZE)
       {
       	HAL_IWDG_Refresh(&hiwdg);

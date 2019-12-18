@@ -2482,7 +2482,7 @@ Image Symbol Table
     get_trigger_threshold                    0x08004509   Thumb Code    22  helpers.o(i.get_trigger_threshold)
     get_uuid                                 0x08004529   Thumb Code    28  helpers.o(i.get_uuid)
     iwdg_wait                                0x08004549   Thumb Code    36  helpers.o(i.iwdg_wait)
-    main                                     0x08004571   Thumb Code   548  main.o(i.main)
+    main                                     0x08004571   Thumb Code   546  main.o(i.main)
     nrf24_ce_digitalWrite                    0x08004835   Thumb Code    26  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
     nrf24_config                             0x08004851   Thumb Code   116  nrf24.o(i.nrf24_config)
     nrf24_configRegister                     0x080048c9   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
@@ -2852,7 +2852,7 @@ Image component sizes
 
        140         22         61         16          0       2227   animation.o
       1126        308          0          7         32       8785   helpers.o
-      1732        256          0         40        540       9459   main.o
+      1732        258          0         40        540       9439   main.o
        652         12          0          1          0       9916   nrf24.o
         54          4          0          0          0       1057   radiopinfunctions.o
         52          4          0          8          0        963   sleepybutton.o
@@ -2878,7 +2878,7 @@ Image component sizes
       2482        154          0         12          0     508206   vl53l0x.o
 
     ----------------------------------------------------------------------
-     18180       1396        312         92       1600     640760   Object Totals
+     18180       1398        312         92       1600     640740   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          3          0          4          0   (incl. Padding)
 
@@ -2934,9 +2934,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20156       1490        312         96       1600     633544   Grand Totals
-     20156       1490        312         96       1600     633544   ELF Image Totals
-     20156       1490        312         96          0          0   ROM Totals
+     20156       1492        312         96       1600     633524   Grand Totals
+     20156       1492        312         96       1600     633524   ELF Image Totals
+     20156       1492        312         96          0          0   ROM Totals
 
 ==============================================================================
 
