@@ -128,6 +128,8 @@ Press the `Choose...` button and select a firmware file in `.dfu` format. Make s
 
 * [Click me](firmware/TX_latest.dfu) for latest default TX firmware
 
+* [Click me](firmware/TX_latest_blue_LED_disabled.dfu) for latest default TX firmware with blue LED turned off
+
 * [Click me](firmware/RX_latest.dfu) for latest default RX firmware
 
 ![Alt text](resources/photos/dfu_choose.png)
