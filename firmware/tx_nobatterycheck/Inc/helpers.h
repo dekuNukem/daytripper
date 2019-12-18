@@ -15,7 +15,7 @@
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
 
-#define WINDOW_SIZE 2
+#define WINDOW_SIZE 1
  	
 #define NRF_ON() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET)
 #define NRF_OFF() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET)

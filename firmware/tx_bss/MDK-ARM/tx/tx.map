@@ -2177,55 +2177,55 @@ Image Symbol Table
     i.getVcselPulsePeriod                    0x080043d0   Section        0  vl53l0x.o(i.getVcselPulsePeriod)
     i.get_baseline                           0x080043f0   Section        0  helpers.o(i.get_baseline)
     i.get_single_distance_reading            0x080044e0   Section        0  helpers.o(i.get_single_distance_reading)
-    i.get_trigger_threshold                  0x08004504   Section        0  helpers.o(i.get_trigger_threshold)
-    i.get_uuid                               0x08004524   Section        0  helpers.o(i.get_uuid)
-    i.iwdg_wait                              0x08004544   Section        0  helpers.o(i.iwdg_wait)
-    i.main                                   0x0800456c   Section        0  main.o(i.main)
-    i.nrf24_ce_digitalWrite                  0x08004830   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    i.nrf24_config                           0x0800484c   Section        0  nrf24.o(i.nrf24_config)
-    i.nrf24_configRegister                   0x080048c4   Section        0  nrf24.o(i.nrf24_configRegister)
-    i.nrf24_csn_digitalWrite                 0x080048e8   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    i.nrf24_getStatus                        0x08004904   Section        0  nrf24.o(i.nrf24_getStatus)
-    i.nrf24_init                             0x0800491e   Section        0  nrf24.o(i.nrf24_init)
-    i.nrf24_isSending                        0x0800492e   Section        0  nrf24.o(i.nrf24_isSending)
-    i.nrf24_lastMessageStatus                0x08004942   Section        0  nrf24.o(i.nrf24_lastMessageStatus)
-    i.nrf24_powerDown                        0x0800495c   Section        0  nrf24.o(i.nrf24_powerDown)
-    i.nrf24_powerUpRx                        0x0800496e   Section        0  nrf24.o(i.nrf24_powerUpRx)
-    i.nrf24_powerUpTx                        0x080049a0   Section        0  nrf24.o(i.nrf24_powerUpTx)
-    i.nrf24_readRegister                     0x080049b4   Section        0  nrf24.o(i.nrf24_readRegister)
-    i.nrf24_retransmissionCount              0x080049dc   Section        0  nrf24.o(i.nrf24_retransmissionCount)
-    i.nrf24_rx_address                       0x080049f2   Section        0  nrf24.o(i.nrf24_rx_address)
-    i.nrf24_send                             0x08004a10   Section        0  nrf24.o(i.nrf24_send)
-    i.nrf24_transferSync                     0x08004a58   Section        0  nrf24.o(i.nrf24_transferSync)
-    i.nrf24_transmitSync                     0x08004a76   Section        0  nrf24.o(i.nrf24_transmitSync)
-    i.nrf24_tx_address                       0x08004a90   Section        0  nrf24.o(i.nrf24_tx_address)
-    i.nrf24_writeRegister                    0x08004aaa   Section        0  nrf24.o(i.nrf24_writeRegister)
-    i.performSingleRefCalibration            0x08004ad4   Section        0  vl53l0x.o(i.performSingleRefCalibration)
-    i.readMulti                              0x08004b28   Section        0  vl53l0x.o(i.readMulti)
-    i.readRangeContinuousMillimeters         0x08004b4c   Section        0  vl53l0x.o(i.readRangeContinuousMillimeters)
-    i.readRangeSingleMillimeters             0x08004b9c   Section        0  vl53l0x.o(i.readRangeSingleMillimeters)
-    i.readReg                                0x08004c20   Section        0  vl53l0x.o(i.readReg)
-    i.readReg16Bit                           0x08004c4c   Section        0  vl53l0x.o(i.readReg16Bit)
-    i.send_packet                            0x08004c80   Section        0  helpers.o(i.send_packet)
-    i.setMeasurementTimingBudget             0x08004ce0   Section        0  vl53l0x.o(i.setMeasurementTimingBudget)
-    i.setSignalRateLimit                     0x08004d9c   Section        0  vl53l0x.o(i.setSignalRateLimit)
-    i.spi_transfer                           0x08004dcc   Section        0  nrf24.o(i.spi_transfer)
-    i.start_animation                        0x08004df0   Section        0  animation.o(i.start_animation)
-    i.swap                                   0x08004e00   Section        0  helpers.o(i.swap)
-    i.timeoutMclksToMicroseconds             0x08004e0c   Section        0  vl53l0x.o(i.timeoutMclksToMicroseconds)
-    timeoutMclksToMicroseconds               0x08004e0d   Thumb Code    38  vl53l0x.o(i.timeoutMclksToMicroseconds)
-    i.timeoutMicrosecondsToMclks             0x08004e38   Section        0  vl53l0x.o(i.timeoutMicrosecondsToMclks)
-    timeoutMicrosecondsToMclks               0x08004e39   Thumb Code    38  vl53l0x.o(i.timeoutMicrosecondsToMclks)
-    i.tof_calibrate                          0x08004e64   Section        0  helpers.o(i.tof_calibrate)
-    i.tx_test                                0x08004e98   Section        0  helpers.o(i.tx_test)
-    i.writeMulti                             0x08004ef8   Section        0  vl53l0x.o(i.writeMulti)
-    i.writeReg                               0x08004f1c   Section        0  vl53l0x.o(i.writeReg)
-    i.writeReg16Bit                          0x08004f48   Section        0  vl53l0x.o(i.writeReg16Bit)
-    .constdata                               0x08004f78   Section       61  animation.o(.constdata)
-    breathing_lookup                         0x08004f78   Data          51  animation.o(.constdata)
-    faskblink_lookup                         0x08004fab   Data          10  animation.o(.constdata)
-    .constdata                               0x08004fb5   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x08004fc5   Section        8  system_stm32f0xx.o(.constdata)
+    i.get_trigger_threshold                  0x08004508   Section        0  helpers.o(i.get_trigger_threshold)
+    i.get_uuid                               0x08004528   Section        0  helpers.o(i.get_uuid)
+    i.iwdg_wait                              0x08004548   Section        0  helpers.o(i.iwdg_wait)
+    i.main                                   0x08004570   Section        0  main.o(i.main)
+    i.nrf24_ce_digitalWrite                  0x08004834   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    i.nrf24_config                           0x08004850   Section        0  nrf24.o(i.nrf24_config)
+    i.nrf24_configRegister                   0x080048c8   Section        0  nrf24.o(i.nrf24_configRegister)
+    i.nrf24_csn_digitalWrite                 0x080048ec   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    i.nrf24_getStatus                        0x08004908   Section        0  nrf24.o(i.nrf24_getStatus)
+    i.nrf24_init                             0x08004922   Section        0  nrf24.o(i.nrf24_init)
+    i.nrf24_isSending                        0x08004932   Section        0  nrf24.o(i.nrf24_isSending)
+    i.nrf24_lastMessageStatus                0x08004946   Section        0  nrf24.o(i.nrf24_lastMessageStatus)
+    i.nrf24_powerDown                        0x08004960   Section        0  nrf24.o(i.nrf24_powerDown)
+    i.nrf24_powerUpRx                        0x08004972   Section        0  nrf24.o(i.nrf24_powerUpRx)
+    i.nrf24_powerUpTx                        0x080049a4   Section        0  nrf24.o(i.nrf24_powerUpTx)
+    i.nrf24_readRegister                     0x080049b8   Section        0  nrf24.o(i.nrf24_readRegister)
+    i.nrf24_retransmissionCount              0x080049e0   Section        0  nrf24.o(i.nrf24_retransmissionCount)
+    i.nrf24_rx_address                       0x080049f6   Section        0  nrf24.o(i.nrf24_rx_address)
+    i.nrf24_send                             0x08004a14   Section        0  nrf24.o(i.nrf24_send)
+    i.nrf24_transferSync                     0x08004a5c   Section        0  nrf24.o(i.nrf24_transferSync)
+    i.nrf24_transmitSync                     0x08004a7a   Section        0  nrf24.o(i.nrf24_transmitSync)
+    i.nrf24_tx_address                       0x08004a94   Section        0  nrf24.o(i.nrf24_tx_address)
+    i.nrf24_writeRegister                    0x08004aae   Section        0  nrf24.o(i.nrf24_writeRegister)
+    i.performSingleRefCalibration            0x08004ad8   Section        0  vl53l0x.o(i.performSingleRefCalibration)
+    i.readMulti                              0x08004b2c   Section        0  vl53l0x.o(i.readMulti)
+    i.readRangeContinuousMillimeters         0x08004b50   Section        0  vl53l0x.o(i.readRangeContinuousMillimeters)
+    i.readRangeSingleMillimeters             0x08004ba0   Section        0  vl53l0x.o(i.readRangeSingleMillimeters)
+    i.readReg                                0x08004c24   Section        0  vl53l0x.o(i.readReg)
+    i.readReg16Bit                           0x08004c50   Section        0  vl53l0x.o(i.readReg16Bit)
+    i.send_packet                            0x08004c84   Section        0  helpers.o(i.send_packet)
+    i.setMeasurementTimingBudget             0x08004ce4   Section        0  vl53l0x.o(i.setMeasurementTimingBudget)
+    i.setSignalRateLimit                     0x08004da0   Section        0  vl53l0x.o(i.setSignalRateLimit)
+    i.spi_transfer                           0x08004dd0   Section        0  nrf24.o(i.spi_transfer)
+    i.start_animation                        0x08004df4   Section        0  animation.o(i.start_animation)
+    i.swap                                   0x08004e04   Section        0  helpers.o(i.swap)
+    i.timeoutMclksToMicroseconds             0x08004e10   Section        0  vl53l0x.o(i.timeoutMclksToMicroseconds)
+    timeoutMclksToMicroseconds               0x08004e11   Thumb Code    38  vl53l0x.o(i.timeoutMclksToMicroseconds)
+    i.timeoutMicrosecondsToMclks             0x08004e3c   Section        0  vl53l0x.o(i.timeoutMicrosecondsToMclks)
+    timeoutMicrosecondsToMclks               0x08004e3d   Thumb Code    38  vl53l0x.o(i.timeoutMicrosecondsToMclks)
+    i.tof_calibrate                          0x08004e68   Section        0  helpers.o(i.tof_calibrate)
+    i.tx_test                                0x08004e9c   Section        0  helpers.o(i.tx_test)
+    i.writeMulti                             0x08004efc   Section        0  vl53l0x.o(i.writeMulti)
+    i.writeReg                               0x08004f20   Section        0  vl53l0x.o(i.writeReg)
+    i.writeReg16Bit                          0x08004f4c   Section        0  vl53l0x.o(i.writeReg16Bit)
+    .constdata                               0x08004f7c   Section       61  animation.o(.constdata)
+    breathing_lookup                         0x08004f7c   Data          51  animation.o(.constdata)
+    faskblink_lookup                         0x08004faf   Data          10  animation.o(.constdata)
+    .constdata                               0x08004fb9   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x08004fc9   Section        8  system_stm32f0xx.o(.constdata)
     .data                                    0x20000000   Section       12  vl53l0x.o(.data)
     .data                                    0x2000000c   Section        1  nrf24.o(.data)
     .data                                    0x2000000d   Section        7  helpers.o(.data)
@@ -2479,50 +2479,50 @@ Image Symbol Table
     getVcselPulsePeriod                      0x080043d1   Thumb Code    32  vl53l0x.o(i.getVcselPulsePeriod)
     get_baseline                             0x080043f1   Thumb Code   150  helpers.o(i.get_baseline)
     get_single_distance_reading              0x080044e1   Thumb Code    34  helpers.o(i.get_single_distance_reading)
-    get_trigger_threshold                    0x08004505   Thumb Code    22  helpers.o(i.get_trigger_threshold)
-    get_uuid                                 0x08004525   Thumb Code    28  helpers.o(i.get_uuid)
-    iwdg_wait                                0x08004545   Thumb Code    36  helpers.o(i.iwdg_wait)
-    main                                     0x0800456d   Thumb Code   548  main.o(i.main)
-    nrf24_ce_digitalWrite                    0x08004831   Thumb Code    26  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    nrf24_config                             0x0800484d   Thumb Code   116  nrf24.o(i.nrf24_config)
-    nrf24_configRegister                     0x080048c5   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
-    nrf24_csn_digitalWrite                   0x080048e9   Thumb Code    24  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    nrf24_getStatus                          0x08004905   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
-    nrf24_init                               0x0800491f   Thumb Code    16  nrf24.o(i.nrf24_init)
-    nrf24_isSending                          0x0800492f   Thumb Code    20  nrf24.o(i.nrf24_isSending)
-    nrf24_lastMessageStatus                  0x08004943   Thumb Code    26  nrf24.o(i.nrf24_lastMessageStatus)
-    nrf24_powerDown                          0x0800495d   Thumb Code    18  nrf24.o(i.nrf24_powerDown)
-    nrf24_powerUpRx                          0x0800496f   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
-    nrf24_powerUpTx                          0x080049a1   Thumb Code    20  nrf24.o(i.nrf24_powerUpTx)
-    nrf24_readRegister                       0x080049b5   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
-    nrf24_retransmissionCount                0x080049dd   Thumb Code    22  nrf24.o(i.nrf24_retransmissionCount)
-    nrf24_rx_address                         0x080049f3   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
-    nrf24_send                               0x08004a11   Thumb Code    68  nrf24.o(i.nrf24_send)
-    nrf24_transferSync                       0x08004a59   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
-    nrf24_transmitSync                       0x08004a77   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
-    nrf24_tx_address                         0x08004a91   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
-    nrf24_writeRegister                      0x08004aab   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
-    performSingleRefCalibration              0x08004ad5   Thumb Code    78  vl53l0x.o(i.performSingleRefCalibration)
-    readMulti                                0x08004b29   Thumb Code    26  vl53l0x.o(i.readMulti)
-    readRangeContinuousMillimeters           0x08004b4d   Thumb Code    72  vl53l0x.o(i.readRangeContinuousMillimeters)
-    readRangeSingleMillimeters               0x08004b9d   Thumb Code   122  vl53l0x.o(i.readRangeSingleMillimeters)
-    readReg                                  0x08004c21   Thumb Code    36  vl53l0x.o(i.readReg)
-    readReg16Bit                             0x08004c4d   Thumb Code    44  vl53l0x.o(i.readReg16Bit)
-    send_packet                              0x08004c81   Thumb Code    56  helpers.o(i.send_packet)
-    setMeasurementTimingBudget               0x08004ce1   Thumb Code   164  vl53l0x.o(i.setMeasurementTimingBudget)
-    setSignalRateLimit                       0x08004d9d   Thumb Code    42  vl53l0x.o(i.setSignalRateLimit)
-    spi_transfer                             0x08004dcd   Thumb Code    32  nrf24.o(i.spi_transfer)
-    start_animation                          0x08004df1   Thumb Code    10  animation.o(i.start_animation)
-    swap                                     0x08004e01   Thumb Code    10  helpers.o(i.swap)
-    tof_calibrate                            0x08004e65   Thumb Code    26  helpers.o(i.tof_calibrate)
-    tx_test                                  0x08004e99   Thumb Code    76  helpers.o(i.tx_test)
-    writeMulti                               0x08004ef9   Thumb Code    26  vl53l0x.o(i.writeMulti)
-    writeReg                                 0x08004f1d   Thumb Code    34  vl53l0x.o(i.writeReg)
-    writeReg16Bit                            0x08004f49   Thumb Code    38  vl53l0x.o(i.writeReg16Bit)
-    AHBPrescTable                            0x08004fb5   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x08004fc5   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08004fd0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004ff0   Number         0  anon$$obj.o(Region$$Table)
+    get_trigger_threshold                    0x08004509   Thumb Code    22  helpers.o(i.get_trigger_threshold)
+    get_uuid                                 0x08004529   Thumb Code    28  helpers.o(i.get_uuid)
+    iwdg_wait                                0x08004549   Thumb Code    36  helpers.o(i.iwdg_wait)
+    main                                     0x08004571   Thumb Code   548  main.o(i.main)
+    nrf24_ce_digitalWrite                    0x08004835   Thumb Code    26  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    nrf24_config                             0x08004851   Thumb Code   116  nrf24.o(i.nrf24_config)
+    nrf24_configRegister                     0x080048c9   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
+    nrf24_csn_digitalWrite                   0x080048ed   Thumb Code    24  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    nrf24_getStatus                          0x08004909   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
+    nrf24_init                               0x08004923   Thumb Code    16  nrf24.o(i.nrf24_init)
+    nrf24_isSending                          0x08004933   Thumb Code    20  nrf24.o(i.nrf24_isSending)
+    nrf24_lastMessageStatus                  0x08004947   Thumb Code    26  nrf24.o(i.nrf24_lastMessageStatus)
+    nrf24_powerDown                          0x08004961   Thumb Code    18  nrf24.o(i.nrf24_powerDown)
+    nrf24_powerUpRx                          0x08004973   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
+    nrf24_powerUpTx                          0x080049a5   Thumb Code    20  nrf24.o(i.nrf24_powerUpTx)
+    nrf24_readRegister                       0x080049b9   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
+    nrf24_retransmissionCount                0x080049e1   Thumb Code    22  nrf24.o(i.nrf24_retransmissionCount)
+    nrf24_rx_address                         0x080049f7   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
+    nrf24_send                               0x08004a15   Thumb Code    68  nrf24.o(i.nrf24_send)
+    nrf24_transferSync                       0x08004a5d   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
+    nrf24_transmitSync                       0x08004a7b   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
+    nrf24_tx_address                         0x08004a95   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
+    nrf24_writeRegister                      0x08004aaf   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
+    performSingleRefCalibration              0x08004ad9   Thumb Code    78  vl53l0x.o(i.performSingleRefCalibration)
+    readMulti                                0x08004b2d   Thumb Code    26  vl53l0x.o(i.readMulti)
+    readRangeContinuousMillimeters           0x08004b51   Thumb Code    72  vl53l0x.o(i.readRangeContinuousMillimeters)
+    readRangeSingleMillimeters               0x08004ba1   Thumb Code   122  vl53l0x.o(i.readRangeSingleMillimeters)
+    readReg                                  0x08004c25   Thumb Code    36  vl53l0x.o(i.readReg)
+    readReg16Bit                             0x08004c51   Thumb Code    44  vl53l0x.o(i.readReg16Bit)
+    send_packet                              0x08004c85   Thumb Code    56  helpers.o(i.send_packet)
+    setMeasurementTimingBudget               0x08004ce5   Thumb Code   164  vl53l0x.o(i.setMeasurementTimingBudget)
+    setSignalRateLimit                       0x08004da1   Thumb Code    42  vl53l0x.o(i.setSignalRateLimit)
+    spi_transfer                             0x08004dd1   Thumb Code    32  nrf24.o(i.spi_transfer)
+    start_animation                          0x08004df5   Thumb Code    10  animation.o(i.start_animation)
+    swap                                     0x08004e05   Thumb Code    10  helpers.o(i.swap)
+    tof_calibrate                            0x08004e69   Thumb Code    26  helpers.o(i.tof_calibrate)
+    tx_test                                  0x08004e9d   Thumb Code    76  helpers.o(i.tx_test)
+    writeMulti                               0x08004efd   Thumb Code    26  vl53l0x.o(i.writeMulti)
+    writeReg                                 0x08004f21   Thumb Code    34  vl53l0x.o(i.writeReg)
+    writeReg16Bit                            0x08004f4d   Thumb Code    38  vl53l0x.o(i.writeReg16Bit)
+    AHBPrescTable                            0x08004fb9   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x08004fc9   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08004fd4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004ff4   Number         0  anon$$obj.o(Region$$Table)
     address                                  0x20000000   Data           1  vl53l0x.o(.data)
     did_timeout                              0x20000001   Data           1  vl53l0x.o(.data)
     stop_variable                            0x20000002   Data           1  vl53l0x.o(.data)
@@ -2574,9 +2574,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00005050, Max: 0x00008000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00005054, Max: 0x00008000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004ff0, Max: 0x00008000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004ff4, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2770,77 +2770,76 @@ Memory Map of the image
     0x080042e4   0x080042e4   0x000000ec   Code   RO           19    i.getSpadInfo       vl53l0x.o
     0x080043d0   0x080043d0   0x00000020   Code   RO           20    i.getVcselPulsePeriod  vl53l0x.o
     0x080043f0   0x080043f0   0x000000f0   Code   RO          500    i.get_baseline      helpers.o
-    0x080044e0   0x080044e0   0x00000022   Code   RO          501    i.get_single_distance_reading  helpers.o
-    0x08004502   0x08004502   0x00000002   PAD
-    0x08004504   0x08004504   0x00000020   Code   RO          502    i.get_trigger_threshold  helpers.o
-    0x08004524   0x08004524   0x00000020   Code   RO          503    i.get_uuid          helpers.o
-    0x08004544   0x08004544   0x00000028   Code   RO          504    i.iwdg_wait         helpers.o
-    0x0800456c   0x0800456c   0x000002c4   Code   RO          683    i.main              main.o
-    0x08004830   0x08004830   0x0000001a   Code   RO          317    i.nrf24_ce_digitalWrite  radiopinfunctions.o
-    0x0800484a   0x0800484a   0x00000002   PAD
-    0x0800484c   0x0800484c   0x00000078   Code   RO          349    i.nrf24_config      nrf24.o
-    0x080048c4   0x080048c4   0x00000024   Code   RO          350    i.nrf24_configRegister  nrf24.o
-    0x080048e8   0x080048e8   0x0000001c   Code   RO          318    i.nrf24_csn_digitalWrite  radiopinfunctions.o
-    0x08004904   0x08004904   0x0000001a   Code   RO          353    i.nrf24_getStatus   nrf24.o
-    0x0800491e   0x0800491e   0x00000010   Code   RO          354    i.nrf24_init        nrf24.o
-    0x0800492e   0x0800492e   0x00000014   Code   RO          355    i.nrf24_isSending   nrf24.o
-    0x08004942   0x08004942   0x0000001a   Code   RO          356    i.nrf24_lastMessageStatus  nrf24.o
-    0x0800495c   0x0800495c   0x00000012   Code   RO          359    i.nrf24_powerDown   nrf24.o
-    0x0800496e   0x0800496e   0x00000032   Code   RO          360    i.nrf24_powerUpRx   nrf24.o
-    0x080049a0   0x080049a0   0x00000014   Code   RO          361    i.nrf24_powerUpTx   nrf24.o
-    0x080049b4   0x080049b4   0x00000028   Code   RO          362    i.nrf24_readRegister  nrf24.o
-    0x080049dc   0x080049dc   0x00000016   Code   RO          363    i.nrf24_retransmissionCount  nrf24.o
-    0x080049f2   0x080049f2   0x0000001c   Code   RO          365    i.nrf24_rx_address  nrf24.o
-    0x08004a0e   0x08004a0e   0x00000002   PAD
-    0x08004a10   0x08004a10   0x00000048   Code   RO          366    i.nrf24_send        nrf24.o
-    0x08004a58   0x08004a58   0x0000001e   Code   RO          367    i.nrf24_transferSync  nrf24.o
-    0x08004a76   0x08004a76   0x0000001a   Code   RO          368    i.nrf24_transmitSync  nrf24.o
-    0x08004a90   0x08004a90   0x0000001a   Code   RO          369    i.nrf24_tx_address  nrf24.o
-    0x08004aaa   0x08004aaa   0x00000028   Code   RO          370    i.nrf24_writeRegister  nrf24.o
-    0x08004ad2   0x08004ad2   0x00000002   PAD
-    0x08004ad4   0x08004ad4   0x00000054   Code   RO           21    i.performSingleRefCalibration  vl53l0x.o
-    0x08004b28   0x08004b28   0x00000024   Code   RO           22    i.readMulti         vl53l0x.o
-    0x08004b4c   0x08004b4c   0x00000050   Code   RO           23    i.readRangeContinuousMillimeters  vl53l0x.o
-    0x08004b9c   0x08004b9c   0x00000084   Code   RO           24    i.readRangeSingleMillimeters  vl53l0x.o
-    0x08004c20   0x08004c20   0x0000002c   Code   RO           25    i.readReg           vl53l0x.o
-    0x08004c4c   0x08004c4c   0x00000034   Code   RO           26    i.readReg16Bit      vl53l0x.o
-    0x08004c80   0x08004c80   0x00000060   Code   RO          505    i.send_packet       helpers.o
-    0x08004ce0   0x08004ce0   0x000000bc   Code   RO           29    i.setMeasurementTimingBudget  vl53l0x.o
-    0x08004d9c   0x08004d9c   0x00000030   Code   RO           30    i.setSignalRateLimit  vl53l0x.o
-    0x08004dcc   0x08004dcc   0x00000024   Code   RO          371    i.spi_transfer      nrf24.o
-    0x08004df0   0x08004df0   0x00000010   Code   RO          607    i.start_animation   animation.o
-    0x08004e00   0x08004e00   0x0000000a   Code   RO          506    i.swap              helpers.o
-    0x08004e0a   0x08004e0a   0x00000002   PAD
-    0x08004e0c   0x08004e0c   0x0000002c   Code   RO           34    i.timeoutMclksToMicroseconds  vl53l0x.o
-    0x08004e38   0x08004e38   0x0000002c   Code   RO           35    i.timeoutMicrosecondsToMclks  vl53l0x.o
-    0x08004e64   0x08004e64   0x00000034   Code   RO          507    i.tof_calibrate     helpers.o
-    0x08004e98   0x08004e98   0x00000060   Code   RO          508    i.tx_test           helpers.o
-    0x08004ef8   0x08004ef8   0x00000024   Code   RO           37    i.writeMulti        vl53l0x.o
-    0x08004f1c   0x08004f1c   0x0000002c   Code   RO           38    i.writeReg          vl53l0x.o
-    0x08004f48   0x08004f48   0x00000030   Code   RO           39    i.writeReg16Bit     vl53l0x.o
-    0x08004f78   0x08004f78   0x0000003d   Data   RO          608    .constdata          animation.o
-    0x08004fb5   0x08004fb5   0x00000010   Data   RO         4427    .constdata          system_stm32f0xx.o
-    0x08004fc5   0x08004fc5   0x00000008   Data   RO         4428    .constdata          system_stm32f0xx.o
-    0x08004fcd   0x08004fcd   0x00000003   PAD
-    0x08004fd0   0x08004fd0   0x00000020   Data   RO         4779    Region$$Table       anon$$obj.o
+    0x080044e0   0x080044e0   0x00000028   Code   RO          501    i.get_single_distance_reading  helpers.o
+    0x08004508   0x08004508   0x00000020   Code   RO          502    i.get_trigger_threshold  helpers.o
+    0x08004528   0x08004528   0x00000020   Code   RO          503    i.get_uuid          helpers.o
+    0x08004548   0x08004548   0x00000028   Code   RO          504    i.iwdg_wait         helpers.o
+    0x08004570   0x08004570   0x000002c4   Code   RO          683    i.main              main.o
+    0x08004834   0x08004834   0x0000001a   Code   RO          317    i.nrf24_ce_digitalWrite  radiopinfunctions.o
+    0x0800484e   0x0800484e   0x00000002   PAD
+    0x08004850   0x08004850   0x00000078   Code   RO          349    i.nrf24_config      nrf24.o
+    0x080048c8   0x080048c8   0x00000024   Code   RO          350    i.nrf24_configRegister  nrf24.o
+    0x080048ec   0x080048ec   0x0000001c   Code   RO          318    i.nrf24_csn_digitalWrite  radiopinfunctions.o
+    0x08004908   0x08004908   0x0000001a   Code   RO          353    i.nrf24_getStatus   nrf24.o
+    0x08004922   0x08004922   0x00000010   Code   RO          354    i.nrf24_init        nrf24.o
+    0x08004932   0x08004932   0x00000014   Code   RO          355    i.nrf24_isSending   nrf24.o
+    0x08004946   0x08004946   0x0000001a   Code   RO          356    i.nrf24_lastMessageStatus  nrf24.o
+    0x08004960   0x08004960   0x00000012   Code   RO          359    i.nrf24_powerDown   nrf24.o
+    0x08004972   0x08004972   0x00000032   Code   RO          360    i.nrf24_powerUpRx   nrf24.o
+    0x080049a4   0x080049a4   0x00000014   Code   RO          361    i.nrf24_powerUpTx   nrf24.o
+    0x080049b8   0x080049b8   0x00000028   Code   RO          362    i.nrf24_readRegister  nrf24.o
+    0x080049e0   0x080049e0   0x00000016   Code   RO          363    i.nrf24_retransmissionCount  nrf24.o
+    0x080049f6   0x080049f6   0x0000001c   Code   RO          365    i.nrf24_rx_address  nrf24.o
+    0x08004a12   0x08004a12   0x00000002   PAD
+    0x08004a14   0x08004a14   0x00000048   Code   RO          366    i.nrf24_send        nrf24.o
+    0x08004a5c   0x08004a5c   0x0000001e   Code   RO          367    i.nrf24_transferSync  nrf24.o
+    0x08004a7a   0x08004a7a   0x0000001a   Code   RO          368    i.nrf24_transmitSync  nrf24.o
+    0x08004a94   0x08004a94   0x0000001a   Code   RO          369    i.nrf24_tx_address  nrf24.o
+    0x08004aae   0x08004aae   0x00000028   Code   RO          370    i.nrf24_writeRegister  nrf24.o
+    0x08004ad6   0x08004ad6   0x00000002   PAD
+    0x08004ad8   0x08004ad8   0x00000054   Code   RO           21    i.performSingleRefCalibration  vl53l0x.o
+    0x08004b2c   0x08004b2c   0x00000024   Code   RO           22    i.readMulti         vl53l0x.o
+    0x08004b50   0x08004b50   0x00000050   Code   RO           23    i.readRangeContinuousMillimeters  vl53l0x.o
+    0x08004ba0   0x08004ba0   0x00000084   Code   RO           24    i.readRangeSingleMillimeters  vl53l0x.o
+    0x08004c24   0x08004c24   0x0000002c   Code   RO           25    i.readReg           vl53l0x.o
+    0x08004c50   0x08004c50   0x00000034   Code   RO           26    i.readReg16Bit      vl53l0x.o
+    0x08004c84   0x08004c84   0x00000060   Code   RO          505    i.send_packet       helpers.o
+    0x08004ce4   0x08004ce4   0x000000bc   Code   RO           29    i.setMeasurementTimingBudget  vl53l0x.o
+    0x08004da0   0x08004da0   0x00000030   Code   RO           30    i.setSignalRateLimit  vl53l0x.o
+    0x08004dd0   0x08004dd0   0x00000024   Code   RO          371    i.spi_transfer      nrf24.o
+    0x08004df4   0x08004df4   0x00000010   Code   RO          607    i.start_animation   animation.o
+    0x08004e04   0x08004e04   0x0000000a   Code   RO          506    i.swap              helpers.o
+    0x08004e0e   0x08004e0e   0x00000002   PAD
+    0x08004e10   0x08004e10   0x0000002c   Code   RO           34    i.timeoutMclksToMicroseconds  vl53l0x.o
+    0x08004e3c   0x08004e3c   0x0000002c   Code   RO           35    i.timeoutMicrosecondsToMclks  vl53l0x.o
+    0x08004e68   0x08004e68   0x00000034   Code   RO          507    i.tof_calibrate     helpers.o
+    0x08004e9c   0x08004e9c   0x00000060   Code   RO          508    i.tx_test           helpers.o
+    0x08004efc   0x08004efc   0x00000024   Code   RO           37    i.writeMulti        vl53l0x.o
+    0x08004f20   0x08004f20   0x0000002c   Code   RO           38    i.writeReg          vl53l0x.o
+    0x08004f4c   0x08004f4c   0x00000030   Code   RO           39    i.writeReg16Bit     vl53l0x.o
+    0x08004f7c   0x08004f7c   0x0000003d   Data   RO          608    .constdata          animation.o
+    0x08004fb9   0x08004fb9   0x00000010   Data   RO         4427    .constdata          system_stm32f0xx.o
+    0x08004fc9   0x08004fc9   0x00000008   Data   RO         4428    .constdata          system_stm32f0xx.o
+    0x08004fd1   0x08004fd1   0x00000003   PAD
+    0x08004fd4   0x08004fd4   0x00000020   Data   RO         4779    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004ff0, Size: 0x000006a0, Max: 0x00001800, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004ff4, Size: 0x000006a0, Max: 0x00001800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08004ff0   0x0000000c   Data   RW           41    .data               vl53l0x.o
-    0x2000000c   0x08004ffc   0x00000001   Data   RW          372    .data               nrf24.o
-    0x2000000d   0x08004ffd   0x00000007   Data   RW          510    .data               helpers.o
-    0x20000014   0x08005004   0x00000010   Data   RW          609    .data               animation.o
-    0x20000024   0x08005014   0x00000008   Data   RW          642    .data               sleepybutton.o
-    0x2000002c   0x0800501c   0x00000028   Data   RW          685    .data               main.o
-    0x20000054   0x08005044   0x00000004   Data   RW         3732    .data               stm32f0xx_hal.o
-    0x20000058   0x08005048   0x00000004   Data   RW         4429    .data               system_stm32f0xx.o
-    0x2000005c   0x0800504c   0x00000004   Data   RW         4757    .data               mc_p.l(stdout.o)
+    0x20000000   0x08004ff4   0x0000000c   Data   RW           41    .data               vl53l0x.o
+    0x2000000c   0x08005000   0x00000001   Data   RW          372    .data               nrf24.o
+    0x2000000d   0x08005001   0x00000007   Data   RW          510    .data               helpers.o
+    0x20000014   0x08005008   0x00000010   Data   RW          609    .data               animation.o
+    0x20000024   0x08005018   0x00000008   Data   RW          642    .data               sleepybutton.o
+    0x2000002c   0x08005020   0x00000028   Data   RW          685    .data               main.o
+    0x20000054   0x08005048   0x00000004   Data   RW         3732    .data               stm32f0xx_hal.o
+    0x20000058   0x0800504c   0x00000004   Data   RW         4429    .data               system_stm32f0xx.o
+    0x2000005c   0x08005050   0x00000004   Data   RW         4757    .data               mc_p.l(stdout.o)
     0x20000060        -       0x00000020   Zero   RW          509    .bss                helpers.o
     0x20000080        -       0x0000021c   Zero   RW          684    .bss                main.o
-    0x2000029c   0x08005050   0x00000004   PAD
+    0x2000029c   0x08005054   0x00000004   PAD
     0x200002a0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f042x6.o
 
 
@@ -2852,8 +2851,8 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        140         22         61         16          0       2227   animation.o
-      1120        302          0          7         32       8785   helpers.o
-      1732        256          0         40        540       9439   main.o
+      1126        308          0          7         32       8785   helpers.o
+      1732        256          0         40        540       9459   main.o
        652         12          0          1          0       9916   nrf24.o
         54          4          0          0          0       1057   radiopinfunctions.o
         52          4          0          8          0        963   sleepybutton.o
@@ -2879,9 +2878,9 @@ Image component sizes
       2482        154          0         12          0     508206   vl53l0x.o
 
     ----------------------------------------------------------------------
-     18176       1390        312         92       1600     640740   Object Totals
+     18180       1396        312         92       1600     640760   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        34          0          3          0          4          0   (incl. Padding)
+        32          0          3          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2935,15 +2934,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20152       1484        312         96       1600     633524   Grand Totals
-     20152       1484        312         96       1600     633524   ELF Image Totals
-     20152       1484        312         96          0          0   ROM Totals
+     20156       1490        312         96       1600     633544   Grand Totals
+     20156       1490        312         96       1600     633544   ELF Image Totals
+     20156       1490        312         96          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                20464 (  19.98kB)
+    Total RO  Size (Code + RO Data)                20468 (  19.99kB)
     Total RW  Size (RW Data + ZI Data)              1696 (   1.66kB)
-    Total ROM Size (Code + RO Data + RW Data)      20560 (  20.08kB)
+    Total ROM Size (Code + RO Data + RW Data)      20564 (  20.08kB)
 
 ==============================================================================
 

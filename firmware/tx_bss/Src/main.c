@@ -52,6 +52,8 @@
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
 
+#define ENABLE_LED 1
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -257,7 +259,8 @@ int main(void)
         count++;
       }
       printf("\n");
-      start_animation(ANIMATION_TYPE_CONST_ON);
+      if(ENABLE_LED)
+      	start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
       current_state = STATE_TRIGGERED;
@@ -452,7 +455,7 @@ static void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 125;
+  hrtc.Init.AsynchPrediv = 100;
   hrtc.Init.SynchPrediv = 0;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;

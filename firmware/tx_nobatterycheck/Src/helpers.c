@@ -44,8 +44,8 @@ uint16_t get_single_distance_reading(uint8_t* is_valid)
 {
   uint16_t result = readRangeSingleMillimeters();
   *is_valid = 1;
-  if(result > 1200)
-    result = 1200;
+  if(result >= 1200)
+    result = 1700;
   if(result < 20)
     *is_valid = 0;
   return result;

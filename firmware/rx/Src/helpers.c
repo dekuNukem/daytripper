@@ -24,27 +24,27 @@ void press_keys(uint8_t index)
   {
     case SLIDE_SW_POS_MINI:
       keyboard_press(KEY_LEFT_GUI, 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_press('m', 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_release_all();
-      HAL_Delay(34);
+      HAL_Delay(67);
       break;
     case SLIDE_SW_POS_CUSTOM:
       keyboard_press(KEY_LEFT_ALT, 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_press(KEY_PAUSE, 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_release_all();
-      HAL_Delay(34);
+      HAL_Delay(67);
       break;
     case SLIDE_SW_POS_LOCK:
       keyboard_press(KEY_LEFT_GUI, 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_press('l', 0);
-      HAL_Delay(34);
+      HAL_Delay(67);
       keyboard_release_all();
-      HAL_Delay(34);
+      HAL_Delay(67);
       break;
   }
 }

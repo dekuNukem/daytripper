@@ -2033,10 +2033,10 @@ Image Symbol Table
     i.getVcselPulsePeriod                    0x080036e0   Section        0  vl53l0x.o(i.getVcselPulsePeriod)
     i.get_baseline                           0x08003700   Section        0  helpers.o(i.get_baseline)
     i.get_single_distance_reading            0x080037f0   Section        0  helpers.o(i.get_single_distance_reading)
-    i.get_trigger_threshold                  0x08003814   Section        0  helpers.o(i.get_trigger_threshold)
-    i.get_uuid                               0x08003834   Section        0  helpers.o(i.get_uuid)
-    i.iwdg_wait                              0x08003854   Section        0  helpers.o(i.iwdg_wait)
-    i.main                                   0x0800387c   Section        0  main.o(i.main)
+    i.get_trigger_threshold                  0x08003818   Section        0  helpers.o(i.get_trigger_threshold)
+    i.get_uuid                               0x08003838   Section        0  helpers.o(i.get_uuid)
+    i.iwdg_wait                              0x08003858   Section        0  helpers.o(i.iwdg_wait)
+    i.main                                   0x08003880   Section        0  main.o(i.main)
     i.nrf24_ce_digitalWrite                  0x08003af8   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
     i.nrf24_config                           0x08003b14   Section        0  nrf24.o(i.nrf24_config)
     i.nrf24_configRegister                   0x08003b8c   Section        0  nrf24.o(i.nrf24_configRegister)
@@ -2305,10 +2305,10 @@ Image Symbol Table
     getVcselPulsePeriod                      0x080036e1   Thumb Code    32  vl53l0x.o(i.getVcselPulsePeriod)
     get_baseline                             0x08003701   Thumb Code   150  helpers.o(i.get_baseline)
     get_single_distance_reading              0x080037f1   Thumb Code    34  helpers.o(i.get_single_distance_reading)
-    get_trigger_threshold                    0x08003815   Thumb Code    22  helpers.o(i.get_trigger_threshold)
-    get_uuid                                 0x08003835   Thumb Code    28  helpers.o(i.get_uuid)
-    iwdg_wait                                0x08003855   Thumb Code    36  helpers.o(i.iwdg_wait)
-    main                                     0x0800387d   Thumb Code   498  main.o(i.main)
+    get_trigger_threshold                    0x08003819   Thumb Code    22  helpers.o(i.get_trigger_threshold)
+    get_uuid                                 0x08003839   Thumb Code    28  helpers.o(i.get_uuid)
+    iwdg_wait                                0x08003859   Thumb Code    36  helpers.o(i.iwdg_wait)
+    main                                     0x08003881   Thumb Code   496  main.o(i.main)
     nrf24_ce_digitalWrite                    0x08003af9   Thumb Code    26  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
     nrf24_config                             0x08003b15   Thumb Code   116  nrf24.o(i.nrf24_config)
     nrf24_configRegister                     0x08003b8d   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
@@ -2557,12 +2557,11 @@ Memory Map of the image
     0x080035f4   0x080035f4   0x000000ec   Code   RO           19    i.getSpadInfo       vl53l0x.o
     0x080036e0   0x080036e0   0x00000020   Code   RO           20    i.getVcselPulsePeriod  vl53l0x.o
     0x08003700   0x08003700   0x000000f0   Code   RO          494    i.get_baseline      helpers.o
-    0x080037f0   0x080037f0   0x00000022   Code   RO          495    i.get_single_distance_reading  helpers.o
-    0x08003812   0x08003812   0x00000002   PAD
-    0x08003814   0x08003814   0x00000020   Code   RO          496    i.get_trigger_threshold  helpers.o
-    0x08003834   0x08003834   0x00000020   Code   RO          497    i.get_uuid          helpers.o
-    0x08003854   0x08003854   0x00000028   Code   RO          498    i.iwdg_wait         helpers.o
-    0x0800387c   0x0800387c   0x0000027c   Code   RO          675    i.main              main.o
+    0x080037f0   0x080037f0   0x00000028   Code   RO          495    i.get_single_distance_reading  helpers.o
+    0x08003818   0x08003818   0x00000020   Code   RO          496    i.get_trigger_threshold  helpers.o
+    0x08003838   0x08003838   0x00000020   Code   RO          497    i.get_uuid          helpers.o
+    0x08003858   0x08003858   0x00000028   Code   RO          498    i.iwdg_wait         helpers.o
+    0x08003880   0x08003880   0x00000278   Code   RO          675    i.main              main.o
     0x08003af8   0x08003af8   0x0000001a   Code   RO          311    i.nrf24_ce_digitalWrite  radiopinfunctions.o
     0x08003b12   0x08003b12   0x00000002   PAD
     0x08003b14   0x08003b14   0x00000078   Code   RO          343    i.nrf24_config      nrf24.o
@@ -2635,35 +2634,35 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       140         22         61         16          0       2231   animation.o
-       736        200          0          7         32       7849   helpers.o
-      1428        206          0         36        508       8116   main.o
-       634         12          0          1          0       9490   nrf24.o
-        54          4          0          0          0       1061   radiopinfunctions.o
-        52          4          0          8          0        971   sleepybutton.o
-        88         38        192          0       1024        648   startup_stm32f042x6.o
-       122         18          0          4          0       3643   stm32f0xx_hal.o
-       672         24          0          0          0       2631   stm32f0xx_hal_adc.o
-       178         28          0          0          0      10535   stm32f0xx_hal_cortex.o
-       338         22          0          0          0       2875   stm32f0xx_hal_gpio.o
-      1494         26          0          0          0      11774   stm32f0xx_hal_i2c.o
-       146          0          0          0          0       1907   stm32f0xx_hal_i2c_ex.o
-       116         20          0          0          0       1719   stm32f0xx_hal_iwdg.o
-       468         56          0          0          0       4592   stm32f0xx_hal_msp.o
-      1504        102          0          0          0       5185   stm32f0xx_hal_rcc.o
-       268         14          0          0          0       1496   stm32f0xx_hal_rcc_ex.o
-      1134          0          0          0          0       5789   stm32f0xx_hal_spi.o
-      1744         82          0          0          0      16099   stm32f0xx_hal_tim.o
-        76          0          0          0          0       2322   stm32f0xx_hal_tim_ex.o
-      1026         32          0          0          0       5989   stm32f0xx_hal_uart.o
-        36          6          0          0          0       2550   stm32f0xx_it.o
-        92         14         24          4          0       1147   system_stm32f0xx.o
-      2482        154          0         12          0     498150   vl53l0x.o
+       140         22         61         16          0       2283   animation.o
+       742        206          0          7         32       7985   helpers.o
+      1424        204          0         36        508       8248   main.o
+       634         12          0          1          0       9678   nrf24.o
+        54          4          0          0          0       1077   radiopinfunctions.o
+        52          4          0          8          0        987   sleepybutton.o
+        88         38        192          0       1024        660   startup_stm32f042x6.o
+       122         18          0          4          0       3707   stm32f0xx_hal.o
+       672         24          0          0          0       2663   stm32f0xx_hal_adc.o
+       178         28          0          0          0      10623   stm32f0xx_hal_cortex.o
+       338         22          0          0          0       2915   stm32f0xx_hal_gpio.o
+      1494         26          0          0          0      11894   stm32f0xx_hal_i2c.o
+       146          0          0          0          0       1943   stm32f0xx_hal_i2c_ex.o
+       116         20          0          0          0       1751   stm32f0xx_hal_iwdg.o
+       468         56          0          0          0       4680   stm32f0xx_hal_msp.o
+      1504        102          0          0          0       5245   stm32f0xx_hal_rcc.o
+       268         14          0          0          0       1516   stm32f0xx_hal_rcc_ex.o
+      1134          0          0          0          0       5849   stm32f0xx_hal_spi.o
+      1744         82          0          0          0      16367   stm32f0xx_hal_tim.o
+        76          0          0          0          0       2362   stm32f0xx_hal_tim_ex.o
+      1026         32          0          0          0       6065   stm32f0xx_hal_uart.o
+        36          6          0          0          0       2606   stm32f0xx_it.o
+        92         14         24          4          0       1179   system_stm32f0xx.o
+      2482        154          0         12          0     498538   vl53l0x.o
 
     ----------------------------------------------------------------------
-     15056       1084        312         88       1564     608769   Object Totals
+     15056       1088        312         88       1564     610821   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        28          0          3          0          0          0   (incl. Padding)
+        26          0          3          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2715,9 +2714,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16748       1172        312         92       1564     602893   Grand Totals
-     16748       1172        312         92       1564     602893   ELF Image Totals
-     16748       1172        312         92          0          0   ROM Totals
+     16748       1176        312         92       1564     604945   Grand Totals
+     16748       1176        312         92       1564     604945   ELF Image Totals
+     16748       1176        312         92          0          0   ROM Totals
 
 ==============================================================================
 

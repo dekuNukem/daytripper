@@ -52,6 +52,7 @@
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
 
+#define ENABLE_LED 1
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -231,7 +232,8 @@ int main(void)
         count++;
       }
       printf("\n");
-      start_animation(ANIMATION_TYPE_CONST_ON);
+      if(ENABLE_LED)
+      	start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
       current_state = STATE_TRIGGERED;
