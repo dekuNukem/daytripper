@@ -54,7 +54,7 @@ If you do encounter a similar problem, there are a number of ways to sort this o
 
 ### Try Fixing It Yourself
 
-* First disassemble the TX to bare circuit board
+* [Follow this guide in reverse](https://github.com/dekuNukem/daytripper/blob/master/assembly_guide.md) and disassemble the TX to bare circuit board.
 
 * Hold it like the above photos, check the gap and see if battery is touching the board
 
