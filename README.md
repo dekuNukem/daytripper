@@ -36,11 +36,11 @@ Daytripper...
 
 * Can detect motion within 120cm (4 ft).
 
-* Has 5Hz scan rate, works best indoors.
+* Scan rate: 5Hz on battery, 30Hz plugged in.
+
+* 40-hour battery life, rechargeable via USB-C.
 
 * Works out-of-box with Windows, compatible with all major OSs.
-
-* Has a 40-hour battery life, rechargeable via USB-C.
 
 * Has a 100 meter (330 ft) communication range between TX and RX, open-air.
 

@@ -66,7 +66,9 @@ Daytripper works by firing a eye-safe laser, wait for it to bounce back, then ca
 
 * Daytripper is most sensitive if the laser can be bounced straight back from the subject instead of at an angle.
 
-* The laser sensor scans at 5 times a second, so it might miss a very fast-moving subject.
+* The laser sensor scans at 5 times a second on battery power, thus it might miss a very fast-moving subject.
+
+* Scan rate can be increased to 30 times a second by flashing a firmware designed for always-plugged-in situation.
 
 * The transmission range between TX and RX is around 100 meters (330 feet) in open air. Although it is likely to be shorter in indoor environments with walls and other wireless interferences.
 
