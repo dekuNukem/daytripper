@@ -232,7 +232,6 @@ int main(void)
         baseline = eight2sixteen(received_data[2], received_data[3]);
         this_reading = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: trigger\nbase: %d, this: %d\n", baseline, this_reading);
-        // HAL_Delay(33);
         HAL_GPIO_WritePin(TRIGGER_OUT_GPIO_Port, TRIGGER_OUT_Pin, GPIO_PIN_RESET);
       }
 

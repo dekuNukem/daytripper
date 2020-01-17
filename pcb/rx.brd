@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.3">
+<eagle version="9.5.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -8,7 +8,7 @@
 </settings>
 <grid distance="1" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
@@ -28,11 +28,11 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -190,7 +190,8 @@
 <text x="15.8242" y="28.766" size="1.27" layer="25" font="vector">DFU</text>
 <text x="9.5" y="3.5" size="1.27" layer="26" font="vector" rot="MR0" align="center">PD3
 191005</text>
-<text x="18.6944" y="3.0386" size="1.27" layer="26" font="vector" rot="MR0">TRIG</text>
+<text x="15.875" y="0.2446" size="1.27" layer="26" font="vector" rot="MR0">TRIG</text>
+<text x="15.875" y="4.318" size="1.27" layer="26" font="vector" rot="MR0">G</text>
 </plain>
 <libraries>
 <library name="nRF24L01-Chip-v13">
@@ -598,6 +599,29 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 </library>
+<library name="testpad" urn="urn:adsk.eagle:library:385">
+<description>&lt;b&gt;Test Pins/Pads&lt;/b&gt;&lt;p&gt;
+Cream on SMD OFF.&lt;br&gt;
+new: Attribute TP_SIGNAL_NAME&lt;br&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="TP18R" urn="urn:adsk.eagle:footprint:27927/1" library_version="3">
+<description>&lt;b&gt;TEST PAD&lt;/b&gt;</description>
+<smd name="TP" x="0" y="0" dx="1.8" dy="1.8" layer="1" roundness="100" cream="no"/>
+<text x="-0.8999" y="0.95" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.762" y="-0.889" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="0" y="-2.54" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="TP18R" urn="urn:adsk.eagle:package:27981/1" type="box" library_version="3">
+<description>TEST PAD</description>
+<packageinstances>
+<packageinstance name="TP18R"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -882,10 +906,15 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="C14" library="clock" package="0805" value="4.7uF" x="1.905" y="18.352" smashed="yes" rot="R180">
 <attribute name="NAME" x="2.3876" y="15.3929" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="U1" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="9.5" y="3.9"/>
-<element name="SW1" library="3pos_slide_switch_centered" package="SW_3POS_FOOT_OFFICIAL" value="SW_3POS_DEVSW_3POS_OFFICIAL" x="1.7526" y="7.0612" rot="R270"/>
+<element name="U1" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="9.5" y="3.9" smashed="yes"/>
+<element name="SW1" library="3pos_slide_switch_centered" package="SW_3POS_FOOT_OFFICIAL" value="SW_3POS_DEVSW_3POS_OFFICIAL" x="1.7526" y="7.0612" smashed="yes" rot="R270"/>
 <element name="JP1" library="adafruit_changed" package="1X01-CLEANBIG" value="" x="17.145" y="1.778" smashed="yes">
 <attribute name="VALUE" x="15.875" y="-1.397" size="1.27" layer="27"/>
+</element>
+<element name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP18R" package3d_urn="urn:adsk.eagle:package:27981/1" value="PTR1TP18R" x="17.145" y="5.08" smashed="yes" rot="MR0">
+<attribute name="POPULARITY" value="0" x="17.145" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="17.145" y="2.54" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="17.907" y="4.064" size="0.0254" layer="28" rot="MR0"/>
 </element>
 </elements>
 <signals>
@@ -1052,6 +1081,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="18.0848" y1="25.0444" x2="18.0848" y2="22.8346" width="0.1524" layer="16"/>
 <wire x1="18.0848" y1="22.8346" x2="17.145" y2="21.8948" width="0.1524" layer="16"/>
 <wire x1="17.526" y1="30.226" x2="17.526" y2="25.6032" width="0.1524" layer="16"/>
+<contactref element="TP1" pad="TP"/>
 </signal>
 <signal name="+3V3">
 <contactref element="U2" pad="2"/>
@@ -1083,13 +1113,11 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="10.6172" y1="7.7216" x2="10.6172" y2="10.4272" width="0.254" layer="16"/>
 <wire x1="10.6172" y1="10.4272" x2="16.3802" y2="10.4272" width="0.254" layer="16"/>
 <wire x1="16.3802" y1="10.4272" x2="17.145" y2="11.192" width="0.254" layer="16"/>
-<wire x1="14.1224" y1="14.034" x2="12.6172" y2="12.5288" width="0.254" layer="16"/>
-<wire x1="12.6172" y1="12.5288" x2="10.6172" y2="10.5288" width="0.254" layer="16"/>
+<wire x1="14.1224" y1="14.034" x2="10.6172" y2="10.5288" width="0.254" layer="16"/>
 <wire x1="10.6172" y1="10.5288" x2="10.6172" y2="10.4272" width="0.254" layer="16"/>
 <wire x1="5.2578" y1="5.0678" x2="4.2794" y2="5.0678" width="0.254" layer="16"/>
 <wire x1="2.794" y1="6.5532" x2="2.794" y2="15.1008" width="0.254" layer="16"/>
 <wire x1="4.2794" y1="5.0678" x2="2.794" y2="6.5532" width="0.254" layer="16"/>
-<wire x1="18.1986" y1="23.7442" x2="18.1986" y2="24.2072" width="0.254" layer="1"/>
 <wire x1="17.3482" y1="26.2382" x2="18.1986" y2="27.0886" width="0.254" layer="1"/>
 <wire x1="18.1986" y1="27.0886" x2="18.1986" y2="27.8442" width="0.254" layer="1"/>
 <contactref element="R6" pad="1"/>
@@ -1495,16 +1523,15 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="IC1" pad="3"/>
 <contactref element="JP1" pad="1"/>
 <wire x1="12.3158" y1="13.8088" x2="12.9374" y2="13.8088" width="0.1524" layer="1"/>
-<wire x1="12.9374" y1="13.8088" x2="13.3096" y2="13.4366" width="0.1524" layer="1"/>
-<wire x1="13.3096" y1="13.4366" x2="13.4366" y2="13.3096" width="0.1524" layer="1"/>
+<wire x1="12.9374" y1="13.8088" x2="13.4366" y2="13.3096" width="0.1524" layer="1"/>
 <wire x1="13.4366" y1="13.3096" x2="14.986" y2="13.3096" width="0.1524" layer="1"/>
 <via x="15.7226" y="12.573" extent="1-16" drill="0.5"/>
-<wire x1="18.4404" y1="11.9634" x2="18.4404" y2="2.8956" width="0.1524" layer="16"/>
-<wire x1="18.4404" y1="2.8956" x2="17.3228" y2="1.778" width="0.1524" layer="16"/>
+<wire x1="18.415" y1="11.8872" x2="18.415" y2="2.8702" width="0.1524" layer="16"/>
+<wire x1="18.415" y1="2.8702" x2="17.3228" y2="1.778" width="0.1524" layer="16"/>
 <wire x1="17.3228" y1="1.778" x2="17.145" y2="1.778" width="0.1524" layer="16"/>
-<wire x1="18.4404" y1="11.9634" x2="17.9324" y2="12.4714" width="0.1524" layer="16"/>
+<wire x1="18.415" y1="11.8872" x2="17.8308" y2="12.4714" width="0.1524" layer="16"/>
 <wire x1="14.986" y1="13.3096" x2="15.7226" y2="12.573" width="0.1524" layer="1"/>
-<wire x1="17.9324" y1="12.4714" x2="15.8242" y2="12.4714" width="0.1524" layer="16"/>
+<wire x1="17.8308" y1="12.4714" x2="15.8242" y2="12.4714" width="0.1524" layer="16"/>
 <wire x1="15.8242" y1="12.4714" x2="15.7226" y2="12.573" width="0.1524" layer="16"/>
 </signal>
 </signals>
@@ -1515,22 +1542,27 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <mfgpreviewcolor name="coppercolor" color="0xFFFFBF00"/>
 <mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
 </mfgpreviewcolors>
-<errors>
-<approved hash="5,1,0e8c1c13926a8a81"/>
-<approved hash="5,1,aebf35d6881a1b4d"/>
-<approved hash="19,1,6795756c8461e294"/>
-<approved hash="19,1,2323fa3b44569d0e"/>
-<approved hash="19,1,50d4be0d0feac73b"/>
-<approved hash="19,1,b86bd70165c5c8ea"/>
-<approved hash="19,1,fe213e002749bba8"/>
-<approved hash="4,1,fed75cc5debfc263"/>
-</errors>
 </board>
 </drawing>
 <compatibility>
 <note version="6.3" minversion="6.2.2" severity="warning">
 Since Version 6.2.2 text objects can contain more than one line,
 which will not be processed correctly with this version.
+</note>
+<note version="8.2" severity="warning">
+Since Version 8.2, EAGLE supports online libraries. The ids
+of those online libraries will not be understood (or retained)
+with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports URNs for individual library
+assets (packages, symbols, and devices). The URNs of those assets
+will not be understood (or retained) with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports the association of 3D packages
+with devices in libraries, schematics, and board files. Those 3D
+packages will not be understood (or retained) with this version.
 </note>
 </compatibility>
 </eagle>
