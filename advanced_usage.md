@@ -16,6 +16,8 @@ If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/
 
 [USB Firmware Update](#usb-firmware-updates)
 
+[Trigger Output](#trigger-output)
+
 [Using Multiple Modules](#using-multiple-modules)
 
 ## Custom Actions
@@ -152,9 +154,21 @@ If you generated a `.hex` file yourself, you can convert it to a `.dfu` file wit
 
 This method is nice for occasional firmware updates, but quite cumbersome if you want to do extensive reprogramming. It's faster to get a ST-Link programmer and use the Keil uVision IDE. [See this guide](https://github.com/dekuNukem/STM32_tutorials) for more information on STM32 developments.
 
+## Trigger Output
+
+There is an **`active-high`** trigger output on RX. This pin will go from GND to 3.3V for **`around 200ms`** when a trigger from TX is received.
+
+![Alt text](resources/photos/rx_trig_out.jpg)
+
+On earlier production runs, the pin is on a testpad. On the later runs, the pin has its own header hole.
+
+Unfortunately, TX does not have a dedicated trigger out pin due to limited microcontroller resources. However, there is a debug output that prints out some serial data upon triggering, which you can parse.
+
+![Alt text](resources/photos/tx_trig_out.jpg)
+
 ## Using Multiple Modules
 
-Daytripper wasn't really designed with multiple TX/RX boards in mind. And I haven't done any extensive testings on this subject.
+Daytripper wasn't really designed with multiple TX/RX boards in mind. I haven't done any extensive testings on this subject, however most of the time it does seem to work.
 
 ### Single RX Multiple TX
 
