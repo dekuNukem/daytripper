@@ -102,15 +102,17 @@ For RX, a press on the button types out some debug messages. Make sure you open 
 
 You can update Daytripper's firmware via USB, for bug fixes and and/or new features. 
 
-To do this, download and install the [STM32 DfuSe tool](resources/en.stsw-stm32080_stm32_DfuSe.zip) from this repo. You can download it from [the official website](https://www.st.com/en/development-tools/stsw-stm32080.html) too, but it requires creating an account.
+First, [click me](https://github.com/dekuNukem/daytripper/raw/master/resources/en.stsw-stm32080_stm32_DfuSe.zip) to download and install the `STM32 DfuSe tool` from this repo.
 
-First, locate the user button on the board:
+(You can also get it from [the official website](https://www.st.com/en/development-tools/stsw-stm32080.html), but it requires creating an account.)
+
+Locate the user button on the board:
 
 ![Alt text](resources/photos/buttons.jpg)
 
 To update firmware:
 
-* Make sure the board is OFF and unplugged.
+* Make sure the board is TURNED OFF and unplugged.
 
 * **Press and hold down the user button** while plugging it into a computer.
 
@@ -122,17 +124,17 @@ Now launch the `DfuSeDemo` software:
 
 ![Alt text](resources/photos/dfu_start.png)
 
-In the `Available DUF Devices` section at top left corner, you should see a `STM Device in DFU Mode`.
+You should see a `STM Device in DFU Mode` in the `Available DUF Devices` section at top left corner.
 
 ![Alt text](resources/photos/dfu_available.png)
 
 Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
 
-* [Click me](firmware/TX_latest.dfu) for latest default TX firmware
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_latest.dfu) for latest default TX firmware
 
-* [Click me](firmware/TX_latest_blue_LED_disabled.dfu) for latest default TX firmware with blue LED turned off
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_latest_blue_LED_disabled.dfu) for latest default TX firmware with blue LED turned off
 
-* [Click me](firmware/RX_latest.dfu) for latest default RX firmware
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/RX_latest.dfu) for latest default RX firmware
 
 ![Alt text](resources/photos/dfu_choose.png)
 
