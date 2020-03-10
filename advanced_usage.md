@@ -118,7 +118,7 @@ To update firmware:
 
 * Once it is plugged in, you can release the button.
 
-If it all goes well, the blue LED should stay off.
+* If all goes well, the blue LED should stay off.
 
 Now launch the `DfuSeDemo` software:
 
