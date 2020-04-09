@@ -96,7 +96,7 @@ There is a user button on both TX and RX board. Usually they are unused:
 
 For TX, a short press (less than 2 seconds) recalibrates the baseline. A long press (more than 2 seconds) enters Test Mode, where it sends test packets with incrementing sequence number as payload every second. It can be used to test communication range. Turn it off then on again to exit Test Mode. 
 
-For RX, a press on the button types out some debug messages. Make sure you open a text editor first. 
+For RX, a press on the button types out some debug messages. Make sure you open a text editor first. If the RX has not recieved any messages from the TX, the debug values will all be zero.
 
 ## USB Firmware Updates
 
