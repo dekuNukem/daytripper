@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
+<grid distance="1" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="1" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -34,8 +34,8 @@
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -46,10 +46,10 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
@@ -183,8 +183,8 @@
 <text x="25.273" y="6.731" size="1.27" layer="26" rot="MR0">TX</text>
 <text x="14" y="31.017" size="1.27" layer="26" font="vector" rot="MR0" align="center">dekuNukem 2019</text>
 <text x="14" y="33.205" size="1.524" layer="26" rot="MR0" align="center">git.io/daytripper</text>
-<text x="14" y="2.7432" size="1.27" layer="26" rot="MR0" align="center">PD3
-191005</text>
+<text x="14" y="2.7432" size="1.27" layer="26" rot="MR0" align="center">V2 PT1
+200522</text>
 <text x="1.6256" y="13.9192" size="1.27" layer="26" rot="MR270">ON</text>
 <text x="1.6256" y="7.366" size="1.27" layer="26" rot="MR270">OFF</text>
 <text x="10.541" y="9.5504" size="1.27" layer="25" rot="R90">CHARGE</text>
@@ -1939,10 +1939,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="7.6708" y1="23.2664" x2="8.7376" y2="23.2664" width="0.1524" layer="16"/>
 <wire x1="8.7376" y1="23.2664" x2="9.6774" y2="22.3266" width="0.1524" layer="16"/>
 <wire x1="9.6774" y1="22.3266" x2="9.6774" y2="21.4122" width="0.1524" layer="16"/>
-<wire x1="9.6774" y1="21.4122" x2="11.3284" y2="19.7612" width="0.1524" layer="16"/>
-<wire x1="11.3284" y1="19.7612" x2="11.4554" y2="19.6342" width="0.1524" layer="16"/>
-<wire x1="11.4554" y1="19.6342" x2="14.0716" y2="19.6342" width="0.1524" layer="16"/>
-<wire x1="14.0716" y1="19.6342" x2="14.4018" y2="19.6342" width="0.1524" layer="16"/>
+<wire x1="9.6774" y1="21.4122" x2="11.4554" y2="19.6342" width="0.1524" layer="16"/>
+<wire x1="11.4554" y1="19.6342" x2="14.4018" y2="19.6342" width="0.1524" layer="16"/>
 <wire x1="14.9352" y1="19.1008" x2="14.4018" y2="19.6342" width="0.1524" layer="16"/>
 <wire x1="20.0152" y1="24.8666" x2="20.0152" y2="19.6088" width="0.1524" layer="16"/>
 <wire x1="19.5072" y1="19.1008" x2="14.9352" y2="19.1008" width="0.1524" layer="16"/>
@@ -1959,8 +1957,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="2.794" y1="17.9832" x2="2.794" y2="18.3896" width="0.1524" layer="16"/>
 <wire x1="5.6896" y1="15.7226" x2="5.1562" y2="15.7226" width="0.1524" layer="16"/>
 <wire x1="2.794" y1="18.3896" x2="1.27" y2="19.9136" width="0.1524" layer="16"/>
-<wire x1="1.27" y1="19.9136" x2="1.27" y2="21.4122" width="0.1524" layer="16"/>
-<wire x1="1.27" y1="21.4122" x2="1.27" y2="22.86" width="0.1524" layer="16"/>
+<wire x1="1.27" y1="19.9136" x2="1.27" y2="22.86" width="0.1524" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
@@ -1971,11 +1968,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
 </mfgpreviewcolors>
 <errors>
-<approved hash="19,1,f29db6f0e7b745bc"/>
-<approved hash="19,1,c2646881b9bdba9d"/>
-<approved hash="19,1,5c4c24569c123fca"/>
-<approved hash="19,1,f1066e73247123cc"/>
-<approved hash="19,1,31868dce69a5dbc2"/>
 <approved hash="19,1,09c8546e4181e9e8"/>
 <approved hash="6,1,8eab05abf9a972a9"/>
 <approved hash="6,1,c8b647b6bbb434b4"/>
@@ -1984,8 +1976,6 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <approved hash="6,1,7926952669208520"/>
 <approved hash="6,1,8e9eaa9e56987298"/>
 <approved hash="6,1,7dc1c1ff3dfa81c4"/>
-<approved hash="4,1,3cc072537683f95b"/>
-<approved hash="4,1,1cd64648628ed94d"/>
 <approved hash="4,1,01f7a0d2b7e338a0"/>
 <approved hash="4,16,01f7a0d2b7e338a0"/>
 </errors>
