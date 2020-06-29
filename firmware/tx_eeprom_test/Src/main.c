@@ -59,6 +59,7 @@
 #include "VL53L0X.h"
 #include "animation.h"
 #include "sleepbutton.h"
+#include "ee.h"
 
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
@@ -195,17 +196,10 @@ int main(void)
   HAL_Delay(2000);
   check_battery(&vbat_mV);
 
-  // for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
-  //   eeprom_buf[i] = i;
-  // printf("eep_write: %d\n", ee_write(0, EEPROM_BUF_SIZE, eeprom_buf));
-
-  printf("eep_read: %d\n", ee_read(0, EEPROM_BUF_SIZE, eeprom_buf));
-  for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
-    printf("%d: %d\n", i, eeprom_buf[i]);
-
   while(1)
   {
-    printf("hello world %d\n", HAL_GetTick());
+    // printf("hello world %d\n", HAL_GetTick());
+    check_battery(&vbat_mV);
     HAL_Delay(1000);
   }
 

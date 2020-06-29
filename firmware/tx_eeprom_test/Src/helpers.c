@@ -130,8 +130,6 @@ void check_battery(uint32_t* vbat_mV)
 	ADC vrefint is the internal reference voltage at 1.2V
   */
 
-  return;
-
   HAL_ADC_Start(&hadc);
   HAL_ADC_PollForConversion(&hadc, 500);
   vbat_8b = HAL_ADC_GetValue(&hadc);
@@ -145,6 +143,8 @@ void check_battery(uint32_t* vbat_mV)
     return;
 
   *vbat_mV = this_mV;
+
+  return;
 
   if(this_mV >= 2500 && this_mV <= 3250) // 3250 after diode drop is about 3.5V
   {

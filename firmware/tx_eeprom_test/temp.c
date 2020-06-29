@@ -78,6 +78,25 @@ hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
 
+  printf("ee_format: %d\n", ee_format());
+  HAL_Delay(1);
+
+  for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
+    eeprom_buf[i] = i;
+  printf("eep_write: %d\n", ee_write(0, EEPROM_BUF_SIZE, eeprom_buf));
+  //must call ee_format() before writing
+
+  printf("eep_read: %d\n", ee_read(0, EEPROM_BUF_SIZE, eeprom_buf));
+  for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
+    printf("%d: %d\n", i, eeprom_buf[i]);
+
+ee_read(0, EEPROM_BUF_SIZE, eeprom_buf);
+
+ printf("eep_read: %d\n", ee_read(0, EEPROM_BUF_SIZE, eeprom_buf));
+  for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
+    printf("%d: %d\n", i, eeprom_buf[i]);
+
+
 ee_read(0, EEPROM_BUF_SIZE, eeprom_buf);
 
  printf("eep_read: %d\n", ee_read(0, EEPROM_BUF_SIZE, eeprom_buf));
