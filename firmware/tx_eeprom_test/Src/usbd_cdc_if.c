@@ -51,7 +51,8 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "helpers.h"
+#include "my_usb.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,8 +94,8 @@
 /* USER CODE BEGIN PRIVATE_DEFINES */
 /* Define size for the receive and transmit buffer over CDC */
 /* It's up to user to redefine and/or remove those define */
-#define APP_RX_DATA_SIZE  256
-#define APP_TX_DATA_SIZE  256
+#define APP_RX_DATA_SIZE  USB_BUF_SIZE
+#define APP_TX_DATA_SIZE  USB_BUF_SIZE
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -251,7 +252,8 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
   /* 6      | bDataBits  |   1   | Number Data bits (5, 6, 7, 8 or 16).          */
   /*******************************************************************************/
     case CDC_SET_LINE_CODING:
-
+      if(HAL_GetTick() > 1000)
+        port_opened = 1;
     break;
 
     case CDC_GET_LINE_CODING:
@@ -263,7 +265,7 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
     break;
 
     case CDC_SEND_BREAK:
-
+      port_opened = 0;
     break;
 
   default:
@@ -291,6 +293,7 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+  linear_buf_add_str(&usb_recv_buf, Buf, *Len);
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
@@ -312,6 +315,9 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */
+  if ((hUsbDeviceFS.dev_state != USBD_STATE_CONFIGURED))
+    return USBD_FAIL;
+  
   USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
   if (hcdc->TxState != 0){
     return USBD_BUSY;

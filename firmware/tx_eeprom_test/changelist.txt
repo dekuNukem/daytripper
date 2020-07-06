@@ -1,6 +1,7 @@
 switched to single ADC channel for battery voltage calculation
 system clock now 16MHz to allow USB peripheral to function
-
+added rtc sleep function, on-demand delay in stop mode.
+reduce power consumption by 15% by putting uC in stop mode while waiting for ToF measurement.
 
 
 TODO:

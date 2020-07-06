@@ -507,6 +507,16 @@
               <FileType>1</FileType>
               <FilePath>../Src/stm32f0xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>my_usb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\my_usb.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_usb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\my_usb.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

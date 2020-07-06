@@ -50,3 +50,6 @@ tx\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 tx\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 tx\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 tx\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+tx\usbd_cdc_if.o: ../Inc/helpers.h
+tx\usbd_cdc_if.o: ../Inc/shared.h
+tx\usbd_cdc_if.o: ../Inc/my_usb.h

@@ -19,9 +19,16 @@
  	
 #define NRF_ON() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET)
 #define NRF_OFF() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET)
-#define MININUM_WAKEUP_DURATION_MS 50
 
 extern uint8_t is_reading_valid;
+
+typedef struct
+{
+  int32_t last_recv;
+  int32_t curr_index;
+  int32_t buf_size;
+  uint8_t* buf;
+} linear_buf;
 
 uint16_t get_baseline(void);
 void check_battery(uint32_t* vbat_mV);
@@ -33,6 +40,12 @@ void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);
 void iwdg_wait(uint32_t msec, uint8_t ani_type);
 uint16_t get_single_distance_reading(uint8_t* is_valid, uint16_t sleep_ms);
 void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms);
+
+int32_t linear_buf_init(linear_buf *lb, int32_t size);
+void linear_buf_reset(linear_buf *lb);
+int32_t linear_buf_add(linear_buf *lb, uint8_t c);
+int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len);
+
 #ifdef __cplusplus
 }
 #endif

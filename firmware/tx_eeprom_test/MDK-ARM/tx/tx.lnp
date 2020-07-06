@@ -14,6 +14,7 @@
 "tx\usbd_cdc_if.o"
 "tx\stm32f0xx_it.o"
 "tx\stm32f0xx_hal_msp.o"
+"tx\my_usb.o"
 "tx\stm32f0xx_hal_pcd.o"
 "tx\stm32f0xx_hal_pcd_ex.o"
 "tx\stm32f0xx_hal_adc.o"

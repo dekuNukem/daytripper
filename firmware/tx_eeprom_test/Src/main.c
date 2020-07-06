@@ -60,6 +60,8 @@
 #include "animation.h"
 #include "sleepbutton.h"
 #include "ee.h"
+#include "my_usb.h"
+
 
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
@@ -127,8 +129,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 /* USER CODE BEGIN 0 */
 int fputc(int ch, FILE *f)
 {
-    HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
-    return ch;
+  my_usb_putchar((uint8_t)ch);
+  HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
+  return ch;
 }
 
 // this happens every 200ms
@@ -190,6 +193,7 @@ int main(void)
   MX_ADC_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+  my_usb_init();
   MX_RTC_Init();
   HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
   NRF_ON();
@@ -223,13 +227,17 @@ int main(void)
   tof_calibrate(&baseline, &diff_threshold);
   start_animation(ANIMATION_TYPE_CONST_OFF);
   
-  // while(1)
-  // {
-  //   HAL_IWDG_Refresh(&hiwdg);
-  //   printf("hello world %d\n", HAL_GetTick());
-  //   check_battery(&vbat_mV);
-  //   rtc_sleep(&hrtc, 500);
-  // }
+  while(1)
+  {
+    HAL_IWDG_Refresh(&hiwdg);
+    printf("hello world %d\n", HAL_GetTick());
+    check_battery(&vbat_mV);
+    // rtc_sleep(&hrtc, 500);
+    char* result = my_usb_readline();
+    if(result != NULL)
+      printf("received: %s\n", result);
+    HAL_Delay(500);
+  }
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
