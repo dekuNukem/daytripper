@@ -5,6 +5,7 @@
 
 #include "VL53L0X.h"
 #include "shared.h"
+#include "helpers.h"
 
 // Defines /////////////////////////////////////////////////////////////////////
 uint16_t io_timeout;
@@ -832,9 +833,10 @@ void stopContinuous(void)
 // Returns a range reading in millimeters when continuous mode is active
 // (readRangeSingleMillimeters() also calls this function after starting a
 // single-shot range measurement)
-uint16_t readRangeContinuousMillimeters(void)
+uint16_t readRangeContinuousMillimeters(uint16_t sleep_ms)
 {
   startTimeout();
+  rtc_sleep(&hrtc, sleep_ms);
   while ((readReg(RESULT_INTERRUPT_STATUS) & 0x07) == 0)
   {
     if (checkTimeoutExpired())
@@ -856,7 +858,7 @@ uint16_t readRangeContinuousMillimeters(void)
 // Performs a single-shot range measurement and returns the reading in
 // millimeters
 // based on VL53L0X_PerformSingleRangingMeasurement()
-uint16_t readRangeSingleMillimeters(void)
+uint16_t readRangeSingleMillimeters(uint16_t sleep_ms)
 {
   writeReg(0x80, 0x01);
   writeReg(0xFF, 0x01);
@@ -879,7 +881,7 @@ uint16_t readRangeSingleMillimeters(void)
     }
   }
 
-  return readRangeContinuousMillimeters();
+  return readRangeContinuousMillimeters(sleep_ms);
 }
 
 // Did a timeout occur in one of the read functions since the last call to

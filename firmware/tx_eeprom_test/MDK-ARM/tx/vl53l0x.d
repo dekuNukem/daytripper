@@ -41,3 +41,4 @@ tx\vl53l0x.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h
 tx\vl53l0x.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h
 tx\vl53l0x.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
 tx\vl53l0x.o: ../Inc/shared.h
+tx\vl53l0x.o: ../Inc/helpers.h

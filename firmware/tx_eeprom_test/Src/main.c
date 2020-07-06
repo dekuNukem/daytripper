@@ -134,6 +134,7 @@ int fputc(int ch, FILE *f)
 // this happens every 200ms
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
+  return;
   if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes
   {
     check_battery(&vbat_mV);
@@ -189,19 +190,14 @@ int main(void)
   MX_ADC_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+  MX_RTC_Init();
+  HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
   NRF_ON();
   printf("\n\ndaytripper TX\ndekuNukem 2019\n\n");
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
   check_battery(&vbat_mV);
-
-  while(1)
-  {
-    printf("hello world %d\n", HAL_GetTick());
-    check_battery(&vbat_mV);
-    HAL_Delay(1000);
-  }
 
   // this should be behind check_battery, so it can completely shut down in low battery situation
   MX_IWDG_Init();
@@ -227,7 +223,13 @@ int main(void)
   tof_calibrate(&baseline, &diff_threshold);
   start_animation(ANIMATION_TYPE_CONST_OFF);
   
-  MX_RTC_Init();
+  // while(1)
+  // {
+  //   HAL_IWDG_Refresh(&hiwdg);
+  //   printf("hello world %d\n", HAL_GetTick());
+  //   check_battery(&vbat_mV);
+  //   rtc_sleep(&hrtc, 500);
+  // }
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
@@ -254,7 +256,7 @@ int main(void)
     }
 
     // get a new distance reading from laser ToF sensor
-    this_reading = get_single_distance_reading(&is_reading_valid);
+    this_reading = get_single_distance_reading(&is_reading_valid, 10);
     diff = abs(baseline - this_reading);
 
     if(is_reading_valid == 0)
@@ -270,7 +272,7 @@ int main(void)
       while(count < WINDOW_SIZE)
       {
       	HAL_IWDG_Refresh(&hiwdg);
-        this = get_single_distance_reading(&is_reading_valid);
+        this = get_single_distance_reading(&is_reading_valid, 10);
         printf("t%d:%d ", count+1, this);
         if(is_reading_valid == 0)
           continue;
@@ -282,10 +284,10 @@ int main(void)
         count++;
       }
       printf("\n");
-      if(ENABLE_LED)
-      	start_animation(ANIMATION_TYPE_CONST_ON);
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
+      if(ENABLE_LED)
+        start_animation(ANIMATION_TYPE_CONST_ON);
       current_state = STATE_TRIGGERED;
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
@@ -297,7 +299,7 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    rtc_sleep(&hrtc, 200);
   }
   /* USER CODE END 3 */
 
@@ -348,7 +350,7 @@ void SystemClock_Config(void)
 
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB|RCC_PERIPHCLK_I2C1
                               |RCC_PERIPHCLK_RTC;
-  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_SYSCLK;
   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
 
@@ -413,7 +415,7 @@ static void MX_I2C1_Init(void)
 {
 
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x2000090E;
+  hi2c1.Init.Timing = 0x00303D5B;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -477,7 +479,7 @@ static void MX_RTC_Init(void)
     */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 125;
+  hrtc.Init.AsynchPrediv = 18;
   hrtc.Init.SynchPrediv = 0;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
@@ -489,41 +491,40 @@ static void MX_RTC_Init(void)
 
     /**Initialize RTC and set the Time and Date 
     */
-  sTime.Hours = 0x0;
-  sTime.Minutes = 0x0;
-  sTime.Seconds = 0x0;
+  sTime.Hours = 0;
+  sTime.Minutes = 0;
+  sTime.Seconds = 0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
   sDate.WeekDay = RTC_WEEKDAY_MONDAY;
   sDate.Month = RTC_MONTH_JANUARY;
-  sDate.Date = 0x1;
-  sDate.Year = 0x0;
+  sDate.Date = 1;
+  sDate.Year = 0;
 
-  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
     /**Enable the Alarm A 
     */
-  sAlarm.AlarmTime.Hours = 0x0;
-  sAlarm.AlarmTime.Minutes = 0x0;
-  sAlarm.AlarmTime.Seconds = 0x5;
-  sAlarm.AlarmTime.SubSeconds = 0x0;
+  sAlarm.AlarmTime.Hours = 0;
+  sAlarm.AlarmTime.Minutes = 0;
+  sAlarm.AlarmTime.Seconds = 5;
+  sAlarm.AlarmTime.SubSeconds = 0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS
-                              |RTC_ALARMMASK_MINUTES;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
-  sAlarm.AlarmDateWeekDay = 0x1;
+  sAlarm.AlarmDateWeekDay = 1;
   sAlarm.Alarm = RTC_ALARM_A;
-  if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD) != HAL_OK)
+  if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }

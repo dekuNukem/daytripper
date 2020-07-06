@@ -142,8 +142,8 @@ uint8_t getVcselPulsePeriod(vcselPeriodType type);
 
 void startContinuous(uint32_t period_ms);
 void stopContinuous(void);
-uint16_t readRangeContinuousMillimeters(void);
-uint16_t readRangeSingleMillimeters(void);
+uint16_t readRangeContinuousMillimeters(uint16_t sleep_ms);
+uint16_t readRangeSingleMillimeters(uint16_t sleep_ms);
 
 inline void setTimeout(uint16_t timeout) { io_timeout = timeout; }
 inline uint16_t getTimeout(void) { return io_timeout; }

@@ -26,29 +26,26 @@ void animation_init(TIM_HandleTypeDef* frame_tim, TIM_HandleTypeDef* pwm_tim)
 void animation_update(void)
 {
   curr_frame++;
-
-  if(current_animation == ANIMATION_TYPE_CONST_ON)
-  {
-      pwm_timer->Instance->CCR4 = 255;
-  }
-  else if(current_animation == ANIMATION_TYPE_BREATHING)
-  {
+  if(current_animation == ANIMATION_TYPE_BREATHING)
     pwm_timer->Instance->CCR4 = breathing_lookup[curr_frame % 51];
-  }
   else if(current_animation == ANIMATION_TYPE_FASTBLINK)
-  {
     pwm_timer->Instance->CCR4 = faskblink_lookup[curr_frame % 10];
-  }
-  else
-  {
-    pwm_timer->Instance->CCR4 = 0;
-  }
 }
 
 void start_animation(uint8_t ani_type)
 {
   if(ani_type != ANIMATION_TYPE_NOCHANGE)
     current_animation = ani_type;
+  if(ani_type == ANIMATION_TYPE_CONST_ON)
+  {
+    pwm_timer->Instance->CCR4 = 255;
+    pwm_timer->Instance->EGR |= TIM_EGR_UG; // force an timer update event to apply PWM changes
+  }
+  if(ani_type == ANIMATION_TYPE_CONST_OFF)
+  {
+    pwm_timer->Instance->CCR4 = 0;
+    pwm_timer->Instance->EGR |= TIM_EGR_UG;
+  }
 }
 
 
