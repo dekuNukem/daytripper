@@ -1,0 +1,18 @@
+switched to single ADC channel for battery voltage calculation
+system clock now 16MHz to allow USB peripheral to function
+
+
+
+TODO:
+re-enable low-battery shutdown
+
+current consumption observations:
+
+sparkfun INA169 works really well
+during sleep mode current is negligible
+laser and nRF both consume around 20mA when active
+negligible current difference between 8MHz and 16MHz clock, most of the time MCU is sleeping anyway.
+negligible current on low-battery shutdown
+
+
+USB initialization works only on fresh start-up

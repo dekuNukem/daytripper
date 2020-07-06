@@ -121,35 +121,20 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
 // put this before IWDG_init so it can turn off after reset?
 void check_battery(uint32_t* vbat_mV)
 {
-  uint8_t vbat_8b, vrefint;
-  uint32_t this_mV;
-
-  /*
-	two ADC channels to check
-	ADC channel 1 is connected to a resistor divider that halves the battery voltage
-	ADC vrefint is the internal reference voltage at 1.2V
-  */
-
+  uint8_t vbat_8b;
+  // ADC channel 1 is connected to a resistor divider that halves the battery voltage
   HAL_ADC_Start(&hadc);
   HAL_ADC_PollForConversion(&hadc, 500);
   vbat_8b = HAL_ADC_GetValue(&hadc);
-  HAL_ADC_PollForConversion(&hadc, 500);
-  vrefint = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  this_mV = (uint32_t)((1200 / (double)vrefint) * (double)vbat_8b * 2);
-  printf("ch1: %d, ch2: %d, vbat: %d\n", vbat_8b, vrefint, this_mV);
-
-  if(this_mV == 2400) // don't mind me
-    return;
-
-  *vbat_mV = this_mV;
+  *vbat_mV = 26*(uint32_t)vbat_8b;
+  printf("ch1: %d, vbat: %d\n", vbat_8b, *vbat_mV);
 
   return;
 
-  if(this_mV >= 2500 && this_mV <= 3250) // 3250 after diode drop is about 3.5V
+  if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
   {
     printf("low battery, shutting down...\n");
-
     start_animation(ANIMATION_TYPE_FASTBLINK);
     HAL_Delay(3000);
     start_animation(ANIMATION_TYPE_CONST_OFF);

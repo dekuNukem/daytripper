@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F042x6</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                                                        ../Drivers/STM32F0xx_HAL_Driver/Inc;                                                        ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                                                        ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                                                        ../Drivers/CMSIS/Include;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc</IncludePath>
+              <IncludePath>../Inc;                                                           ../Drivers/STM32F0xx_HAL_Driver/Inc;                                                           ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                                                           ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                                                           ../Drivers/CMSIS/Include;   ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;   ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -458,6 +458,21 @@
               <FilePath>..\Src\sleepybutton.c</FilePath>
             </File>
             <File>
+              <FileName>ee.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ee.c</FilePath>
+            </File>
+            <File>
+              <FileName>ee.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\ee.h</FilePath>
+            </File>
+            <File>
+              <FileName>eeConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\eeConfig.h</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/main.c</FilePath>
@@ -491,21 +506,6 @@
               <FileName>stm32f0xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32f0xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ee.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\ee.c</FilePath>
-            </File>
-            <File>
-              <FileName>ee.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\ee.h</FilePath>
-            </File>
-            <File>
-              <FileName>eeConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\eeConfig.h</FilePath>
             </File>
           </Files>
         </Group>
