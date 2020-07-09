@@ -77,6 +77,8 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+    // printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
+    // HAL_Delay(200);
 
 void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
 {

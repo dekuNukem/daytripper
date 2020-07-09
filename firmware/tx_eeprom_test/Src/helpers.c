@@ -135,9 +135,7 @@ void check_battery(uint16_t* vbat_mV)
   HAL_ADC_PollForConversion(&hadc, 500);
   *vbat_mV = 26*(uint16_t)HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  
   printf("vbat: %d\n", *vbat_mV);
-
   return;
 
   if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
@@ -198,7 +196,8 @@ uint8_t send_packet(uint8_t* data)
     HAL_IWDG_Refresh(&hiwdg);
   if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
   {
-    printf("TX OK, retry %d times\n", nrf24_retransmissionCount());
+    // printf("TX OK, retry %d times\n", nrf24_retransmissionCount());
+    printf("TX OK\n");
     return 0;
   }
   printf("TX failed\n");

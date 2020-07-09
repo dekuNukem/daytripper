@@ -226,9 +226,12 @@ int main(void)
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
-    if(rtc_counter > 2000)
+    if(rtc_counter > 5000)
     {
-      printf("2s %d\n", rtc_sleep_count_ms);
+      power_on_time_5s++;
+      if(power_on_time_5s % 120 == 0) // 5 * 120 = 600s = 10mins, send stat update every 10 minutes
+        new_stat_packet = 1;
+      check_battery(&vbat_mV);
       rtc_counter = 0;
     }
   /* USER CODE END WHILE */
@@ -248,7 +251,7 @@ int main(void)
     if(new_stat_packet)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
-      // printf("sending stat packet... ");
+      printf("sending stat... ");
       send_packet(data_array);
       new_stat_packet = 0;
     }
@@ -295,9 +298,7 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    // printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
     rtc_sleep(&hrtc, daytripper_config.rtc_sleep_duration_ms);
-    // HAL_Delay(200);
   }
   /* USER CODE END 3 */
 

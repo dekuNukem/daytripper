@@ -3606,9 +3606,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>../Src/main.c</Name>
-        <ColumnNumber>5</ColumnNumber>
+        <ColumnNumber>11</ColumnNumber>
         <TopLine>202</TopLine>
-        <CurrentLine>230</CurrentLine>
+        <CurrentLine>226</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3616,7 +3616,7 @@
       <Doc>
         <Name>..\Src\helpers.c</Name>
         <ColumnNumber>0</ColumnNumber>
-        <TopLine>296</TopLine>
+        <TopLine>295</TopLine>
         <CurrentLine>331</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
