@@ -6,6 +6,7 @@ reduce power consumption by 15% by putting uC in stop mode while waiting for ToF
 
 TODO:
 re-enable low-battery shutdown
+change IWDG timeout prescaler back to 32
 
 current consumption observations:
 
@@ -17,3 +18,7 @@ negligible current on low-battery shutdown
 
 
 USB initialization works only on fresh start-up
+
+the RTC alarm will sleep forever if by the time it enters sleep time has already passed
+
+sleeping changes UART baud rate somehow

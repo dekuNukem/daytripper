@@ -62,11 +62,8 @@
 #include "ee.h"
 #include "my_usb.h"
 
-
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
-
-#define ENABLE_LED 1
 
 /* USER CODE END Includes */
 
@@ -197,7 +194,9 @@ int main(void)
   MX_RTC_Init();
   HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
   NRF_ON();
-  printf("\n\ndaytripper TX\ndekuNukem 2019\n\n");
+  printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
+  dt_conf_init(&daytripper_config);
+  dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
@@ -213,31 +212,32 @@ int main(void)
   VL53L0X_init();
   setTimeout(500);
   // in microseconds, longer time better accruacy, but consumes more power
-  setMeasurementTimingBudget(25000); // default 33000
+  setMeasurementTimingBudget(daytripper_config.tof_timing_budget_ms * 1000); // default 33000
 
-  printf("initializing NRF...");
+  // printf("initializing NRF...");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
   nrf24_tx_address(tx_address);
   nrf24_rx_address(rx_address);
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-  printf(" done\n");
+  // printf(" done\n");
 
   tof_calibrate(&baseline, &diff_threshold);
   start_animation(ANIMATION_TYPE_CONST_OFF);
   
-  while(1)
-  {
-    HAL_IWDG_Refresh(&hiwdg);
-    printf("hello world %d\n", HAL_GetTick());
-    check_battery(&vbat_mV);
-    // rtc_sleep(&hrtc, 500);
-    char* result = my_usb_readline();
-    if(result != NULL)
-      printf("received: %s\n", result);
-    HAL_Delay(500);
-  }
+  // while(1)
+  // {
+  //   HAL_IWDG_Refresh(&hiwdg);
+  //   printf("hello world %d\n", HAL_GetTick());
+  //   check_battery(&vbat_mV);
+  //   // rtc_sleep(&hrtc, 500);
+  //   char* result = my_usb_readline();
+  //   if(result != NULL)
+  //     printf("received: %s\n", result);
+  //   HAL_Delay(500);
+  // }
+
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
@@ -258,15 +258,13 @@ int main(void)
     if(new_stat_packet)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
-      printf("sending stat packet... ");
+      // printf("sending stat packet... ");
       send_packet(data_array);
       new_stat_packet = 0;
     }
-
     // get a new distance reading from laser ToF sensor
-    this_reading = get_single_distance_reading(&is_reading_valid, 10);
+    this_reading = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 3);
     diff = abs(baseline - this_reading);
-
     if(is_reading_valid == 0)
       goto sleep;
 
@@ -277,10 +275,10 @@ int main(void)
       uint16_t this;
       printf(">> b:%d t0:%d ", baseline, this_reading);
       // .. take another reading back-to-back, to make sure it's not sensor noise
-      while(count < WINDOW_SIZE)
+      while(count < daytripper_config.nr_sensitivity)
       {
       	HAL_IWDG_Refresh(&hiwdg);
-        this = get_single_distance_reading(&is_reading_valid, 10);
+        this = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 3);
         printf("t%d:%d ", count+1, this);
         if(is_reading_valid == 0)
           continue;
@@ -294,7 +292,7 @@ int main(void)
       printf("\n");
       build_packet_trig(data_array, baseline, this_reading);
       send_packet(data_array);
-      if(ENABLE_LED)
+      if(daytripper_config.use_led)
         start_animation(ANIMATION_TYPE_CONST_ON);
       current_state = STATE_TRIGGERED;
     }
@@ -307,7 +305,9 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
+    printf("%d %d\n", HAL_GetTick(), rtc_sleep_duration_ms); // this causes it to hang right away
     rtc_sleep(&hrtc, 200);
+    // HAL_Delay(200);
   }
   /* USER CODE END 3 */
 
@@ -457,7 +457,7 @@ static void MX_IWDG_Init(void)
 {
 
   hiwdg.Instance = IWDG;
-  hiwdg.Init.Prescaler = IWDG_PRESCALER_32;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_256;
   hiwdg.Init.Window = 4095;
   hiwdg.Init.Reload = 4095;
   if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
@@ -646,7 +646,9 @@ static void MX_USART2_UART_Init(void)
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
   huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_RXOVERRUNDISABLE_INIT|UART_ADVFEATURE_DMADISABLEONERROR_INIT;
+  huart2.AdvancedInit.OverrunDisable = UART_ADVFEATURE_OVERRUN_DISABLE;
+  huart2.AdvancedInit.DMADisableonRxError = UART_ADVFEATURE_DMA_DISABLEONRXERROR;
   if (HAL_HalfDuplex_Init(&huart2) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);

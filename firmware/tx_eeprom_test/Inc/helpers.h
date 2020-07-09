@@ -14,13 +14,9 @@
 
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
-
-#define WINDOW_SIZE 1
  	
 #define NRF_ON() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_RESET)
 #define NRF_OFF() HAL_GPIO_WritePin(NRF_VCC_GPIO_Port, NRF_VCC_Pin, GPIO_PIN_SET)
-
-extern uint8_t is_reading_valid;
 
 typedef struct
 {
@@ -29,6 +25,19 @@ typedef struct
   int32_t buf_size;
   uint8_t* buf;
 } linear_buf;
+
+typedef struct
+{
+  uint8_t refresh_rate_Hz; // from 1Hz to around 30Hz, over 30 just go as fast as possible
+  uint8_t tof_range_mm; // value * 2 = true range
+  uint8_t use_led;	// 1 turn on LED when triggered, 0 not
+  uint8_t nr_sensitivity; // NR window size, 0 no window, 1 default, 2 max
+  uint8_t tx_wireless_channel; // last byte of wireless channel number
+  uint8_t tof_timing_budget_ms; // timing budget in ms
+  uint8_t hardware_id;
+  uint8_t tof_sleep_ms;
+  uint8_t op_mode; // 0 normal, 1 continuous
+} dt_conf;
 
 uint16_t get_baseline(void);
 void check_battery(uint32_t* vbat_mV);
@@ -45,6 +54,12 @@ int32_t linear_buf_init(linear_buf *lb, int32_t size);
 void linear_buf_reset(linear_buf *lb);
 int32_t linear_buf_add(linear_buf *lb, uint8_t c);
 int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len);
+void dt_conf_init(dt_conf *dtc);
+void dt_conf_print(dt_conf *dtc);
+
+extern uint8_t is_reading_valid;
+extern dt_conf daytripper_config;
+extern uint32_t rtc_sleep_duration_ms;
 
 #ifdef __cplusplus
 }
