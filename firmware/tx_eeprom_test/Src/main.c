@@ -305,8 +305,8 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
-    rtc_sleep(&hrtc, 200);
+    // printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
+    rtc_sleep(&hrtc, daytripper_config.rtc_sleep_duration_ms);
     // HAL_Delay(200);
   }
   /* USER CODE END 3 */

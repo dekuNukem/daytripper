@@ -36,7 +36,7 @@ typedef struct
   uint8_t tof_timing_budget_ms; // timing budget in ms
   uint8_t hardware_id;
   uint8_t op_mode; // 0 normal, 1 continuous
-  uint16_t rtc_sleep_duration_ms;
+  int16_t rtc_sleep_duration_ms;
 } dt_conf;
 
 uint16_t get_baseline(void);

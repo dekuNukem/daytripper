@@ -323,7 +323,7 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len)
 
 void dt_conf_init(dt_conf *dtc)
 {
-  dtc->refresh_rate_Hz = 5;
+  dtc->refresh_rate_Hz = 6;
   dtc->tof_range_mm = 0xff;
   dtc->use_led = 1;
   dtc->nr_sensitivity = 1;
@@ -331,6 +331,11 @@ void dt_conf_init(dt_conf *dtc)
   dtc->tof_timing_budget_ms = 25;
   dtc->hardware_id = get_uuid();
   dtc->op_mode = 0;
+  if(dtc->refresh_rate_Hz <= 0)
+    dtc->refresh_rate_Hz = 1;
+  dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
+  if(dtc->rtc_sleep_duration_ms < 0)
+    dtc->rtc_sleep_duration_ms = 0;
 }
 
 void dt_conf_print(dt_conf *dtc)
@@ -343,5 +348,6 @@ void dt_conf_print(dt_conf *dtc)
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
   printf("hardware_id: %d\n", dtc->hardware_id);
   printf("op_mode: %d\n", dtc->op_mode);
+  printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
 }
 
