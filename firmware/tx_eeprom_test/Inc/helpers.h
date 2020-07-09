@@ -40,7 +40,7 @@ typedef struct
 } dt_conf;
 
 uint16_t get_baseline(void);
-void check_battery(uint32_t* vbat_mV);
+void check_battery(uint16_t* vbat_mV);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
 void tof_calibrate(uint16_t* base, uint16_t* threshold);
 void tx_test(void);
@@ -60,6 +60,7 @@ void dt_conf_print(dt_conf *dtc);
 extern uint8_t is_reading_valid;
 extern dt_conf daytripper_config;
 extern uint32_t rtc_sleep_count_ms;
+extern uint16_t rtc_counter;
 
 #ifdef __cplusplus
 }

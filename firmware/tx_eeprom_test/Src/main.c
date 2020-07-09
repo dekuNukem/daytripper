@@ -85,7 +85,6 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-volatile uint32_t wakeup_count = 1;
 uint8_t data_array[NRF_PAYLOAD_SIZE];
 uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
@@ -95,7 +94,7 @@ int16_t diff;
 uint8_t button_result;
 uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
-uint32_t vbat_mV;
+uint16_t vbat_mV;
 uint16_t power_on_time_5s;
 
 #define EEPROM_BUF_SIZE 32
@@ -129,20 +128,6 @@ int fputc(int ch, FILE *f)
   my_usb_putchar((uint8_t)ch);
   HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
   return ch;
-}
-
-// this happens every 200ms
-void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
-{
-  return;
-  if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes
-  {
-    check_battery(&vbat_mV);
-    new_stat_packet = 1;
-  }
-  if(wakeup_count % 25 == 0) // 25 * 0.2 = 5 seconds
-    power_on_time_5s++;
-  wakeup_count++;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -241,10 +226,15 @@ int main(void)
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
+    if(rtc_counter > 2000)
+    {
+      printf("2s %d\n", rtc_sleep_count_ms);
+      rtc_counter = 0;
+    }
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), wakeup_count);
+    button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), rtc_sleep_count_ms);
     if(button_result == 1)
     {
       iwdg_wait(20, ANIMATION_TYPE_BREATHING);

@@ -24,7 +24,7 @@ uint8_t button_update(uint8_t reading, uint32_t ts)
 	{
 		curr_state = STATE_UNPRESSED;
 		result = BUTTON_SHORTPRESS;
-		if(ts - timestamp > 8)
+		if(ts - timestamp > 1500)
 			result = BUTTON_LONGPRESS;
 	}
 	return result;

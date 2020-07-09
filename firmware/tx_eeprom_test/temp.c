@@ -77,6 +77,86 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+
+void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
+{
+  if(duration_ms <= 0)
+    return;
+  // 40KHz LSI, RTC asyc prediv 18, sync prediv 0
+  duration_ms *= 2;
+  if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
+    return;
+  if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
+    return;
+
+  next_alarm_second = sTime.Seconds + duration_ms;
+  next_alarm_minute = sTime.Minutes + next_alarm_second / 60;
+  next_alarm_hour = (sTime.Hours + next_alarm_minute / 60) % 24;
+  next_alarm_second %= 60;
+  next_alarm_minute %= 60;
+
+  // printf("---\n");
+  // printf("duration_ms: %d\n", duration_ms);
+  // printf("current: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+  // printf("next: %d %d %d\n", next_alarm_hour, next_alarm_minute, next_alarm_second);
+  
+  sAlarm.AlarmTime.Seconds = next_alarm_second;
+  sAlarm.AlarmTime.Minutes = next_alarm_minute;
+  sAlarm.AlarmTime.Hours = next_alarm_hour;
+  sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;//|RTC_ALARMMASK_HOURS;
+  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+  sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+  sAlarm.AlarmDateWeekDay = 1;
+  sAlarm.Alarm = RTC_ALARM_A;
+  if(HAL_RTC_DeactivateAlarm(hrtc, RTC_ALARM_A) != HAL_OK)
+    return;
+  // printf("1\n");
+  if(HAL_RTC_SetAlarm_IT(hrtc, &sAlarm, RTC_FORMAT_BIN) != HAL_OK)
+    return;
+  // printf("2\n");
+
+  // if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
+  //   return;
+  // if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
+  //   return;
+  // printf("now: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+  HAL_SuspendTick();
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  HAL_ResumeTick();
+  rtc_sleep_count_ms += duration_ms/2;
+  rtc_counter += duration_ms/2;
+  huart2.Instance->CR1 &= ~(USART_CR1_UE);
+  huart2.Instance->BRR = 70;
+  huart2.Instance->CR1 |= USART_CR1_UE;
+  // if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
+  //   return;
+  // if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
+  //   return;
+  // printf("after: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+  // printf("---\n");
+}
+// this happens every 200ms
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+  return;
+  if(wakeup_count % 6000 == 0) // 6000 * 0.2 = 20 minutes
+  {
+    check_battery(&vbat_mV);
+    new_stat_packet = 1;
+  }
+  if(wakeup_count % 25 == 0) // 25 * 0.2 = 5 seconds
+    power_on_time_5s++;
+  wakeup_count++;
+}
+
+  if(rtc_counter > 2000)
+  {
+    printf("two seconds passed\n");
+    rtc_counter = 0;
+  }
+  
   printf("duration_ms: %d\n", duration_ms);
   printf("current: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
   printf("next: %d %d %d\n", next_alarm_hour, next_alarm_minute, next_alarm_second);

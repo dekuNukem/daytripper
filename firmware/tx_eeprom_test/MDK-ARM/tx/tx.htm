@@ -3,7 +3,7 @@
 <title>Static Call Graph - [tx\tx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image tx\tx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 09 16:16:14 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 09 23:05:06 2020
 <BR><P>
 <H3>Maximum Stack Usage =        272 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -435,6 +435,10 @@ Global Symbols
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IWDG_Init
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_usb_putchar
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFifoStateUntilTimeout
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXISFlagUntilTimeout
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnSTOPFlagUntilTimeout
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnFlagUntilTimeout
@@ -442,10 +446,6 @@ Global Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Disable
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ConversionStop
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFifoStateUntilTimeout
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
@@ -780,7 +780,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[90]"></a>HAL_RTC_AlarmAEventCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.HAL_RTC_AlarmAEventCallback))
+<P><STRONG><a name="[90]"></a>HAL_RTC_AlarmAEventCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_hal_rtc.o(i.HAL_RTC_AlarmAEventCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_AlarmIRQHandler
 </UL>
 
@@ -1744,14 +1744,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[131]"></a>button_update</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, sleepybutton.o(i.button_update))
+<P><STRONG><a name="[131]"></a>button_update</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, sleepybutton.o(i.button_update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = button_update
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[113]"></a>check_battery</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, helpers.o(i.check_battery))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = check_battery &rArr; HAL_ADC_Start &rArr; ADC_Enable &rArr; __aeabi_uidivmod
+<P><STRONG><a name="[113]"></a>check_battery</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, helpers.o(i.check_battery))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = check_battery &rArr; HAL_ADC_Start &rArr; ADC_Enable &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Stop
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
@@ -1921,7 +1921,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;linear_buf_init
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 606 bytes, Stack size 8 bytes, main.o(i.main))
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 632 bytes, Stack size 8 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = main &rArr; VL53L0X_init &rArr; setMeasurementTimingBudget &rArr; getSequenceStepTimeouts &rArr; getVcselPulsePeriod &rArr; readReg &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_update
@@ -2240,7 +2240,7 @@ Global Symbols
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSequenceStepTimeouts
 </UL>
 
-<P><STRONG><a name="[135]"></a>rtc_sleep</STRONG> (Thumb, 202 bytes, Stack size 32 bytes, helpers.o(i.rtc_sleep))
+<P><STRONG><a name="[135]"></a>rtc_sleep</STRONG> (Thumb, 192 bytes, Stack size 32 bytes, helpers.o(i.rtc_sleep))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = rtc_sleep &rArr; HAL_RTC_SetAlarm_IT
 </UL>
 <BR>[Calls]<UL><LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SuspendTick

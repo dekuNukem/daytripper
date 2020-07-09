@@ -20,6 +20,7 @@ uint8_t is_reading_valid;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
 uint32_t rtc_sleep_count_ms;
+uint16_t rtc_counter;
 RTC_TimeTypeDef sTime;
 RTC_DateTypeDef sDate;
 RTC_AlarmTypeDef sAlarm;
@@ -30,7 +31,7 @@ uint8_t next_alarm_hour;
 uint8_t get_uuid(void)
 {
 	uint32_t sum = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
-    return ((sum >> 24) ^ (sum >> 16) ^ (sum >> 8) ^ sum) & 0xff;
+  return ((sum >> 24) ^ (sum >> 16) ^ (sum >> 8) ^ sum) & 0xff;
 }
 
 void swap(uint16_t *xp, uint16_t *yp) 
@@ -42,11 +43,11 @@ void swap(uint16_t *xp, uint16_t *yp)
 
 void bubbleSort(uint16_t arr[], uint16_t n) 
 { 
-   uint16_t i, j; 
-   for (i = 0; i < n-1; i++)       
-       for (j = 0; j < n-i-1; j++)  
-           if (arr[j] > arr[j+1]) 
-              swap(&arr[j], &arr[j+1]); 
+ uint16_t i, j; 
+  for (i = 0; i < n-1; i++)       
+    for (j = 0; j < n-i-1; j++)  
+      if (arr[j] > arr[j+1]) 
+        swap(&arr[j], &arr[j+1]); 
 }
 
 uint16_t get_single_distance_reading(uint8_t* is_valid, uint16_t sleep_ms)
@@ -127,22 +128,21 @@ void tof_calibrate(uint16_t* base, uint16_t* threshold)
 }
 
 // put this before IWDG_init so it can turn off after reset?
-void check_battery(uint32_t* vbat_mV)
+void check_battery(uint16_t* vbat_mV)
 {
-  uint8_t vbat_8b;
   // ADC channel 1 is connected to a resistor divider that halves the battery voltage
   HAL_ADC_Start(&hadc);
   HAL_ADC_PollForConversion(&hadc, 500);
-  vbat_8b = HAL_ADC_GetValue(&hadc);
+  *vbat_mV = 26*(uint16_t)HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  *vbat_mV = 26*(uint32_t)vbat_8b;
-  printf("ch1: %d, vbat: %d\n", vbat_8b, *vbat_mV);
+  
+  printf("vbat: %d\n", *vbat_mV);
 
   return;
 
   if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
   {
-    printf("low battery, shutting down...\n");
+    // printf("low battery, shutting down...\n");
     start_animation(ANIMATION_TYPE_FASTBLINK);
     HAL_Delay(3000);
     start_animation(ANIMATION_TYPE_CONST_OFF);
@@ -166,6 +166,7 @@ void check_battery(uint32_t* vbat_mV)
     HAL_TIM_Base_MspDeInit(&htim17);
     HAL_UART_MspDeInit(&huart2);
 
+    // shut off
     HAL_PWR_EnterSTANDBYMode();
   }
 }
@@ -231,22 +232,14 @@ void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
     return;
   // 40KHz LSI, RTC asyc prediv 18, sync prediv 0
   duration_ms *= 2;
-  if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
-    return;
-  if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
-    return;
-
+  HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN);
+  HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN);
   next_alarm_second = sTime.Seconds + duration_ms;
   next_alarm_minute = sTime.Minutes + next_alarm_second / 60;
   next_alarm_hour = (sTime.Hours + next_alarm_minute / 60) % 24;
   next_alarm_second %= 60;
   next_alarm_minute %= 60;
 
-  // printf("---\n");
-  // printf("duration_ms: %d\n", duration_ms);
-  // printf("current: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
-  // printf("next: %d %d %d\n", next_alarm_hour, next_alarm_minute, next_alarm_second);
-  
   sAlarm.AlarmTime.Seconds = next_alarm_second;
   sAlarm.AlarmTime.Minutes = next_alarm_minute;
   sAlarm.AlarmTime.Hours = next_alarm_hour;
@@ -257,31 +250,16 @@ void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
   sAlarm.Alarm = RTC_ALARM_A;
-  if(HAL_RTC_DeactivateAlarm(hrtc, RTC_ALARM_A) != HAL_OK)
-    return;
-  // printf("1\n");
-  if(HAL_RTC_SetAlarm_IT(hrtc, &sAlarm, RTC_FORMAT_BIN) != HAL_OK)
-    return;
-  // printf("2\n");
-
-  // if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
-  //   return;
-  // if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
-  //   return;
-  // printf("now: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
+  HAL_RTC_DeactivateAlarm(hrtc, RTC_ALARM_A);
+  HAL_RTC_SetAlarm_IT(hrtc, &sAlarm, RTC_FORMAT_BIN);
   HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   HAL_ResumeTick();
   rtc_sleep_count_ms += duration_ms/2;
+  rtc_counter += duration_ms/2;
   huart2.Instance->CR1 &= ~(USART_CR1_UE);
   huart2.Instance->BRR = 70;
   huart2.Instance->CR1 |= USART_CR1_UE;
-  // if(HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
-  //   return;
-  // if(HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
-  //   return;
-  // printf("after: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
-  // printf("---\n");
 }
 
 int32_t linear_buf_init(linear_buf *lb, int32_t size)
@@ -346,7 +324,7 @@ void dt_conf_print(dt_conf *dtc)
   printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
   printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("hardware_id: %d\n", dtc->hardware_id);
+  printf("hardware_id: 0x%x\n", dtc->hardware_id);
   printf("op_mode: %d\n", dtc->op_mode);
   printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
 }
