@@ -127,7 +127,8 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 int fputc(int ch, FILE *f)
 {
   my_usb_putchar((uint8_t)ch);
-  HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
+  if(daytripper_config.print_debug_info)
+    HAL_UART_Transmit(&huart2, (unsigned char *)&ch, 1, 10);
   return ch;
 }
 

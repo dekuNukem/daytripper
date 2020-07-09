@@ -317,6 +317,7 @@ void dt_conf_init(dt_conf *dtc)
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
   if(dtc->rtc_sleep_duration_ms < 0)
     dtc->rtc_sleep_duration_ms = 0;
+  dtc->print_debug_info = 1;
 }
 
 void dt_conf_print(dt_conf *dtc)
@@ -330,5 +331,6 @@ void dt_conf_print(dt_conf *dtc)
   printf("hardware_id: 0x%x\n", dtc->hardware_id);
   printf("op_mode: %d\n", dtc->op_mode);
   printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
+  printf("print_debug_info: %d\n", dtc->print_debug_info);
 }
 
