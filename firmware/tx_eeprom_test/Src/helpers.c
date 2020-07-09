@@ -224,6 +224,11 @@ void tx_test(void)
     iwdg_wait(850, ANIMATION_TYPE_CONST_OFF);
   }
 }
+void run_time_update(uint32_t duration_ms)
+{
+  rtc_sleep_count_ms += duration_ms;
+  rtc_counter += duration_ms;
+}
 
 void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
 {
@@ -254,8 +259,7 @@ void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
   HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   HAL_ResumeTick();
-  rtc_sleep_count_ms += duration_ms/2;
-  rtc_counter += duration_ms/2;
+  run_time_update(duration_ms/2);
   huart2.Instance->CR1 &= ~(USART_CR1_UE);
   huart2.Instance->BRR = 70;
   huart2.Instance->CR1 |= USART_CR1_UE;

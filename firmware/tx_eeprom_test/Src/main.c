@@ -96,6 +96,7 @@ uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
 uint16_t vbat_mV;
 uint16_t power_on_time_5s;
+uint16_t tof_sleep_ms;
 
 #define EEPROM_BUF_SIZE 32
 uint8_t eeprom_buf[EEPROM_BUF_SIZE];
@@ -226,9 +227,10 @@ int main(void)
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
+    // every 5 seconds
     if(rtc_counter > 5000)
     {
-      power_on_time_5s++;
+      power_on_time_5s++; // update power-on counter
       if(power_on_time_5s % 120 == 0) // 5 * 120 = 600s = 10mins, send stat update every 10 minutes
         new_stat_packet = 1;
       check_battery(&vbat_mV);
@@ -238,14 +240,14 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
     button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), rtc_sleep_count_ms);
-    if(button_result == 1)
+    if(button_result == 1) // short press
     {
       iwdg_wait(20, ANIMATION_TYPE_BREATHING);
       tof_calibrate(&baseline, &diff_threshold);
       iwdg_wait(20, ANIMATION_TYPE_CONST_OFF);
       current_state = STATE_IDLE;
     }
-    else if(button_result == 2)
+    else if(button_result == 2) // long press
       tx_test();
 
     if(new_stat_packet)
@@ -255,8 +257,17 @@ int main(void)
       send_packet(data_array);
       new_stat_packet = 0;
     }
+
+    // how long to sleep while wating for ToF sensor measurement
+    tof_sleep_ms = daytripper_config.tof_timing_budget_ms - 1;
+    if(vbat_mV > 4300) // if charging, dont sleep while wating for ToF measurement, but still update the time count
+    {
+      run_time_update(tof_sleep_ms + 5);
+      tof_sleep_ms = 0;
+    }
+
     // get a new distance reading from laser ToF sensor
-    this_reading = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 1);
+    this_reading = get_single_distance_reading(&is_reading_valid, tof_sleep_ms);
     diff = abs(baseline - this_reading);
     if(is_reading_valid == 0)
       goto sleep;
@@ -271,7 +282,7 @@ int main(void)
       while(count < daytripper_config.nr_sensitivity)
       {
       	HAL_IWDG_Refresh(&hiwdg);
-        this = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 1);
+        this = get_single_distance_reading(&is_reading_valid, tof_sleep_ms);
         printf("t%d:%d ", count+1, this);
         if(is_reading_valid == 0)
           continue;
@@ -298,7 +309,8 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    rtc_sleep(&hrtc, daytripper_config.rtc_sleep_duration_ms);
+    if(vbat_mV < 4300) // only sleep while on battery, when charging go full speed
+      rtc_sleep(&hrtc, daytripper_config.rtc_sleep_duration_ms);
   }
   /* USER CODE END 3 */
 
