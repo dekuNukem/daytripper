@@ -27,6 +27,9 @@ RTC_AlarmTypeDef sAlarm;
 uint32_t next_alarm_second;
 uint32_t next_alarm_minute;
 uint8_t next_alarm_hour;
+static const char whoami[] = "dekuNukem dayTripper TX";
+#define EEPROM_BUF_SIZE 45
+char eeprom_buf[EEPROM_BUF_SIZE];
 
 uint8_t get_uuid(void)
 {
@@ -334,3 +337,17 @@ void dt_conf_print(dt_conf *dtc)
   printf("print_debug_info: %d\n", dtc->print_debug_info);
 }
 
+void parse_cmd(char* cmd)
+{
+  if(cmd == NULL)
+    return;
+  printf("received: %s\n", cmd);
+  if(strcmp(cmd, "who") == 0)
+    puts(whoami);
+  if(strcmp(cmd, "show") == 0)
+  {
+    memset(eeprom_buf, 0, EEPROM_BUF_SIZE);
+    sprintf(eeprom_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.tof_range_mm, daytripper_config.use_led, daytripper_config.nr_sensitivity, daytripper_config.tx_wireless_channel, daytripper_config.tof_timing_budget_ms, daytripper_config.hardware_id, daytripper_config.op_mode, daytripper_config.print_debug_info);
+    puts(eeprom_buf);
+  }
+}

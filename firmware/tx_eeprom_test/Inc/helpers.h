@@ -58,6 +58,7 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len);
 void dt_conf_init(dt_conf *dtc);
 void dt_conf_print(dt_conf *dtc);
 void run_time_update(uint32_t duration_ms);
+void parse_cmd(char* cmd);
 
 extern uint8_t is_reading_valid;
 extern dt_conf daytripper_config;

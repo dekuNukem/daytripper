@@ -80,6 +80,8 @@ period = 0.1976ms
     // printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
     // HAL_Delay(200);
 
+#define EEPROM_BUF_SIZE 32
+uint8_t eeprom_buf[EEPROM_BUF_SIZE];
 void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
 {
   if(duration_ms <= 0)

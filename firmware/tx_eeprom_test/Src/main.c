@@ -98,9 +98,6 @@ uint16_t vbat_mV;
 uint16_t power_on_time_5s;
 uint16_t tof_sleep_ms;
 
-#define EEPROM_BUF_SIZE 32
-uint8_t eeprom_buf[EEPROM_BUF_SIZE];
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -228,6 +225,8 @@ int main(void)
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
+    parse_cmd(my_usb_readline());
+
     // every 5 seconds
     if(rtc_counter > 5000)
     {
