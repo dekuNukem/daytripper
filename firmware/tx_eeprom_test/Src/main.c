@@ -263,7 +263,7 @@ int main(void)
       new_stat_packet = 0;
     }
     // get a new distance reading from laser ToF sensor
-    this_reading = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 3);
+    this_reading = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 1);
     diff = abs(baseline - this_reading);
     if(is_reading_valid == 0)
       goto sleep;
@@ -278,7 +278,7 @@ int main(void)
       while(count < daytripper_config.nr_sensitivity)
       {
       	HAL_IWDG_Refresh(&hiwdg);
-        this = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 3);
+        this = get_single_distance_reading(&is_reading_valid, daytripper_config.tof_timing_budget_ms - 1);
         printf("t%d:%d ", count+1, this);
         if(is_reading_valid == 0)
           continue;
@@ -305,7 +305,7 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    printf("%d %d\n", HAL_GetTick(), rtc_sleep_duration_ms); // this causes it to hang right away
+    printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
     rtc_sleep(&hrtc, 200);
     // HAL_Delay(200);
   }

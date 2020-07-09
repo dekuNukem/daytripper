@@ -19,7 +19,7 @@ dt_conf daytripper_config;
 uint8_t is_reading_valid;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
-uint32_t rtc_sleep_duration_ms;
+uint32_t rtc_sleep_count_ms;
 RTC_TimeTypeDef sTime;
 RTC_DateTypeDef sDate;
 RTC_AlarmTypeDef sAlarm;
@@ -272,7 +272,7 @@ void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
   HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
   HAL_ResumeTick();
-  rtc_sleep_duration_ms += duration_ms/2;
+  rtc_sleep_count_ms += duration_ms/2;
   huart2.Instance->CR1 &= ~(USART_CR1_UE);
   huart2.Instance->BRR = 70;
   huart2.Instance->CR1 |= USART_CR1_UE;
@@ -329,7 +329,6 @@ void dt_conf_init(dt_conf *dtc)
   dtc->nr_sensitivity = 1;
   dtc->tx_wireless_channel = 0x0c;
   dtc->tof_timing_budget_ms = 25;
-  dtc->tof_sleep_ms = dtc->tof_timing_budget_ms * 4 / 5;
   dtc->hardware_id = get_uuid();
   dtc->op_mode = 0;
 }
@@ -342,7 +341,6 @@ void dt_conf_print(dt_conf *dtc)
   printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
   printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("tof_sleep_ms: %d\n", dtc->tof_sleep_ms);
   printf("hardware_id: %d\n", dtc->hardware_id);
   printf("op_mode: %d\n", dtc->op_mode);
 }

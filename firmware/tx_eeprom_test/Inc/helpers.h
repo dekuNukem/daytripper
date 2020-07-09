@@ -35,8 +35,8 @@ typedef struct
   uint8_t tx_wireless_channel; // last byte of wireless channel number
   uint8_t tof_timing_budget_ms; // timing budget in ms
   uint8_t hardware_id;
-  uint8_t tof_sleep_ms;
   uint8_t op_mode; // 0 normal, 1 continuous
+  uint16_t rtc_sleep_duration_ms;
 } dt_conf;
 
 uint16_t get_baseline(void);
@@ -59,7 +59,7 @@ void dt_conf_print(dt_conf *dtc);
 
 extern uint8_t is_reading_valid;
 extern dt_conf daytripper_config;
-extern uint32_t rtc_sleep_duration_ms;
+extern uint32_t rtc_sleep_count_ms;
 
 #ifdef __cplusplus
 }
