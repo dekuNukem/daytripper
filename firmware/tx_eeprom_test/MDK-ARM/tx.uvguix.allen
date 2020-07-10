@@ -3606,18 +3606,18 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>../Src/main.c</Name>
-        <ColumnNumber>33</ColumnNumber>
+        <ColumnNumber>2</ColumnNumber>
         <TopLine>203</TopLine>
-        <CurrentLine>228</CurrentLine>
+        <CurrentLine>229</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\Src\helpers.c</Name>
-        <ColumnNumber>22</ColumnNumber>
-        <TopLine>9</TopLine>
-        <CurrentLine>34</CurrentLine>
+        <ColumnNumber>60</ColumnNumber>
+        <TopLine>25</TopLine>
+        <CurrentLine>33</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3669,9 +3669,9 @@
       </Doc>
       <Doc>
         <Name>..\Inc\helpers.h</Name>
-        <ColumnNumber>13</ColumnNumber>
+        <ColumnNumber>5</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>31</CurrentLine>
+        <CurrentLine>32</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

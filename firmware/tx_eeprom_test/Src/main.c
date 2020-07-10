@@ -178,8 +178,9 @@ int main(void)
   MX_RTC_Init();
   HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
   NRF_ON();
+  dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
-  dt_conf_init(&daytripper_config);
+  dt_conf_load(&daytripper_config);
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);

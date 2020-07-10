@@ -16,6 +16,7 @@
 #define STM32F0_UUID2 ((uint32_t *)0x1FFFF7B4)
 
 dt_conf daytripper_config;
+dt_conf new_config;
 uint8_t is_reading_valid;
 uint16_t baseline_data[BASELINE_SAMPLE_SIZE];
 uint8_t test_data[NRF_PAYLOAD_SIZE];
@@ -28,8 +29,17 @@ uint32_t next_alarm_second;
 uint32_t next_alarm_minute;
 uint8_t next_alarm_hour;
 static const char whoami[] = "dekuNukem dayTripper TX";
-#define EEPROM_BUF_SIZE 45
-char eeprom_buf[EEPROM_BUF_SIZE];
+static const char eep_erase_failed[] = "EEPROM ERASE ERROR";
+static const char eep_write_failed[] = "EEPROM WRITE ERROR";
+static const char eep_read_failed[] = "EEPROM READ ERROR";
+static const char eep_invalid[] = "empty or invalid EEPROM, loading default.";
+static const char eep_write_invalid[] = "EEPROM VALUES INVALID";
+
+
+#define TEMP_BUF_SIZE 45
+char temp_buf[TEMP_BUF_SIZE];
+#define EEPROM_BUF_SIZE 16
+uint8_t eeprom_buf[EEPROM_BUF_SIZE];
 
 uint8_t get_uuid(void)
 {
@@ -138,7 +148,7 @@ void check_battery(uint16_t* vbat_mV)
   HAL_ADC_PollForConversion(&hadc, 500);
   *vbat_mV = 26*(uint16_t)HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  printf("vbat: %d\n", *vbat_mV);
+  // printf("vbat: %d\n", *vbat_mV);
   return;
 
   if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
@@ -305,7 +315,7 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len)
   return 0;
 }
 
-void dt_conf_init(dt_conf *dtc)
+void dt_conf_load_default(dt_conf *dtc)
 {
   dtc->refresh_rate_Hz = 6;
   dtc->tof_range_mm = 0xff;
@@ -313,14 +323,50 @@ void dt_conf_init(dt_conf *dtc)
   dtc->nr_sensitivity = 1;
   dtc->tx_wireless_channel = 0x0c;
   dtc->tof_timing_budget_ms = 25;
-  dtc->hardware_id = get_uuid();
   dtc->op_mode = 0;
-  if(dtc->refresh_rate_Hz <= 0)
-    dtc->refresh_rate_Hz = 1;
+  dtc->print_debug_info = 1;
+
+  dtc->hardware_id = get_uuid();
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
   if(dtc->rtc_sleep_duration_ms < 0)
     dtc->rtc_sleep_duration_ms = 0;
-  dtc->print_debug_info = 1;
+}
+
+uint8_t is_config_valid(uint8_t* arr)
+{
+  if(arr[0] == 0 || arr[2] > 1 || arr[3] > 2 || arr[6] > 1 || arr[7] > 1)
+    return 0;
+  return 1;
+}
+
+void dt_conf_load(dt_conf *dtc)
+{
+  dt_conf_load_default(dtc);
+  memset(eeprom_buf, 0, EEPROM_BUF_SIZE);
+  if(ee_read(0, EEPROM_BUF_SIZE, eeprom_buf) != 1)
+  {
+    puts(eep_read_failed);
+    return;
+  }
+  if(is_config_valid(eeprom_buf) != 1)
+  {
+    puts(eep_invalid);
+    return;
+  }
+  
+  dtc->refresh_rate_Hz = eeprom_buf[0];
+  dtc->tof_range_mm = eeprom_buf[1];
+  dtc->use_led = eeprom_buf[2];
+  dtc->nr_sensitivity = eeprom_buf[3];
+  dtc->tx_wireless_channel = eeprom_buf[4];
+  dtc->tof_timing_budget_ms = eeprom_buf[5];
+  dtc->op_mode = eeprom_buf[6];
+  dtc->print_debug_info = eeprom_buf[7];
+
+  dtc->hardware_id = get_uuid();
+  dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
+  if(dtc->rtc_sleep_duration_ms < 0)
+    dtc->rtc_sleep_duration_ms = 0;
 }
 
 void dt_conf_print(dt_conf *dtc)
@@ -337,17 +383,79 @@ void dt_conf_print(dt_conf *dtc)
   printf("print_debug_info: %d\n", dtc->print_debug_info);
 }
 
+char* goto_next_arg(char* buf)
+{
+  char* curr = buf;
+  if(curr == NULL)
+    return NULL;
+  char* buf_end = curr + strlen(curr);
+  if(curr >= buf_end)
+    return NULL;
+  while(curr < buf_end && *curr != ' ')
+      curr++;
+  while(curr < buf_end && *curr == ' ')
+      curr++;
+  if(curr >= buf_end)
+    return NULL;
+  return curr;
+}
+
+#define CONFIG_ITEM_COUNT 8
+
+void save_config(char* cmd)
+{
+  uint8_t count = 0;
+  char* curr = cmd;
+  while(1)
+  {
+    curr = goto_next_arg(curr);
+    if(curr == NULL)
+      break;
+    count++;
+  }
+  if(count != CONFIG_ITEM_COUNT)
+  {
+    printf("ERROR\n");
+    return;
+  }
+  memset(eeprom_buf, 0, EEPROM_BUF_SIZE);
+  curr = cmd;
+  for (int i = 0; i < count; ++i)
+  {
+    curr = goto_next_arg(curr);
+    eeprom_buf[i] = atoi(curr);
+  }
+  if(is_config_valid(eeprom_buf) != 1)
+  {
+    puts(eep_write_invalid);
+    return;
+  }
+  if(ee_format() != 1)
+  {
+    puts(eep_erase_failed);
+    return;
+  }
+  if(ee_write(0, EEPROM_BUF_SIZE, eeprom_buf) != 1)
+  {
+    puts(eep_write_failed);
+    return;
+  }
+  printf("OK\n");
+}
+
 void parse_cmd(char* cmd)
 {
   if(cmd == NULL)
     return;
-  printf("received: %s\n", cmd);
+  // printf("received: %s\n", cmd);
   if(strcmp(cmd, "who") == 0)
     puts(whoami);
-  if(strcmp(cmd, "show") == 0)
+  else if(strcmp(cmd, "show") == 0)
   {
-    memset(eeprom_buf, 0, EEPROM_BUF_SIZE);
-    sprintf(eeprom_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.tof_range_mm, daytripper_config.use_led, daytripper_config.nr_sensitivity, daytripper_config.tx_wireless_channel, daytripper_config.tof_timing_budget_ms, daytripper_config.hardware_id, daytripper_config.op_mode, daytripper_config.print_debug_info);
-    puts(eeprom_buf);
+    memset(temp_buf, 0, TEMP_BUF_SIZE);
+    sprintf(temp_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.tof_range_mm, daytripper_config.use_led, daytripper_config.nr_sensitivity, daytripper_config.tx_wireless_channel, daytripper_config.tof_timing_budget_ms, daytripper_config.op_mode, daytripper_config.print_debug_info, daytripper_config.hardware_id);
+    puts(temp_buf);
   }
+  else if(strncmp(cmd, "save ", 5) == 0)
+    save_config(cmd);
 }

@@ -77,8 +77,13 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+
+for (int i = 0; i < EEPROM_BUF_SIZE; ++i)
+    printf("%d %d\n", i, eeprom_buf[i]);
+    
     // printf("%d %d\n", HAL_GetTick(), rtc_sleep_count_ms); // this causes it to hang right away
     // HAL_Delay(200);
+dt_ee: 6 255 1 1 12 25 82 0 1
 
 #define EEPROM_BUF_SIZE 32
 uint8_t eeprom_buf[EEPROM_BUF_SIZE];
@@ -160,7 +165,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
     printf("two seconds passed\n");
     rtc_counter = 0;
   }
-  
+
   printf("duration_ms: %d\n", duration_ms);
   printf("current: %d %d %d\n", sTime.Hours, sTime.Minutes, sTime.Seconds);
   printf("next: %d %d %d\n", next_alarm_hour, next_alarm_minute, next_alarm_second);
