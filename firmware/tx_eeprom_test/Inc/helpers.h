@@ -31,20 +31,21 @@ typedef struct
   // 0
   uint8_t refresh_rate_Hz; // from 1Hz to around 30Hz, over 30 just go as fast as possible
   // 1
-  uint8_t tof_range_mm; // value * 2 = true range
-  // 2
-  uint8_t use_led;	// 1 turn on LED when triggered, 0 not
-  // 3
   uint8_t nr_sensitivity; // NR window size, 0 no window, 1 default, 2 max
-  // 4
-  uint8_t tx_wireless_channel; // last byte of wireless channel number
-  // 5
+  // 2
   uint8_t tof_timing_budget_ms; // timing budget in ms
-  // 6
-  uint8_t op_mode; // 0 normal, 1 continuous
-  // 7
-  uint8_t print_debug_info;
+  // 3
+  uint8_t tof_range_mm; // value * 2 = true range
 
+  // 4
+  uint8_t use_led;  // 1 turn on LED when triggered, 0 not
+  // 5
+  uint8_t op_mode; // 0 normal, 1 continuous
+  // 6
+  uint8_t print_debug_info;
+  // 7
+  uint8_t tx_wireless_channel; // last byte of wireless channel number
+  
   uint8_t hardware_id;
   int16_t rtc_sleep_duration_ms;
 } dt_conf;

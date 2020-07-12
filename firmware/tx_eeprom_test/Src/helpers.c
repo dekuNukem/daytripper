@@ -334,7 +334,7 @@ void dt_conf_load_default(dt_conf *dtc)
 
 uint8_t is_config_valid(uint8_t* arr)
 {
-  if(arr[0] == 0 || arr[2] > 1 || arr[3] > 2 || arr[6] > 1 || arr[7] > 1)
+  if(arr[0] == 0 || arr[1] > 2 || arr[2] < 10 || arr[4] > 1 || arr[5] > 1)
     return 0;
   return 1;
 }
@@ -355,13 +355,13 @@ void dt_conf_load(dt_conf *dtc)
   }
   
   dtc->refresh_rate_Hz = eeprom_buf[0];
-  dtc->tof_range_mm = eeprom_buf[1];
-  dtc->use_led = eeprom_buf[2];
-  dtc->nr_sensitivity = eeprom_buf[3];
-  dtc->tx_wireless_channel = eeprom_buf[4];
-  dtc->tof_timing_budget_ms = eeprom_buf[5];
-  dtc->op_mode = eeprom_buf[6];
-  dtc->print_debug_info = eeprom_buf[7];
+  dtc->nr_sensitivity = eeprom_buf[1];
+  dtc->tof_timing_budget_ms = eeprom_buf[2];
+  dtc->tof_range_mm = eeprom_buf[3];
+  dtc->use_led = eeprom_buf[4];
+  dtc->op_mode = eeprom_buf[5];
+  dtc->print_debug_info = eeprom_buf[6];
+  dtc->tx_wireless_channel = eeprom_buf[7];
 
   dtc->hardware_id = get_uuid();
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
@@ -372,15 +372,15 @@ void dt_conf_load(dt_conf *dtc)
 void dt_conf_print(dt_conf *dtc)
 {
   printf("refresh_rate_Hz: %d\n", dtc->refresh_rate_Hz);
+  printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
+  printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
   printf("tof_range_mm: %d\n", dtc->tof_range_mm);
   printf("use_led: %d\n", dtc->use_led);
-  printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
-  printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
-  printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("hardware_id: 0x%x\n", dtc->hardware_id);
   printf("op_mode: %d\n", dtc->op_mode);
-  printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
   printf("print_debug_info: %d\n", dtc->print_debug_info);
+  printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
+  printf("hardware_id: 0x%x\n", dtc->hardware_id);
+  printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
 }
 
 char* goto_next_arg(char* buf)
@@ -453,7 +453,7 @@ void parse_cmd(char* cmd)
   else if(strcmp(cmd, "show") == 0)
   {
     memset(temp_buf, 0, TEMP_BUF_SIZE);
-    sprintf(temp_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.tof_range_mm, daytripper_config.use_led, daytripper_config.nr_sensitivity, daytripper_config.tx_wireless_channel, daytripper_config.tof_timing_budget_ms, daytripper_config.op_mode, daytripper_config.print_debug_info, daytripper_config.hardware_id);
+    sprintf(temp_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.nr_sensitivity, daytripper_config.tof_timing_budget_ms, daytripper_config.tof_range_mm, daytripper_config.use_led , daytripper_config.op_mode, daytripper_config.print_debug_info, daytripper_config.tx_wireless_channel, daytripper_config.hardware_id);
     puts(temp_buf);
   }
   else if(strncmp(cmd, "save ", 5) == 0)
