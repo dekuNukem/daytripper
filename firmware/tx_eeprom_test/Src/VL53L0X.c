@@ -1058,3 +1058,12 @@ bool performSingleRefCalibration(uint8_t vhv_init_byte)
 
   return 1;
 }
+
+#define IDENTIFICATION_MODEL_ID 0xc0
+#define IDENTIFICATION_REVISION_ID 0xc2
+
+
+uint8_t get_tof_model_id(void)
+{
+  return readReg(IDENTIFICATION_MODEL_ID);
+}

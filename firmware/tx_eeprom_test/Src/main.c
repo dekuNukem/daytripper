@@ -178,6 +178,7 @@ int main(void)
   MX_RTC_Init();
   HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
   NRF_ON();
+  VL53L0X_init();
   dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
@@ -193,8 +194,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  VL53L0X_init();
   setTimeout(500);
   // in microseconds, longer time better accruacy, but consumes more power
   setMeasurementTimingBudget(daytripper_config.tof_timing_budget_ms * 1000); // default 33000
@@ -210,7 +209,7 @@ int main(void)
 
   tof_calibrate(&baseline, &diff_threshold);
   start_animation(ANIMATION_TYPE_CONST_OFF);
-  
+
   // while(1)
   // {
   //   HAL_IWDG_Refresh(&hiwdg);

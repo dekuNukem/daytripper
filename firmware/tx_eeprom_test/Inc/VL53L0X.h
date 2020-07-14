@@ -155,6 +155,7 @@ void getSequenceStepEnables(SequenceStepEnables * enables);
 void getSequenceStepTimeouts(SequenceStepEnables const * enables, SequenceStepTimeouts * timeouts);
 
 bool performSingleRefCalibration(uint8_t vhv_init_byte);
+uint8_t get_tof_model_id(void);
 
 static uint16_t decodeTimeout(uint16_t value);
 static uint16_t encodeTimeout(uint16_t timeout_mclks);

@@ -27,19 +27,14 @@ Project File Date:  07/09/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'tx'
-compiling sleepybutton.c...
-compiling VL53L0X.c...
-compiling usbd_cdc_if.c...
-compiling my_usb.c...
-compiling main.c...
 compiling helpers.c...
-..\Src\helpers.c(154): warning:  #111-D: statement is unreachable
+..\Src\helpers.c(155): warning:  #111-D: statement is unreachable
     if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
-..\Src\helpers.c(169): warning:  #188-D: enumerated type mixed with another type
+..\Src\helpers.c(170): warning:  #188-D: enumerated type mixed with another type
         HAL_NVIC_DisableIRQ(i);
 ..\Src\helpers.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=29428 RO-data=588 RW-data=480 ZI-data=4824  
+Program Size: Code=29516 RO-data=564 RW-data=480 ZI-data=4832  
 FromELF: creating hex file...
 "tx\tx.axf" - 0 Error(s), 2 Warning(s).
 
@@ -64,7 +59,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

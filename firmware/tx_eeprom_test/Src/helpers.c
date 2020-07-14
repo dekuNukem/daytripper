@@ -28,13 +28,14 @@ RTC_AlarmTypeDef sAlarm;
 uint32_t next_alarm_second;
 uint32_t next_alarm_minute;
 uint8_t next_alarm_hour;
-static const char whoami[] = "dekuNukem dayTripper TX";
 static const char eep_erase_failed[] = "EEPROM ERASE ERROR";
 static const char eep_write_failed[] = "EEPROM WRITE ERROR";
 static const char eep_read_failed[] = "EEPROM READ ERROR";
 static const char eep_invalid[] = "empty or invalid EEPROM, loading default.";
 static const char eep_write_invalid[] = "EEPROM VALUES INVALID";
-
+static const uint8_t fw_version_major = 1;
+static const uint8_t fw_version_minor = 1;
+static const uint8_t fw_version_patch = 0;
 
 #define TEMP_BUF_SIZE 45
 char temp_buf[TEMP_BUF_SIZE];
@@ -330,6 +331,7 @@ void dt_conf_load_default(dt_conf *dtc)
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
   if(dtc->rtc_sleep_duration_ms < 0)
     dtc->rtc_sleep_duration_ms = 0;
+  dtc->tof_model_id = get_tof_model_id();
 }
 
 uint8_t is_config_valid(uint8_t* arr)
@@ -367,6 +369,7 @@ void dt_conf_load(dt_conf *dtc)
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
   if(dtc->rtc_sleep_duration_ms < 0)
     dtc->rtc_sleep_duration_ms = 0;
+  dtc->tof_model_id = get_tof_model_id();
 }
 
 void dt_conf_print(dt_conf *dtc)
@@ -381,6 +384,8 @@ void dt_conf_print(dt_conf *dtc)
   printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
   printf("hardware_id: 0x%x\n", dtc->hardware_id);
   printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
+  printf("tof_model_id: %d\n", dtc->tof_model_id);
+  printf("fw_version: %d.%d.%d\n", fw_version_major, fw_version_minor, fw_version_patch);
 }
 
 char* goto_next_arg(char* buf)
@@ -448,12 +453,24 @@ void parse_cmd(char* cmd)
   if(cmd == NULL)
     return;
   // printf("received: %s\n", cmd);
-  if(strcmp(cmd, "who") == 0)
-    puts(whoami);
-  else if(strcmp(cmd, "show") == 0)
+  if(strcmp(cmd, "show") == 0)
   {
     memset(temp_buf, 0, TEMP_BUF_SIZE);
-    sprintf(temp_buf, "dt_ee: %d %d %d %d %d %d %d %d %d\n", daytripper_config.refresh_rate_Hz, daytripper_config.nr_sensitivity, daytripper_config.tof_timing_budget_ms, daytripper_config.tof_range_mm, daytripper_config.use_led , daytripper_config.op_mode, daytripper_config.print_debug_info, daytripper_config.tx_wireless_channel, daytripper_config.hardware_id);
+    sprintf(temp_buf, "dt_tx: %d %d %d %d %d %d %d %d %d %d %d %d %d",
+        daytripper_config.refresh_rate_Hz,
+        daytripper_config.nr_sensitivity,
+        daytripper_config.tof_timing_budget_ms,
+        daytripper_config.tof_range_mm,
+        daytripper_config.use_led ,
+        daytripper_config.op_mode,
+        daytripper_config.print_debug_info,
+        daytripper_config.tx_wireless_channel,
+        daytripper_config.hardware_id,
+        daytripper_config.tof_model_id,
+        fw_version_major,
+        fw_version_minor,
+        fw_version_patch
+        );
     puts(temp_buf);
   }
   else if(strncmp(cmd, "save ", 5) == 0)
