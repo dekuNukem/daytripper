@@ -1,128 +1,78 @@
 import os
 import sys
 
-class dp_key(object):
-	def read_file(self, path):
-		with open(path) as keyfile:
-			self.script = keyfile.read()
+class dt_config(object):
+	# dt_tx: 12 0 33 255 0 0 1 12 82 238 1 1 0
 
-	def read_color(self, config_path):
-		with open(config_path) as configfile:
-			for line in configfile:
-				line = line.replace('\n', '').replace('\r', '')
-				hotword = "SWCOLOR_" + str(self.index) + ' '
-				while('  ' in line):
-					line = line.replace('  ', ' ')
-				if hotword in line:
-					temp_split = line.split(' ')
-					self.color = (int(temp_split[1]), int(temp_split[2]), int(temp_split[3]))
+	def load_config(self, msg):
+		if not msg.startswith('dt_'):
+			return False
+		msg = msg.replace('\n', '').replace('\r', '')
+		msg_split = msg.split(' ')
+		print(msg_split)
+
+		if 'dt_tx' in msg:
+			self.daytripper_type = 'tx'
+		elif 'tx_rx' in msg:
+			self.daytripper_type = 'rx'
+		else:
+			return False
+# ['dt_tx:', '12', '0', '33', '255', '0', '0', '1', '12', '82', '238', '1', '1', '0']
+		self.is_valid = 0
+		try:
+			self.refresh_rate_Hz = int(msg_split[1])
+			self.nr_sensitivity = int(msg_split[2])
+			self.timing_budget_ms = int(msg_split[3])
+			self.tof_range_mm = int(msg_split[4])
+			self.use_led = int(msg_split[5])
+			self.op_mode = int(msg_split[6])
+			self.print_debug_info = int(msg_split[7])
+			self.tx_wireless_channel = int(msg_split[8])
+			self.hardware_id = int(msg_split[9])
+			self.tof_model_id = int(msg_split[10])
+			self.fw_version_major = int(msg_split[11])
+			self.fw_version_minor = int(msg_split[12])
+			self.fw_version_patch = int(msg_split[13])
+		except Exception as e:
+			print('load_config:', str(e))
+			return False
+
+		self.is_valid = 1
+		return True
 
 	def __str__(self):
 		ret = ""
-		ret += str('...............') + '\n'
-		ret += "path:\t" + str(self.path) + '\n'
-		ret += "name:\t" + str(self.name) + '\n'
-		ret += "index:\t" + str(self.index) + '\n'
-		ret += "color:\t" + str(self.color) + '\n'
-		ret += "script:\t" + str(len(self.script)) + " characters\n"
-		ret += str('...............') + '\n'
-		return ret
-
-	def __init__(self, path=None):
-		super(dp_key, self).__init__()
-		if path is None:
-			self.path = None
-			self.name = None
-			self.index = None
-			self.color = None
-			self.script = ''
-			return
-		self.path = path
-		self.name = os.path.basename(os.path.normpath(path)).split('.')[0].split('_', 1)[-1]
-		self.index = int(os.path.basename(os.path.normpath(path)).split('_')[0].strip('key'))
-		self.color = None
-		self.script = ''
-		self.read_file(path)
-		try:
-			config_path = os.path.join(os.path.dirname(path), "config.txt")
-			self.read_color(config_path)
-		except Exception as e:
-			print(">>> read_color:", config_path, e)
-			pass
-
-# -----------------------------------------------------------
-
-class dp_profile(object):
-	def read_keys(self, path):
-		key_file_list = [x for x in os.listdir(path) if x.endswith('.txt') and x.startswith('key') and '_' in x and x[3].isnumeric()]
-		key_file_list.sort(key=lambda s: int(s[3:].split("_")[0])) # sort by number not by letter
-		for item in key_file_list:
-			this_key = dp_key(os.path.join(path, item))
-			self.keylist[this_key.index -1] = this_key
-
-	def read_config(self, path):
-		try:
-			with open(os.path.join(path, "config.txt")) as configfile:
-				for line in configfile:
-					line = line.replace('\n', '').replace('\r', '')
-					while('  ' in line):
-						line = line.replace('  ', ' ')
-					if line.startswith('BG_COLOR '):
-						temp_split = line.split(' ')
-						self.bg_color = (int(temp_split[1]), int(temp_split[2]), int(temp_split[3]))
-					if line.startswith('KEYDOWN_COLOR '):
-						temp_split = line.split(' ')
-						self.kd_color = (int(temp_split[1]), int(temp_split[2]), int(temp_split[3]))
-					if line.startswith("DIM_UNUSED_KEYS 0"):
-						self.dim_unused = False
-		except Exception as e:
-			print('>>>>> read_config:', path, e)
-			pass
-
-	def load_from_path(self, path):
-		folder_name = os.path.basename(os.path.normpath(path))
-		if not (folder_name.startswith('profile') and folder_name[7].isnumeric() and '_' in folder_name):
-			print("invalid profile folder:", folder_name)
-			return
-		self.path = path
-		self.name = folder_name.split('_', 1)[-1]
-		self.read_config(path)
-		self.read_keys(path)
-
-	def __str__(self):
-		ret = ""
-		ret += str('-----Profile info-----') + '\n'
-		ret += "path:\t" + str(self.path) + '\n'
-		ret += "name:\t" + str(self.name) + '\n'
-		ret += "bg_color:\t" + str(self.bg_color) + '\n'
-		ret += "kd_color:\t" + str(self.kd_color) + '\n'
-		ret += "dim_unused:\t" + str(self.dim_unused) + '\n'
-		ret += "key count:\t" + str(len([x for x in self.keylist if x is not None])) + '\n'
-		ret += "keys:\n"
-		for item in [x for x in self.keylist]:
-			ret += str(item) + '\n'
-		ret += str('----------------------') + '\n'
+		ret += "is_valid: " + str(self.is_valid) + '\n'
+		ret += "daytripper_type: " + str(self.daytripper_type) + '\n'
+		ret += "refresh_rate_Hz: " + str(self.refresh_rate_Hz) + '\n'
+		ret += "nr_sensitivity: " + str(self.nr_sensitivity) + '\n'
+		ret += "timing_budget_ms: " + str(self.timing_budget_ms) + '\n'
+		ret += "tof_range_mm: " + str(self.tof_range_mm) + '\n'
+		ret += "use_led: " + str(self.use_led) + '\n'
+		ret += "op_mode: " + str(self.op_mode) + '\n'
+		ret += "print_debug_info: " + str(self.print_debug_info) + '\n'
+		ret += "tx_wireless_channel: " + str(self.tx_wireless_channel) + '\n'
+		ret += "hardware_id: " + str(self.hardware_id) + '\n'
+		ret += "tof_model_id: " + str(self.tof_model_id) + '\n'
+		ret += "fw_version: " + str(self.fw_version_major) + '.' + str(self.fw_version_minor) + '.' + str(self.fw_version_patch)
 		return ret
 
 	def __init__(self):
-		super(dp_profile, self).__init__()
-		self.key_count = 15
-		self.path = None
-		self.name = None
-		self.keylist = [None] * self.key_count
-		self.bg_color = (84,22,180)
-		self.kd_color = None
-		self.dim_unused = True
+		super(dt_config, self).__init__()
+		self.is_valid = 0
+		self.refresh_rate_Hz = 0
+		self.nr_sensitivity = 0
+		self.timing_budget_ms = 0
+		self.tof_range_mm = 0
+		self.use_led = 0
+		self.op_mode = 0
+		self.print_debug_info = 0
+		self.tx_wireless_channel = 0
+		self.hardware_id = 0
+		self.tof_model_id = 0
+		self.daytripper_type = 0
+		self.fw_version_major = 0
+		self.fw_version_minor = 0
+		self.fw_version_patch = 0
 
-def build_profile(root_dir_path):
-	my_dirs = [d for d in os.listdir(root_dir_path) if os.path.isdir(os.path.join(root_dir_path, d))]
-	my_dirs = [x for x in my_dirs if x.startswith('profile') and x[7].isnumeric() and '_' in x]
-	my_dirs.sort(key=lambda s: int(s[7:].split("_")[0]))
-	my_dirs = [os.path.join(root_dir_path, d) for d in my_dirs if d.startswith("profile")]
-	profile_list = []
-	for item in my_dirs:
-		this_profile = dp_profile()
-		this_profile.load_from_path(item)
-		profile_list.append(this_profile)
-	return profile_list
 
