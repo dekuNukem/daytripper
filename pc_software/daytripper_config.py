@@ -69,7 +69,7 @@ def serial_dropdown_refresh():
         serial_var.set(usb_port_list[0])
 
 def make_info_string():
-    if daytripper_config.is_valid == 0:
+    if daytripper_config.is_valid is False:
         return ''
     model_string = 'Unknown'
     if daytripper_config.daytripper_type == 'tx':
@@ -101,9 +101,11 @@ def serial_connect():
         messagebox.showerror("Error", 'Serial port exception:\n' + str(e))
         return
     if not result.startswith('dt_'):
-        messagebox.showerror("Error", 'no valid responce received')
+        messagebox.showerror("Error", 'No valid responce received.\nMake sure it is turned OFF before plugging in.')
         return
-    daytripper_config.load_config(result)
+    if not daytripper_config.load_config(result):
+        messagebox.showerror("Error", 'error parsing data')
+        return
     print(daytripper_config)
     hwif_label_stringvar.set(make_info_string())
 
@@ -145,6 +147,51 @@ root.update()
 hwif_label = Label(master=hwif_lf, textvariable=hwif_label_stringvar)
 hwif_label.pack()
 hwif_label.place(x=0, y=0)
+
+SETTING_LF_HEIGHT = 300
+
+settings_lf = LabelFrame(root, text="Settings", width=MAIN_WINDOW_WIDTH - PADDING*2, height=SETTING_LF_HEIGHT)
+settings_lf.pack()
+settings_lf.place(x=PADDING, y=100)
+settings_lf.pack_propagate(False) 
+root.update()
+
+refresh_rate_lf = LabelFrame(settings_lf, text="Refresh Rate", width=int((MAIN_WINDOW_WIDTH - PADDING*2) / 4.4), height=SETTING_LF_HEIGHT/2)
+refresh_rate_lf.pack()
+refresh_rate_lf.place(x=PADDING, y=0)
+refresh_rate_lf.pack_propagate(False) 
+root.update()
+
+refresh_rate_slider_text = Label(refresh_rate_lf, text=str(daytripper_config.refresh_rate_Hz)+'Hz')
+refresh_rate_slider_text.pack()
+refresh_rate_slider_text.place(x=refresh_rate_lf.winfo_width() / 2.9, y=30)
+
+def print_selection(value):
+    refresh_rate_slider_text.config(text=str(value)+'Hz')
+
+refresh_rate_slider = Scale(refresh_rate_lf, from_=1, to=30, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection)
+refresh_rate_slider.set(daytripper_config.refresh_rate_Hz)
+refresh_rate_slider.pack()
+refresh_rate_slider.place(x=PADDING, y=PADDING)
+root.update()
+
+nr_sensitivity_lf = LabelFrame(settings_lf, text="Sensitivity", width=int((MAIN_WINDOW_WIDTH - PADDING*2) / 4.4), height=SETTING_LF_HEIGHT/2)
+nr_sensitivity_lf.pack()
+nr_sensitivity_lf.place(x=refresh_rate_lf.winfo_x() + refresh_rate_lf.winfo_width() + PADDING, y=0)
+nr_sensitivity_lf.pack_propagate(False) 
+root.update()
+
+tof_timing_budget_lf = LabelFrame(settings_lf, text="Timing Budget", width=int((MAIN_WINDOW_WIDTH - PADDING*2) / 4.4), height=SETTING_LF_HEIGHT/2)
+tof_timing_budget_lf.pack()
+tof_timing_budget_lf.place(x=nr_sensitivity_lf.winfo_x() + nr_sensitivity_lf.winfo_width() + PADDING, y=0)
+tof_timing_budget_lf.pack_propagate(False) 
+root.update()
+
+tof_range_lf = LabelFrame(settings_lf, text="Max Range", width=int((MAIN_WINDOW_WIDTH - PADDING*2) / 4.4), height=SETTING_LF_HEIGHT/2)
+tof_range_lf.pack()
+tof_range_lf.place(x=tof_timing_budget_lf.winfo_x() + tof_timing_budget_lf.winfo_width() + PADDING, y=0)
+tof_range_lf.pack_propagate(False) 
+root.update()
 
 # updates_lf = LabelFrame(root, text="Updates", width=int(MAIN_WINDOW_WIDTH*0.2) - PADDING, height=HEIGHT_CONNECT_LF)
 # updates_lf.pack()

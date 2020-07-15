@@ -2,23 +2,19 @@ import os
 import sys
 
 class dt_config(object):
-	# dt_tx: 12 0 33 255 0 0 1 12 82 238 1 1 0
-
 	def load_config(self, msg):
 		if not msg.startswith('dt_'):
 			return False
 		msg = msg.replace('\n', '').replace('\r', '')
 		msg_split = msg.split(' ')
-		print(msg_split)
-
+		# print(msg_split)
 		if 'dt_tx' in msg:
 			self.daytripper_type = 'tx'
 		elif 'tx_rx' in msg:
 			self.daytripper_type = 'rx'
 		else:
 			return False
-# ['dt_tx:', '12', '0', '33', '255', '0', '0', '1', '12', '82', '238', '1', '1', '0']
-		self.is_valid = 0
+		self.is_valid = False
 		try:
 			self.refresh_rate_Hz = int(msg_split[1])
 			self.nr_sensitivity = int(msg_split[2])
@@ -36,8 +32,7 @@ class dt_config(object):
 		except Exception as e:
 			print('load_config:', str(e))
 			return False
-
-		self.is_valid = 1
+		self.is_valid = True
 		return True
 
 	def __str__(self):
@@ -59,7 +54,7 @@ class dt_config(object):
 
 	def __init__(self):
 		super(dt_config, self).__init__()
-		self.is_valid = 0
+		self.is_valid = False
 		self.refresh_rate_Hz = 0
 		self.nr_sensitivity = 0
 		self.timing_budget_ms = 0
