@@ -19,7 +19,7 @@ class dt_config(object):
 			self.refresh_rate_Hz = int(msg_split[1])
 			self.nr_sensitivity = int(msg_split[2])
 			self.timing_budget_ms = int(msg_split[3])
-			self.tof_range_mm = int(msg_split[4])
+			self.tof_range_max_cm = int(msg_split[4])
 			self.use_led = int(msg_split[5])
 			self.op_mode = int(msg_split[6])
 			self.print_debug_info = int(msg_split[7])
@@ -42,7 +42,7 @@ class dt_config(object):
 		ret += "refresh_rate_Hz: " + str(self.refresh_rate_Hz) + '\n'
 		ret += "nr_sensitivity: " + str(self.nr_sensitivity) + '\n'
 		ret += "timing_budget_ms: " + str(self.timing_budget_ms) + '\n'
-		ret += "tof_range_mm: " + str(self.tof_range_mm) + '\n'
+		ret += "tof_range_max_cm: " + str(self.tof_range_max_cm) + '\n'
 		ret += "use_led: " + str(self.use_led) + '\n'
 		ret += "op_mode: " + str(self.op_mode) + '\n'
 		ret += "print_debug_info: " + str(self.print_debug_info) + '\n'
@@ -58,7 +58,8 @@ class dt_config(object):
 		self.refresh_rate_Hz = 0
 		self.nr_sensitivity = 0
 		self.timing_budget_ms = 0
-		self.tof_range_mm = 0
+		self.tof_range_max_cm = 0
+		self.tof_range_min_cm = 0
 		self.use_led = 0
 		self.op_mode = 0
 		self.print_debug_info = 0
