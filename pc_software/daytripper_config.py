@@ -1,6 +1,8 @@
 import os
 import time
 import copy
+import json
+import datetime
 import shutil
 import pathlib
 import dt_objs
@@ -16,7 +18,7 @@ import serial
 
 THIS_VERSION_NUMBER = '0.1.0'
 MAIN_WINDOW_WIDTH = 720
-MAIN_WINDOW_HEIGHT = 480
+MAIN_WINDOW_HEIGHT = 460
 PADDING = 10
 HEIGHT_CONNECT_LF = 50
 
@@ -384,6 +386,98 @@ debug_text = Label(debug_uart_lf, text=bin_to_text(daytripper_config.print_debug
 debug_info_button = Button(debug_uart_lf, text="What's this?", command=debug_popup)
 debug_reset_button = Button(debug_uart_lf, text="Reset to Default", command=debug_reset_click)
 
+backup_lf = LabelFrame(root, text="Backups", width=MAIN_WINDOW_WIDTH/2 - PADDING*2, height=HEIGHT_CONNECT_LF)
+updates_lf = LabelFrame(root, text="Updates", width=MAIN_WINDOW_WIDTH/2 - PADDING*2 + 5, height=HEIGHT_CONNECT_LF)
+updates_lf.place(x=365, y=400)
+update_str_label = Label(master=updates_lf, text="")
+update_str_label.place(x=PADDING, y=0)
+
+def current_time_str():
+    return str(datetime.datetime.now().isoformat(sep='T') + "Z ").replace('-', '').replace(':', '').split('.')[0]
+
+def dump_settings():
+    dump_dict = {}
+    dump_dict['is_valid'] = daytripper_config.is_valid
+    dump_dict['refresh_rate_Hz'] = daytripper_config.refresh_rate_Hz
+    dump_dict['nr_sensitivity'] = daytripper_config.nr_sensitivity
+    dump_dict['timing_budget_ms'] = daytripper_config.timing_budget_ms
+    dump_dict['tof_range_max_cm'] = daytripper_config.tof_range_max_cm
+    dump_dict['tof_range_min_cm'] = daytripper_config.tof_range_min_cm
+    dump_dict['use_led'] = daytripper_config.use_led
+    dump_dict['op_mode'] = daytripper_config.op_mode
+    dump_dict['print_debug_info'] = daytripper_config.print_debug_info
+    dump_dict['tx_wireless_addr'] = daytripper_config.tx_wireless_addr
+    dump_dict['hardware_id'] = daytripper_config.hardware_id
+    dump_dict['tof_model_id'] = daytripper_config.tof_model_id
+    dump_dict['daytripper_type'] = daytripper_config.daytripper_type
+    dump_dict['fw_version_major'] = daytripper_config.fw_version_major
+    dump_dict['fw_version_minor'] = daytripper_config.fw_version_minor
+    dump_dict['fw_version_patch'] = daytripper_config.fw_version_patch
+    dump_dict['created_at'] = int(time.time())
+    filename = filedialog.asksaveasfilename(initialfile='daytripper_settings_'+current_time_str(), defaultextension='.txt')
+    if len(filename) < 3:
+        return
+    try:
+        with open(filename,'w') as myfile:
+            myfile.write(json.dumps(dump_dict))
+    except Exception as e:
+        messagebox.showerror("Error", 'Save Failed:\n' + str(e))
+
+def load_settings():
+    filename = filedialog.askopenfilename()
+    if len(filename) < 3:
+        return
+    print(filename)
+
+    new_settings = {}
+    try:
+        with open(filename) as myfile:
+            new_settings = json.loads(myfile.read())
+    except Exception as e:
+        messagebox.showerror("Error", 'Save Failed:\n' + str(e))
+    if new_settings['is_valid'] is False:
+        return
+    daytripper_config.refresh_rate_Hz = new_settings['refresh_rate_Hz']
+    daytripper_config.nr_sensitivity = new_settings['nr_sensitivity']
+    daytripper_config.timing_budget_ms = new_settings['timing_budget_ms']
+    daytripper_config.tof_range_max_cm = new_settings['tof_range_max_cm']
+    daytripper_config.tof_range_min_cm = new_settings['tof_range_min_cm']
+    daytripper_config.use_led = new_settings['use_led']
+    daytripper_config.op_mode = new_settings['op_mode']
+    daytripper_config.print_debug_info = new_settings['print_debug_info']
+    daytripper_config.tx_wireless_addr = new_settings['tx_wireless_addr']
+
+    slider_adjust_refresh_rate(daytripper_config.refresh_rate_Hz)
+    refresh_rate_slider.set(daytripper_config.refresh_rate_Hz)
+
+    slider_adjust_sensitivity(daytripper_config.nr_sensitivity)
+    sensitivity_slider.set(daytripper_config.nr_sensitivity)
+
+    slider_adjust_timing_budget(daytripper_config.timing_budget_ms)
+    timing_budget_slider.set(daytripper_config.timing_budget_ms)
+
+    slider_adjust_range_max(daytripper_config.tof_range_max_cm)
+    range_max_slider.set(daytripper_config.tof_range_max_cm)
+
+    slider_adjust_range_min(daytripper_config.tof_range_min_cm)
+    range_min_slider.set(daytripper_config.tof_range_min_cm)
+
+    slider_adjust_led(daytripper_config.use_led)
+    led_slider.set(daytripper_config.use_led)
+
+    slider_adjust_opmode(daytripper_config.op_mode)
+    opmode_slider.set(daytripper_config.op_mode)
+
+    slider_adjust_debug(daytripper_config.print_debug_info)
+    debug_slider.set(daytripper_config.print_debug_info)
+
+    slider_adjust_wireless_addr(daytripper_config.tx_wireless_addr)
+    wireless_addr_slider.set(daytripper_config.tx_wireless_addr)
+
+
+dump_setting_button = Button(backup_lf, text="Export current settings...", command=dump_settings)
+load_setting_button = Button(backup_lf, text="Import settings...", command=load_settings)
+
 def enable_widgets():
     serial_apply_button.config(state=NORMAL)
     serial_reset_all_button.config(state=NORMAL)
@@ -475,8 +569,33 @@ def show_settings():
     debug_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
     debug_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
 
+    backup_lf.place(x=PADDING, y=400)
+
+    dump_setting_button.place(x=PADDING, y=0, width=180)
+    load_setting_button.place(x=200, y=0, width=130)
+
+# if check_update.has_update(THIS_VERSION_NUMBER):
+#     update_str_label.config(text='Update available!\nClick me', fg='white', bg='blue', cursor="hand2")
+#     update_str_label.bind("<Button-1>", update_click)
+
+def update_click(event):
+    webbrowser.open('https://github.com/dekuNukem/daytripper/releases')
+
+update_result = check_update.has_update(THIS_VERSION_NUMBER)
+if update_result == 0:
+    update_str_label.config(text='Already up-to-date')
+    update_str_label.place(x=100, y=0)
+elif update_result == 1:
+    update_str_label.config(text='Update available! Click me', fg='white', bg='blue', cursor="hand2")
+    update_str_label.bind("<Button-1>", update_click)
+    update_str_label.place(x=80, y=0)
+elif update_result == 2:
+    update_str_label.config(text='Update check failed. Click me to check manually.', fg='white', bg='blue', cursor="hand2")
+    update_str_label.bind("<Button-1>", update_click)
+    update_str_label.place(x=15, y=0)
+
 serial_dropdown_refresh()
-serial_connect()
+# serial_connect()
 
 def repeat_func():
     root.after(500, repeat_func)
