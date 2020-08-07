@@ -201,6 +201,7 @@ int main(void)
   // printf("initializing NRF...");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
+  tx_address[4] = daytripper_config.tx_wireless_channel;
   nrf24_tx_address(tx_address);
   nrf24_rx_address(rx_address);
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);

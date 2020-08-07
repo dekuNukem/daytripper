@@ -318,8 +318,9 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len)
 
 void dt_conf_load_default(dt_conf *dtc)
 {
-  dtc->refresh_rate_Hz = 6;
-  dtc->tof_range_mm = 0xff;
+  dtc->refresh_rate_Hz = 5;
+  dtc->tof_range_max_cm = 0xff;
+  dtc->tof_range_min_cm = 0x0;
   dtc->use_led = 1;
   dtc->nr_sensitivity = 1;
   dtc->tx_wireless_channel = 0x0c;
@@ -336,7 +337,7 @@ void dt_conf_load_default(dt_conf *dtc)
 
 uint8_t is_config_valid(uint8_t* arr)
 {
-  if(arr[0] == 0 || arr[1] > 2 || arr[2] < 10 || arr[4] > 1 || arr[5] > 1)
+  if(arr[0] == 0 || arr[1] > 2 || arr[2] < 10 || arr[5] > 1 || arr[6] > 1)
     return 0;
   return 1;
 }
@@ -355,16 +356,15 @@ void dt_conf_load(dt_conf *dtc)
     puts(eep_invalid);
     return;
   }
-  
   dtc->refresh_rate_Hz = eeprom_buf[0];
   dtc->nr_sensitivity = eeprom_buf[1];
   dtc->tof_timing_budget_ms = eeprom_buf[2];
-  dtc->tof_range_mm = eeprom_buf[3];
-  dtc->use_led = eeprom_buf[4];
-  dtc->op_mode = eeprom_buf[5];
-  dtc->print_debug_info = eeprom_buf[6];
-  dtc->tx_wireless_channel = eeprom_buf[7];
-
+  dtc->tof_range_max_cm = eeprom_buf[3];
+  dtc->tof_range_min_cm = eeprom_buf[4];
+  dtc->use_led = eeprom_buf[5];
+  dtc->op_mode = eeprom_buf[6];
+  dtc->print_debug_info = eeprom_buf[7];
+  dtc->tx_wireless_channel = eeprom_buf[8];
   dtc->hardware_id = get_uuid();
   dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
   if(dtc->rtc_sleep_duration_ms < 0)
@@ -377,7 +377,8 @@ void dt_conf_print(dt_conf *dtc)
   printf("refresh_rate_Hz: %d\n", dtc->refresh_rate_Hz);
   printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("tof_range_mm: %d\n", dtc->tof_range_mm);
+  printf("tof_range_max_cm: %d\n", dtc->tof_range_max_cm);
+  printf("tof_range_min_cm: %d\n", dtc->tof_range_min_cm);
   printf("use_led: %d\n", dtc->use_led);
   printf("op_mode: %d\n", dtc->op_mode);
   printf("print_debug_info: %d\n", dtc->print_debug_info);
@@ -405,7 +406,7 @@ char* goto_next_arg(char* buf)
   return curr;
 }
 
-#define CONFIG_ITEM_COUNT 8
+#define CONFIG_ITEM_COUNT 9
 
 void save_config(char* cmd)
 {
@@ -446,6 +447,7 @@ void save_config(char* cmd)
     return;
   }
   printf("OK\n");
+  dt_conf_load(&daytripper_config);
 }
 
 void parse_cmd(char* cmd)
@@ -456,12 +458,13 @@ void parse_cmd(char* cmd)
   if(strcmp(cmd, "show") == 0)
   {
     memset(temp_buf, 0, TEMP_BUF_SIZE);
-    sprintf(temp_buf, "dt_tx: %d %d %d %d %d %d %d %d %d %d %d %d %d",
+    sprintf(temp_buf, "dt_tx: %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
         daytripper_config.refresh_rate_Hz,
         daytripper_config.nr_sensitivity,
         daytripper_config.tof_timing_budget_ms,
-        daytripper_config.tof_range_mm,
-        daytripper_config.use_led ,
+        daytripper_config.tof_range_max_cm,
+        daytripper_config.tof_range_min_cm,
+        daytripper_config.use_led,
         daytripper_config.op_mode,
         daytripper_config.print_debug_info,
         daytripper_config.tx_wireless_channel,

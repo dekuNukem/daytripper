@@ -35,15 +35,16 @@ typedef struct
   // 2
   uint8_t tof_timing_budget_ms; // timing budget in ms
   // 3
-  uint8_t tof_range_mm; // value * 2 = true range
-
+  uint8_t tof_range_max_cm; // value * 2 = true range
   // 4
-  uint8_t use_led;  // 1 turn on LED when triggered, 0 not
+  uint8_t tof_range_min_cm; // value * 2 = true range
   // 5
-  uint8_t op_mode; // 0 normal, 1 continuous
+  uint8_t use_led;  // 1 turn on LED when triggered, 0 not
   // 6
-  uint8_t print_debug_info;
+  uint8_t op_mode; // 0 normal, 1 continuous
   // 7
+  uint8_t print_debug_info;
+  // 8
   uint8_t tx_wireless_channel; // last byte of wireless channel number
   
   uint8_t hardware_id;
