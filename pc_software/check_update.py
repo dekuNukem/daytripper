@@ -30,4 +30,4 @@ def has_update(this_version):
 		return 2
 	return 0
 
-print(has_update('0.0.9'))
+# print(has_update('0.0.9'))

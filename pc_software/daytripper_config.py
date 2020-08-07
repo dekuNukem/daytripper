@@ -113,7 +113,7 @@ def serial_connect():
     if not daytripper_config.load_config(result[0]):
         messagebox.showerror("Error", 'error parsing data')
         return
-    print(daytripper_config)
+    # print(daytripper_config)
     hwif_label_stringvar.set(make_info_string())
     enable_widgets()
     show_settings()
@@ -149,7 +149,7 @@ def make_serial_command(dt_obj):
 def serial_apply_changes():
     validate_dt_obj(daytripper_config)
     ser_command = make_serial_command(daytripper_config)
-    print(ser_command)
+    # print(ser_command)
     try:
         ser.open()
         ser.write(ser_command.encode('utf-8'))
@@ -427,8 +427,7 @@ def load_settings():
     filename = filedialog.askopenfilename()
     if len(filename) < 3:
         return
-    print(filename)
-
+    # print(filename)
     new_settings = {}
     try:
         with open(filename) as myfile:
