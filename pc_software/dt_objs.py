@@ -23,7 +23,7 @@ class dt_config(object):
 			self.use_led = int(msg_split[5])
 			self.op_mode = int(msg_split[6])
 			self.print_debug_info = int(msg_split[7])
-			self.tx_wireless_channel = int(msg_split[8])
+			self.tx_wireless_addr = int(msg_split[8])
 			self.hardware_id = int(msg_split[9])
 			self.tof_model_id = int(msg_split[10])
 			self.fw_version_major = int(msg_split[11])
@@ -46,7 +46,7 @@ class dt_config(object):
 		ret += "use_led: " + str(self.use_led) + '\n'
 		ret += "op_mode: " + str(self.op_mode) + '\n'
 		ret += "print_debug_info: " + str(self.print_debug_info) + '\n'
-		ret += "tx_wireless_channel: " + str(self.tx_wireless_channel) + '\n'
+		ret += "tx_wireless_addr: " + str(self.tx_wireless_addr) + '\n'
 		ret += "hardware_id: " + str(self.hardware_id) + '\n'
 		ret += "tof_model_id: " + str(self.tof_model_id) + '\n'
 		ret += "fw_version: " + str(self.fw_version_major) + '.' + str(self.fw_version_minor) + '.' + str(self.fw_version_patch)
@@ -63,7 +63,7 @@ class dt_config(object):
 		self.use_led = 0
 		self.op_mode = 0
 		self.print_debug_info = 0
-		self.tx_wireless_channel = 0
+		self.tx_wireless_addr = 0
 		self.hardware_id = 0
 		self.tof_model_id = 0
 		self.daytripper_type = 0

@@ -99,18 +99,20 @@ def serial_connect():
         ser.open()
         ser.write("show\n".encode('utf-8'))
         time.sleep(0.1)
-        result = ser.readline().decode('utf-8')
+        result = ser.readlines()
         ser.close()
     except Exception as e:
         messagebox.showerror("Error", 'Serial port exception:\n' + str(e))
         return
-    if not result.startswith('dt_'):
-        messagebox.showerror("Error", 'No valid responce received.\nMake sure the board is turned OFF before plugging in.')
+    result = [x.decode('utf-8') for x in result]
+    result = [x for x in result if x.startswith('dt_')]
+    if len(result) <= 0:
+        messagebox.showerror("Error", 'No valid response received.\nMake sure the board is turned OFF before plugging in.')
         return
-    if not daytripper_config.load_config(result):
+    if not daytripper_config.load_config(result[0]):
         messagebox.showerror("Error", 'error parsing data')
         return
-    # print(daytripper_config)
+    print(daytripper_config)
     hwif_label_stringvar.set(make_info_string())
     enable_widgets()
     show_settings()
@@ -123,6 +125,10 @@ def serial_reset_all():
     range_reset_click()
     refresh_rate_reset_click()
     timing_budget_reset_click()
+    led_reset_click()
+    wireless_addr_reset_click()
+    opmode_reset_click()
+    debug_reset_click()
 
 user_guide_button = Button(connection_lf, text="User Guide...", command=open_user_manual_url)
 user_guide_button.place(x=PADDING, y=0, width=100)
@@ -146,11 +152,27 @@ refresh_rate_lf = LabelFrame(settings_lf, text="Refresh Rate", width=cube_witch,
 refresh_rate_slider_text = Label(refresh_rate_lf, text=str(daytripper_config.refresh_rate_Hz)+'Hz')
 
 def nrs_value_to_text(value):
-    nrs_mapping = ['Off', 'Balanced', 'Low-noise']
+    nrs_mapping = ['Off', 'Balanced', 'High']
     try:
         return nrs_mapping[int(value)]
     except Exception as e:
-        print(nrs_value_to_text, e)
+        print('nrs_value_to_text', e)
+        return 'Unknown'
+
+def bin_to_text(value):
+    bin_mapping = ['Off', 'On']
+    try:
+        return bin_mapping[int(value)]
+    except Exception as e:
+        print('bin_to_text', e)
+        return 'Unknown'
+
+def opmode_to_text(value):
+    bin_mapping = ['One-shot Trigger', 'Continuous']
+    try:
+        return bin_mapping[int(value)]
+    except Exception as e:
+        print('opmode_to_text', e)
         return 'Unknown'
 
 def cm_to_feet_inch(height_cm):
@@ -160,52 +182,96 @@ def cm_to_feet_inch(height_cm):
     inches = height_in % 12
     return str(height_cm)+'cm ('+str(int(feet))+'ft '+str(int(inches))+'in)'
 
-def print_selection_refresh_rate(value):
+def slider_adjust_refresh_rate(value):
     refresh_rate_slider_text.config(text=str(value)+'Hz')
     daytripper_config.refresh_rate_Hz = int(value)
 
-def print_selection_timing_budget(value):
+def slider_adjust_timing_budget(value):
     timing_budget_slider_text.config(text=str(value)+'ms')
     daytripper_config.timing_budget_ms = int(value)
 
-def print_selection_sensitivity(value):
+def slider_adjust_sensitivity(value):
     sensitivity_slider_text.config(text=nrs_value_to_text(value))
     daytripper_config.nr_sensitivity = int(value)
 
-def print_selection_range_max(value):
+def slider_adjust_range_max(value):
     range_max_text.config(text='To: ' + cm_to_feet_inch(value))
     daytripper_config.tof_range_max_cm = int(value)
 
-def print_selection_range_min(value):
+def slider_adjust_range_min(value):
     range_min_text.config(text='From: ' + cm_to_feet_inch(value))
     daytripper_config.tof_range_min_cm = int(value)
+
+def slider_adjust_led(value):
+    led_text.config(text=bin_to_text(value))
+    daytripper_config.use_led = int(value)
+
+def slider_adjust_wireless_addr(value):
+    wireless_addr_text.config(text=str(value))
+    daytripper_config.tx_wireless_addr = int(value)
+
+def slider_adjust_opmode(value):
+    opmode_text.config(text=opmode_to_text(value))
+    daytripper_config.op_mode = int(value)
+
+def slider_adjust_debug(value):
+    debug_text.config(text=bin_to_text(value))
+    daytripper_config.print_debug_info = int(value)
 
 def refresh_rate_info_popup():
     messagebox.showinfo("Information", 'How many times per second the laser distance sensor takes a reading.\n\nA higher refresh rate makes TX more sensitive to faster movements. However, it will also drain the battery quicker.')
 
 def refresh_rate_reset_click():
     refresh_rate_slider.set(5)
-    print_selection_refresh_rate(5)
+    slider_adjust_refresh_rate(5)
 
 def sensitivity_info_popup():
-    messagebox.showinfo("Information", 'NR reduces potential false triggers by taking additional measurements.\n\nTurning it off will noticeably improve motion sensitivity. However, false triggers might occur occasionally, especially in brighter conditions.')
+    messagebox.showinfo("Information", 'NR prevents potential false triggers by taking additional measurements.\n\nTurning it off will noticeably improve motion sensitivity. However, false triggers might occur occasionally, especially in bright conditions.')
 
 def sensitivity_reset_click():
     sensitivity_slider.set(1)
-    print_selection_sensitivity(1)
+    slider_adjust_sensitivity(1)
 
 def timing_budget_info_popup():
     messagebox.showinfo("Information", 'Time allocated for the sensor to get a single reading.\n\nA higher value will result in more accurate measurements, but also more battery drain and slower refresh rate.')
 
 def timing_budget_reset_click():
     timing_budget_slider.set(25)
-    print_selection_timing_budget(25)
+    slider_adjust_timing_budget(25)
+
+def led_info_popup():
+    messagebox.showinfo("Information", 'Whether to illuminate the LED when triggered.\n\nDisabling the LED might make TX less noticeable.')
+
+def led_reset_click():
+    led_slider.set(1)
+    slider_adjust_led(1)
 
 def range_reset_click():
     range_max_slider.set(get_max_range_cm())
     range_min_slider.set(0)
-    print_selection_range_max(get_max_range_cm())
-    print_selection_range_min(0)
+    slider_adjust_range_max(get_max_range_cm())
+    slider_adjust_range_min(0)
+
+def wireless_addr_reset_click():
+    slider_adjust_wireless_addr(12)
+    wireless_addr_slider.set(12)
+
+def wireless_addr_info_popup():
+    messagebox.showinfo("Information", 'Wireless address that this device operates on.\n\nA TX/RX pair on the same address will work together.\n\nIf you have multiple Daytrippers, you can put them on different addresses so they will work independently, or you can put them all on the same address, and they will work together.')
+
+def opmode_reset_click():
+    slider_adjust_opmode(0)
+    opmode_slider.set(0)
+
+def opmode_info_popup():
+    messagebox.showinfo("Information", 'One-shot trigger: Default mode, TX only talks to RX when triggered.\n\nContinuous mode: TX talks to RX on every measurement, suitable for streaming live data. High battery drain.')
+
+def debug_reset_click():
+    slider_adjust_debug(0)
+    debug_slider.set(0)
+
+def debug_popup():
+    messagebox.showinfo("Information", 'Whether to print debug texts through hardware UART.\n\nTurning it off might save a tiny bit of battery life. Doesn\'t really matter to be honest.')
 
 refresh_rate_slider = Scale(refresh_rate_lf)
 nr_sensitivity_lf = LabelFrame(settings_lf, text="Noise Reduction", width=cube_witch, height=cube_height)
@@ -234,11 +300,46 @@ range_max_text = Label(tof_range_lf, text='To: ' + cm_to_feet_inch(daytripper_co
 range_reset_button = Button(tof_range_lf, text="Reset to Default", command=range_reset_click)
 
 led_lf = LabelFrame(settings_lf, text="LED Indicator", width=cube_witch, height=cube_height)
-nrf_address_lf = LabelFrame(settings_lf, text="Wireless Address", width=cube_witch, height=cube_height)
+wireless_address_lf = LabelFrame(settings_lf, text="Wireless Address", width=cube_witch, height=cube_height)
 opmode_lf = LabelFrame(settings_lf, text="Operation Mode", width=cube_witch, height=cube_height)
-debug_uart_lf = LabelFrame(settings_lf, text="Debug Messages", width=cube_witch, height=cube_height)
+debug_uart_lf = LabelFrame(settings_lf, text="Print Debug Info", width=cube_witch, height=cube_height)
+
+led_slider = Scale(led_lf)
+led_text = Label(led_lf, text=bin_to_text(daytripper_config.use_led))
+led_info_button = Button(led_lf, text="What's this?", command=led_info_popup)
+led_reset_button = Button(led_lf, text="Reset to Default", command=led_reset_click)
+
+wireless_addr_slider = Scale(wireless_address_lf)
+wireless_addr_text = Label(wireless_address_lf, text=str(daytripper_config.tx_wireless_addr))
+wireless_addr_info_button = Button(wireless_address_lf, text="What's this?", command=wireless_addr_info_popup)
+wireless_addr_reset_button = Button(wireless_address_lf, text="Reset to Default", command=wireless_addr_reset_click)
+
+def wireless_addr_plus_click():
+    if wireless_addr_slider.get() >= 255:
+        return
+    slider_adjust_wireless_addr(wireless_addr_slider.get()+1)
+    wireless_addr_slider.set(wireless_addr_slider.get()+1)
+
+def wireless_addr_minus_click():
+    if wireless_addr_slider.get() <= 0:
+        return
+    slider_adjust_wireless_addr(wireless_addr_slider.get()-1)
+    wireless_addr_slider.set(wireless_addr_slider.get()-1)
+
+wireless_addr_plus_button = Button(wireless_address_lf, text="+", command=wireless_addr_plus_click)
+wireless_addr_minus_button = Button(wireless_address_lf, text="-", command=wireless_addr_minus_click)
 
 # debug mode, op mode, charge behavior, 
+
+opmode_slider = Scale(opmode_lf)
+opmode_text = Label(opmode_lf, text=opmode_to_text(daytripper_config.op_mode))
+opmode_info_button = Button(opmode_lf, text="What's this?", command=opmode_info_popup)
+opmode_reset_button = Button(opmode_lf, text="Reset to Default", command=opmode_reset_click)
+
+debug_slider = Scale(debug_uart_lf)
+debug_text = Label(debug_uart_lf, text=bin_to_text(daytripper_config.print_debug_info))
+debug_info_button = Button(debug_uart_lf, text="What's this?", command=debug_popup)
+debug_reset_button = Button(debug_uart_lf, text="Reset to Default", command=debug_reset_click)
 
 def enable_widgets():
     serial_apply_button.config(state=NORMAL)
@@ -260,12 +361,11 @@ def show_settings():
     root.update()
 
     led_lf.place(x=PADDING, y=refresh_rate_lf.winfo_height() + 5)
-    nrf_address_lf.place(x=refresh_rate_lf.winfo_x() + refresh_rate_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
+    wireless_address_lf.place(x=refresh_rate_lf.winfo_x() + refresh_rate_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
     opmode_lf.place(x=nr_sensitivity_lf.winfo_x() + nr_sensitivity_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
     debug_uart_lf.place(x=tof_timing_budget_lf.winfo_x() + tof_timing_budget_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
 
-
-    refresh_rate_slider.config(from_=1, to=30, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection_refresh_rate)
+    refresh_rate_slider.config(from_=1, to=30, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_refresh_rate)
     refresh_rate_slider.set(daytripper_config.refresh_rate_Hz)
     refresh_rate_slider.place(x=PADDING, y=PADDING)
     root.update()
@@ -274,7 +374,7 @@ def show_settings():
 
     refresh_rate_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
     refresh_rate_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
-    sensitivity_slider.config(from_=0, to=2, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection_sensitivity)
+    sensitivity_slider.config(from_=0, to=2, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_sensitivity)
     sensitivity_slider.set(daytripper_config.nr_sensitivity)
     sensitivity_slider.place(x=PADDING, y=PADDING)
     sensitivity_slider_text.place(x=nr_sensitivity_lf.winfo_width() / 3.5, y=30)
@@ -282,7 +382,7 @@ def show_settings():
     sensitivity_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
     sensitivity_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
 
-    timing_budget_slider.config(from_=20, to=200, length=tof_timing_budget_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection_timing_budget)
+    timing_budget_slider.config(from_=20, to=100, length=tof_timing_budget_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_timing_budget)
     timing_budget_slider.set(daytripper_config.timing_budget_ms)
     timing_budget_slider.place(x=PADDING, y=PADDING)
     timing_budget_slider_text.place(x=tof_timing_budget_lf.winfo_width() / 3.2, y=30)
@@ -290,17 +390,47 @@ def show_settings():
     timing_budget_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
     timing_budget_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
 
-    range_min_slider.config(from_=0, to=get_max_range_cm(), length=tof_range_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection_range_min)
+    range_min_slider.config(from_=0, to=get_max_range_cm(), length=tof_range_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_range_min)
     range_min_slider.set(daytripper_config.tof_range_min_cm)
     range_min_slider.place(x=PADDING, y=20)
 
-    range_max_slider.config(from_=0, to=get_max_range_cm(), length=tof_range_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=print_selection_range_max)
+    range_max_slider.config(from_=0, to=get_max_range_cm(), length=tof_range_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_range_max)
     range_max_slider.set(daytripper_config.tof_range_max_cm)
     range_max_slider.place(x=PADDING, y=60)
 
     range_min_text.place(x=5, y=-4)
     range_max_text.place(x=5, y=37)
     range_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
+
+    led_slider.config(from_=0, to=1, length=led_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_led)
+    led_slider.set(daytripper_config.use_led)
+    led_slider.place(x=PADDING, y=PADDING)
+    led_text.place(x=led_lf.winfo_width() / 2.5, y=30)
+    led_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
+    led_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
+
+    wireless_addr_slider.config(from_=0, to=255, length=led_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_wireless_addr)
+    wireless_addr_slider.set(daytripper_config.tx_wireless_addr)
+    wireless_addr_slider.place(x=PADDING, y=PADDING)
+    wireless_addr_text.place(x=65, y=30)
+    wireless_addr_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
+    wireless_addr_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
+    wireless_addr_plus_button.place(x=100, y=30, width=30)
+    wireless_addr_minus_button.place(x=30, y=30, width=30)
+
+    opmode_slider.config(from_=0, to=1, length=led_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_opmode)
+    opmode_slider.set(daytripper_config.op_mode)
+    opmode_slider.place(x=PADDING, y=PADDING)
+    opmode_text.place(x=20, y=30)
+    opmode_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
+    opmode_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
+
+    debug_slider.config(from_=0, to=1, length=led_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_debug)
+    debug_slider.set(daytripper_config.print_debug_info)
+    debug_slider.place(x=PADDING, y=PADDING)
+    debug_text.place(x=led_lf.winfo_width() / 2.5, y=30)
+    debug_reset_button.place(x=PADDING, y=82, width=cube_witch * 0.85)
+    debug_info_button.place(x=PADDING, y=55, width=cube_witch * 0.85)
 
 serial_dropdown_refresh()
 serial_connect()
