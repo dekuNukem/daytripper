@@ -98,7 +98,6 @@ def serial_connect():
     try:
         ser.open()
         ser.write("show\n".encode('utf-8'))
-        time.sleep(0.1)
         result = ser.readlines()
         ser.close()
     except Exception as e:
@@ -117,8 +116,52 @@ def serial_connect():
     enable_widgets()
     show_settings()
 
+def validate_dt_obj(dt_obj):
+    if dt_obj.is_valid is False:
+        messagebox.showerror("Error", 'Invalid configuration')
+        return False
+    if dt_obj.tof_range_min_cm > dt_obj.tof_range_max_cm:
+        min_temp = dt_obj.tof_range_min_cm;
+        slider_adjust_range_min(dt_obj.tof_range_max_cm);
+        range_min_slider.set(dt_obj.tof_range_max_cm)
+        slider_adjust_range_max(min_temp);
+        range_max_slider.set(min_temp)
+    if dt_obj.tof_range_max_cm - dt_obj.tof_range_min_cm < 30:
+        messagebox.showinfo("Info", 'Detection range is very narrow, are you sure?')
+    return True
+
+def make_serial_command(dt_obj):
+    result = 'save'
+    result += ' ' + str(int(dt_obj.refresh_rate_Hz))
+    result += ' ' + str(int(dt_obj.nr_sensitivity))
+    result += ' ' + str(int(dt_obj.timing_budget_ms))
+    result += ' ' + str(int(dt_obj.tof_range_max_cm/2))
+    result += ' ' + str(int(dt_obj.tof_range_min_cm/2))
+    result += ' ' + str(int(dt_obj.use_led))
+    result += ' ' + str(int(dt_obj.op_mode))
+    result += ' ' + str(int(dt_obj.print_debug_info))
+    result += ' ' + str(int(dt_obj.tx_wireless_addr))
+    result += '\n'
+    return result
+
 def serial_apply_changes():
-    pass
+    validate_dt_obj(daytripper_config)
+    ser_command = make_serial_command(daytripper_config)
+    print(ser_command)
+    try:
+        ser.open()
+        ser.write(ser_command.encode('utf-8'))
+        result = ser.readlines()
+        ser.close()
+    except Exception as e:
+        messagebox.showerror("Error", 'Serial port exception:\n' + str(e))
+        return
+    result = [x.decode('utf-8') for x in result]
+    result = [x for x in result if x.startswith('OK')]
+    if len(result) <= 0:
+        messagebox.showerror("Error", 'No valid response received.\nMake sure the board is turned OFF before plugging in.')
+        return
+    messagebox.showinfo("Info", 'Settings successfully saved!\n\nFor them to take effect, unplug and turn it off then on again.')
 
 def serial_reset_all():
     sensitivity_reset_click()

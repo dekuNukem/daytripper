@@ -19,8 +19,8 @@ class dt_config(object):
 			self.refresh_rate_Hz = int(msg_split[1])
 			self.nr_sensitivity = int(msg_split[2])
 			self.timing_budget_ms = int(msg_split[3])
-			self.tof_range_max_cm = int(msg_split[4])
-			self.tof_range_min_cm = int(msg_split[5])
+			self.tof_range_max_cm = int(msg_split[4])*2
+			self.tof_range_min_cm = int(msg_split[5])*2
 			self.use_led = int(msg_split[6])
 			self.op_mode = int(msg_split[7])
 			self.print_debug_info = int(msg_split[8])
