@@ -835,6 +835,7 @@ void align_timing(void)
   writeReg(SYSTEM_INTERRUPT_CLEAR, 0x01);
   while((readReg(RESULT_INTERRUPT_STATUS) & 0x07) == 0)
     ;
+  HAL_Delay(7);
   // rtc_sleep(&hrtc, 10)
 }
 
@@ -845,7 +846,8 @@ uint16_t readRangeContinuousMillimeters(void)
 {
   // assumptions: Linearity Corrective Gain is 1000 (default);
   // fractional ranging is not enabled
-  align_timing();
+  while((readReg(RESULT_INTERRUPT_STATUS) & 0x07) == 0)
+    ;
   uint16_t range = readReg16Bit(RESULT_RANGE_STATUS + 10);
   writeReg(SYSTEM_INTERRUPT_CLEAR, 0x01);
   return range;

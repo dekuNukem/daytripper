@@ -3606,18 +3606,18 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>../Src/main.c</Name>
-        <ColumnNumber>22</ColumnNumber>
+        <ColumnNumber>0</ColumnNumber>
         <TopLine>194</TopLine>
-        <CurrentLine>225</CurrentLine>
+        <CurrentLine>226</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\Src\helpers.c</Name>
-        <ColumnNumber>32</ColumnNumber>
+        <ColumnNumber>44</ColumnNumber>
         <TopLine>352</TopLine>
-        <CurrentLine>381</CurrentLine>
+        <CurrentLine>370</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

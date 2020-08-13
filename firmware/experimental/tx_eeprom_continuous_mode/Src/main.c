@@ -143,6 +143,7 @@ void start_measurement(void)
     startContinuous(1);
   else
     startContinuous(1000/daytripper_config.refresh_rate_Hz);
+  align_timing();
 }
 
 /* USER CODE END 0 */
@@ -192,9 +193,9 @@ int main(void)
   dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
-  // daytripper_config.tof_timing_budget_ms = 25;
-  // daytripper_config.refresh_rate_Hz = 5;
-  // daytripper_config.nr_sensitivity = 1;
+  daytripper_config.tof_timing_budget_ms = 25;
+  daytripper_config.refresh_rate_Hz = 10;
+  daytripper_config.nr_sensitivity = 2;
   // daytripper_config.print_debug_info = 0;
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
@@ -303,6 +304,7 @@ int main(void)
     {
       start_animation(ANIMATION_TYPE_CONST_OFF);
       current_state = STATE_IDLE;
+      align_timing();
     }
 
     sleep:
@@ -324,7 +326,7 @@ int main(void)
     if(vbat_mV < CHARGING_VOLTAGE_THRESHOLD_MV) // only sleep while on battery, when charging go full speed
       rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz - 3);
     else
-      run_time_update(40); // if charging, dont sleep, but still update the time count
+      run_time_update(24); // if charging, dont sleep, but still update the time count
   }
   /* USER CODE END 3 */
 
