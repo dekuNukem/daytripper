@@ -760,6 +760,29 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 </library>
+<library name="testpad" urn="urn:adsk.eagle:library:385">
+<description>&lt;b&gt;Test Pins/Pads&lt;/b&gt;&lt;p&gt;
+Cream on SMD OFF.&lt;br&gt;
+new: Attribute TP_SIGNAL_NAME&lt;br&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="TP10R" urn="urn:adsk.eagle:footprint:27916/1" library_version="3">
+<description>&lt;b&gt;TEST PAD&lt;/b&gt;</description>
+<smd name="TP" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
+<text x="-0.5001" y="0.5499" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.381" y="-0.508" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="0" y="-1.905" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="TP10R" urn="urn:adsk.eagle:package:27959/1" type="box" library_version="3">
+<description>TEST PAD</description>
+<packageinstances>
+<packageinstance name="TP10R"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1098,11 +1121,14 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="U$13" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="2.5" y="27" smashed="yes"/>
 <element name="U$14" library="3pos_slide_switch" package="M2_SCREW_FOOT" value="M2_SCREW_DEV" x="25.5" y="27" smashed="yes"/>
 <element name="R14" library="joyAnalog" package="0805" value="1 Ohm" x="23.9014" y="20.4216" smashed="yes" rot="R180">
-<attribute name="NAME" x="25.2857" y="17.7292" size="0.8128" layer="25" rot="R90"/>
-<attribute name="VALUE" x="24.9174" y="21.8186" size="0.4064" layer="27" rot="R180"/>
-<attribute name="VALUE" x="24.9174" y="21.8186" size="0.4064" layer="27" rot="R180"/>
+<attribute name="NAME" x="24.511" y="22.9997" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="U2" library="my_usbc_16p" package="USBC_16P_FOOT" value="USBC_16P" x="14" y="3.8481" smashed="yes"/>
+<element name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="TP10R" package3d_urn="urn:adsk.eagle:package:27959/1" value="TPTP10R" x="12.3952" y="15.0114" smashed="yes" rot="MR0">
+<attribute name="POPULARITY" value="3" x="12.3952" y="15.0114" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="12.3952" y="15.0114" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="VALUE" x="12.7762" y="14.5034" size="0.0254" layer="28" rot="MR0"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -1889,13 +1915,16 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <via x="11.43" y="15.9766" extent="1-16" drill="0.381"/>
 <wire x1="11.43" y1="14.8082" x2="11.43" y2="15.9766" width="0.1524" layer="16"/>
 <wire x1="21.4884" y1="12.9032" x2="13.335" y2="12.9032" width="0.1524" layer="16"/>
-<wire x1="13.335" y1="12.9032" x2="11.43" y2="14.8082" width="0.1524" layer="16"/>
+<wire x1="13.335" y1="12.9032" x2="11.811" y2="14.4272" width="0.1524" layer="16"/>
+<wire x1="11.811" y1="14.4272" x2="11.43" y2="14.8082" width="0.1524" layer="16"/>
 <wire x1="14.8" y1="14.6" x2="14.8" y2="15.045" width="0.1524" layer="1"/>
 <wire x1="14.478" y1="15.367" x2="14.8" y2="15.045" width="0.1524" layer="1"/>
 <wire x1="11.43" y1="15.9766" x2="11.811" y2="15.5956" width="0.1524" layer="1"/>
 <wire x1="11.811" y1="15.5956" x2="13.2588" y2="15.5956" width="0.1524" layer="1"/>
 <wire x1="13.2588" y1="15.5956" x2="13.4874" y2="15.367" width="0.1524" layer="1"/>
 <wire x1="13.4874" y1="15.367" x2="14.478" y2="15.367" width="0.1524" layer="1"/>
+<contactref element="TP2" pad="TP"/>
+<wire x1="12.3952" y1="15.0114" x2="11.811" y2="14.4272" width="0.1524" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
@@ -1916,6 +1945,16 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <approved hash="6,1,7dc1c1ff3dfa81c4"/>
 <approved hash="4,1,01f7a0d2b7e338a0"/>
 <approved hash="4,16,01f7a0d2b7e338a0"/>
+<approved hash="4,1,61b5209a4d36a679"/>
+<approved hash="4,1,55f82b794d289266"/>
+<approved hash="19,1,7793a4a1b2dd3271"/>
+<approved hash="19,1,b0045fa6f164b595"/>
+<approved hash="19,1,b41505e6880b2713"/>
+<approved hash="19,1,f29db6f0e6b647bc"/>
+<approved hash="19,1,31878dce69a5dbc2"/>
+<approved hash="6,1,331e13341fb83f92"/>
+<approved hash="6,1,698f66372c667f49"/>
+<approved hash="6,1,69c42c109a74b650"/>
 </errors>
 </board>
 </drawing>
@@ -1923,6 +1962,21 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <note version="6.3" minversion="6.2.2" severity="warning">
 Since Version 6.2.2 text objects can contain more than one line,
 which will not be processed correctly with this version.
+</note>
+<note version="8.2" severity="warning">
+Since Version 8.2, EAGLE supports online libraries. The ids
+of those online libraries will not be understood (or retained)
+with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports URNs for individual library
+assets (packages, symbols, and devices). The URNs of those assets
+will not be understood (or retained) with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports the association of 3D packages
+with devices in libraries, schematics, and board files. Those 3D
+packages will not be understood (or retained) with this version.
 </note>
 </compatibility>
 </eagle>
