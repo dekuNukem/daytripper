@@ -183,9 +183,9 @@ int main(void)
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
   daytripper_config.tof_timing_budget_ms = 25;
-  daytripper_config.refresh_rate_Hz = 5;
-  daytripper_config.nr_sensitivity = 1;
-  daytripper_config.print_debug_info = 0;
+  daytripper_config.refresh_rate_Hz = 6;
+  daytripper_config.nr_sensitivity = 0;
+  daytripper_config.print_debug_info = 1;
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);

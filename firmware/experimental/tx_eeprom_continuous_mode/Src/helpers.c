@@ -171,6 +171,7 @@ void check_battery(uint16_t* vbat_mV)
     start_animation(ANIMATION_TYPE_CONST_OFF);
 
     // turn off external chips
+    stopContinuous();
     nrf24_powerDown();
     HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
@@ -340,9 +341,6 @@ void dt_conf_load_default(dt_conf *dtc)
   dtc->print_debug_info = 1;
 
   dtc->hardware_id = get_uuid();
-  dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
-  if(dtc->rtc_sleep_duration_ms < 0)
-    dtc->rtc_sleep_duration_ms = 0;
   dtc->tof_model_id = get_tof_model_id();
 }
 
@@ -377,9 +375,6 @@ void dt_conf_load(dt_conf *dtc)
   dtc->print_debug_info = eeprom_buf[7];
   dtc->tx_wireless_channel = eeprom_buf[8];
   dtc->hardware_id = get_uuid();
-  dtc->rtc_sleep_duration_ms = (1000/dtc->refresh_rate_Hz) - dtc->tof_timing_budget_ms - 2;
-  if(dtc->rtc_sleep_duration_ms < 0)
-    dtc->rtc_sleep_duration_ms = 0;
   dtc->tof_model_id = get_tof_model_id();
 }
 
@@ -395,7 +390,6 @@ void dt_conf_print(dt_conf *dtc)
   printf("print_debug_info: %d\n", dtc->print_debug_info);
   printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
   printf("hardware_id: 0x%x\n", dtc->hardware_id);
-  printf("rtc_sleep_duration_ms: %d\n", dtc->rtc_sleep_duration_ms);
   printf("tof_model_id: %d\n", dtc->tof_model_id);
   printf("fw_version: %d.%d.%d\n", fw_version_major, fw_version_minor, fw_version_patch);
 }

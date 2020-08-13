@@ -48,7 +48,6 @@ typedef struct
   uint8_t tx_wireless_channel; // last byte of wireless channel number
   
   uint8_t hardware_id;
-  int16_t rtc_sleep_duration_ms;
   uint8_t tof_model_id;
 } dt_conf;
 
