@@ -35,9 +35,9 @@ typedef struct
   // 2
   uint8_t tof_timing_budget_ms; // timing budget in ms
   // 3
-  uint8_t tof_range_max_cm; // value * 2 = true range
+  uint8_t tof_range_max_cm_div2; // value * 2 = true range
   // 4
-  uint8_t tof_range_min_cm; // value * 2 = true range
+  uint8_t tof_range_min_cm_div2; // value * 2 = true range
   // 5
   uint8_t use_led;  // 1 turn on LED when triggered, 0 not
   // 6

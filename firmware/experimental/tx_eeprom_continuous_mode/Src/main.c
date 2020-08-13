@@ -65,6 +65,8 @@
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
 
+#define CHARGING_VOLTAGE_THRESHOLD_MV 4300
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -95,8 +97,8 @@ uint8_t button_result;
 uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
 uint16_t vbat_mV;
+uint16_t vbat_mV_prev;
 uint16_t power_on_time_5s;
-uint16_t tof_sleep_ms;
 
 /* USER CODE END PV */
 
@@ -133,6 +135,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim->Instance == TIM17)
     animation_update();
+}
+
+void start_measurement(void)
+{
+  if(vbat_mV > CHARGING_VOLTAGE_THRESHOLD_MV)
+    startContinuous(1);
+  else
+    startContinuous(1000/daytripper_config.refresh_rate_Hz);
 }
 
 /* USER CODE END 0 */
@@ -182,15 +192,16 @@ int main(void)
   dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
-  daytripper_config.tof_timing_budget_ms = 25;
-  daytripper_config.refresh_rate_Hz = 6;
-  daytripper_config.nr_sensitivity = 0;
-  daytripper_config.print_debug_info = 1;
+  // daytripper_config.tof_timing_budget_ms = 25;
+  // daytripper_config.refresh_rate_Hz = 5;
+  // daytripper_config.nr_sensitivity = 1;
+  // daytripper_config.print_debug_info = 0;
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
   check_battery(&vbat_mV);
+  vbat_mV_prev = vbat_mV;
 
   // this should be behind check_battery, so it can completely shut down in low battery situation
   MX_IWDG_Init();
@@ -211,32 +222,9 @@ int main(void)
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
   printf(" done\n");
-
-  
-  // while(1)
-  // {
-  //  get_single_distance_reading(&is_reading_valid);
-  //  // printf("%d\n", );
-  //  HAL_IWDG_Refresh(&hiwdg);
-  //  rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz);
-  // }
-
   tof_calibrate(&baseline, &diff_threshold);
-  startContinuous(1000/daytripper_config.refresh_rate_Hz);
+  start_measurement();
   start_animation(ANIMATION_TYPE_CONST_OFF);
-
-  // while(1)
-  // {
-  //   HAL_IWDG_Refresh(&hiwdg);
-  //   printf("hello world %d\n", HAL_GetTick());
-  //   check_battery(&vbat_mV);
-  //   // rtc_sleep(&hrtc, 500);
-  //   char* result = my_usb_readline();
-  //   if(result != NULL)
-  //     printf("received: %s\n", result);
-  //   HAL_Delay(500);
-  // }
-
   while (1)
   {
     HAL_IWDG_Refresh(&hiwdg);
@@ -251,6 +239,7 @@ int main(void)
       check_battery(&vbat_mV);
       rtc_counter = 0;
     }
+
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -260,7 +249,7 @@ int main(void)
       iwdg_wait(20, ANIMATION_TYPE_BREATHING);
       tof_calibrate(&baseline, &diff_threshold);
       iwdg_wait(20, ANIMATION_TYPE_CONST_OFF);
-      startContinuous(1000/daytripper_config.refresh_rate_Hz);
+      start_measurement();
       current_state = STATE_IDLE;
     }
     else if(button_result == 2) // long press
@@ -272,14 +261,6 @@ int main(void)
       printf("sending stat... ");
       send_packet(data_array);
       new_stat_packet = 0;
-    }
-
-    // how long to sleep while wating for ToF sensor measurement
-    tof_sleep_ms = daytripper_config.tof_timing_budget_ms - 1;
-    if(vbat_mV > 4300) // if charging, dont sleep while wating for ToF measurement, but still update the time count
-    {
-      run_time_update(tof_sleep_ms + 5);
-      tof_sleep_ms = 0;
     }
 
     // get a new distance reading from laser ToF sensor
@@ -305,8 +286,7 @@ int main(void)
         if(abs(baseline - this) <= diff_threshold)
         {
           printf("X\n");
-          HAL_Delay(10 + 10 * daytripper_config.nr_sensitivity);
-          startContinuous(1000/daytripper_config.refresh_rate_Hz);
+          start_measurement();
           goto sleep;
         }
         count++;
@@ -316,9 +296,8 @@ int main(void)
       send_packet(data_array);
       if(daytripper_config.use_led)
         start_animation(ANIMATION_TYPE_CONST_ON);
-      startContinuous(1000/daytripper_config.refresh_rate_Hz);
+      start_measurement();
       current_state = STATE_TRIGGERED;
-      HAL_Delay(10 + 10 * daytripper_config.nr_sensitivity);
     }
     else if(current_state == STATE_TRIGGERED && diff < diff_threshold)
     {
@@ -329,8 +308,23 @@ int main(void)
     sleep:
     HAL_IWDG_Refresh(&hiwdg);
     nrf24_powerDown();
-    if(vbat_mV < 4300) // only sleep while on battery, when charging go full speed
-      rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz - 2);
+    
+    if(vbat_mV > CHARGING_VOLTAGE_THRESHOLD_MV && vbat_mV_prev <= CHARGING_VOLTAGE_THRESHOLD_MV)
+    {
+      printf("charging\n");
+      start_measurement();
+    }
+    if(vbat_mV <= CHARGING_VOLTAGE_THRESHOLD_MV && vbat_mV_prev > CHARGING_VOLTAGE_THRESHOLD_MV)
+    {
+      printf("unplugged\n");
+      start_measurement();
+    }
+    vbat_mV_prev = vbat_mV;
+
+    if(vbat_mV < CHARGING_VOLTAGE_THRESHOLD_MV) // only sleep while on battery, when charging go full speed
+      rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz - 3);
+    else
+      run_time_update(40); // if charging, dont sleep, but still update the time count
   }
   /* USER CODE END 3 */
 

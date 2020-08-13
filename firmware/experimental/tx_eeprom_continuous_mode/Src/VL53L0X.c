@@ -830,15 +830,22 @@ void stopContinuous(void)
   writeReg(0xFF, 0x00);
 }
 
+void align_timing(void)
+{
+  writeReg(SYSTEM_INTERRUPT_CLEAR, 0x01);
+  while((readReg(RESULT_INTERRUPT_STATUS) & 0x07) == 0)
+    ;
+  // rtc_sleep(&hrtc, 10)
+}
+
 // Returns a range reading in millimeters when continuous mode is active
 // (readRangeSingleMillimeters() also calls this function after starting a
 // single-shot range measurement)
 uint16_t readRangeContinuousMillimeters(void)
 {
-  while ((readReg(RESULT_INTERRUPT_STATUS) & 0x07) == 0)
-    ;//printf("2\n");
   // assumptions: Linearity Corrective Gain is 1000 (default);
   // fractional ranging is not enabled
+  align_timing();
   uint16_t range = readReg16Bit(RESULT_RANGE_STATUS + 10);
   writeReg(SYSTEM_INTERRUPT_CLEAR, 0x01);
   return range;

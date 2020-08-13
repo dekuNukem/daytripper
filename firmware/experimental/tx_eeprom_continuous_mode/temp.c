@@ -77,6 +77,32 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+    // how long to sleep while wating for ToF sensor measurement
+    tof_sleep_ms = daytripper_config.tof_timing_budget_ms - 1;
+    if(vbat_mV > 4300) // if charging, dont sleep while wating for ToF measurement, but still update the time count
+    {
+      run_time_update(tof_sleep_ms + 5);
+      tof_sleep_ms = 0;
+    }
+      // HAL_Delay(10 + 10 * daytripper_config.nr_sensitivity);
+  // while(1)
+  // {
+  //  get_single_distance_reading(&is_reading_valid);
+  //  // printf("%d\n", );
+  //  HAL_IWDG_Refresh(&hiwdg);
+  //  rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz);
+  // }
+  // while(1)
+  // {
+  //   HAL_IWDG_Refresh(&hiwdg);
+  //   printf("hello world %d\n", HAL_GetTick());
+  //   check_battery(&vbat_mV);
+  //   // rtc_sleep(&hrtc, 500);
+  //   char* result = my_usb_readline();
+  //   if(result != NULL)
+  //     printf("received: %s\n", result);
+  //   HAL_Delay(500);
+  // }
 typedef struct
 {
   // 0

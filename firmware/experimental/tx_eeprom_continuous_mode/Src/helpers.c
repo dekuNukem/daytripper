@@ -331,8 +331,8 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len)
 void dt_conf_load_default(dt_conf *dtc)
 {
   dtc->refresh_rate_Hz = 5;
-  dtc->tof_range_max_cm = 0xff;
-  dtc->tof_range_min_cm = 0x0;
+  dtc->tof_range_max_cm_div2 = 0xff;
+  dtc->tof_range_min_cm_div2 = 0x0;
   dtc->use_led = 1;
   dtc->nr_sensitivity = 1;
   dtc->tx_wireless_channel = 0x0c;
@@ -368,8 +368,8 @@ void dt_conf_load(dt_conf *dtc)
   dtc->refresh_rate_Hz = eeprom_buf[0];
   dtc->nr_sensitivity = eeprom_buf[1];
   dtc->tof_timing_budget_ms = eeprom_buf[2];
-  dtc->tof_range_max_cm = eeprom_buf[3];
-  dtc->tof_range_min_cm = eeprom_buf[4];
+  dtc->tof_range_max_cm_div2 = eeprom_buf[3];
+  dtc->tof_range_min_cm_div2 = eeprom_buf[4];
   dtc->use_led = eeprom_buf[5];
   dtc->op_mode = eeprom_buf[6];
   dtc->print_debug_info = eeprom_buf[7];
@@ -383,8 +383,8 @@ void dt_conf_print(dt_conf *dtc)
   printf("refresh_rate_Hz: %d\n", dtc->refresh_rate_Hz);
   printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("tof_range_max_cm: %d\n", dtc->tof_range_max_cm);
-  printf("tof_range_min_cm: %d\n", dtc->tof_range_min_cm);
+  printf("tof_range_max_cm_div2: %d\n", dtc->tof_range_max_cm_div2);
+  printf("tof_range_min_cm_div2: %d\n", dtc->tof_range_min_cm_div2);
   printf("use_led: %d\n", dtc->use_led);
   printf("op_mode: %d\n", dtc->op_mode);
   printf("print_debug_info: %d\n", dtc->print_debug_info);
@@ -467,8 +467,8 @@ void parse_cmd(char* cmd)
         daytripper_config.refresh_rate_Hz,
         daytripper_config.nr_sensitivity,
         daytripper_config.tof_timing_budget_ms,
-        daytripper_config.tof_range_max_cm,
-        daytripper_config.tof_range_min_cm,
+        daytripper_config.tof_range_max_cm_div2,
+        daytripper_config.tof_range_min_cm_div2,
         daytripper_config.use_led,
         daytripper_config.op_mode,
         daytripper_config.print_debug_info,
