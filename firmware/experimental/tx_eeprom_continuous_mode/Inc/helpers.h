@@ -72,6 +72,7 @@ void run_time_update(uint32_t duration_ms);
 void parse_cmd(char* cmd);
 void dt_conf_load_default(dt_conf *dtc);
 uint16_t get_instant_distance_reading(uint8_t* is_valid);
+void rtc_test(RTC_HandleTypeDef *hrtc, uint32_t duration_ms);
 
 extern uint8_t is_reading_valid;
 extern dt_conf daytripper_config;

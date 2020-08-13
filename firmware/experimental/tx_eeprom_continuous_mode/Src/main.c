@@ -146,6 +146,33 @@ void start_measurement(void)
   align_timing();
 }
 
+uint8_t is_rtc_calibrated;
+uint32_t rtc_calib_temp;
+uint8_t rct_calibration_value;
+int8_t rtc_offset;
+
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+  if(is_rtc_calibrated)
+    return;
+  rct_calibration_value = HAL_GetTick() - rtc_calib_temp;
+}
+
+const static uint8_t rtc_calib_lookup[32] = {0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 6, 7, 7, 8, 8, 9, 9, 9, 10, 10, 11, 11, 12, 12, 12};
+
+void rtc_calibrate(void)
+{
+  rtc_calib_temp = HAL_GetTick();
+  rtc_test(&hrtc, 200);
+  HAL_Delay(500);
+  is_rtc_calibrated = 1;
+  if(rct_calibration_value < 184)
+    rct_calibration_value = 184;
+  else if(rct_calibration_value > 215)
+    rct_calibration_value = 215;
+  rtc_offset = rtc_calib_lookup[rct_calibration_value - 184];
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -203,7 +230,9 @@ int main(void)
   HAL_Delay(2000);
   check_battery(&vbat_mV);
   vbat_mV_prev = vbat_mV;
-
+  rtc_calibrate();
+  printf("rct_calibration_value: %d\n", rct_calibration_value);
+  printf("rtc_offset: %d\n", rtc_offset);
   // this should be behind check_battery, so it can completely shut down in low battery situation
   MX_IWDG_Init();
   /* USER CODE END 2 */
@@ -324,7 +353,7 @@ int main(void)
     vbat_mV_prev = vbat_mV;
 
     if(vbat_mV < CHARGING_VOLTAGE_THRESHOLD_MV) // only sleep while on battery, when charging go full speed
-      rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz - 3);
+      rtc_sleep(&hrtc, 1000/daytripper_config.refresh_rate_Hz - rtc_offset);
     else
       run_time_update(24); // if charging, dont sleep, but still update the time count
   }

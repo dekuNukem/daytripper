@@ -291,6 +291,34 @@ void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
   huart2.Instance->CR1 |= USART_CR1_UE;
 }
 
+void rtc_test(RTC_HandleTypeDef *hrtc, uint32_t duration_ms)
+{
+  if(duration_ms <= 0)
+    return;
+  // 40KHz LSI, RTC asyc prediv 18, sync prediv 0
+  duration_ms *= 2;
+  HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BIN);
+  HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BIN);
+  next_alarm_second = sTime.Seconds + duration_ms;
+  next_alarm_minute = sTime.Minutes + next_alarm_second / 60;
+  next_alarm_hour = (sTime.Hours + next_alarm_minute / 60) % 24;
+  next_alarm_second %= 60;
+  next_alarm_minute %= 60;
+
+  sAlarm.AlarmTime.Seconds = next_alarm_second;
+  sAlarm.AlarmTime.Minutes = next_alarm_minute;
+  sAlarm.AlarmTime.Hours = next_alarm_hour;
+  sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;//|RTC_ALARMMASK_HOURS;
+  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+  sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+  sAlarm.AlarmDateWeekDay = 1;
+  sAlarm.Alarm = RTC_ALARM_A;
+  HAL_RTC_DeactivateAlarm(hrtc, RTC_ALARM_A);
+  HAL_RTC_SetAlarm_IT(hrtc, &sAlarm, RTC_FORMAT_BIN);
+}
+
 int32_t linear_buf_init(linear_buf *lb, int32_t size)
 {
   lb->buf_size = size;
