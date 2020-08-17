@@ -76,7 +76,7 @@ uint16_t get_continuous_distance_reading(uint8_t* is_valid)
   return result;
 }
 
-uint16_t get_instant_distance_reading(uint8_t* is_valid)
+uint16_t get_single_distance_reading(uint8_t* is_valid)
 {
   uint16_t result = readRangeSingleMillimeters();
   *is_valid = 1;
@@ -103,7 +103,7 @@ uint16_t get_baseline(void)
     uint32_t mean = 0;
     for (int i = 0; i < BASELINE_SAMPLE_SIZE; ++i)
     {
-      baseline_data[i] = get_instant_distance_reading(&is_reading_valid);
+      baseline_data[i] = get_single_distance_reading(&is_reading_valid);
       HAL_IWDG_Refresh(&hiwdg);
       HAL_Delay(100);
     }
@@ -132,12 +132,6 @@ uint16_t get_baseline(void)
   }
 }
 
-uint16_t get_trigger_threshold(uint16_t baseline)
-{
-  // smaller number narrower deadzone, more sensitive
-  return (uint16_t)(trigger_zone_threshold*baseline);
-}
-
 void iwdg_wait(uint32_t msec, uint8_t ani_type)
 {
   start_animation(ani_type);
@@ -146,11 +140,17 @@ void iwdg_wait(uint32_t msec, uint8_t ani_type)
     HAL_IWDG_Refresh(&hiwdg);
 }
 
-void tof_calibrate(uint16_t* base, uint16_t* threshold)
+void tof_calibrate(uint16_t* base, int16_t* upper_threshold, int16_t* lower_threshold)
 {
   printf("VL53L0X calibrating... ");
   *base = get_baseline();
-  *threshold = get_trigger_threshold(*base);
+  *upper_threshold = *base * (trigger_zone_threshold + 1);
+  *lower_threshold = *base * (1 - trigger_zone_threshold);
+  if(*upper_threshold < 0)
+    *upper_threshold = 0;
+  if(*lower_threshold < 0)
+    *lower_threshold = 0;
+  printf("upper: %d\nlower: %d\n", *upper_threshold, *lower_threshold);
 }
 
 // put this before IWDG_init so it can turn off after reset?
@@ -371,6 +371,8 @@ void dt_conf_load_default(dt_conf *dtc)
 
   dtc->hardware_id = get_uuid();
   dtc->tof_model_id = get_tof_model_id();
+  dtc->range_max_mm = dtc->tof_range_max_cm_div2 * 20;
+  dtc->range_min_mm = dtc->tof_range_min_cm_div2 * 20;
 }
 
 uint8_t is_config_valid(uint8_t* arr)
@@ -405,6 +407,8 @@ void dt_conf_load(dt_conf *dtc)
   dtc->tx_wireless_channel = eeprom_buf[8];
   dtc->hardware_id = get_uuid();
   dtc->tof_model_id = get_tof_model_id();
+  dtc->range_max_mm = dtc->tof_range_max_cm_div2 * 20;
+  dtc->range_min_mm = dtc->tof_range_min_cm_div2 * 20;
 }
 
 void dt_conf_print(dt_conf *dtc)
@@ -414,6 +418,8 @@ void dt_conf_print(dt_conf *dtc)
   printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
   printf("tof_range_max_cm_div2: %d\n", dtc->tof_range_max_cm_div2);
   printf("tof_range_min_cm_div2: %d\n", dtc->tof_range_min_cm_div2);
+  printf("range_max_mm: %d\n", dtc->range_max_mm);
+  printf("range_min_mm: %d\n", dtc->range_min_mm);
   printf("use_led: %d\n", dtc->use_led);
   printf("op_mode: %d\n", dtc->op_mode);
   printf("print_debug_info: %d\n", dtc->print_debug_info);

@@ -49,12 +49,15 @@ typedef struct
   
   uint8_t hardware_id;
   uint8_t tof_model_id;
+
+  uint16_t range_max_mm;
+  uint16_t range_min_mm;
 } dt_conf;
 
 uint16_t get_baseline(void);
 void check_battery(uint16_t* vbat_mV);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
-void tof_calibrate(uint16_t* base, uint16_t* threshold);
+void tof_calibrate(uint16_t* base, int16_t* upper_threshold, int16_t* lower_threshold);
 void tx_test(void);
 uint8_t send_packet(uint8_t* data);
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);
@@ -71,7 +74,7 @@ void dt_conf_print(dt_conf *dtc);
 void run_time_update(uint32_t duration_ms);
 void parse_cmd(char* cmd);
 void dt_conf_load_default(dt_conf *dtc);
-uint16_t get_instant_distance_reading(uint8_t* is_valid);
+uint16_t get_single_distance_reading(uint8_t* is_valid);
 void rtc_test(RTC_HandleTypeDef *hrtc, uint32_t duration_ms);
 
 extern uint8_t is_reading_valid;

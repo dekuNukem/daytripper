@@ -77,6 +77,20 @@ hrtc.Init.AsynchPrediv = 125;
 hrtc.Init.SynchPrediv = 0;
 period = 0.1976ms
 */
+
+uint16_t limit_range(uint16_t result)
+{
+  uint16_t range_max_mm = daytripper_config.tof_range_max_cm_div2 * 20;
+  uint16_t range_min_mm = daytripper_config.tof_range_min_cm_div2 * 20;
+  range_max_mm = 500;
+  range_min_mm = 300;
+  if(result >= range_max_mm)
+    result = range_max_mm;
+  else if(result < range_min_mm)
+    result = range_min_mm;
+  return result;
+}
+
     // how long to sleep while wating for ToF sensor measurement
     tof_sleep_ms = daytripper_config.tof_timing_budget_ms - 1;
     if(vbat_mV > 4300) // if charging, dont sleep while wating for ToF measurement, but still update the time count
