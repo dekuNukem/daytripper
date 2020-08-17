@@ -15,6 +15,7 @@
 #define STM32F0_UUID1 ((uint32_t *)0x1FFFF7B0)
 #define STM32F0_UUID2 ((uint32_t *)0x1FFFF7B4)
 
+double trigger_zone_threshold = 0.3333;
 dt_conf daytripper_config;
 dt_conf new_config;
 uint8_t is_reading_valid;
@@ -64,7 +65,7 @@ void bubbleSort(uint16_t arr[], uint16_t n)
         swap(&arr[j], &arr[j+1]); 
 }
 
-uint16_t get_single_distance_reading(uint8_t* is_valid)
+uint16_t get_continuous_distance_reading(uint8_t* is_valid)
 {
   uint16_t result = readRangeContinuousMillimeters();
   *is_valid = 1;
@@ -134,7 +135,7 @@ uint16_t get_baseline(void)
 uint16_t get_trigger_threshold(uint16_t baseline)
 {
   // smaller number narrower deadzone, more sensitive
-  return 0.3333*baseline;
+  return (uint16_t)(trigger_zone_threshold*baseline);
 }
 
 void iwdg_wait(uint32_t msec, uint8_t ani_type)

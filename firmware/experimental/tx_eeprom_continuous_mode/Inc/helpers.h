@@ -59,7 +59,7 @@ void tx_test(void);
 uint8_t send_packet(uint8_t* data);
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);
 void iwdg_wait(uint32_t msec, uint8_t ani_type);
-uint16_t get_single_distance_reading(uint8_t* is_valid);
+uint16_t get_continuous_distance_reading(uint8_t* is_valid);
 void rtc_sleep(RTC_HandleTypeDef *hrtc, uint32_t duration_ms);
 
 int32_t linear_buf_init(linear_buf *lb, int32_t size);

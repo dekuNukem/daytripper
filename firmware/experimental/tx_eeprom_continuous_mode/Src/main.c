@@ -294,7 +294,7 @@ int main(void)
     }
 
     // get a new distance reading from laser ToF sensor
-    this_reading = get_single_distance_reading(&is_reading_valid);
+    this_reading = get_continuous_distance_reading(&is_reading_valid);
     diff = abs(baseline - this_reading);
     if(is_reading_valid == 0)
       goto sleep;
