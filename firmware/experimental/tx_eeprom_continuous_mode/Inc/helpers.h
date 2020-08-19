@@ -57,7 +57,7 @@ typedef struct
 uint16_t get_baseline(void);
 void check_battery(uint16_t* vbat_mV);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
-void tof_calibrate(uint16_t* base, int16_t* upper_threshold, int16_t* lower_threshold);
+void tof_calibrate(uint16_t* base, uint16_t* upper_threshold, uint16_t* lower_threshold);
 void tx_test(void);
 uint8_t send_packet(uint8_t* data);
 void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot);

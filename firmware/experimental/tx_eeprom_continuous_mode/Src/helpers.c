@@ -8,6 +8,8 @@
 #include "nrf24.h"
 #include "ee.h"
 
+#define PEGGING_VALUE 1770
+
 #define BASELINE_SAMPLE_SIZE 16
 #define CHOP_SIZE 3
 
@@ -70,7 +72,7 @@ uint16_t get_continuous_distance_reading(uint8_t* is_valid)
   uint16_t result = readRangeContinuousMillimeters();
   *is_valid = 1;
   if(result >= 1200)
-    result = 1700;
+    result = PEGGING_VALUE;
   if(result < 20)
     *is_valid = 0;
   return result;
@@ -81,7 +83,7 @@ uint16_t get_single_distance_reading(uint8_t* is_valid)
   uint16_t result = readRangeSingleMillimeters();
   *is_valid = 1;
   if(result >= 1200)
-    result = 1700;
+    result = PEGGING_VALUE;
   if(result < 20)
     *is_valid = 0;
   return result;
@@ -120,10 +122,7 @@ uint16_t get_baseline(void)
     variance /= (BASELINE_SAMPLE_SIZE - CHOP_SIZE * 2);
 
     if(variance <= 300)
-    {
-      printf("baseline: %d\n", mean);
       return mean;
-    }
     
     printf("\ncalibration failed - variance too large: %d, samples:\n", variance);
     for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
@@ -140,17 +139,29 @@ void iwdg_wait(uint32_t msec, uint8_t ani_type)
     HAL_IWDG_Refresh(&hiwdg);
 }
 
-void tof_calibrate(uint16_t* base, int16_t* upper_threshold, int16_t* lower_threshold)
+void tof_calibrate(uint16_t* base, uint16_t* upper_threshold, uint16_t* lower_threshold)
 {
-  printf("VL53L0X calibrating... ");
+  printf("VL53L0X calibrating...\n");
   *base = get_baseline();
-  *upper_threshold = *base * (trigger_zone_threshold + 1);
-  *lower_threshold = *base * (1 - trigger_zone_threshold);
-  if(*upper_threshold < 0)
-    *upper_threshold = 0;
-  if(*lower_threshold < 0)
+  printf("real: %d\n", *base);
+  if(*base >= daytripper_config.range_max_mm)
+  {
+    *base = daytripper_config.range_max_mm;
+    *upper_threshold = 9999;
+    *lower_threshold = daytripper_config.range_max_mm;
+  }
+  else if(*base <= daytripper_config.range_min_mm)
+  {
+    *base = daytripper_config.range_min_mm;
+    *upper_threshold = daytripper_config.range_min_mm;
     *lower_threshold = 0;
-  printf("upper: %d\nlower: %d\n", *upper_threshold, *lower_threshold);
+  }
+  else
+  {
+    *upper_threshold = *base * (trigger_zone_threshold + 1);
+    *lower_threshold = *base * (1 - trigger_zone_threshold);
+  }
+  printf("base: %d\nupper: %d\nlower: %d\n", *base, *upper_threshold, *lower_threshold);
 }
 
 // put this before IWDG_init so it can turn off after reset?
@@ -162,11 +173,12 @@ void check_battery(uint16_t* vbat_mV)
   *vbat_mV = 26*(uint16_t)HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
   // printf("vbat: %d\n", *vbat_mV);
-  return;
+  // return;
 
-  if(*vbat_mV >= 2500 && *vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
+  // if(*vbat_mV >= 2500 && *vbat_mV <= 3250)
+  if(*vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
   {
-    // printf("low battery, shutting down...\n");
+    printf("low battery, shutting down...\n");
     start_animation(ANIMATION_TYPE_FASTBLINK);
     HAL_Delay(3000);
     start_animation(ANIMATION_TYPE_CONST_OFF);

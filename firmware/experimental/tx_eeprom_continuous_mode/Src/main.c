@@ -65,7 +65,7 @@
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
 
-#define CHARGING_VOLTAGE_THRESHOLD_MV 4300
+#define CHARGING_VOLTAGE_THRESHOLD_MV 4000
 
 /* USER CODE END Includes */
 
@@ -99,7 +99,7 @@ uint8_t current_state = STATE_IDLE;
 uint16_t vbat_mV;
 uint16_t vbat_mV_prev;
 uint16_t power_on_time_5s;
-int16_t trigger_upper_threshold, trigger_lower_threshold;
+uint16_t trigger_upper_threshold, trigger_lower_threshold;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -164,7 +164,7 @@ void rtc_calibrate(void)
 {
   rtc_calib_temp = HAL_GetTick();
   rtc_test(&hrtc, 200);
-  HAL_Delay(500);
+  HAL_Delay(300);
   is_rtc_calibrated = 1;
   if(rct_calibration_value < 184)
     rct_calibration_value = 184;
@@ -173,9 +173,12 @@ void rtc_calibrate(void)
   rtc_offset = rtc_calib_lookup[rct_calibration_value - 184];
 }
 
-uint8_t is_trigger(uint16_t this)
+uint8_t is_trigger(uint16_t thisss)
 {
-	return this < trigger_lower_threshold || this > trigger_upper_threshold;
+	// printf("%d (%d %d) (%d %d)\n", thisss, trigger_lower_threshold, trigger_upper_threshold, daytripper_config.range_max_mm, daytripper_config.range_min_mm);
+	if(thisss > daytripper_config.range_max_mm || thisss < daytripper_config.range_min_mm)
+		return 0;
+	return thisss < trigger_lower_threshold || thisss > trigger_upper_threshold;
 }
 
 /* USER CODE END 0 */
@@ -226,14 +229,14 @@ int main(void)
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
 
-  daytripper_config.tof_timing_budget_ms = 25;
-  daytripper_config.refresh_rate_Hz = 5;
-  daytripper_config.nr_sensitivity = 1;
+  // daytripper_config.tof_timing_budget_ms = 25;
+  // daytripper_config.refresh_rate_Hz = 5;
+  // daytripper_config.nr_sensitivity = 1;
   // daytripper_config.print_debug_info = 0;
-  daytripper_config.tof_range_max_cm_div2 = 25;
-  daytripper_config.tof_range_min_cm_div2 = 10;
-  daytripper_config.range_max_mm = daytripper_config.tof_range_max_cm_div2 * 20;
-  daytripper_config.range_min_mm = daytripper_config.tof_range_min_cm_div2 * 20;
+  // daytripper_config.tof_range_max_cm_div2 = 25;
+  // daytripper_config.tof_range_min_cm_div2 = 10;
+  // daytripper_config.range_max_mm = daytripper_config.tof_range_max_cm_div2 * 20;
+  // daytripper_config.range_min_mm = daytripper_config.tof_range_min_cm_div2 * 20;
 
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
@@ -278,6 +281,7 @@ int main(void)
       if(power_on_time_5s % 120 == 0) // 5 * 120 = 600s = 10mins, send stat update every 10 minutes
         new_stat_packet = 1;
       check_battery(&vbat_mV);
+      // printf("vbat_mV: %d\n", vbat_mV);
       rtc_counter = 0;
     }
 
@@ -515,7 +519,7 @@ static void MX_IWDG_Init(void)
 {
 
   hiwdg.Instance = IWDG;
-  hiwdg.Init.Prescaler = IWDG_PRESCALER_256;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_32;
   hiwdg.Init.Window = 4095;
   hiwdg.Init.Reload = 4095;
   if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
