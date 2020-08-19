@@ -65,7 +65,7 @@
 #define STATE_IDLE 0
 #define STATE_TRIGGERED 1
 
-#define CHARGING_VOLTAGE_THRESHOLD_MV 4000
+#define CHARGING_VOLTAGE_THRESHOLD_MV 4300
 
 /* USER CODE END Includes */
 
@@ -245,8 +245,8 @@ int main(void)
   check_battery(&vbat_mV);
   vbat_mV_prev = vbat_mV;
   rtc_calibrate();
-  printf("rct_calibration_value: %d\n", rct_calibration_value);
-  printf("rtc_offset: %d\n", rtc_offset);
+  // printf("rct_calibration_value: %d\n", rct_calibration_value);
+  // printf("rtc_offset: %d\n", rtc_offset);
   // this should be behind check_battery, so it can completely shut down in low battery situation
   MX_IWDG_Init();
   /* USER CODE END 2 */
@@ -257,7 +257,7 @@ int main(void)
   // in microseconds, longer time better accruacy, but consumes more power
   setMeasurementTimingBudget((uint32_t)daytripper_config.tof_timing_budget_ms * 1000); // default 33000
 
-  printf("initializing NRF...");
+  // printf("initializing NRF...");
   nrf24_init();
   nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
   tx_address[4] = daytripper_config.tx_wireless_channel;
@@ -265,7 +265,7 @@ int main(void)
   nrf24_rx_address(rx_address);
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-  printf(" done\n");
+  // printf(" done\n");
   tof_calibrate(&baseline, &trigger_upper_threshold, &trigger_lower_threshold);
   start_measurement();
   start_animation(ANIMATION_TYPE_CONST_OFF);

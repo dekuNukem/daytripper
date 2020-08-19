@@ -31,11 +31,10 @@ RTC_AlarmTypeDef sAlarm;
 uint32_t next_alarm_second;
 uint32_t next_alarm_minute;
 uint8_t next_alarm_hour;
-static const char eep_erase_failed[] = "EEPROM ERASE ERROR";
-static const char eep_write_failed[] = "EEPROM WRITE ERROR";
-static const char eep_read_failed[] = "EEPROM READ ERROR";
-static const char eep_invalid[] = "empty or invalid EEPROM, loading default.";
-static const char eep_write_invalid[] = "EEPROM VALUES INVALID";
+static const char eep_erase_failed[] = "ERASE ERR";
+static const char eep_write_failed[] = "WRITE ERR";
+static const char eep_read_failed[] = "READ ERR";
+static const char eep_invalid[] = "INVALID VAL";
 static const uint8_t fw_version_major = 1;
 static const uint8_t fw_version_minor = 1;
 static const uint8_t fw_version_patch = 0;
@@ -124,10 +123,10 @@ uint16_t get_baseline(void)
     if(variance <= 300)
       return mean;
     
-    printf("\ncalibration failed - variance too large: %d, samples:\n", variance);
-    for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
-      printf("%d ", baseline_data[i]);
-    printf("\n");
+    // printf("\ncalibration failed - variance too large: %d, samples:\n", variance);
+    // for (int i = CHOP_SIZE; i < BASELINE_SAMPLE_SIZE - CHOP_SIZE; ++i)
+    //   printf("%d ", baseline_data[i]);
+    // printf("\n");
   }
 }
 
@@ -254,9 +253,9 @@ void tx_test(void)
   while(1)
   {
     memset(test_data+2, count, 4);
-    for (int i = 0; i < 6; ++i)
-      printf("0x%x ", test_data[i]);
-    printf("\n");
+    // for (int i = 0; i < 6; ++i)
+    //   printf("0x%x ", test_data[i]);
+    // printf("\n");
     count++;
     send_packet(test_data);
     iwdg_wait(150, ANIMATION_TYPE_CONST_ON);
@@ -336,11 +335,6 @@ int32_t linear_buf_init(linear_buf *lb, int32_t size)
 {
   lb->buf_size = size;
   lb->buf = malloc(size);
-  while(lb->buf == NULL)
-  {
-    printf("out of memory\n");
-    HAL_Delay(250);
-  }
   lb->last_recv = 0;
   linear_buf_reset(lb);
   return 0;
@@ -425,20 +419,21 @@ void dt_conf_load(dt_conf *dtc)
 
 void dt_conf_print(dt_conf *dtc)
 {
-  printf("refresh_rate_Hz: %d\n", dtc->refresh_rate_Hz);
-  printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
-  printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
-  printf("tof_range_max_cm_div2: %d\n", dtc->tof_range_max_cm_div2);
-  printf("tof_range_min_cm_div2: %d\n", dtc->tof_range_min_cm_div2);
-  printf("range_max_mm: %d\n", dtc->range_max_mm);
-  printf("range_min_mm: %d\n", dtc->range_min_mm);
-  printf("use_led: %d\n", dtc->use_led);
-  printf("op_mode: %d\n", dtc->op_mode);
-  printf("print_debug_info: %d\n", dtc->print_debug_info);
-  printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
-  printf("hardware_id: 0x%x\n", dtc->hardware_id);
-  printf("tof_model_id: %d\n", dtc->tof_model_id);
-  printf("fw_version: %d.%d.%d\n", fw_version_major, fw_version_minor, fw_version_patch);
+  ;
+  // printf("refresh_rate_Hz: %d\n", dtc->refresh_rate_Hz);
+  // printf("nr_sensitivity: %d\n", dtc->nr_sensitivity);
+  // printf("tof_timing_budget_ms: %d\n", dtc->tof_timing_budget_ms);
+  // printf("tof_range_max_cm_div2: %d\n", dtc->tof_range_max_cm_div2);
+  // printf("tof_range_min_cm_div2: %d\n", dtc->tof_range_min_cm_div2);
+  // printf("range_max_mm: %d\n", dtc->range_max_mm);
+  // printf("range_min_mm: %d\n", dtc->range_min_mm);
+  // printf("use_led: %d\n", dtc->use_led);
+  // printf("op_mode: %d\n", dtc->op_mode);
+  // printf("print_debug_info: %d\n", dtc->print_debug_info);
+  // printf("tx_wireless_channel: 0x%x\n", dtc->tx_wireless_channel);
+  // printf("hardware_id: 0x%x\n", dtc->hardware_id);
+  // printf("tof_model_id: %d\n", dtc->tof_model_id);
+  // printf("fw_version: %d.%d.%d\n", fw_version_major, fw_version_minor, fw_version_patch);
 }
 
 char* goto_next_arg(char* buf)
@@ -485,7 +480,7 @@ void save_config(char* cmd)
   }
   if(is_config_valid(eeprom_buf) != 1)
   {
-    puts(eep_write_invalid);
+    puts(eep_invalid);
     return;
   }
   if(ee_format() != 1)
