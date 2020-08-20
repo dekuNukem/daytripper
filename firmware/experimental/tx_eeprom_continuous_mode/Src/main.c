@@ -278,7 +278,7 @@ int main(void)
     if(rtc_counter > 5000)
     {
       power_on_time_5s++; // update power-on counter
-      if(power_on_time_5s % 120 == 0) // 5 * 120 = 600s = 10mins, send stat update every 10 minutes
+      if(power_on_time_5s % 180 == 0) // 5 * 180 = 900s = 15mins, send stat update every 15 minutes
         new_stat_packet = 1;
       check_battery(&vbat_mV);
       // printf("vbat_mV: %d\n", vbat_mV);
