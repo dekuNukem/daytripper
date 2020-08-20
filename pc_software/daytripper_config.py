@@ -312,8 +312,8 @@ def opmode_info_popup():
     messagebox.showinfo("Information", 'One-shot trigger: Default mode, TX only talks to RX when triggered.\n\nContinuous mode: TX talks to RX on every measurement, suitable for streaming live data. High battery drain.')
 
 def debug_reset_click():
-    slider_adjust_debug(0)
-    debug_slider.set(0)
+    slider_adjust_debug(1)
+    debug_slider.set(1)
 
 def debug_popup():
     messagebox.showinfo("Information", 'Whether to print debug texts through hardware UART.\n\nTurning it off might save a tiny bit of battery life. Doesn\'t really matter to be honest.')
