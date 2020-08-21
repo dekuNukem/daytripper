@@ -65,6 +65,9 @@ def serial_dropdown_refresh():
     if len(usb_port_list) > 0:
         serial_var.set(usb_port_list[0])
 
+MODELID_STDRANGE_VL53L0X = 0xee
+MODELID_LONGRANGE_VL53L1X = 0xcc
+
 def make_info_string():
     if daytripper_config.is_valid is False:
         return ''
@@ -77,18 +80,18 @@ def make_info_string():
     id_string = str(daytripper_config.hardware_id) + '(' + str(hex(daytripper_config.hardware_id)) + ')'
     fw_ver_string = str(daytripper_config.fw_version_major) + '.' + str(daytripper_config.fw_version_minor) + '.' + str(daytripper_config.fw_version_patch)
     tof_type_string = 'Unknown'
-    if daytripper_config.tof_model_id == 238:
+    if daytripper_config.tof_model_id == MODELID_STDRANGE_VL53L0X:
         tof_type_string = 'Standard Range (120cm)'
-    elif daytripper_config.tof_model_id == 244:
+    elif daytripper_config.tof_model_id == MODELID_LONGRANGE_VL53L1X:
         tof_type_string = 'Long Range (400cm)'
     return "Type: " + model_string + '      Unique ID: ' + id_string + '      FW Version: ' + fw_ver_string + '      Laser Sensor: ' + tof_type_string
 
 def get_max_range_cm():
     if daytripper_config.is_valid is False:
         return 0
-    if daytripper_config.tof_model_id == 238:
+    if daytripper_config.tof_model_id == MODELID_STDRANGE_VL53L0X:
         return 120
-    elif daytripper_config.tof_model_id == 244:
+    elif daytripper_config.tof_model_id == MODELID_LONGRANGE_VL53L1X:
         return 400
     return 0
 
@@ -108,7 +111,7 @@ def serial_connect():
     result = [x.decode('utf-8') for x in result]
     result = [x for x in result if x.startswith('dt_')]
     if len(result) <= 0:
-        messagebox.showerror("Error", 'No valid response received.\nMake sure the board is turned OFF before plugging in.')
+        messagebox.showerror("Error", 'No valid response received.\nMake sure the correct port is selected, and TX is turned OFF before plugging in.')
         return
     if not daytripper_config.load_config(result[0]):
         messagebox.showerror("Error", 'error parsing data')
@@ -128,7 +131,7 @@ def validate_dt_obj(dt_obj):
         range_min_slider.set(dt_obj.tof_range_max_cm)
         slider_adjust_range_max(min_temp);
         range_max_slider.set(min_temp)
-    if dt_obj.tof_range_max_cm - dt_obj.tof_range_min_cm < 30:
+    if dt_obj.tof_range_max_cm - dt_obj.tof_range_min_cm <= 30:
         messagebox.showinfo("Info", 'Detection range is very narrow, are you sure?')
     return True
 
@@ -161,9 +164,9 @@ def serial_apply_changes():
     result = [x.decode('utf-8') for x in result]
     result = [x for x in result if x.startswith('OK')]
     if len(result) <= 0:
-        messagebox.showerror("Error", 'No valid response received.\nMake sure the board is turned OFF before plugging in.')
+        messagebox.showerror("Error", 'No valid response received.')
         return
-    messagebox.showinfo("Info", 'Settings successfully saved!\n\nFor them to take effect, unplug and turn it off then on again.')
+    messagebox.showinfo("Info", 'Settings successfully saved!\n\nTo take effect, unplug and turn it off then on again.')
 
 def serial_reset_all():
     sensitivity_reset_click()
@@ -264,7 +267,7 @@ def slider_adjust_debug(value):
     daytripper_config.print_debug_info = int(value)
 
 def refresh_rate_info_popup():
-    messagebox.showinfo("Information", 'How many times per second the laser distance sensor takes a reading.\n\nA higher refresh rate makes TX more sensitive to faster movements. However, it will also drain the battery quicker.')
+    messagebox.showinfo("Information", 'How many times per second the sensor takes a reading.\n\nHigher refresh rate makes TX more sensitive to faster movements. However, it will also drain the battery quicker.')
 
 def refresh_rate_reset_click():
     refresh_rate_slider.set(5)
@@ -285,7 +288,7 @@ def timing_budget_reset_click():
     slider_adjust_timing_budget(25)
 
 def led_info_popup():
-    messagebox.showinfo("Information", 'Whether to illuminate the LED when triggered.\n\nDisabling the LED might make TX less noticeable.')
+    messagebox.showinfo("Information", 'Whether to illuminate the blue LED when triggered.\n\nDisabling the LED might make TX less noticeable.')
 
 def led_reset_click():
     led_slider.set(1)
@@ -302,7 +305,7 @@ def wireless_addr_reset_click():
     wireless_addr_slider.set(12)
 
 def wireless_addr_info_popup():
-    messagebox.showinfo("Information", 'Wireless address that this device operates on.\n\nA TX/RX pair on the same address will work together.\n\nIf you have multiple Daytrippers, you can put them on different addresses so they will work independently, or you can put them all on the same address, and they will work together.')
+    messagebox.showinfo("Information", 'Wireless address this device operates on.\n\nA TX/RX pair on the same address will work together.\n\nIf you have multiple Daytrippers, you can put them on different addresses so they will work independently, or you can put them all on the same address, and they will work together.')
 
 def opmode_reset_click():
     slider_adjust_opmode(0)
@@ -316,7 +319,7 @@ def debug_reset_click():
     debug_slider.set(1)
 
 def debug_popup():
-    messagebox.showinfo("Information", 'Whether to print debug texts through hardware UART.\n\nTurning it off might save a tiny bit of battery life. Doesn\'t really matter to be honest.')
+    messagebox.showinfo("Information", 'Whether to print debug messages through hardware UART.\n\nTurning it off might save a tiny bit of battery life.\n\nDoesn\'t really matter that much to be honest :)')
 
 refresh_rate_slider = Scale(refresh_rate_lf)
 nr_sensitivity_lf = LabelFrame(settings_lf, text="Noise Reduction", width=cube_witch, height=cube_height)
@@ -433,7 +436,7 @@ def load_settings():
         with open(filename) as myfile:
             new_settings = json.loads(myfile.read())
     except Exception as e:
-        messagebox.showerror("Error", 'Save Failed:\n' + str(e))
+        messagebox.showerror("Error", 'Load Failed:\n' + str(e))
     if new_settings['is_valid'] is False:
         return
     daytripper_config.refresh_rate_Hz = new_settings['refresh_rate_Hz']
@@ -497,8 +500,8 @@ def show_settings():
     root.update()
 
     led_lf.place(x=PADDING, y=refresh_rate_lf.winfo_height() + 5)
-    wireless_address_lf.place(x=refresh_rate_lf.winfo_x() + refresh_rate_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
-    opmode_lf.place(x=nr_sensitivity_lf.winfo_x() + nr_sensitivity_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
+    # wireless_address_lf.place(x=refresh_rate_lf.winfo_x() + refresh_rate_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
+    # opmode_lf.place(x=nr_sensitivity_lf.winfo_x() + nr_sensitivity_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
     debug_uart_lf.place(x=tof_timing_budget_lf.winfo_x() + tof_timing_budget_lf.winfo_width() + PADDING, y=refresh_rate_lf.winfo_height() + 5)
 
     refresh_rate_slider.config(from_=1, to=30, length=refresh_rate_lf.winfo_width() * 0.85, showvalue=0, sliderlength=20, orient=HORIZONTAL, command=slider_adjust_refresh_rate)
@@ -596,8 +599,8 @@ elif update_result == 2:
 serial_dropdown_refresh()
 # serial_connect()
 
-def repeat_func():
-    root.after(500, repeat_func)
+# def repeat_func():
+#     root.after(500, repeat_func)
+# root.after(500, repeat_func)  
 
-root.after(500, repeat_func)   
 root.mainloop()

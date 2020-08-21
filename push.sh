@@ -10,6 +10,8 @@ find . -type f -name "*.csv#*" -exec rm -f {} \;
 find . -type f -name "*.DS_Store*" -exec rm -f {} \;
 find . -name "__pycache__" -exec rm -rf {} \;
 find . -type f -name "._*" -exec rm -f {} \;
+rm -rf ./pc_software/build
+rm -rf ./pc_software/dist
 
 git add --all
 git commit -m "$@"
