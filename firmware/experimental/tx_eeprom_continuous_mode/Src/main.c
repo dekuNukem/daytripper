@@ -281,7 +281,7 @@ int main(void)
       if(power_on_time_5s % 180 == 0) // 5 * 180 = 900s = 15mins, send stat update every 15 minutes
         new_stat_packet = 1;
       check_battery(&vbat_mV);
-      printf("vbat_mV: %d\n", vbat_mV);
+      // printf("vbat_mV: %d\n", vbat_mV);
       rtc_counter = 0;
     }
 
@@ -304,6 +304,7 @@ int main(void)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
       printf("sending stat... ");
+      printf("vbat_mV: %d\n", vbat_mV);
       send_packet(data_array);
       new_stat_packet = 0;
     }

@@ -175,7 +175,7 @@ void check_battery(uint16_t* vbat_mV)
   // return;
 
   // if(*vbat_mV >= 2500 && *vbat_mV <= 3250)
-  if(*vbat_mV <= 3250) // 3250 after diode drop is about 3.5V
+  if(*vbat_mV < 3250) // 3200 after diode drop is about 3.5V
   {
     printf("low battery, shutting down...\n");
     start_animation(ANIMATION_TYPE_FASTBLINK);
