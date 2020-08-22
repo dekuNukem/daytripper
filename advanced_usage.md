@@ -236,11 +236,9 @@ You should see a `STM Device in DFU Mode` in the `Available DUF Devices` section
 
 Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
 
-* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_latest.dfu) for latest default TX firmware
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_1.1.0.dfu) for latest default TX firmware
 
-* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_latest_blue_LED_disabled.dfu) for latest default TX firmware with blue LED turned off
-
-* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/RX_latest.dfu) for latest default RX firmware
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/RX_1.0.0.dfu) for latest default RX firmware
 
 ![Alt text](resources/photos/dfu_choose.png)
 
