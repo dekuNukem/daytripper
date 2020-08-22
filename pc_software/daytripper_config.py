@@ -16,6 +16,7 @@ from tkinter import messagebox
 import serial.tools.list_ports
 import serial
 
+print('ddd')
 THIS_VERSION_NUMBER = '0.1.0'
 MAIN_WINDOW_WIDTH = 720
 MAIN_WINDOW_HEIGHT = 460

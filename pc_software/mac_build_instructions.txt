@@ -1,7 +1,0 @@
-https://py2app.readthedocs.io/en/latest/tutorial.html
-
-OPTIONS = {'iconfile':'icon.icns'}
-
-rm -rf build dist
-
-python3.8 setup.py py2app

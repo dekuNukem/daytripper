@@ -10,6 +10,8 @@ If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/
 
 [Creating Custom Actions](#custom-actions)
 
+[Adjusting Advanced Parameters](#adjusting-advanced-parameters)
+
 [On-Air Packet Format](#on-air-packet-format)
 
 [Debug Mode](#debug-modes)
@@ -61,6 +63,110 @@ Here is a tutorial: https://forum.joaoapps.com/index.php?resources/react-to-keys
 ### Linux
 
 Oh I'm sure you'll figure it out 😉
+
+## Adjusting Advanced Parameters
+
+The default settings of Daytripper demonstrates a good balance between accuracy, sensitivity, and battery life. 
+
+However, you can also adjust them to suit your particular needs.
+
+### Update the Firmware
+
+If you purchased your Daytripper before **`Sept 2020`**, you will need to update your TX to the latest firmware. Please do so by following the [USB Firmware Update](#usb-firmware-updates) section below.
+
+### Find the COM Port
+
+**`Right click`** on the start button, then select `Device Manager`:
+
+![Alt text](resources/photos/app/start.png)
+
+Make sure the TX is **`TURNED OFF`**, then plug it into your computer with a USB-C cable.
+
+In the `Ports (COM & LPT)` section, A new `USB Serial Device` should appear.
+
+![Alt text](resources/photos/app/devmgr.png)
+
+Remember the number! **`COM5`** in this case. Yours might be different.
+
+### Download the Application
+
+[Head here to download the latest release](https://github.com/dekuNukem/daytripper/releases/latest) for Windows and macOS.
+
+* The software is in early stages of development. If you run into any problems, please don't hesitate to [open an issue](https://github.com/dekuNukem/daytripper/issues), DM me on discord `dekuNukem#6998`, or contact me through `dekuNukem`@`gmail`.`com`.
+
+### "Untrusted App" Warnings
+
+When trying to run the app, your system might complain about this software being untrusted. This is because I haven't had the code digitally signed, which costs hundreds of dollars a year.
+
+Please feel free to [review the code](https://github.com/dekuNukem/daytripper/tree/master/pc_software). If you don't trust the app, you can run the `duckypad_config.py` script itself with Python3.
+
+For Windows 10, click `More info` and then `Run anyway`.
+
+![Alt text](resources/photos/app/defender.png)
+
+For macOS, **`RIGHT CLICK`** on the app and select `Open`. You might have to do it twice.
+
+![Alt text](resources/photos/app/warning_mac.png)
+
+After the app has launched, press `Refresh` button, select the COM port with the correct number, and press `Connect`.
+
+![Alt text](resources/photos/app/sercon.png)
+
+On macOS or Linux, the serial port will have different names. They will mostly likely have the word `usb` in it.
+
+![Alt text](resources/photos/app/macser.png)
+
+Anyway, if connection is successful, a number of options is presented:
+
+![Alt text](resources/photos/app/mainapp.png)
+
+* Drag the slider to adjust values.
+
+* Click **`What's this?`** to learn about a particular setting.
+
+* To return to default, click **`Reset to Default`** in a section, or **`Reset all`** on top right corner.
+
+* Click **`Save Changes`** to save the current configuration to your Daytripper.
+
+* You can make a backup of your settings with the buttons on lower left corner.
+
+* A description of parameters follows.
+
+### Refresh Rate
+
+How many times per second TX takes a reading **`while on battery`**. Turn it up to make TX more sensitive to faster motions, at the expense of reduced battery life.
+
+TX will always run at fastest refresh rate (30Hz) when plugged in.
+
+### Noise Reduction
+
+By default TX will take additional readings to prevent false triggers from sensor noise.
+
+If turned off, TX will become much more sensitive to motion, but might also produce false triggers occasionally.
+
+### Timing Budget
+
+Amount of time allocated to the laser sensor to produce a reading.
+
+A larger value gives more accurate measurements, at the expense of reduced battery life and refresh rate.
+
+I suggest to leave it at default for normal operations.
+
+### Detection Range
+
+Adjust the values here if you want Daytripper to only monitor motions within a certain distance range.
+
+### LED Indicator
+
+The blue LED comes on when TX is triggered. You can disable it to make your Daytripper less noticeable.
+
+### Print Debug Info
+
+TX prints some debug messages through its hardware UART. Turning it off might save a tiny bit of battery life.
+
+### Save It!!
+
+Again, don't forget to press **`Save Changes`** button to save the current configuration to your Daytripper.
 
 ## On-air Packet Format
 
@@ -188,9 +294,7 @@ Untested, probably a mess.
 
 ## Questions or Comments?
 
-Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
-
-You can also email me at `dekunukem gmail com` for inquires.
+Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
 
 ------
 

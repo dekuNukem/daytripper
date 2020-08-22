@@ -90,9 +90,7 @@ Now your Daytripper is ready to use! Head over to the [Quick Start Guide](/quick
 
 ## Questions or Comments?
 
-Please feel free to [open an issue](https://github.com/dekuNukem/daytripper/issues). This is the preferred way since it helps other people too.
-
-You can also email me at `dekunukem gmail com` for inquires.
+Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
 
 ------
 
