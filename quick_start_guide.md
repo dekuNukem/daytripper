@@ -100,7 +100,7 @@ A couple of key areas to note:
 
 ## Good to Know
 
-Daytripper works by monitoring distance changes from an eye-safe laser sensor. As a result, there are some important information to keep in mind: 
+Daytripper works by monitoring distance changes with an eye-safe laser sensor. As a result, there are some important information to keep in mind: 
 
 * The laser works between 2cm to 120cm (0.8 to 47 inches), so make sure the motion happens within this range. 
 

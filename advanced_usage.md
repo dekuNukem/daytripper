@@ -142,7 +142,9 @@ TX will always run at fastest refresh rate (30Hz) when plugged in.
 
 By default TX will take additional readings to prevent false triggers from sensor noise.
 
-If turned off, TX will become much more sensitive to motion, but might also produce false triggers occasionally.
+If turned off, TX will become **`much more`** sensitive to motion, but might also produce false triggers from time to time.
+
+Turn it off if motion sensitivity is absolutely critical and occasional false triggers is acceptable.
 
 ### Timing Budget
 
@@ -150,7 +152,7 @@ Amount of time allocated to the laser sensor to produce a reading.
 
 A larger value gives more accurate measurements, at the expense of reduced battery life and refresh rate.
 
-I suggest to leave it at default for normal operations.
+I suggest leaving it at default for normal operations.
 
 ### Detection Range
 
@@ -170,7 +172,7 @@ Again, don't forget to press **`Save Changes`** button to save the current confi
 
 ## On-air Packet Format
 
-Daytripper uses a nRF24L01-compatible chip called Si24R1. It is much cheaper, and actually has a higher TX power output, resulting in longer communication range.
+Daytripper uses a nRF24L01-compatible chip called Si24R1. It is less expensive, and actually has a higher TX power output, resulting in longer communication range.
 
 Daytripper operates at `channel 115`, `address 0xDA 0xBB 0xED 0xC0 0x0C`.
 
@@ -202,7 +204,7 @@ There is a user button on both TX and RX board. Usually they are unused:
 
 For TX, a short press (less than 2 seconds) recalibrates the baseline. A long press (more than 2 seconds) enters Test Mode, where it sends test packets with incrementing sequence number as payload every second. It can be used to test communication range. Turn it off then on again to exit Test Mode. 
 
-For RX, a press on the button types out some debug messages. Make sure you open a text editor first. If the RX has not recieved any messages from the TX, the debug values will all be zero.
+For RX, a press on the button types out some debug messages. Make sure you open a text editor first. If the RX has not received any messages from the TX, the debug values will all be zero.
 
 ## USB Firmware Updates
 
@@ -270,7 +272,7 @@ On earlier production runs, the pin is on a testpad. On the later runs, the pin 
 
 Make sure **everything is on the same GND** when connecting external circuits!
 
-Unfortunately, TX does not have a dedicated trigger out pin due to limited microcontroller resources. However, there is a debug output that prints out some serial data upon triggering, which you can parse.
+Unfortunately, TX does not have a dedicated trigger out pin due to limited microcontroller pins. However, there is a debug output that prints out some serial data upon triggering, which you can parse.
 
 ![Alt text](resources/photos/tx_trig_out.jpg)
 

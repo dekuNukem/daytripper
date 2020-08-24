@@ -18,7 +18,7 @@ I did a small production run, and you can buy them directly on Tindie:
 
 https://www.tindie.com/products/dekuNukem/daytripper
 
-## How it works
+## How it Works
 
 Daytripper comes in two parts: a Transmitter (TX) and a Receiver (RX).
 
@@ -93,6 +93,12 @@ Rechargeable via USB Type-C connector.
 Yes. It can also lock your computer, or perform a custom action.
 
 See [Advanced Usage Guide](/advanced_usage.md).
+
+## I Want One!
+
+I did a small production run, and you can buy them directly on Tindie:
+
+https://www.tindie.com/products/dekuNukem/daytripper
 
 ## Questions or Comments?
 
