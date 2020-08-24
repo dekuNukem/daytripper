@@ -365,7 +365,7 @@ int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len)
 
 void dt_conf_load_default(dt_conf *dtc)
 {
-  dtc->refresh_rate_Hz = 5;
+  dtc->refresh_rate_Hz = 6;
   dtc->tof_range_max_cm_div2 = 0xff;
   dtc->tof_range_min_cm_div2 = 0x0;
   dtc->use_led = 1;

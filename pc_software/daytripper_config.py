@@ -271,8 +271,8 @@ def refresh_rate_info_popup():
     messagebox.showinfo("Information", 'How many times per second the sensor takes a reading.\n\nHigher refresh rate makes TX more sensitive to faster movements. However, it will also drain the battery quicker.')
 
 def refresh_rate_reset_click():
-    refresh_rate_slider.set(5)
-    slider_adjust_refresh_rate(5)
+    refresh_rate_slider.set(6)
+    slider_adjust_refresh_rate(6)
 
 def sensitivity_info_popup():
     messagebox.showinfo("Information", 'NR prevents potential false triggers by taking additional measurements.\n\nTurning it off will noticeably improve motion sensitivity. However, false triggers might occur occasionally, especially in bright conditions.')
