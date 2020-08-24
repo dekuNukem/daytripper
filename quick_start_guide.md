@@ -76,6 +76,8 @@ A couple of key areas to note:
 
 * Approach the TX like your potential threats would, does TX trigger consistently?
 
+* If yes, you don't have to do anything.
+
 * If not, you can turn up the refresh rate to make TX more sensitive to motion, at the cost of battery life.
 
 * You can also leave TX plugged in at all times, in which case it will operate at the fastest refresh rate.
