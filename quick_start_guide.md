@@ -60,39 +60,65 @@ Those are just two suggestions, you can get as creative as you want!
 
 Word of warning though, the Neodymium magnet is rather brittle, so don't let it smash into metal objects, or it might chip or shatter.
 
-## (IMPORTANT!!) Things to keep in mind
+## Test It Out!
 
-Daytripper works by monitoring distance readings from an eye-safe laser sensor. As a result, there are some important information to keep in mind: 
+It is very important that you **`TEST YOUR SETUP THOROUGHLY BEFORE USING IT FOR REAL!`**
+
+A couple of key areas to note:
+
+### Mounting Location
+
+* Make sure the location provide adequate coverage for potential threats.
+
+* You can conceal the TX if you want, just leave the sensor window clear, and don't touch the components on the circuit board.
+
+### Motion Sensitivity
+
+* Approach the TX like your potential threats would, does TX trigger consistently?
+
+* If not, you can turn up the refresh rate to make TX more sensitive to motion, at the cost of battery life.
+
+* You can also leave TX plugged in at all times, in which case it will operate at the fastest refresh rate.
+
+* To see how, **`finish reading this guide first`**, then head to the [Advanced Usage Guide](/advanced_usage.md).
+
+### Your Applications
+
+* Test it out with the application you're trying to hide!
+
+* By default, RX will press `WIN + M` when triggered. This works with almost all desktop apps.
+
+* However, it might not work with certain fullscreen games.
+
+* If so, try switching your game to `borderless fullscreen` in graphic settings, if available.
+
+* If all else fails, move the `Mode Select` switch to `LOCK` so RX will lock your computer instead.
+
+![Alt text](resources/photos/rxback.jpg)
+
+* There is also a `Custom` option for executing custom commands, but that's for [advanced usages](/advanced_usage.md).
+
+## Good to Know
+
+Daytripper works by monitoring distance changes from an eye-safe laser sensor. As a result, there are some important information to keep in mind: 
 
 * The laser works between 2cm to 120cm (0.8 to 47 inches), so make sure the motion happens within this range. 
 
 * Daytripper works best in indoor conditions. Harsh ambient lighting such as direct sunlight might overwhelm the laser and affect detection range and sensitivity. 
 
-* By default, the laser sensor scans at 5 times per second (Hz) while on battery power. It is automatically increased to 30Hz (fastest) while being powered by USB.
+* By default, the laser sensor scans at 6 times per second (Hz) while on battery power. It is automatically increased to 30Hz (fastest) when powered by USB.
 
-* You can also adjust a number of advanced parameters to suit your particular needs. Please see [this guide](/advanced_usage.md) for details.
+* You can adjust a number of advanced parameters to suit your particular needs. Please see [this guide](/advanced_usage.md) for details.
 
 * The transmission range between TX and RX is around 100 meters (330 feet) in open air. Although it is likely to be shorter in indoor environments with walls and other wireless interferences.
 
-* The battery on TX should last around 50 hours with default configuration. You can recharge it using a USB Type-C cable. You can also leave it plugged in at all times if needed.
+* The battery on TX should last around 50 hours with default configuration. You can recharge it using a USB Type-C cable.
 
 * Don't touch the components on the circuit board with your bare hands, especially the laser sensor!
 
 * Daytripper is most sensitive if the laser can be bounced straight back from the subject instead of at an angle.
 
 * Certain materials might absorb the laser instead of reflecting it back, affecting performance. Those materials tends to be very deep black in color with a soft texture. 
-
-## Tips and Tricks
-
-* Again, Turn on the TX **`AFTER`** you finish mounting it to ensure an accurate initial baseline reading.
-
-* **`Test your setup before using it for real!`** Test the mounting with the actual application/game you're trying to hide. Test it multiple times to be sure!
-
-* If minimizing doesn't work with your game, you can change the `Mode Select` switch on RX to lock your computer instead. Please be gentle with the switch to prevent the plastic tab from breaking off.
-
-![Alt text](resources/photos/rxback.jpg)
-
-* There is also a `Custom` option on the `Mode Select` switch, but that's for [advanced usages](/advanced_usage.md).
 
 ## Troubleshooting
 
@@ -104,21 +130,7 @@ TX boards also have a yellow LED, which comes on when the battery is charging.
 
 ## Advanced Usages
 
-Once you're familiar with how Daytripper works, you can take a look at the [Advanced Usage Guide](/advanced_usage.md) for some additional features that might be of interest. Examples include:
-
-* Creating Custom Actions
-
-* Adjusting Advanced Parameters
-
-* On-Air Packet Format
-
-* Debug Mode
-
-* USB Firmware Update
-
-* Trigger Output
-
-* Using Multiple Modules
+Once you're familiar with how Daytripper works, you can take a look at the [Advanced Usage Guide](/advanced_usage.md) for some additional features that might be of interest.
 
 ## Disclaimers
 

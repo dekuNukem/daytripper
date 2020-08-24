@@ -36,7 +36,7 @@ Daytripper...
 
 * Can detect motion within 120cm (4 ft).
 
-* Scan rate: 5Hz on battery, 30Hz while powered. Customisable with included software.
+* Scan rate: 6Hz on battery, 30Hz while powered. Customisable with included software.
 
 * Configurable parameters to suit your particular needs.
 
@@ -60,7 +60,7 @@ For how to use Daytripper, see this:
 
 [Quick Start Guide](/quick_start_guide.md)
 
-For advanced features such as custom actions and custom setups, read this:
+For advanced features such as custom actions and adjusting settings, read this:
 
 [Advanced Usage](/advanced_usage.md)
 
@@ -83,6 +83,8 @@ The wireless communication range between TX and RX should be around 100 meters (
 ### Battery life?
 
 Around 50 hours (more than 2 days!) with default configuration.
+
+Can be increased or decreased by adjusting settings.
 
 Rechargeable via USB Type-C connector.
 
