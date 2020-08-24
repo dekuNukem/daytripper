@@ -1153,8 +1153,8 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="VALUE" x="12.7762" y="14.5034" size="0.0254" layer="28" rot="MR0"/>
 </element>
 <element name="JP2" library="SparkFun-Jumpers" package="SMT-JUMPER_2_NO_NO-SILK" value="JUMPER-SMT_2_NO_NO-SILK" x="20.9042" y="22.5298" smashed="yes" rot="R270"/>
-<element name="R15" library="SparkFun-Passives" package="0805" value="22K" x="20.9042" y="24.8412" smashed="yes">
-<attribute name="NAME" x="22.3774" y="23.7871" size="0.8128" layer="25"/>
+<element name="R15" library="SparkFun-Passives" package="0805" value="22K" x="20.9042" y="24.7142" smashed="yes">
+<attribute name="NAME" x="22.3774" y="23.6601" size="0.8128" layer="25"/>
 </element>
 </elements>
 <signals>
@@ -2000,7 +2000,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <contactref element="R15" pad="1"/>
 <wire x1="20.9042" y1="22.9362" x2="20.9042" y2="23.1648" width="0.1524" layer="1"/>
 <wire x1="20.9042" y1="23.1648" x2="20.0042" y2="24.0648" width="0.1524" layer="1"/>
-<wire x1="20.0042" y1="24.0648" x2="20.0042" y2="24.8412" width="0.1524" layer="1"/>
+<wire x1="20.0042" y1="24.0648" x2="20.0042" y2="24.7142" width="0.1524" layer="1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
