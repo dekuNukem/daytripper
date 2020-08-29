@@ -55,7 +55,7 @@ typedef struct
 } dt_conf;
 
 uint16_t get_baseline(void);
-void check_battery(uint16_t* vbat_mV);
+uint8_t get_battery_adc_reading(void);
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
 void tof_calibrate(uint16_t* base, uint16_t* upper_threshold, uint16_t* lower_threshold);
 void tx_test(void);
@@ -76,11 +76,21 @@ void parse_cmd(char* cmd);
 void dt_conf_load_default(dt_conf *dtc);
 uint16_t get_single_distance_reading(uint8_t* is_valid);
 void rtc_test(RTC_HandleTypeDef *hrtc, uint32_t duration_ms);
+void sys_shutdown(void);
+uint8_t is_low_battery(void);
+void add_battery_history(uint8_t this_reading);
+
+#define BATTERY_HISTORY_SIZE 8
 
 extern uint8_t is_reading_valid;
 extern dt_conf daytripper_config;
 extern uint32_t rtc_sleep_count_ms;
 extern uint16_t rtc_counter;
+extern uint8_t battery_reading_history[BATTERY_HISTORY_SIZE];
+#define ADC_COEFFICIENT 26
+#define LOW_BATTERY_SHUTOFF_ADC_VAL 126
+
+#define RTC_BKUP_SLEEP 69
 
 #ifdef __cplusplus
 }

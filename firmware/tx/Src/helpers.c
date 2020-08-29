@@ -44,15 +44,45 @@ char temp_buf[TEMP_BUF_SIZE];
 #define EEPROM_BUF_SIZE 16
 uint8_t eeprom_buf[EEPROM_BUF_SIZE];
 
+uint8_t battery_history_index;
+uint8_t battery_reading_history[BATTERY_HISTORY_SIZE];
+
+void add_battery_history(uint8_t this_reading)
+{
+  if(battery_history_index >= BATTERY_HISTORY_SIZE)
+    battery_history_index = 0;
+  battery_reading_history[battery_history_index] = this_reading;
+  battery_history_index++;
+}
+
+uint16_t temp;
+uint8_t is_low_battery(void)
+{
+  // for (int i = 0; i < BATTERY_HISTORY_SIZE; ++i)
+  //   printf("%d ", battery_reading_history[i]);
+  // printf("\n");
+
+  temp = 0;
+  for(int i = 0; i < BATTERY_HISTORY_SIZE; ++i)
+  {
+    if(battery_reading_history[i] == 0)
+      return 0;
+    if(battery_reading_history[i] <= LOW_BATTERY_SHUTOFF_ADC_VAL)
+      temp++;
+  }
+  // printf("is_low_bat: %d\n", temp);
+  return temp >= BATTERY_HISTORY_SIZE;
+}
+
 uint8_t get_uuid(void)
 {
-	uint32_t sum = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
+  uint32_t sum = *STM32F0_UUID0 + *STM32F0_UUID1 + *STM32F0_UUID2;
   return ((sum >> 24) ^ (sum >> 16) ^ (sum >> 8) ^ sum) & 0xff;
 }
 
 void swap(uint16_t *xp, uint16_t *yp) 
 { 
-    uint16_t temp = *xp; 
+    temp = *xp; 
     *xp = *yp; 
     *yp = temp; 
 } 
@@ -163,48 +193,46 @@ void tof_calibrate(uint16_t* base, uint16_t* upper_threshold, uint16_t* lower_th
   printf("base: %d\nupper: %d\nlower: %d\n", *base, *upper_threshold, *lower_threshold);
 }
 
+void sys_shutdown(void)
+{
+  printf("shutting down\n");
+  start_animation(ANIMATION_TYPE_FASTBLINK);
+  HAL_Delay(3000);
+  start_animation(ANIMATION_TYPE_CONST_OFF);
+
+  // turn off external chips
+  stopContinuous();
+  nrf24_powerDown();
+  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+  NRF_OFF();
+
+  // disable all interrupts
+  for (int i = 0; i <= 31; i++)
+    HAL_NVIC_DisableIRQ(i);
+
+  // turn off periphrials
+  HAL_ADC_MspDeInit(&hadc);
+  HAL_I2C_MspDeInit(&hi2c1);
+  HAL_RTC_MspDeInit(&hrtc);
+  HAL_SPI_MspDeInit(&hspi1);
+  HAL_TIM_Base_MspDeInit(&htim2);
+  HAL_TIM_Base_MspDeInit(&htim17);
+  HAL_UART_MspDeInit(&huart2);
+
+  // shut off
+  HAL_PWR_EnterSTANDBYMode();
+}
+
 // put this before IWDG_init so it can turn off after reset?
-void check_battery(uint16_t* vbat_mV)
+uint8_t get_battery_adc_reading(void)
 {
   // ADC channel 1 is connected to a resistor divider that halves the battery voltage
   HAL_ADC_Start(&hadc);
   HAL_ADC_PollForConversion(&hadc, 500);
-  *vbat_mV = 26*(uint16_t)HAL_ADC_GetValue(&hadc);
+  uint8_t vbat_mV = HAL_ADC_GetValue(&hadc);
   HAL_ADC_Stop(&hadc);
-  // printf("vbat: %d\n", *vbat_mV);
-  // return;
-
-  // if(*vbat_mV >= 2500 && *vbat_mV <= 3250)
-  if(*vbat_mV <= 3276) // 3250 after diode drop is about 3.53V
-  {
-    printf("low battery, shutting down...\n");
-    start_animation(ANIMATION_TYPE_FASTBLINK);
-    HAL_Delay(3000);
-    start_animation(ANIMATION_TYPE_CONST_OFF);
-
-    // turn off external chips
-    stopContinuous();
-    nrf24_powerDown();
-    HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
-    NRF_OFF();
-
-    // disable all interrupts
-    for (int i = 0; i <= 31; i++)
-      HAL_NVIC_DisableIRQ(i);
-
-    // turn off periphrials
-    HAL_ADC_MspDeInit(&hadc);
-    HAL_I2C_MspDeInit(&hi2c1);
-    HAL_RTC_MspDeInit(&hrtc);
-    HAL_SPI_MspDeInit(&hspi1);
-    HAL_TIM_Base_MspDeInit(&htim2);
-    HAL_TIM_Base_MspDeInit(&htim17);
-    HAL_UART_MspDeInit(&huart2);
-
-    // shut off
-    HAL_PWR_EnterSTANDBYMode();
-  }
+  return vbat_mV; // cutoff at 126
 }
 
 void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)

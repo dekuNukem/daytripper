@@ -136,6 +136,18 @@ Anyway, if connection is successful, a number of options is presented:
 
 How many times per second TX takes a reading **`while on battery`**. Turn it up to make TX more sensitive to faster motions, at the expense of reduced battery life.
 
+Here is a table of approximate Battery Life vs Refresh Rate:
+
+| Refresh Rate (Hz) | Battery Life (Hours) |
+|-------------------|----------------------|
+| 2                 | 100                  |
+| 6 (Default)       | 50                   |
+| 10                | 30                   |
+| 15                | 20                   |
+| 30                | 12                   |
+
+Please note that your battery life might be more or less depending on your lighting conditions and number of triggers.
+
 TX will always run at fastest refresh rate (30Hz) when plugged in.
 
 ### Noise Reduction

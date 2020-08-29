@@ -42,7 +42,31 @@ standby without stm32: 1.2mA
 it is the NRF chip thats causing the excess current consumption!!
 
 */
+uint16_t temp;
+uint8_t is_low_battery(void)
+{
+  for (int i = 0; i < BATTERY_HISTORY_SIZE; ++i)
+    printf("%d ", battery_reading_history[i]);
+  printf("\n");
 
+  temp = 0;
+  for(int i = 0; i < BATTERY_HISTORY_SIZE; ++i)
+  {
+    if(battery_reading_history[i] == 0)
+      return 0;
+    if(battery_reading_history[i] <= LOW_BATTERY_SHUTOFF_ADC_VAL)
+      temp += battery_reading_history[i];
+  }
+  printf("islowbat: %d\n", temp / BATTERY_HISTORY_SIZE);
+  return temp / BATTERY_HISTORY_SIZE <= LOW_BATTERY_SHUTOFF_ADC_VAL;
+}
+
+
+
+uint16_t get_rtc_sleep_period(uint8_t refresh_rate_Hz)
+{
+  return (36 - refresh_rate_Hz) * 60 / 5;
+}
 /*
 
 hrtc.Init.AsynchPrediv = 26;

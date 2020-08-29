@@ -92,7 +92,6 @@ uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, this_reading;
-int16_t diff;
 uint8_t button_result;
 uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
@@ -100,6 +99,7 @@ uint16_t vbat_mV;
 uint16_t vbat_mV_prev;
 uint16_t power_on_time_5s;
 uint16_t trigger_upper_threshold, trigger_lower_threshold;
+uint8_t this_battery_adc_value;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -228,26 +228,31 @@ int main(void)
   dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
-
-  // daytripper_config.tof_timing_budget_ms = 25;
-  // daytripper_config.refresh_rate_Hz = 5;
-  // daytripper_config.nr_sensitivity = 1;
-  // daytripper_config.print_debug_info = 0;
-  // daytripper_config.tof_range_max_cm_div2 = 25;
-  // daytripper_config.tof_range_min_cm_div2 = 10;
-  // daytripper_config.range_max_mm = daytripper_config.tof_range_max_cm_div2 * 20;
-  // daytripper_config.range_min_mm = daytripper_config.tof_range_min_cm_div2 * 20;
-
   dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);
-  check_battery(&vbat_mV);
+
+  if(HAL_RTCEx_BKUPRead(&hrtc, 0) == RTC_BKUP_SLEEP)
+  {
+    // printf("rtc shutdown\n");
+    sys_shutdown();
+  }
+  for (int i = 0; i < BATTERY_HISTORY_SIZE; ++i)
+  {
+    add_battery_history(get_battery_adc_reading());
+    HAL_Delay(50);
+  }
+  if(is_low_battery())
+    sys_shutdown();
+
+  memset(battery_reading_history, 0, BATTERY_HISTORY_SIZE);
+  vbat_mV = get_battery_adc_reading() * ADC_COEFFICIENT;
   vbat_mV_prev = vbat_mV;
   rtc_calibrate();
   // printf("rct_calibration_value: %d\n", rct_calibration_value);
   // printf("rtc_offset: %d\n", rtc_offset);
-  // this should be behind check_battery, so it can completely shut down in low battery situation
+  // this should be behind get_battery_adc_reading, so it can completely shut down in low battery situation
   MX_IWDG_Init();
   /* USER CODE END 2 */
 
@@ -280,8 +285,22 @@ int main(void)
       power_on_time_5s++; // update power-on counter
       if(power_on_time_5s % 180 == 0) // 5 * 180 = 900s = 15mins, send stat update every 15 minutes
         new_stat_packet = 1;
-      check_battery(&vbat_mV);
-      // printf("vbat_mV: %d\n", vbat_mV);
+      this_battery_adc_value = get_battery_adc_reading();
+      vbat_mV = this_battery_adc_value * ADC_COEFFICIENT;
+      if(power_on_time_5s % 60 == 0)
+      {
+        add_battery_history(this_battery_adc_value);
+        printf("vbat_mV: %d\n", vbat_mV);
+        if(is_low_battery())
+        {
+          // write to RTC register, kick dog then reset, check rtc register on startup, and go to sleep if needed
+          HAL_RTCEx_BKUPWrite(&hrtc, 0, RTC_BKUP_SLEEP);
+          // printf("HHHH\n");
+          HAL_IWDG_Refresh(&hiwdg);
+          NVIC_SystemReset();
+        }
+      }
+
       rtc_counter = 0;
     }
 
@@ -304,7 +323,7 @@ int main(void)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
       printf("sending stat... ");
-      printf("vbat_mV: %d\n", vbat_mV);
+      // printf("vbat_mV: %d\n", vbat_mV);
       send_packet(data_array);
       new_stat_packet = 0;
     }
