@@ -70,7 +70,7 @@ void linear_buf_reset(linear_buf *lb);
 int32_t linear_buf_add(linear_buf *lb, uint8_t c);
 int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len);
 void dt_conf_load(dt_conf *dtc);
-void dt_conf_print(dt_conf *dtc);
+// void dt_conf_print(dt_conf *dtc);
 void run_time_update(uint32_t duration_ms);
 void parse_cmd(char* cmd);
 void dt_conf_load_default(dt_conf *dtc);

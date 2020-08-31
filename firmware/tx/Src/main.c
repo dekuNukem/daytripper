@@ -228,7 +228,7 @@ int main(void)
   dt_conf_load_default(&daytripper_config);
   printf("\n\ndaytripper TX\ndekuNukem 2020\n\n");
   dt_conf_load(&daytripper_config);
-  dt_conf_print(&daytripper_config);
+  // dt_conf_print(&daytripper_config);
   animation_init(&htim17, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
   HAL_Delay(2000);

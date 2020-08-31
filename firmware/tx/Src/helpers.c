@@ -31,13 +31,13 @@ RTC_AlarmTypeDef sAlarm;
 uint32_t next_alarm_second;
 uint32_t next_alarm_minute;
 uint8_t next_alarm_hour;
-static const char eep_erase_failed[] = "ERASE ERR";
-static const char eep_write_failed[] = "WRITE ERR";
-static const char eep_read_failed[] = "READ ERR";
+// static const char eep_erase_failed[] = "ERASE ERR";
+// static const char eep_write_failed[] = "WRITE ERR";
+// static const char eep_read_failed[] = "READ ERR";
 static const char eep_invalid[] = "INVALID VAL";
 static const uint8_t fw_version_major = 1;
 static const uint8_t fw_version_minor = 1;
-static const uint8_t fw_version_patch = 0;
+static const uint8_t fw_version_patch = 1;
 
 #define TEMP_BUF_SIZE 45
 char temp_buf[TEMP_BUF_SIZE];
@@ -170,7 +170,7 @@ void iwdg_wait(uint32_t msec, uint8_t ani_type)
 
 void tof_calibrate(uint16_t* base, uint16_t* upper_threshold, uint16_t* lower_threshold)
 {
-  printf("VL53L0X calibrating...\n");
+  printf("calibrating...\n");
   *base = get_baseline();
   printf("real: %d\n", *base);
   if(*base >= daytripper_config.range_max_mm)
@@ -422,7 +422,7 @@ void dt_conf_load(dt_conf *dtc)
   memset(eeprom_buf, 0, EEPROM_BUF_SIZE);
   if(ee_read(0, EEPROM_BUF_SIZE, eeprom_buf) != 1)
   {
-    puts(eep_read_failed);
+    // puts(eep_read_failed);
     return;
   }
   if(is_config_valid(eeprom_buf) != 1)
@@ -508,17 +508,17 @@ void save_config(char* cmd)
   }
   if(is_config_valid(eeprom_buf) != 1)
   {
-    puts(eep_invalid);
+    // puts(eep_invalid);
     return;
   }
   if(ee_format() != 1)
   {
-    puts(eep_erase_failed);
+    // puts(eep_erase_failed);
     return;
   }
   if(ee_write(0, EEPROM_BUF_SIZE, eeprom_buf) != 1)
   {
-    puts(eep_write_failed);
+    // puts(eep_write_failed);
     return;
   }
   printf("OK\n");
