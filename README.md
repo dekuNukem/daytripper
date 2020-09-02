@@ -64,6 +64,12 @@ For advanced features such as custom actions and adjusting settings, read this:
 
 [Advanced Usage](/advanced_usage.md)
 
+## Specification
+
+![Alt text](resources/photos/tx_data.png)
+
+![Alt text](resources/photos/rx_data.png)
+
 ## FAQ
 
 ### What operating system is supported?

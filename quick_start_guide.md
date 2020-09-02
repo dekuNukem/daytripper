@@ -42,11 +42,13 @@ That's pretty much the gist of it! However please do keep reading for more impor
 
 ## Mounting options
 
-Now you know how Daytripper works, time to make it useful by mounting the TX at a desired location.
+Now you know how Daytripper works, time to mounting it at a desired location.
 
 * Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
 
-If you're trying to detect someone walking by, you can mount it to a wall using the included magnet. Simply tape it to the wall, then you can attach and detach the TX with ease.
+If you're trying to detect someone walking by, you can mount it to a wall using the included magnet.
+
+* Simply tape the magnet to the wall, then you can attach and detach the TX with ease.
 
 If you can find a metal surface, it's even easier:
 
@@ -57,8 +59,6 @@ If you're trying to detect a door opening, simply put it on the ground so the do
 ![Alt text](resources/photos/door.jpg)
 
 Those are just two suggestions, you can get as creative as you want!
-
-Word of warning though, the Neodymium magnet is rather brittle, so don't let it smash into metal objects, or it might chip or shatter.
 
 ## Test It Out!
 
@@ -76,7 +76,7 @@ A couple of key areas to note:
 
 * Approach the TX like your potential threats would, does TX trigger consistently?
 
-* If yes, you don't have to do anything.
+* If yes, congrats! You're all set.
 
 * If not, you can turn up the refresh rate to make TX more sensitive to motion, at the cost of battery life.
 
@@ -86,7 +86,7 @@ A couple of key areas to note:
 
 ### Your Applications
 
-* Test it out with the application you're trying to hide!
+* Try it out with the application you're trying to hide!
 
 * By default, RX will press `WIN + M` when triggered. This works with almost all desktop apps.
 

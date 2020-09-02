@@ -34,11 +34,11 @@ This key combo normally doesn't do anything, but you can capture it with a softw
 
 ### Windows 
 
-You can use [autohotkey](https://www.autohotkey.com). It is a powerful open-source keyboard automation program, where you can write a script to do anything you want when `ALT + PAUSE` is pressed by RX.
+You can use [autohotkey](https://www.autohotkey.com). It is a powerful and free open-source keyboard automation program, where you can write a script to do anything you want when `ALT + PAUSE` is pressed by RX.
 
 Check out the [official tutorials](https://www.autohotkey.com/docs_1.0/Tutorial.htm), and here's a [sample configuration file](resources/AutoHotkey.ahk) upon which you can tinker with. 
 
-### MacOS
+### macOS
 
 When you first plug RX into your mac, a window might pop up asking to identify keyboard layout, simply close it.
 
@@ -112,7 +112,7 @@ After the app has launched, press `Refresh` button, select the COM port with the
 
 ![Alt text](resources/photos/app/sercon.png)
 
-On macOS or Linux, the serial port will have different names. They will mostly likely have the word `usb` in it.
+On macOS or Linux, the serial port will have different names, and mostly likely will have the word `usb` in it.
 
 ![Alt text](resources/photos/app/macser.png)
 
@@ -134,7 +134,7 @@ Anyway, if connection is successful, a number of options is presented:
 
 ### Refresh Rate
 
-How many times per second TX takes a reading **`while on battery`**. Turn it up to make TX more sensitive to faster motions, at the expense of reduced battery life.
+How many times per second TX takes a reading **`while on battery`**. Turn it up to make TX more sensitive to faster motions, at the expense of battery life.
 
 Here is a table of approximate Battery Life vs Refresh Rate:
 
