@@ -2140,15 +2140,15 @@ Image Symbol Table
     i.nrf24_writeRegister                    0x08004310   Section        0  nrf24.o(i.nrf24_writeRegister)
     i.press_keys                             0x08004338   Section        0  helpers.o(i.press_keys)
     i.print_status                           0x08004398   Section        0  main.o(i.print_status)
-    i.spi_transfer                           0x08004558   Section        0  nrf24.o(i.spi_transfer)
-    i.start_animation                        0x0800457c   Section        0  animation.o(i.start_animation)
-    .constdata                               0x08004590   Section      128  keyboard.o(.constdata)
-    .constdata                               0x08004610   Section       67  animation.o(.constdata)
-    breathing_lookup                         0x08004610   Data          51  animation.o(.constdata)
-    doubleflash_lookup                       0x08004643   Data          16  animation.o(.constdata)
-    .constdata                               0x08004653   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x08004663   Section        8  system_stm32f0xx.o(.constdata)
-    .conststring                             0x0800466c   Section      139  main.o(.conststring)
+    i.spi_transfer                           0x0800455c   Section        0  nrf24.o(i.spi_transfer)
+    i.start_animation                        0x08004580   Section        0  animation.o(i.start_animation)
+    .constdata                               0x08004594   Section      128  keyboard.o(.constdata)
+    .constdata                               0x08004614   Section       67  animation.o(.constdata)
+    breathing_lookup                         0x08004614   Data          51  animation.o(.constdata)
+    doubleflash_lookup                       0x08004647   Data          16  animation.o(.constdata)
+    .constdata                               0x08004657   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x08004667   Section        8  system_stm32f0xx.o(.constdata)
+    .conststring                             0x08004670   Section      139  main.o(.conststring)
     .data                                    0x20000000   Section        1  nrf24.o(.data)
     .data                                    0x20000001   Section        5  keyboard.o(.data)
     .data                                    0x20000008   Section       24  animation.o(.data)
@@ -2451,14 +2451,14 @@ Image Symbol Table
     nrf24_tx_address                         0x080042f7   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
     nrf24_writeRegister                      0x08004311   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
     press_keys                               0x08004339   Thumb Code    94  helpers.o(i.press_keys)
-    print_status                             0x08004399   Thumb Code   320  main.o(i.print_status)
-    spi_transfer                             0x08004559   Thumb Code    32  nrf24.o(i.spi_transfer)
-    start_animation                          0x0800457d   Thumb Code    14  animation.o(i.start_animation)
-    _asciimap                                0x08004590   Data         128  keyboard.o(.constdata)
-    AHBPrescTable                            0x08004653   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x08004663   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x080046f8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004718   Number         0  anon$$obj.o(Region$$Table)
+    print_status                             0x08004399   Thumb Code   322  main.o(i.print_status)
+    spi_transfer                             0x0800455d   Thumb Code    32  nrf24.o(i.spi_transfer)
+    start_animation                          0x08004581   Thumb Code    14  animation.o(i.start_animation)
+    _asciimap                                0x08004594   Data         128  keyboard.o(.constdata)
+    AHBPrescTable                            0x08004657   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x08004667   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x080046fc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800471c   Number         0  anon$$obj.o(Region$$Table)
     payload_len                              0x20000000   Data           1  nrf24.o(.data)
     kb_buf                                   0x20000001   Data           5  keyboard.o(.data)
     current_animation                        0x20000008   Data           1  animation.o(.data)
@@ -2511,9 +2511,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004864, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000047e8])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004868, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000047ec])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004718, Max: 0x00008000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000471c, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2746,20 +2746,20 @@ Memory Map of the image
     0x08004310   0x08004310   0x00000028   Code   RO           33    i.nrf24_writeRegister  nrf24.o
     0x08004338   0x08004338   0x0000005e   Code   RO          305    i.press_keys        helpers.o
     0x08004396   0x08004396   0x00000002   PAD
-    0x08004398   0x08004398   0x000001c0   Code   RO          485    i.print_status      main.o
-    0x08004558   0x08004558   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
-    0x0800457c   0x0800457c   0x00000014   Code   RO          440    i.start_animation   animation.o
-    0x08004590   0x08004590   0x00000080   Data   RO          358    .constdata          keyboard.o
-    0x08004610   0x08004610   0x00000043   Data   RO          441    .constdata          animation.o
-    0x08004653   0x08004653   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
-    0x08004663   0x08004663   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
-    0x0800466b   0x0800466b   0x00000001   PAD
-    0x0800466c   0x0800466c   0x0000008b   Data   RO          487    .conststring        main.o
-    0x080046f7   0x080046f7   0x00000001   PAD
-    0x080046f8   0x080046f8   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
+    0x08004398   0x08004398   0x000001c4   Code   RO          485    i.print_status      main.o
+    0x0800455c   0x0800455c   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
+    0x08004580   0x08004580   0x00000014   Code   RO          440    i.start_animation   animation.o
+    0x08004594   0x08004594   0x00000080   Data   RO          358    .constdata          keyboard.o
+    0x08004614   0x08004614   0x00000043   Data   RO          441    .constdata          animation.o
+    0x08004657   0x08004657   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
+    0x08004667   0x08004667   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
+    0x0800466f   0x0800466f   0x00000001   PAD
+    0x08004670   0x08004670   0x0000008b   Data   RO          487    .conststring        main.o
+    0x080046fb   0x080046fb   0x00000001   PAD
+    0x080046fc   0x080046fc   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004718, Size: 0x00000e98, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800471c, Size: 0x00000e98, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2797,7 +2797,7 @@ Image component sizes
        164         20         67         24          0       2325   animation.o
        190          8          0          0          0       1684   helpers.o
        440         44        128          5          0       8872   keyboard.o
-      1766        440        139         36        752       8206   main.o
+      1770        442        139         36        752       8206   main.o
        570         12          0          1          0     482331   nrf24.o
         54          4          0          0          0       1045   radiopinfunctions.o
         88         38        192          0       1024        644   startup_stm32f042x6.o
@@ -2825,7 +2825,7 @@ Image component sizes
        108          0          0          0          0       3636   usbd_ioreq.o
 
     ----------------------------------------------------------------------
-     16372       1370        584        328       3404     624704   Object Totals
+     16376       1372        584        328       3404     624704   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         38          0          2          9          4          0   (incl. Padding)
 
@@ -2873,15 +2873,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17616       1442        584        332       3404     617400   Grand Totals
-     17616       1442        584        208       3404     617400   ELF Image Totals (compressed)
-     17616       1442        584        208          0          0   ROM Totals
+     17620       1444        584        332       3404     617400   Grand Totals
+     17620       1444        584        208       3404     617400   ELF Image Totals (compressed)
+     17620       1444        584        208          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                18200 (  17.77kB)
+    Total RO  Size (Code + RO Data)                18204 (  17.78kB)
     Total RW  Size (RW Data + ZI Data)              3736 (   3.65kB)
-    Total ROM Size (Code + RO Data + RW Data)      18408 (  17.98kB)
+    Total ROM Size (Code + RO Data + RW Data)      18412 (  17.98kB)
 
 ==============================================================================
 

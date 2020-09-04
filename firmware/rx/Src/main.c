@@ -166,7 +166,7 @@ void print_status(void)
       sprintf(trigger_buf, "%dmm", this_reading);
     if(vbat_mV != 0)
       sprintf(bat_buf, "%dmV", vbat_mV);
-    if(power_on_time != 0)
+    if(last_stat_msg != 0)
       sprintf(po_time_buf, "%d minutes", power_on_time * 5 / 60);
     if(last_trigger_msg != 0)
       sprintf(last_trigger_buf, "%d seconds ago", (HAL_GetTick() - last_trigger_msg)/1000);
