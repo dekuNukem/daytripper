@@ -65,8 +65,8 @@
 #define NRF_PAYLOAD_SIZE 6
 #define NRF_CHANNEL 115
 
-#define PRINT_BUF_SIZE 128
-#define NUMBER_BUF_SIZE 16
+#define PRINT_BUF_SIZE 256
+#define NUMBER_BUF_SIZE 20
 
 /* USER CODE END Includes */
 
@@ -92,9 +92,11 @@ char baseline_buf[NUMBER_BUF_SIZE];
 char trigger_buf[NUMBER_BUF_SIZE];
 char bat_buf[NUMBER_BUF_SIZE];
 char po_time_buf[NUMBER_BUF_SIZE];
+char last_trigger_buf[NUMBER_BUF_SIZE];
+char last_stat_buf[NUMBER_BUF_SIZE];
 uint16_t baseline, this_reading, vbat_mV, power_on_time;
 uint8_t rx_avaliable, button_pressed;
-uint32_t last_message_ms;
+uint32_t last_stat_msg, last_trigger_msg;
 
 /* USER CODE END PV */
 
@@ -152,7 +154,9 @@ void print_status(void)
   sprintf(baseline_buf, "Unknown");
   sprintf(po_time_buf, "Unknown");
   sprintf(bat_buf, "Unknown");
-  if(last_message_ms != 0)
+  sprintf(last_stat_buf, "Never");
+  sprintf(last_trigger_buf, "Never");
+  if(last_stat_msg != 0 || last_trigger_msg != 0)
   {
     if(received_data[0] != 0)
       sprintf(tx_id_buf, "0x%x", received_data[0]);
@@ -164,10 +168,25 @@ void print_status(void)
       sprintf(bat_buf, "%dmV", vbat_mV);
     if(power_on_time != 0)
       sprintf(po_time_buf, "%d minutes", power_on_time * 5 / 60);
-  	sprintf(print_buf, "\nlast message: %d seconds ago\ntransmitter ID: %s\nbaseline: %s\ntrigger: %s\nbattery: %s\npower-on time: %s\n", (HAL_GetTick() - last_message_ms)/1000, tx_id_buf, baseline_buf, trigger_buf, bat_buf, po_time_buf);
+    if(last_trigger_msg != 0)
+      sprintf(last_trigger_buf, "%d seconds ago", (HAL_GetTick() - last_trigger_msg)/1000);
+    if(last_stat_msg != 0)
+      sprintf(last_stat_buf, "%d seconds ago", (HAL_GetTick() - last_stat_msg)/1000);
+  	sprintf(print_buf, "\n---\n\
+transmitter ID: %s\n\
+...\n\
+last trigger message: %s\n\
+baseline: %s\n\
+trigger: %s\n\
+...\n\
+last stat message: %s\n\
+battery: %s\n\
+power-on time: %s\n---\n\
+", tx_id_buf, last_trigger_buf, baseline_buf, trigger_buf, last_stat_buf, bat_buf, po_time_buf);
   }
   else
   	sprintf(print_buf, "\nNo message has been received from TX yet.\n");
+  // printf("%s", print_buf);
   kb_print(print_buf, 20);
   keyboard_release_all();
   button_pressed = 0;
@@ -252,7 +271,6 @@ int main(void)
       for (int i = 0; i < 6; ++i)
         printf("0x%x ", received_data[i]);
       printf("\n");
-      last_message_ms = HAL_GetTick();
 
       if(received_data[1] == DTPR_CMD_TRIG)
       {
@@ -262,12 +280,14 @@ int main(void)
         this_reading = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: trigger\nbase: %d, this: %d\n", baseline, this_reading);
         HAL_GPIO_WritePin(TRIGGER_OUT_GPIO_Port, TRIGGER_OUT_Pin, GPIO_PIN_RESET);
+        last_trigger_msg = HAL_GetTick();
       }
 
       else if(received_data[1] == DTPR_CMD_STAT)
       {
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
         power_on_time = eight2sixteen(received_data[4], received_data[5]);
+        last_stat_msg = HAL_GetTick();
         printf("cmd type: status\nvbat_mV: %d, power-on time: %d minutes\n", vbat_mV, power_on_time * 5 / 60);
       }
 

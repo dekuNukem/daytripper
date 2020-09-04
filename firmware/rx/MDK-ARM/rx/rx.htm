@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rx\rx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rx\rx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 04 05:04:25 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 04 05:47:06 2020
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1381,7 +1381,7 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 </UL>
 
-<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 386 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[2e]"></a>main</STRONG> (Thumb, 394 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_DEVICE_Init
@@ -1587,7 +1587,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d4]"></a>print_status</STRONG> (Thumb, 240 bytes, Stack size 32 bytes, main.o(i.print_status))
+<P><STRONG><a name="[d4]"></a>print_status</STRONG> (Thumb, 320 bytes, Stack size 32 bytes, main.o(i.print_status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = print_status &rArr; kb_print &rArr; keyboard_release &rArr; keyboard_release_all &rArr; USBD_HID_SendReport &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; PCD_WritePMA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kb_print
