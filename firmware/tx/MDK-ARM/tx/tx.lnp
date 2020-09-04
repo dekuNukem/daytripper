@@ -5,7 +5,6 @@
 "tx\nrf24.o"
 "tx\helpers.o"
 "tx\animation.o"
-"tx\sleepybutton.o"
 "tx\ee.o"
 "tx\my_usb.o"
 "tx\main.o"

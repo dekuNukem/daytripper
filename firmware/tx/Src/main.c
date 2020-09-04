@@ -58,7 +58,6 @@
 #include "nrf24.h"
 #include "VL53L0X.h"
 #include "animation.h"
-#include "sleepbutton.h"
 #include "ee.h"
 #include "my_usb.h"
 
@@ -92,7 +91,6 @@ uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 
 uint16_t baseline, this_reading;
-uint8_t button_result;
 uint8_t new_stat_packet = 1;
 uint8_t current_state = STATE_IDLE;
 uint16_t vbat_mV;
@@ -290,7 +288,7 @@ int main(void)
       if(power_on_time_5s % 60 == 0)
       {
         add_battery_history(this_battery_adc_value);
-        printf("vbat_mV: %d\n", vbat_mV);
+        // printf("vbat_mV: %d\n", vbat_mV);
         if(is_low_battery())
         {
           // write to RTC register, kick dog then reset, check rtc register on startup, and go to sleep if needed
@@ -307,23 +305,10 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    button_result = button_update(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin), rtc_sleep_count_ms);
-    if(button_result == 1) // short press
-    {
-      iwdg_wait(20, ANIMATION_TYPE_BREATHING);
-      tof_calibrate(&baseline, &trigger_upper_threshold, &trigger_lower_threshold);
-      iwdg_wait(20, ANIMATION_TYPE_CONST_OFF);
-      start_measurement();
-      current_state = STATE_IDLE;
-    }
-    else if(button_result == 2) // long press
-      tx_test();
-
     if(new_stat_packet)
     {
       build_packet_stat(data_array, vbat_mV, power_on_time_5s);
-      printf("sending stat... ");
-      // printf("vbat_mV: %d\n", vbat_mV);
+      // printf("sending stat... vbat_mV: %d\n", vbat_mV);
       send_packet(data_array);
       new_stat_packet = 0;
     }

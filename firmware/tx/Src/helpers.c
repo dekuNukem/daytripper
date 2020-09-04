@@ -245,7 +245,7 @@ void build_packet_trig(uint8_t* data, uint16_t base, uint16_t this)
   data[5] = this & 0xff;
 }
 
-void build_packet_stat(uint8_t* data, uint32_t vbat_mV, uint16_t pot)
+void build_packet_stat(uint8_t* data, uint16_t vbat_mV, uint16_t pot)
 {
   data[0] = get_uuid();
   data[1] = DTPR_CMD_STAT;
@@ -272,24 +272,25 @@ uint8_t send_packet(uint8_t* data)
 
 // TX test mode, sends test packets every second
 // can be used to test comm range
-void tx_test(void)
-{
-  uint8_t count = 0;
-  test_data[0] = get_uuid();
-  test_data[1] = DTPR_CMD_TEST;
-  stopContinuous();
-  while(1)
-  {
-    memset(test_data+2, count, 4);
-    // for (int i = 0; i < 6; ++i)
-    //   printf("0x%x ", test_data[i]);
-    // printf("\n");
-    count++;
-    send_packet(test_data);
-    iwdg_wait(150, ANIMATION_TYPE_CONST_ON);
-    iwdg_wait(850, ANIMATION_TYPE_CONST_OFF);
-  }
-}
+// void tx_test(void)
+// {
+//   uint8_t count = 0;
+//   test_data[0] = get_uuid();
+//   test_data[1] = DTPR_CMD_TEST;
+//   stopContinuous();
+//   while(1)
+//   {
+//     memset(test_data+2, count, 4);
+//     // for (int i = 0; i < 6; ++i)
+//     //   printf("0x%x ", test_data[i]);
+//     // printf("\n");
+//     count++;
+//     send_packet(test_data);
+//     iwdg_wait(150, ANIMATION_TYPE_CONST_ON);
+//     iwdg_wait(850, ANIMATION_TYPE_CONST_OFF);
+//   }
+// }
+
 void run_time_update(uint32_t duration_ms)
 {
   rtc_sleep_count_ms += duration_ms;

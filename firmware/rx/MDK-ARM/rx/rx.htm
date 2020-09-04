@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rx\rx.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rx\rx.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Jan 17 12:46:01 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 04 05:04:25 2020
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -309,6 +309,8 @@ Global Symbols
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IWDG_Init
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_status
+<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iwdg_wait
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
@@ -1395,6 +1397,7 @@ Global Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;animation_init
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_animation
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IWDG_Refresh
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_keys
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iwdg_wait
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_slide_sw_pos
@@ -1584,11 +1587,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d4]"></a>print_status</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, main.o(i.print_status))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = print_status &rArr; kb_print &rArr; keyboard_release &rArr; keyboard_release_all &rArr; USBD_HID_SendReport &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; PCD_WritePMA
+<P><STRONG><a name="[d4]"></a>print_status</STRONG> (Thumb, 240 bytes, Stack size 32 bytes, main.o(i.print_status))
+<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = print_status &rArr; kb_print &rArr; keyboard_release &rArr; keyboard_release_all &rArr; USBD_HID_SendReport &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; PCD_WritePMA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kb_print
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keyboard_release_all
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod

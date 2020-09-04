@@ -448,16 +448,6 @@
               <FilePath>..\Inc\animation.h</FilePath>
             </File>
             <File>
-              <FileName>sleepbutton.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\sleepbutton.h</FilePath>
-            </File>
-            <File>
-              <FileName>sleepybutton.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\sleepybutton.c</FilePath>
-            </File>
-            <File>
               <FileName>ee.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\ee.c</FilePath>

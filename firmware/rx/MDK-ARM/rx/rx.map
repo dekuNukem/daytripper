@@ -157,6 +157,7 @@ Section Cross References
     main.o(i.main) refers to stm32f0xx_hal_iwdg.o(i.HAL_IWDG_Refresh) for HAL_IWDG_Refresh
     main.o(i.main) refers to main.o(i.print_status) for print_status
     main.o(i.main) refers to nrf24.o(i.nrf24_getData) for nrf24_getData
+    main.o(i.main) refers to stm32f0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
     main.o(i.main) refers to stm32f0xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     main.o(i.main) refers to helpers.o(i.get_slide_sw_pos) for get_slide_sw_pos
     main.o(i.main) refers to helpers.o(i.press_keys) for press_keys
@@ -165,8 +166,9 @@ Section Cross References
     main.o(i.main) refers to main.o(.bss) for .bss
     main.o(i.main) refers to main.o(.data) for .data
     main.o(i.print_status) refers to memseta.o(.text) for __aeabi_memclr4
-    main.o(i.print_status) refers to uidiv.o(.text) for __aeabi_uidivmod
     main.o(i.print_status) refers to printf5.o(i.__0sprintf$5) for __2sprintf
+    main.o(i.print_status) refers to uidiv.o(.text) for __aeabi_uidivmod
+    main.o(i.print_status) refers to stm32f0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
     main.o(i.print_status) refers to keyboard.o(i.kb_print) for kb_print
     main.o(i.print_status) refers to keyboard.o(i.keyboard_release_all) for keyboard_release_all
     main.o(i.print_status) refers to main.o(.bss) for .bss
@@ -2119,57 +2121,57 @@ Image Symbol Table
     i.keyboard_release                       0x08003d9c   Section        0  keyboard.o(i.keyboard_release)
     i.keyboard_release_all                   0x08003e0c   Section        0  keyboard.o(i.keyboard_release_all)
     i.main                                   0x08003e30   Section        0  main.o(i.main)
-    i.media_key_press                        0x080040b8   Section        0  keyboard.o(i.media_key_press)
-    i.nrf24_ce_digitalWrite                  0x080040f8   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    i.nrf24_config                           0x08004114   Section        0  nrf24.o(i.nrf24_config)
-    i.nrf24_configRegister                   0x0800418c   Section        0  nrf24.o(i.nrf24_configRegister)
-    i.nrf24_csn_digitalWrite                 0x080041b0   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    i.nrf24_dataReady                        0x080041ca   Section        0  nrf24.o(i.nrf24_dataReady)
-    i.nrf24_getData                          0x080041e4   Section        0  nrf24.o(i.nrf24_getData)
-    i.nrf24_getStatus                        0x08004214   Section        0  nrf24.o(i.nrf24_getStatus)
-    i.nrf24_init                             0x0800422e   Section        0  nrf24.o(i.nrf24_init)
-    i.nrf24_powerUpRx                        0x0800423e   Section        0  nrf24.o(i.nrf24_powerUpRx)
-    i.nrf24_readRegister                     0x08004270   Section        0  nrf24.o(i.nrf24_readRegister)
-    i.nrf24_rxFifoEmpty                      0x08004298   Section        0  nrf24.o(i.nrf24_rxFifoEmpty)
-    i.nrf24_rx_address                       0x080042ae   Section        0  nrf24.o(i.nrf24_rx_address)
-    i.nrf24_transferSync                     0x080042ca   Section        0  nrf24.o(i.nrf24_transferSync)
-    i.nrf24_transmitSync                     0x080042e8   Section        0  nrf24.o(i.nrf24_transmitSync)
-    i.nrf24_tx_address                       0x08004302   Section        0  nrf24.o(i.nrf24_tx_address)
-    i.nrf24_writeRegister                    0x0800431c   Section        0  nrf24.o(i.nrf24_writeRegister)
-    i.press_keys                             0x08004344   Section        0  helpers.o(i.press_keys)
-    i.print_status                           0x080043a4   Section        0  main.o(i.print_status)
-    i.spi_transfer                           0x080043f4   Section        0  nrf24.o(i.spi_transfer)
-    i.start_animation                        0x08004418   Section        0  animation.o(i.start_animation)
-    .constdata                               0x0800442c   Section      128  keyboard.o(.constdata)
-    .constdata                               0x080044ac   Section       67  animation.o(.constdata)
-    breathing_lookup                         0x080044ac   Data          51  animation.o(.constdata)
-    doubleflash_lookup                       0x080044df   Data          16  animation.o(.constdata)
-    .constdata                               0x080044ef   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x080044ff   Section        8  system_stm32f0xx.o(.constdata)
-    .conststring                             0x08004508   Section      105  main.o(.conststring)
+    i.media_key_press                        0x080040a4   Section        0  keyboard.o(i.media_key_press)
+    i.nrf24_ce_digitalWrite                  0x080040e4   Section        0  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    i.nrf24_config                           0x08004100   Section        0  nrf24.o(i.nrf24_config)
+    i.nrf24_configRegister                   0x08004178   Section        0  nrf24.o(i.nrf24_configRegister)
+    i.nrf24_csn_digitalWrite                 0x0800419c   Section        0  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    i.nrf24_dataReady                        0x080041b6   Section        0  nrf24.o(i.nrf24_dataReady)
+    i.nrf24_getData                          0x080041d0   Section        0  nrf24.o(i.nrf24_getData)
+    i.nrf24_getStatus                        0x08004200   Section        0  nrf24.o(i.nrf24_getStatus)
+    i.nrf24_init                             0x0800421a   Section        0  nrf24.o(i.nrf24_init)
+    i.nrf24_powerUpRx                        0x0800422a   Section        0  nrf24.o(i.nrf24_powerUpRx)
+    i.nrf24_readRegister                     0x0800425c   Section        0  nrf24.o(i.nrf24_readRegister)
+    i.nrf24_rxFifoEmpty                      0x08004284   Section        0  nrf24.o(i.nrf24_rxFifoEmpty)
+    i.nrf24_rx_address                       0x0800429a   Section        0  nrf24.o(i.nrf24_rx_address)
+    i.nrf24_transferSync                     0x080042b6   Section        0  nrf24.o(i.nrf24_transferSync)
+    i.nrf24_transmitSync                     0x080042d4   Section        0  nrf24.o(i.nrf24_transmitSync)
+    i.nrf24_tx_address                       0x080042ee   Section        0  nrf24.o(i.nrf24_tx_address)
+    i.nrf24_writeRegister                    0x08004308   Section        0  nrf24.o(i.nrf24_writeRegister)
+    i.press_keys                             0x08004330   Section        0  helpers.o(i.press_keys)
+    i.print_status                           0x08004390   Section        0  main.o(i.print_status)
+    i.spi_transfer                           0x080044e4   Section        0  nrf24.o(i.spi_transfer)
+    i.start_animation                        0x08004508   Section        0  animation.o(i.start_animation)
+    .constdata                               0x0800451c   Section      128  keyboard.o(.constdata)
+    .constdata                               0x0800459c   Section       67  animation.o(.constdata)
+    breathing_lookup                         0x0800459c   Data          51  animation.o(.constdata)
+    doubleflash_lookup                       0x080045cf   Data          16  animation.o(.constdata)
+    .constdata                               0x080045df   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x080045ef   Section        8  system_stm32f0xx.o(.constdata)
+    .conststring                             0x080045f8   Section      105  main.o(.conststring)
     .data                                    0x20000000   Section        1  nrf24.o(.data)
     .data                                    0x20000001   Section        5  keyboard.o(.data)
     .data                                    0x20000008   Section       24  animation.o(.data)
-    .data                                    0x20000020   Section       26  main.o(.data)
-    .data                                    0x2000003c   Section       28  usbd_desc.o(.data)
-    .data                                    0x20000058   Section       22  usbd_desc.o(.data)
-    .data                                    0x20000070   Section        4  stm32f0xx_hal.o(.data)
-    .data                                    0x20000074   Section        4  system_stm32f0xx.o(.data)
-    .data                                    0x20000078   Section        1  usbd_ctlreq.o(.data)
-    cfgidx                                   0x20000078   Data           1  usbd_ctlreq.o(.data)
-    .data                                    0x2000007c   Section       56  usbd_hid.o(.data)
-    .data                                    0x200000b4   Section      138  usbd_hid.o(.data)
-    USBD_HID_CfgDesc                         0x200000b4   Data          34  usbd_hid.o(.data)
-    USBD_HID_Desc                            0x200000d8   Data           9  usbd_hid.o(.data)
-    USBD_HID_DeviceQualifierDesc             0x200000e4   Data          10  usbd_hid.o(.data)
-    HID_MOUSE_ReportDesc                     0x200000f0   Data          78  usbd_hid.o(.data)
-    .data                                    0x20000140   Section        4  stdout.o(.data)
-    .bss                                     0x20000144   Section      484  main.o(.bss)
-    .bss                                     0x20000328   Section      548  usb_device.o(.bss)
-    .bss                                     0x2000054c   Section      564  usbd_conf.o(.bss)
-    mem                                      0x2000054c   Data          20  usbd_conf.o(.bss)
-    .bss                                     0x20000780   Section      512  usbd_desc.o(.bss)
-    STACK                                    0x20000980   Section     1024  startup_stm32f042x6.o(STACK)
+    .data                                    0x20000020   Section       32  main.o(.data)
+    .data                                    0x20000040   Section       28  usbd_desc.o(.data)
+    .data                                    0x2000005c   Section       22  usbd_desc.o(.data)
+    .data                                    0x20000074   Section        4  stm32f0xx_hal.o(.data)
+    .data                                    0x20000078   Section        4  system_stm32f0xx.o(.data)
+    .data                                    0x2000007c   Section        1  usbd_ctlreq.o(.data)
+    cfgidx                                   0x2000007c   Data           1  usbd_ctlreq.o(.data)
+    .data                                    0x20000080   Section       56  usbd_hid.o(.data)
+    .data                                    0x200000b8   Section      138  usbd_hid.o(.data)
+    USBD_HID_CfgDesc                         0x200000b8   Data          34  usbd_hid.o(.data)
+    USBD_HID_Desc                            0x200000dc   Data           9  usbd_hid.o(.data)
+    USBD_HID_DeviceQualifierDesc             0x200000e8   Data          10  usbd_hid.o(.data)
+    HID_MOUSE_ReportDesc                     0x200000f4   Data          78  usbd_hid.o(.data)
+    .data                                    0x20000144   Section        4  stdout.o(.data)
+    .bss                                     0x20000148   Section      564  main.o(.bss)
+    .bss                                     0x2000037c   Section      548  usb_device.o(.bss)
+    .bss                                     0x200005a0   Section      564  usbd_conf.o(.bss)
+    mem                                      0x200005a0   Data          20  usbd_conf.o(.bss)
+    .bss                                     0x200007d4   Section      512  usbd_desc.o(.bss)
+    STACK                                    0x200009d8   Section     1024  startup_stm32f042x6.o(STACK)
 
     Global Symbols
 
@@ -2431,32 +2433,32 @@ Image Symbol Table
     keyboard_release                         0x08003d9d   Thumb Code   100  keyboard.o(i.keyboard_release)
     keyboard_release_all                     0x08003e0d   Thumb Code    28  keyboard.o(i.keyboard_release_all)
     main                                     0x08003e31   Thumb Code   386  main.o(i.main)
-    media_key_press                          0x080040b9   Thumb Code    56  keyboard.o(i.media_key_press)
-    nrf24_ce_digitalWrite                    0x080040f9   Thumb Code    24  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
-    nrf24_config                             0x08004115   Thumb Code   116  nrf24.o(i.nrf24_config)
-    nrf24_configRegister                     0x0800418d   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
-    nrf24_csn_digitalWrite                   0x080041b1   Thumb Code    26  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
-    nrf24_dataReady                          0x080041cb   Thumb Code    26  nrf24.o(i.nrf24_dataReady)
-    nrf24_getData                            0x080041e5   Thumb Code    44  nrf24.o(i.nrf24_getData)
-    nrf24_getStatus                          0x08004215   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
-    nrf24_init                               0x0800422f   Thumb Code    16  nrf24.o(i.nrf24_init)
-    nrf24_powerUpRx                          0x0800423f   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
-    nrf24_readRegister                       0x08004271   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
-    nrf24_rxFifoEmpty                        0x08004299   Thumb Code    22  nrf24.o(i.nrf24_rxFifoEmpty)
-    nrf24_rx_address                         0x080042af   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
-    nrf24_transferSync                       0x080042cb   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
-    nrf24_transmitSync                       0x080042e9   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
-    nrf24_tx_address                         0x08004303   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
-    nrf24_writeRegister                      0x0800431d   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
-    press_keys                               0x08004345   Thumb Code    94  helpers.o(i.press_keys)
-    print_status                             0x080043a5   Thumb Code    68  main.o(i.print_status)
-    spi_transfer                             0x080043f5   Thumb Code    32  nrf24.o(i.spi_transfer)
-    start_animation                          0x08004419   Thumb Code    14  animation.o(i.start_animation)
-    _asciimap                                0x0800442c   Data         128  keyboard.o(.constdata)
-    AHBPrescTable                            0x080044ef   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x080044ff   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08004574   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004594   Number         0  anon$$obj.o(Region$$Table)
+    media_key_press                          0x080040a5   Thumb Code    56  keyboard.o(i.media_key_press)
+    nrf24_ce_digitalWrite                    0x080040e5   Thumb Code    24  radiopinfunctions.o(i.nrf24_ce_digitalWrite)
+    nrf24_config                             0x08004101   Thumb Code   116  nrf24.o(i.nrf24_config)
+    nrf24_configRegister                     0x08004179   Thumb Code    36  nrf24.o(i.nrf24_configRegister)
+    nrf24_csn_digitalWrite                   0x0800419d   Thumb Code    26  radiopinfunctions.o(i.nrf24_csn_digitalWrite)
+    nrf24_dataReady                          0x080041b7   Thumb Code    26  nrf24.o(i.nrf24_dataReady)
+    nrf24_getData                            0x080041d1   Thumb Code    44  nrf24.o(i.nrf24_getData)
+    nrf24_getStatus                          0x08004201   Thumb Code    26  nrf24.o(i.nrf24_getStatus)
+    nrf24_init                               0x0800421b   Thumb Code    16  nrf24.o(i.nrf24_init)
+    nrf24_powerUpRx                          0x0800422b   Thumb Code    50  nrf24.o(i.nrf24_powerUpRx)
+    nrf24_readRegister                       0x0800425d   Thumb Code    40  nrf24.o(i.nrf24_readRegister)
+    nrf24_rxFifoEmpty                        0x08004285   Thumb Code    22  nrf24.o(i.nrf24_rxFifoEmpty)
+    nrf24_rx_address                         0x0800429b   Thumb Code    28  nrf24.o(i.nrf24_rx_address)
+    nrf24_transferSync                       0x080042b7   Thumb Code    30  nrf24.o(i.nrf24_transferSync)
+    nrf24_transmitSync                       0x080042d5   Thumb Code    26  nrf24.o(i.nrf24_transmitSync)
+    nrf24_tx_address                         0x080042ef   Thumb Code    26  nrf24.o(i.nrf24_tx_address)
+    nrf24_writeRegister                      0x08004309   Thumb Code    40  nrf24.o(i.nrf24_writeRegister)
+    press_keys                               0x08004331   Thumb Code    94  helpers.o(i.press_keys)
+    print_status                             0x08004391   Thumb Code   240  main.o(i.print_status)
+    spi_transfer                             0x080044e5   Thumb Code    32  nrf24.o(i.spi_transfer)
+    start_animation                          0x08004509   Thumb Code    14  animation.o(i.start_animation)
+    _asciimap                                0x0800451c   Data         128  keyboard.o(.constdata)
+    AHBPrescTable                            0x080045df   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x080045ef   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08004664   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004684   Number         0  anon$$obj.o(Region$$Table)
     payload_len                              0x20000000   Data           1  nrf24.o(.data)
     kb_buf                                   0x20000001   Data           5  keyboard.o(.data)
     current_animation                        0x20000008   Data           1  animation.o(.data)
@@ -2471,26 +2473,32 @@ Image Symbol Table
     this_reading                             0x20000024   Data           2  main.o(.data)
     vbat_mV                                  0x20000026   Data           2  main.o(.data)
     power_on_time                            0x20000028   Data           2  main.o(.data)
-    tx_address                               0x2000002a   Data           5  main.o(.data)
-    rx_address                               0x2000002f   Data           5  main.o(.data)
-    received_data                            0x20000034   Data           6  main.o(.data)
-    FS_Desc                                  0x2000003c   Data          28  usbd_desc.o(.data)
-    USBD_LangIDDesc                          0x20000058   Data           4  usbd_desc.o(.data)
-    USBD_FS_DeviceDesc                       0x2000005c   Data          18  usbd_desc.o(.data)
-    uwTick                                   0x20000070   Data           4  stm32f0xx_hal.o(.data)
-    SystemCoreClock                          0x20000074   Data           4  system_stm32f0xx.o(.data)
-    USBD_HID                                 0x2000007c   Data          56  usbd_hid.o(.data)
-    __stdout                                 0x20000140   Data           4  stdout.o(.data)
-    hiwdg                                    0x20000144   Data          16  main.o(.bss)
-    hspi1                                    0x20000154   Data         100  main.o(.bss)
-    htim14                                   0x200001b8   Data          64  main.o(.bss)
-    htim17                                   0x200001f8   Data          64  main.o(.bss)
-    huart2                                   0x20000238   Data         112  main.o(.bss)
-    print_buf                                0x200002a8   Data         128  main.o(.bss)
-    hUsbDeviceFS                             0x20000328   Data         548  usb_device.o(.bss)
-    hpcd_USB_FS                              0x20000560   Data         544  usbd_conf.o(.bss)
-    USBD_StrDesc                             0x20000780   Data         512  usbd_desc.o(.bss)
-    __initial_sp                             0x20000d80   Data           0  startup_stm32f042x6.o(STACK)
+    last_message_ms                          0x2000002c   Data           4  main.o(.data)
+    tx_address                               0x20000030   Data           5  main.o(.data)
+    rx_address                               0x20000035   Data           5  main.o(.data)
+    received_data                            0x2000003a   Data           6  main.o(.data)
+    FS_Desc                                  0x20000040   Data          28  usbd_desc.o(.data)
+    USBD_LangIDDesc                          0x2000005c   Data           4  usbd_desc.o(.data)
+    USBD_FS_DeviceDesc                       0x20000060   Data          18  usbd_desc.o(.data)
+    uwTick                                   0x20000074   Data           4  stm32f0xx_hal.o(.data)
+    SystemCoreClock                          0x20000078   Data           4  system_stm32f0xx.o(.data)
+    USBD_HID                                 0x20000080   Data          56  usbd_hid.o(.data)
+    __stdout                                 0x20000144   Data           4  stdout.o(.data)
+    hiwdg                                    0x20000148   Data          16  main.o(.bss)
+    hspi1                                    0x20000158   Data         100  main.o(.bss)
+    htim14                                   0x200001bc   Data          64  main.o(.bss)
+    htim17                                   0x200001fc   Data          64  main.o(.bss)
+    huart2                                   0x2000023c   Data         112  main.o(.bss)
+    print_buf                                0x200002ac   Data         128  main.o(.bss)
+    tx_id_buf                                0x2000032c   Data          16  main.o(.bss)
+    baseline_buf                             0x2000033c   Data          16  main.o(.bss)
+    trigger_buf                              0x2000034c   Data          16  main.o(.bss)
+    bat_buf                                  0x2000035c   Data          16  main.o(.bss)
+    po_time_buf                              0x2000036c   Data          16  main.o(.bss)
+    hUsbDeviceFS                             0x2000037c   Data         548  usb_device.o(.bss)
+    hpcd_USB_FS                              0x200005b4   Data         544  usbd_conf.o(.bss)
+    USBD_StrDesc                             0x200007d4   Data         512  usbd_desc.o(.bss)
+    __initial_sp                             0x20000dd8   Data           0  startup_stm32f042x6.o(STACK)
 
 
 
@@ -2500,9 +2508,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000046d8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00004664])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000047cc, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00004754])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004594, Max: 0x00008000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004684, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2715,40 +2723,40 @@ Memory Map of the image
     0x08003d14   0x08003d14   0x00000088   Code   RO          353    i.keyboard_press    keyboard.o
     0x08003d9c   0x08003d9c   0x00000070   Code   RO          354    i.keyboard_release  keyboard.o
     0x08003e0c   0x08003e0c   0x00000024   Code   RO          355    i.keyboard_release_all  keyboard.o
-    0x08003e30   0x08003e30   0x00000288   Code   RO          484    i.main              main.o
-    0x080040b8   0x080040b8   0x00000040   Code   RO          356    i.media_key_press   keyboard.o
-    0x080040f8   0x080040f8   0x0000001c   Code   RO          277    i.nrf24_ce_digitalWrite  radiopinfunctions.o
-    0x08004114   0x08004114   0x00000078   Code   RO           12    i.nrf24_config      nrf24.o
-    0x0800418c   0x0800418c   0x00000024   Code   RO           13    i.nrf24_configRegister  nrf24.o
-    0x080041b0   0x080041b0   0x0000001a   Code   RO          278    i.nrf24_csn_digitalWrite  radiopinfunctions.o
-    0x080041ca   0x080041ca   0x0000001a   Code   RO           14    i.nrf24_dataReady   nrf24.o
-    0x080041e4   0x080041e4   0x00000030   Code   RO           15    i.nrf24_getData     nrf24.o
-    0x08004214   0x08004214   0x0000001a   Code   RO           16    i.nrf24_getStatus   nrf24.o
-    0x0800422e   0x0800422e   0x00000010   Code   RO           17    i.nrf24_init        nrf24.o
-    0x0800423e   0x0800423e   0x00000032   Code   RO           23    i.nrf24_powerUpRx   nrf24.o
-    0x08004270   0x08004270   0x00000028   Code   RO           25    i.nrf24_readRegister  nrf24.o
-    0x08004298   0x08004298   0x00000016   Code   RO           27    i.nrf24_rxFifoEmpty  nrf24.o
-    0x080042ae   0x080042ae   0x0000001c   Code   RO           28    i.nrf24_rx_address  nrf24.o
-    0x080042ca   0x080042ca   0x0000001e   Code   RO           30    i.nrf24_transferSync  nrf24.o
-    0x080042e8   0x080042e8   0x0000001a   Code   RO           31    i.nrf24_transmitSync  nrf24.o
-    0x08004302   0x08004302   0x0000001a   Code   RO           32    i.nrf24_tx_address  nrf24.o
-    0x0800431c   0x0800431c   0x00000028   Code   RO           33    i.nrf24_writeRegister  nrf24.o
-    0x08004344   0x08004344   0x0000005e   Code   RO          305    i.press_keys        helpers.o
-    0x080043a2   0x080043a2   0x00000002   PAD
-    0x080043a4   0x080043a4   0x00000050   Code   RO          485    i.print_status      main.o
-    0x080043f4   0x080043f4   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
-    0x08004418   0x08004418   0x00000014   Code   RO          440    i.start_animation   animation.o
-    0x0800442c   0x0800442c   0x00000080   Data   RO          358    .constdata          keyboard.o
-    0x080044ac   0x080044ac   0x00000043   Data   RO          441    .constdata          animation.o
-    0x080044ef   0x080044ef   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
-    0x080044ff   0x080044ff   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
-    0x08004507   0x08004507   0x00000001   PAD
-    0x08004508   0x08004508   0x00000069   Data   RO          487    .conststring        main.o
-    0x08004571   0x08004571   0x00000003   PAD
-    0x08004574   0x08004574   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
+    0x08003e30   0x08003e30   0x00000274   Code   RO          484    i.main              main.o
+    0x080040a4   0x080040a4   0x00000040   Code   RO          356    i.media_key_press   keyboard.o
+    0x080040e4   0x080040e4   0x0000001c   Code   RO          277    i.nrf24_ce_digitalWrite  radiopinfunctions.o
+    0x08004100   0x08004100   0x00000078   Code   RO           12    i.nrf24_config      nrf24.o
+    0x08004178   0x08004178   0x00000024   Code   RO           13    i.nrf24_configRegister  nrf24.o
+    0x0800419c   0x0800419c   0x0000001a   Code   RO          278    i.nrf24_csn_digitalWrite  radiopinfunctions.o
+    0x080041b6   0x080041b6   0x0000001a   Code   RO           14    i.nrf24_dataReady   nrf24.o
+    0x080041d0   0x080041d0   0x00000030   Code   RO           15    i.nrf24_getData     nrf24.o
+    0x08004200   0x08004200   0x0000001a   Code   RO           16    i.nrf24_getStatus   nrf24.o
+    0x0800421a   0x0800421a   0x00000010   Code   RO           17    i.nrf24_init        nrf24.o
+    0x0800422a   0x0800422a   0x00000032   Code   RO           23    i.nrf24_powerUpRx   nrf24.o
+    0x0800425c   0x0800425c   0x00000028   Code   RO           25    i.nrf24_readRegister  nrf24.o
+    0x08004284   0x08004284   0x00000016   Code   RO           27    i.nrf24_rxFifoEmpty  nrf24.o
+    0x0800429a   0x0800429a   0x0000001c   Code   RO           28    i.nrf24_rx_address  nrf24.o
+    0x080042b6   0x080042b6   0x0000001e   Code   RO           30    i.nrf24_transferSync  nrf24.o
+    0x080042d4   0x080042d4   0x0000001a   Code   RO           31    i.nrf24_transmitSync  nrf24.o
+    0x080042ee   0x080042ee   0x0000001a   Code   RO           32    i.nrf24_tx_address  nrf24.o
+    0x08004308   0x08004308   0x00000028   Code   RO           33    i.nrf24_writeRegister  nrf24.o
+    0x08004330   0x08004330   0x0000005e   Code   RO          305    i.press_keys        helpers.o
+    0x0800438e   0x0800438e   0x00000002   PAD
+    0x08004390   0x08004390   0x00000154   Code   RO          485    i.print_status      main.o
+    0x080044e4   0x080044e4   0x00000024   Code   RO           34    i.spi_transfer      nrf24.o
+    0x08004508   0x08004508   0x00000014   Code   RO          440    i.start_animation   animation.o
+    0x0800451c   0x0800451c   0x00000080   Data   RO          358    .constdata          keyboard.o
+    0x0800459c   0x0800459c   0x00000043   Data   RO          441    .constdata          animation.o
+    0x080045df   0x080045df   0x00000010   Data   RO         4249    .constdata          system_stm32f0xx.o
+    0x080045ef   0x080045ef   0x00000008   Data   RO         4250    .constdata          system_stm32f0xx.o
+    0x080045f7   0x080045f7   0x00000001   PAD
+    0x080045f8   0x080045f8   0x00000069   Data   RO          487    .conststring        main.o
+    0x08004661   0x08004661   0x00000003   PAD
+    0x08004664   0x08004664   0x00000020   Data   RO         4903    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004594, Size: 0x00000d80, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004684, Size: 0x00000dd8, Max: 0x00001800, ABSOLUTE, COMPRESSED[0x000000d0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2756,24 +2764,24 @@ Memory Map of the image
     0x20000001   COMPRESSED   0x00000005   Data   RW          359    .data               keyboard.o
     0x20000006   COMPRESSED   0x00000002   PAD
     0x20000008   COMPRESSED   0x00000018   Data   RW          442    .data               animation.o
-    0x20000020   COMPRESSED   0x0000001a   Data   RW          488    .data               main.o
-    0x2000003a   COMPRESSED   0x00000002   PAD
-    0x2000003c   COMPRESSED   0x0000001c   Data   RW          806    .data               usbd_desc.o
-    0x20000058   COMPRESSED   0x00000016   Data   RW          807    .data               usbd_desc.o
-    0x2000006e   COMPRESSED   0x00000002   PAD
-    0x20000070   COMPRESSED   0x00000004   Data   RW         3080    .data               stm32f0xx_hal.o
-    0x20000074   COMPRESSED   0x00000004   Data   RW         4251    .data               system_stm32f0xx.o
-    0x20000078   COMPRESSED   0x00000001   Data   RW         4423    .data               usbd_ctlreq.o
-    0x20000079   COMPRESSED   0x00000003   PAD
-    0x2000007c   COMPRESSED   0x00000038   Data   RW         4540    .data               usbd_hid.o
-    0x200000b4   COMPRESSED   0x0000008a   Data   RW         4541    .data               usbd_hid.o
-    0x2000013e   COMPRESSED   0x00000002   PAD
-    0x20000140   COMPRESSED   0x00000004   Data   RW         4879    .data               mc_p.l(stdout.o)
-    0x20000144        -       0x000001e4   Zero   RW          486    .bss                main.o
-    0x20000328        -       0x00000224   Zero   RW          566    .bss                usb_device.o
-    0x2000054c        -       0x00000234   Zero   RW          626    .bss                usbd_conf.o
-    0x20000780        -       0x00000200   Zero   RW          805    .bss                usbd_desc.o
-    0x20000980        -       0x00000400   Zero   RW            1    STACK               startup_stm32f042x6.o
+    0x20000020   COMPRESSED   0x00000020   Data   RW          488    .data               main.o
+    0x20000040   COMPRESSED   0x0000001c   Data   RW          806    .data               usbd_desc.o
+    0x2000005c   COMPRESSED   0x00000016   Data   RW          807    .data               usbd_desc.o
+    0x20000072   COMPRESSED   0x00000002   PAD
+    0x20000074   COMPRESSED   0x00000004   Data   RW         3080    .data               stm32f0xx_hal.o
+    0x20000078   COMPRESSED   0x00000004   Data   RW         4251    .data               system_stm32f0xx.o
+    0x2000007c   COMPRESSED   0x00000001   Data   RW         4423    .data               usbd_ctlreq.o
+    0x2000007d   COMPRESSED   0x00000003   PAD
+    0x20000080   COMPRESSED   0x00000038   Data   RW         4540    .data               usbd_hid.o
+    0x200000b8   COMPRESSED   0x0000008a   Data   RW         4541    .data               usbd_hid.o
+    0x20000142   COMPRESSED   0x00000002   PAD
+    0x20000144   COMPRESSED   0x00000004   Data   RW         4879    .data               mc_p.l(stdout.o)
+    0x20000148        -       0x00000234   Zero   RW          486    .bss                main.o
+    0x2000037c        -       0x00000224   Zero   RW          566    .bss                usb_device.o
+    0x200005a0        -       0x00000234   Zero   RW          626    .bss                usbd_conf.o
+    0x200007d4        -       0x00000200   Zero   RW          805    .bss                usbd_desc.o
+    0x200009d4   COMPRESSED   0x00000004   PAD
+    0x200009d8        -       0x00000400   Zero   RW            1    STACK               startup_stm32f042x6.o
 
 
 ==============================================================================
@@ -2786,7 +2794,7 @@ Image component sizes
        164         20         67         24          0       2325   animation.o
        190          8          0          0          0       1684   helpers.o
        440         44        128          5          0       8872   keyboard.o
-      1410        344        105         26        484       7545   main.o
+      1650        412        105         32        564       7956   main.o
        570         12          0          1          0     482331   nrf24.o
         54          4          0          0          0       1045   radiopinfunctions.o
         88         38        192          0       1024        644   startup_stm32f042x6.o
@@ -2814,9 +2822,9 @@ Image component sizes
        108          0          0          0          0       3636   usbd_ioreq.o
 
     ----------------------------------------------------------------------
-     16016       1274        552        320       3132     624043   Object Totals
+     16256       1342        552        324       3216     624454   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        38          0          4         11          0          0   (incl. Padding)
+        38          0          4          9          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2862,15 +2870,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17260       1346        552        324       3132     616739   Grand Totals
-     17260       1346        552        208       3132     616739   ELF Image Totals (compressed)
-     17260       1346        552        208          0          0   ROM Totals
+     17500       1414        552        328       3216     617150   Grand Totals
+     17500       1414        552        208       3216     617150   ELF Image Totals (compressed)
+     17500       1414        552        208          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                17812 (  17.39kB)
-    Total RW  Size (RW Data + ZI Data)              3456 (   3.38kB)
-    Total ROM Size (Code + RO Data + RW Data)      18020 (  17.60kB)
+    Total RO  Size (Code + RO Data)                18052 (  17.63kB)
+    Total RW  Size (RW Data + ZI Data)              3544 (   3.46kB)
+    Total ROM Size (Code + RO Data + RW Data)      18260 (  17.83kB)
 
 ==============================================================================
 

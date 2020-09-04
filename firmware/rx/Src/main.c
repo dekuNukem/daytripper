@@ -66,6 +66,8 @@
 #define NRF_CHANNEL 115
 
 #define PRINT_BUF_SIZE 128
+#define NUMBER_BUF_SIZE 16
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -85,8 +87,14 @@ uint8_t received_data[NRF_PAYLOAD_SIZE];
 uint8_t tx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
 uint8_t rx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 char print_buf[PRINT_BUF_SIZE];
+char tx_id_buf[NUMBER_BUF_SIZE];
+char baseline_buf[NUMBER_BUF_SIZE];
+char trigger_buf[NUMBER_BUF_SIZE];
+char bat_buf[NUMBER_BUF_SIZE];
+char po_time_buf[NUMBER_BUF_SIZE];
 uint16_t baseline, this_reading, vbat_mV, power_on_time;
 uint8_t rx_avaliable, button_pressed;
+uint32_t last_message_ms;
 
 /* USER CODE END PV */
 
@@ -139,7 +147,27 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 void print_status(void)
 {
   memset(print_buf, 0, PRINT_BUF_SIZE);
-  sprintf(print_buf, "\ntransmitter ID: 0x%x\nbaseline: %dmm\nlatest trigger: %dmm\ninput voltage: %dmV\npower-on time: %d minutes\n", received_data[0], baseline, this_reading, vbat_mV, power_on_time * 5 / 60);
+  sprintf(tx_id_buf, "Unknown");
+  sprintf(trigger_buf, "Unknown");
+  sprintf(baseline_buf, "Unknown");
+  sprintf(po_time_buf, "Unknown");
+  sprintf(bat_buf, "Unknown");
+  if(last_message_ms != 0)
+  {
+    if(received_data[0] != 0)
+      sprintf(tx_id_buf, "0x%x", received_data[0]);
+    if(baseline != 0)
+      sprintf(baseline_buf, "%dmm", baseline);
+    if(this_reading != 0)
+      sprintf(trigger_buf, "%dmm", this_reading);
+    if(vbat_mV != 0)
+      sprintf(bat_buf, "%dmV", vbat_mV);
+    if(power_on_time != 0)
+      sprintf(po_time_buf, "%d minutes", power_on_time * 5 / 60);
+  	sprintf(print_buf, "\nlast message: %d seconds ago\ntransmitter ID: %s\nbaseline: %s\ntrigger: %s\nbattery: %s\npower-on time: %s\n", (HAL_GetTick() - last_message_ms)/1000, tx_id_buf, baseline_buf, trigger_buf, bat_buf, po_time_buf);
+  }
+  else
+  	sprintf(print_buf, "\nNo message has been received from TX yet.\n");
   kb_print(print_buf, 20);
   keyboard_release_all();
   button_pressed = 0;
@@ -184,7 +212,7 @@ int main(void)
   MX_IWDG_Init();
   animation_init(&htim17, &htim14);
 
-  printf("\n\ndaytripper RX\ndekuNukem 2019\n\n");
+  printf("\n\ndaytripper RX\ndekuNukem 2020\n\n");
   iwdg_wait(2000, ANIMATION_TYPE_BREATHING);
   MX_USB_DEVICE_Init();
 
@@ -207,7 +235,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  	HAL_IWDG_Refresh(&hiwdg);
+    HAL_IWDG_Refresh(&hiwdg);
 
     if(button_pressed)
       print_status();
@@ -224,6 +252,7 @@ int main(void)
       for (int i = 0; i < 6; ++i)
         printf("0x%x ", received_data[i]);
       printf("\n");
+      last_message_ms = HAL_GetTick();
 
       if(received_data[1] == DTPR_CMD_TRIG)
       {
@@ -240,15 +269,13 @@ int main(void)
         vbat_mV = eight2sixteen(received_data[2], received_data[3]);
         power_on_time = eight2sixteen(received_data[4], received_data[5]);
         printf("cmd type: status\nvbat_mV: %d, power-on time: %d minutes\n", vbat_mV, power_on_time * 5 / 60);
-        if(vbat_mV >= 2500 && vbat_mV <= 3300)
-        {
-          printf("LOW BATTERY!!!!!!\n");
-          start_animation(ANIMATION_TYPE_BLINK);
-        }
       }
 
       else if(received_data[1] == DTPR_CMD_TEST)
         printf("cmd type: test\n");
+
+      if(vbat_mV >= 2500 && vbat_mV <= 3300)
+        start_animation(ANIMATION_TYPE_BLINK);
 
       printf("\n\n");
     }

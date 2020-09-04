@@ -51,6 +51,5 @@ tx\main.o: ../Inc/nrf24.h
 tx\main.o: ../Inc/nRF24L01.h
 tx\main.o: ../Inc/VL53L0X.h
 tx\main.o: ../Inc/animation.h
-tx\main.o: ../Inc/sleepbutton.h
 tx\main.o: ../Inc/ee.h
 tx\main.o: ../Inc/my_usb.h
