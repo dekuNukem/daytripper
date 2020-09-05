@@ -214,8 +214,6 @@ There is a user button on both TX and RX board. Usually they are unused:
 
 ![Alt text](resources/photos/buttons.jpg)
 
-For TX, a short press (less than 2 seconds) recalibrates the baseline. A long press (more than 2 seconds) enters Test Mode, where it sends test packets with incrementing sequence number as payload every second. It can be used to test communication range. Turn it off then on again to exit Test Mode. 
-
 For RX, a press on the button types out some debug messages. Make sure you open a text editor first. If the RX has not received any messages from the TX, the debug values will all be zero.
 
 ## USB Firmware Updates
@@ -247,6 +245,8 @@ Now launch the `DfuSeDemo` software:
 You should see a `STM Device in DFU Mode` in the `Available DUF Devices` section at top left corner.
 
 ![Alt text](resources/photos/dfu_available.png)
+
+* If nothing shows up, you might need to install a driver. [Click me for details](dfu_driver_install.md)  
 
 Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
 
