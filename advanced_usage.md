@@ -230,7 +230,7 @@ Locate the user button on the board:
 
 To update firmware:
 
-* Make sure the board is TURNED OFF and unplugged.
+* Make sure the board is **`TURNED OFF`** and unplugged.
 
 * **Press and hold down the user button** while plugging it into a computer.
 
@@ -250,7 +250,7 @@ You should see a `STM Device in DFU Mode` in the `Available DUF Devices` section
 
 Press the `Choose...` button and select a firmware file in `.dfu` format. Make sure it's the correct file!
 
-* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.1.1.dfu) for latest default TX firmware
+* [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.1.2.dfu) for latest default TX firmware
 
 * [Click me](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/RX_1.0.1.dfu) for latest default RX firmware
 
