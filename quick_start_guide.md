@@ -42,9 +42,7 @@ That's pretty much the gist of it! However please do keep reading for more impor
 
 ## Mounting options
 
-Now you know how Daytripper works, time to mounting it at a desired location.
-
-* Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
+Now you know how Daytripper works, time to mount it at a desired location.
 
 If you're trying to detect someone walking by, you can mount it to a wall using the included magnet.
 
@@ -54,7 +52,7 @@ If you can find a metal surface, it's even easier:
 
 ![Alt text](resources/photos/mount.gif)
 
-If you're trying to detect a door opening, simply put it on the ground so the door opens into it.
+To detect a door opening, simply put it on the ground so the door opens into it.
 
 ![Alt text](resources/photos/door.jpg)
 
@@ -71,6 +69,10 @@ A couple of key areas to note:
 * Make sure the location provide adequate coverage for potential threats.
 
 * You can conceal the TX if you want, just leave the sensor window clear, and don't touch the components on the circuit board.
+
+### Power-On Order
+
+* Always turn on the TX **`AFTER`** you finish mounting it, so the initial calibration won't get messed up by your hand.
 
 ### Motion Sensitivity
 
