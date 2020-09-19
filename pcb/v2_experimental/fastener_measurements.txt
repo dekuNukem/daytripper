@@ -11,5 +11,7 @@ regular battery (LIR2450):
 big battery (LIR2477):
 10mm flathead screw
 4mm standoff
-8 or 9mm standoff
+9mm standoff
 2.8mm screw
+
+if using pilers, make sure don't touch the positive battery terminal!
