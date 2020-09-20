@@ -286,7 +286,7 @@ On earlier production runs, the pin is on a testpad. On the later runs, the pin 
 
 Make sure **everything is on the same GND** when connecting external circuits!
 
-Unfortunately, TX does not have a dedicated trigger out pin due to limited microcontroller pins. However, there is a debug output that prints out some serial data upon triggering, which you can parse.
+Unfortunately, TX does not have a dedicated trigger out pin due to limited microcontroller pins. However, there is a debug output that prints out some serial data upon triggering at 115200bps, which you can parse.
 
 ![Alt text](resources/photos/tx_trig_out.jpg)
 
