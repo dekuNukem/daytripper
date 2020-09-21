@@ -270,6 +270,8 @@ It could take anywhere between a few seconds to a few minutes. Try using differe
 
 After uploading is complete, unplug and turn it back on to start using the new firmware. 
 
+* Your custom settings will be lost after flashing a new firmware, so make sure to set it up again!
+
 -----
 
 If you generated a `.hex` file yourself, you can convert it to a `.dfu` file with the `Dfu file manager` and then upload this way. 
