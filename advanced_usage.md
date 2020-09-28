@@ -92,7 +92,7 @@ Remember the number! **`COM5`** in this case. Yours might be different.
 
 [Head here to download the latest release](https://github.com/dekuNukem/daytripper/releases/latest) for Windows and macOS.
 
-* The software is in early stages of development. If you run into any problems, please don't hesitate to [open an issue](https://github.com/dekuNukem/daytripper/issues), DM me on discord `dekuNukem#6998`, or contact me through `dekuNukem`@`gmail`.`com`.
+* The software is in early stages of development. If you run into any problems, please don't hesitate to [open an issue](https://github.com/dekuNukem/daytripper/issues), ask in the [official Daytripper discord](https://discord.gg/mFBecVD), DM me on discord `dekuNukem#6998`, or contact me through `dekuNukem`@`gmail`.`com`.
 
 ### "Untrusted App" Warnings
 
@@ -310,7 +310,7 @@ Untested, probably a mess.
 
 ## Questions or Comments?
 
-Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
+Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), ask in the [official Daytripper discord](https://discord.gg/mFBecVD), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
 
 ------
 
