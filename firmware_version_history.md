@@ -8,7 +8,7 @@
 
 ### 1.1.2
 
-Bugfix, 4 September 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.1.2.dfu)
+Bugfix, 4 September 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_1.1.2.dfu)
 
 **`FIXED`**
 
@@ -16,7 +16,7 @@ Bugfix, 4 September 2020. [Download Here](https://github.com/dekuNukem/daytrippe
 
 ### 1.1.1
 
-Bugfix, 30 August 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.1.1.dfu)
+Bugfix, 30 August 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_1.1.1.dfu)
 
 **`FIXED`**
 
@@ -24,7 +24,7 @@ Bugfix, 30 August 2020. [Download Here](https://github.com/dekuNukem/daytripper/
 
 ### 1.1.0
 
-Major update, 27 August 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.1.0.dfu)
+Major update, 27 August 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_1.1.0.dfu)
 
 **`NEW`**
 
@@ -38,13 +38,13 @@ Major update, 27 August 2020. [Download Here](https://github.com/dekuNukem/daytr
 
 ### 1.0.0
 
-Initial Release, Sept 2019. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/TX_1.0.0.dfu)
+Initial Release, Sept 2019. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/TX_1.0.0.dfu)
 
 ## RX
 
 ### 1.0.1
 
-Minor Fix. Sept 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/RX_1.0.1.dfu)
+Minor Fix. Sept 2020. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/RX_1.0.1.dfu)
 
 **`FIXED`**
 
@@ -56,4 +56,4 @@ Minor Fix. Sept 2020. [Download Here](https://github.com/dekuNukem/daytripper/ra
 
 ### 1.0.0
 
-Initial Release, Sept 2019. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/dfu_files/RX_1.0.0.dfu)
+Initial Release, Sept 2019. [Download Here](https://github.com/dekuNukem/daytripper/raw/master/firmware/RX_1.0.0.dfu)
