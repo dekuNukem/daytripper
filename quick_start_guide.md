@@ -146,7 +146,7 @@ I am not responsible for the consequences of using this device. Use it at your o
 
 ## Questions or Comments?
 
-Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), ask in the [official Daytripper discord](https://discord.gg/mFBecVD), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
+Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), ask in the [official Daytripper discord](https://discord.gg/VM4kbnf), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
 
 ------
 
