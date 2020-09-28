@@ -15,16 +15,39 @@ from tkinter import simpledialog
 from tkinter import messagebox
 import serial.tools.list_ports
 import serial
+import urllib.request
 
-print('ddd')
-THIS_VERSION_NUMBER = '0.1.0'
+THIS_VERSION_NUMBER = '0.2.0'
 MAIN_WINDOW_WIDTH = 720
 MAIN_WINDOW_HEIGHT = 460
 PADDING = 10
 HEIGHT_CONNECT_LF = 50
+discord_link_url = "https://raw.githubusercontent.com/dekuNukem/daytripper/master/resources/discord_link.txt"
 
 def open_user_manual_url():
     webbrowser.open('https://github.com/dekuNukem/daytripper/blob/master/quick_start_guide.md')
+
+def open_discord_link():
+    try:
+        webbrowser.open(str(urllib.request.urlopen(discord_link_url).read().decode('utf-8')).split('\n')[0])
+    except Exception as e:
+        messagebox.showerror("Error", "Failed to open discord link!\n"+str(e))
+
+def create_help_window():
+    help_window = Toplevel(root)
+    help_window.title("Daytripper help")
+    help_window.geometry("280x130")
+    help_window.resizable(width=FALSE, height=FALSE)
+
+    user_manual_label = Label(master=help_window, text="Not sure what to do? Please read...")
+    user_manual_label.place(x=40, y=5)
+    user_manual_button = Button(help_window, text="User Manual", command=open_user_manual_url)
+    user_manual_button.place(x=60, y=30, width=160)
+
+    discord_label = Label(master=help_window, text="Questions or comments? Feel free to ask in...")
+    discord_label.place(x=20, y=60)
+    discord_button = Button(help_window, text="Official Discord Chatroom", command=open_discord_link)
+    discord_button.place(x=60, y=85, width=160)
 
 def ensure_dir(dir_path):
     if not os.path.exists(dir_path):
@@ -179,7 +202,7 @@ def serial_reset_all():
     opmode_reset_click()
     debug_reset_click()
 
-user_guide_button = Button(connection_lf, text="User Guide...", command=open_user_manual_url)
+user_guide_button = Button(connection_lf, text="How do I...", command=create_help_window)
 user_guide_button.place(x=PADDING, y=0, width=100)
 serial_refresh_button = Button(connection_lf, text="Refresh", command=serial_dropdown_refresh)
 serial_refresh_button.place(x=40+320, y=0, width=70)
