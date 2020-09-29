@@ -21,13 +21,20 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
 Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
-C:\Users\allen\Desktop\repos\daytripper\firmware\tx\MDK-ARM\tx.uvprojx
+C:\Users\allen\Desktop\repos\daytripper\firmware\code\tx\MDK-ARM\tx.uvprojx
 Project File Date:  09/04/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'tx'
-"tx\tx.axf" - 0 Error(s), 0 Warning(s).
+compiling helpers.c...
+..\Src\helpers.c(212): warning:  #188-D: enumerated type mixed with another type
+      HAL_NVIC_DisableIRQ(i);
+..\Src\helpers.c: 1 warning, 0 errors
+linking...
+Program Size: Code=30280 RO-data=488 RW-data=488 ZI-data=4832  
+FromELF: creating hex file...
+"tx\tx.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +57,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

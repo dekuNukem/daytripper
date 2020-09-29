@@ -37,7 +37,7 @@ uint8_t next_alarm_hour;
 static const char eep_invalid[] = "INVALID VAL";
 static const uint8_t fw_version_major = 1;
 static const uint8_t fw_version_minor = 1;
-static const uint8_t fw_version_patch = 1;
+static const uint8_t fw_version_patch = 2;
 
 #define TEMP_BUF_SIZE 45
 char temp_buf[TEMP_BUF_SIZE];

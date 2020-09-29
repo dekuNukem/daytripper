@@ -127,13 +127,13 @@ def check_firmware_update():
     firmware_update_str_label.place(x=10, y=19)
     fw_result = check_update.get_firmware_update_status(fw_ver_string)
     if fw_result == 0:
-        firmware_update_str_label.config(text='Firmware (' + str(fw_ver_string) +'): Up to date')
+        firmware_update_str_label.config(text='Firmware (' + str(fw_ver_string) +'): Up to date', fg='black',bg='gray95')
         firmware_update_str_label.unbind("<Button-1>")
     elif fw_result == 1:
         firmware_update_str_label.config(text='Firmware (' + str(fw_ver_string) +'): Update available! Click me!', fg='black', bg='orange', cursor="hand2")
         firmware_update_str_label.bind("<Button-1>", fw_update_click)
     else:
-        firmware_update_str_label.config(text='Firmware: Unknown')
+        firmware_update_str_label.config(text='Firmware: Unknown', fg='black', bg='gray95')
         firmware_update_str_label.unbind("<Button-1>")
 
 def serial_connect():
@@ -309,21 +309,21 @@ def slider_adjust_debug(value):
     daytripper_config.print_debug_info = int(value)
 
 def refresh_rate_info_popup():
-    messagebox.showinfo("Information", 'How many times per second the sensor takes a reading.\n\nHigher refresh rate makes TX more sensitive to faster movements. However, it will also drain the battery quicker.')
+    messagebox.showinfo("Information", 'How many times per second the sensor takes a reading WHILE ON BATTERY.\n\nHigher refresh rate makes TX more sensitive to faster movements, at the expense of battery life.')
 
 def refresh_rate_reset_click():
     refresh_rate_slider.set(6)
     slider_adjust_refresh_rate(6)
 
 def sensitivity_info_popup():
-    messagebox.showinfo("Information", 'NR prevents potential false triggers by taking additional measurements.\n\nTurning it off will noticeably improve motion sensitivity. However, false triggers might occur occasionally, especially in bright conditions.')
+    messagebox.showinfo("Information", 'NR prevents potential false triggers by taking additional measurements.\n\nTurning it off will make TX much more sensitive, but false triggers might occur occasionally, especially in bright conditions.')
 
 def sensitivity_reset_click():
     sensitivity_slider.set(1)
     slider_adjust_sensitivity(1)
 
 def timing_budget_info_popup():
-    messagebox.showinfo("Information", 'Time allocated for the sensor to get a single reading.\n\nA higher value will result in more accurate measurements, but also more battery drain and slower refresh rate.')
+    messagebox.showinfo("Information", "Time allocated for the sensor to get a single reading.\n\nA higher value will result in more accurate measurements, but also more battery drain and slower refresh rate.\n\nLeave at default unless you know what you're doing.")
 
 def timing_budget_reset_click():
     timing_budget_slider.set(25)
@@ -624,13 +624,13 @@ def update_click(event):
 update_result = check_update.get_pc_app_update_status(THIS_VERSION_NUMBER)
 update_str_label.place(x=10, y=-2)
 if update_result == 0:
-    update_str_label.config(text='This app (' + str(THIS_VERSION_NUMBER) + '): Up to date')
+    update_str_label.config(text='This app (' + str(THIS_VERSION_NUMBER) + '): Up to date', fg='black', bg='gray95')
     update_str_label.unbind("<Button-1>")
 elif update_result == 1:
     update_str_label.config(text='This app (' + str(THIS_VERSION_NUMBER) + '): Update available! Click me!', fg='black', bg='orange', cursor="hand2")
     update_str_label.bind("<Button-1>", update_click)
 elif update_result == 2:
-    update_str_label.config(text='This app (' + str(THIS_VERSION_NUMBER) + '): Unknown')
+    update_str_label.config(text='This app (' + str(THIS_VERSION_NUMBER) + '): Unknown', fg='black', bg='gray95')
     update_str_label.unbind("<Button-1>")
 
 serial_dropdown_refresh()
