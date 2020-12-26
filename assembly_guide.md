@@ -1,8 +1,8 @@
 # Daytripper Kit Assembly Guide
 
-[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
+[Buy on Tindie!](https://www.tindie.com/products/dekuNukem/daytripper-hide-my-windows-laser-tripwire/) | [Official Discord](https://discord.gg/VM4kbnf) | [Getting Started](getting_started.md) | [Main Page](/README.md)
 
-------
+-----
 
 Thanks for purchasing Daytripper! Here is a short guide on how to put everything together.
 

@@ -1,5 +1,9 @@
 # Installing the STM32 DFU Driver
 
+[Buy on Tindie!](https://www.tindie.com/products/dekuNukem/daytripper-hide-my-windows-laser-tripwire/) | [Official Discord](https://discord.gg/VM4kbnf) | [Getting Started](getting_started.md) | [Main Page](/README.md)
+
+-----
+
 First, make sure you have followed the procedure of **`holding down the DFU button while plugging in the device`**.
 
 Once plugged in, you can release the button.

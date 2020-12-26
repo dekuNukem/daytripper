@@ -1,5 +1,9 @@
 # Daytripper: Hide-My-Windows Laser Tripwire
 
+[Buy on Tindie!](https://www.tindie.com/products/dekuNukem/daytripper-hide-my-windows-laser-tripwire/) | [Official Discord](https://discord.gg/VM4kbnf) | [Getting Started](getting_started.md)
+
+-----
+
 Do you always slack off on your computer and worry about getting busted?
 
 Not anymore because Daytripper is here to save the day!

@@ -1,8 +1,8 @@
 # Daytripper Advanced Usage Guide
 
-[Main Page](/README.md) | [Buy Daytripper](https://www.tindie.com/products/dekuNukem/daytripper)
+[Buy on Tindie!](https://www.tindie.com/products/dekuNukem/daytripper-hide-my-windows-laser-tripwire/) | [Official Discord](https://discord.gg/VM4kbnf) | [Getting Started](getting_started.md) | [Main Page](/README.md)
 
-------
+-----
 
 If you're not familiar with Daytripper yet, please see the [Quick Start Guide](/quick_start_guide.md) first.
 
