@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.3">
+<eagle version="9.6.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1824,6 +1824,13 @@ chip</description>
 <hole x="0" y="0" drill="2.3"/>
 <circle x="0" y="0" radius="1.6" width="0.127" layer="51"/>
 </package>
+<package name="COIN_BAT_HOTSWAP_SOCKET">
+<pad name="PLUS" x="-12.5" y="0" drill="1.43" diameter="2"/>
+<pad name="MINUS" x="12.5" y="0" drill="1.43" diameter="2"/>
+<text x="-10.541" y="0.127" size="1.778" layer="21" align="center">+</text>
+<text x="10.541" y="0.127" size="1.778" layer="21" align="center">-</text>
+<circle x="0" y="0" radius="12.5" width="0.127" layer="52"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="1X08" urn="urn:adsk.eagle:package:22409/2" locally_modified="yes" type="model">
@@ -2833,6 +2840,22 @@ chip</description>
 </gates>
 <devices>
 <device name="" package="M2_SCREW_FOOT">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HOT_SWAP_COIN_BAT">
+<gates>
+<gate name="G$1" symbol="AA_SYM" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="COIN_BAT_HOTSWAP_SOCKET">
+<connects>
+<connect gate="G$1" pin="MINUS" pad="MINUS"/>
+<connect gate="G$1" pin="PLUS" pad="PLUS"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
