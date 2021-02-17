@@ -12,8 +12,8 @@
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="yes"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="no" active="yes"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -141,6 +141,9 @@
 <text x="-2.905" y="2.995" size="1.27" layer="25">&gt;Name</text>
 <text x="-2.665" y="-4.205" size="1.27" layer="27">&gt;Value</text>
 </package>
+<package name="TESTPAD">
+<smd name="P$1" x="0" y="0" dx="1" dy="0.5" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="STM32_32PIN_TYP2">
@@ -185,6 +188,9 @@
 <pin name="VDD@1" x="-2.54" y="17.78" length="middle" direction="pwr" rot="R270"/>
 <pin name="VSS@1" x="0" y="-17.78" length="middle" direction="pwr" rot="R90"/>
 <pin name="VDD@2" x="2.54" y="17.78" length="middle" direction="pwr" rot="R270"/>
+</symbol>
+<symbol name="TESTPAD">
+<pin name="P$1" x="-5.08" y="0" length="middle"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -238,6 +244,21 @@
 </connects>
 <technologies>
 <technology name="6"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TESTPAD">
+<gates>
+<gate name="G$1" symbol="TESTPAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPAD">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>

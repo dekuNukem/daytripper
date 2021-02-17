@@ -8190,6 +8190,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <text x="-2.905" y="2.995" size="1.27" layer="25">&gt;Name</text>
 <text x="-2.665" y="-4.205" size="1.27" layer="27">&gt;Value</text>
 </package>
+<package name="TESTPAD">
+<smd name="P$1" x="0" y="0" dx="1" dy="0.5" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="STM32_32PIN_TYP2">
@@ -8234,6 +8237,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pin name="VDD@1" x="-2.54" y="17.78" length="middle" direction="pwr" rot="R270"/>
 <pin name="VSS@1" x="0" y="-17.78" length="middle" direction="pwr" rot="R90"/>
 <pin name="VDD@2" x="2.54" y="17.78" length="middle" direction="pwr" rot="R270"/>
+</symbol>
+<symbol name="TESTPAD">
+<pin name="P$1" x="-5.08" y="0" length="middle"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -8291,76 +8297,14 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </device>
 </devices>
 </deviceset>
-</devicesets>
-</library>
-<library name="adafruit">
-<packages>
-<package name="1X09-BIG">
-<wire x1="-11.43" y1="1.27" x2="11.43" y2="1.27" width="0.127" layer="21"/>
-<wire x1="11.43" y1="1.27" x2="11.43" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="11.43" y1="-1.27" x2="-11.43" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="-11.43" y1="-1.27" x2="-11.43" y2="1.27" width="0.127" layer="21"/>
-<pad name="1" x="-10.16" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="2" x="-7.62" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="3" x="-5.08" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="4" x="-2.54" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="5" x="0" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="6" x="2.54" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="7" x="5.08" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="8" x="7.62" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<pad name="9" x="10.16" y="0" drill="1.016" diameter="1.778" shape="octagon" rot="R90"/>
-<text x="-10.2362" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-10.16" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
-<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
-<rectangle x1="-5.334" y1="-0.254" x2="-4.826" y2="0.254" layer="51"/>
-<rectangle x1="-7.874" y1="-0.254" x2="-7.366" y2="0.254" layer="51"/>
-<rectangle x1="-10.414" y1="-0.254" x2="-9.906" y2="0.254" layer="51"/>
-<rectangle x1="7.366" y1="-0.254" x2="7.874" y2="0.254" layer="51"/>
-<rectangle x1="9.906" y1="-0.254" x2="10.414" y2="0.254" layer="51"/>
-</package>
-</packages>
-<symbols>
-<symbol name="PINHD9">
-<wire x1="-6.35" y1="-12.7" x2="1.27" y2="-12.7" width="0.4064" layer="94"/>
-<wire x1="1.27" y1="-12.7" x2="1.27" y2="12.7" width="0.4064" layer="94"/>
-<wire x1="1.27" y1="12.7" x2="-6.35" y2="12.7" width="0.4064" layer="94"/>
-<wire x1="-6.35" y1="12.7" x2="-6.35" y2="-12.7" width="0.4064" layer="94"/>
-<text x="-6.35" y="13.335" size="1.778" layer="95">&gt;NAME</text>
-<text x="-6.35" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="-2.54" y="10.16" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="2" x="-2.54" y="7.62" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="3" x="-2.54" y="5.08" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="4" x="-2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="5" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="6" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="7" x="-2.54" y="-5.08" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="8" x="-2.54" y="-7.62" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="9" x="-2.54" y="-10.16" visible="pad" length="short" direction="pas" function="dot"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="PINHD-1X9" prefix="JP" uservalue="yes">
-<description>&lt;b&gt;Pin header 1x10 0.1" spacing&lt;/b&gt;
-&lt;p&gt;
-With round pins</description>
+<deviceset name="TESTPAD">
 <gates>
-<gate name="G$1" symbol="PINHD9" x="0" y="0"/>
+<gate name="G$1" symbol="TESTPAD" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="1X09-BIG">
+<device name="" package="TESTPAD">
 <connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-<connect gate="G$1" pin="5" pad="5"/>
-<connect gate="G$1" pin="6" pad="6"/>
-<connect gate="G$1" pin="7" pad="7"/>
-<connect gate="G$1" pin="8" pad="8"/>
-<connect gate="G$1" pin="9" pad="9"/>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8471,11 +8415,14 @@ With round pins</description>
 <part name="R15" library="SparkFun-Passives" deviceset="RESISTOR" device="0805-RES" value="22K"/>
 <part name="U$2" library="3pos_slide_switch_centered" deviceset="HOT_SWAP_COIN_BAT" device=""/>
 <part name="IC3" library="micro-stm" deviceset="STM32L052K8U6" device="" technology="6"/>
-<part name="JP3" library="adafruit" deviceset="PINHD-1X9" device=""/>
 <part name="U$3" library="adafruit_changed" deviceset="PINHD1X4" device=""/>
 <part name="+3V10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="U$4" library="micro-stm" deviceset="TESTPAD" device=""/>
+<part name="U$6" library="micro-stm" deviceset="TESTPAD" device=""/>
+<part name="U$7" library="micro-stm" deviceset="TESTPAD" device=""/>
+<part name="U$5" library="micro-stm" deviceset="TESTPAD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8804,10 +8751,6 @@ I_CHG = 1000 / R_PROG</text>
 <attribute name="VALUE" x="-15.24" y="-114.3" size="1.778" layer="96"/>
 </instance>
 <instance part="IC3" gate="PWR" x="-55.88" y="71.12" smashed="yes"/>
-<instance part="JP3" gate="G$1" x="-347.98" y="-83.82" smashed="yes">
-<attribute name="NAME" x="-354.33" y="-70.485" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-354.33" y="-99.06" size="1.778" layer="96"/>
-</instance>
 <instance part="U$3" gate="1" x="68.58" y="-114.3" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.2" y="-119.38" size="1.27" layer="95" font="vector" rot="R90"/>
 <attribute name="VALUE" x="58.42" y="-114.3" size="1.27" layer="96" font="vector" rot="R270"/>
@@ -8821,6 +8764,10 @@ I_CHG = 1000 / R_PROG</text>
 <instance part="+3V11" gate="G$1" x="66.04" y="-93.98" smashed="yes">
 <attribute name="VALUE" x="63.5" y="-99.06" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="U$4" gate="G$1" x="17.78" y="-96.52" smashed="yes"/>
+<instance part="U$6" gate="G$1" x="20.32" y="-91.44" smashed="yes"/>
+<instance part="U$7" gate="G$1" x="20.32" y="-93.98" smashed="yes"/>
+<instance part="U$5" gate="G$1" x="17.78" y="-99.06" smashed="yes"/>
 </instances>
 <busses>
 </busses>
@@ -9520,6 +9467,32 @@ I_CHG = 1000 / R_PROG</text>
 <pinref part="LED2" gate="G$1" pin="A"/>
 <wire x1="12.7" y1="-101.6" x2="-10.16" y2="-101.6" width="0.1524" layer="91"/>
 <wire x1="-10.16" y1="-101.6" x2="-10.16" y2="-124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="IC3" gate="MCU" pin="PA4"/>
+<pinref part="U$5" gate="G$1" pin="P$1"/>
+</segment>
+</net>
+<net name="N$34" class="0">
+<segment>
+<pinref part="IC3" gate="MCU" pin="PA5"/>
+<pinref part="U$4" gate="G$1" pin="P$1"/>
+</segment>
+</net>
+<net name="N$37" class="0">
+<segment>
+<pinref part="U$7" gate="G$1" pin="P$1"/>
+<pinref part="IC3" gate="MCU" pin="PA6"/>
+<wire x1="15.24" y1="-93.98" x2="12.7" y2="-93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$41" class="0">
+<segment>
+<pinref part="U$6" gate="G$1" pin="P$1"/>
+<pinref part="IC3" gate="MCU" pin="PA7"/>
+<wire x1="15.24" y1="-91.44" x2="12.7" y2="-91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
