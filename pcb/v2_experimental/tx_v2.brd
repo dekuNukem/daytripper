@@ -1109,7 +1109,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="NAME" x="22.733" y="18.3007" size="0.8128" layer="25" rot="R180"/>
 </element>
 <element name="C15" library="clock" package="0805" value="100nF" x="18.3642" y="9.9314" smashed="yes" rot="R270">
-<attribute name="NAME" x="19.24305" y="10.1074" size="0.8128" layer="25" rot="R270"/>
+<attribute name="NAME" x="17.49045" y="13.257" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="SW2" library="3pos_slide_switch" package="342_SWICH_FOOT_HOLE" value="324_SW324_SWITCH_FOOT_HOLE" x="1.524" y="21.59" smashed="yes" rot="R90"/>
 <element name="R9" library="joyAnalog" package="0805" value="22K" x="9.906" y="13.9954" smashed="yes" rot="R270">
