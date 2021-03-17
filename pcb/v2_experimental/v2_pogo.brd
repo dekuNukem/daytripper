@@ -34,8 +34,8 @@
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -53,7 +53,7 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
@@ -178,8 +178,8 @@
 <wire x1="2.54" y1="24" x2="0" y2="21.46" width="0" layer="20" curve="90"/>
 <wire x1="12" y1="24" x2="12" y2="0" width="0.1524" layer="25"/>
 <text x="2.54" y="7.747" size="1.27" layer="25" align="center">3V3</text>
-<text x="30.5" y="13" size="1.27" layer="26" rot="MR90" align="center">dekuNukem 2019</text>
-<text x="34" y="13" size="1.27" layer="26" rot="MR90" align="center">dayTripper Pogo</text>
+<text x="12" y="11" size="1.27" layer="26" rot="MR90" align="center">dayTripper V2 Pogo
+dekuNukem 2021</text>
 <text x="2.506" y="17.907" size="1.27" layer="25" rot="R180" align="center">CLK</text>
 <text x="2.54" y="15.367" size="1.27" layer="25" align="center">DIO</text>
 <text x="2.54" y="10.287" size="1.27" layer="25" rot="R180" align="center">GND</text>
@@ -191,6 +191,12 @@
 <text x="13.335" y="18.669" size="1.27" layer="25" rot="R90" align="center">3V3</text>
 <text x="15.748" y="19.177" size="1.27" layer="25" rot="R270" align="center">RX</text>
 <text x="18.415" y="19.177" size="1.27" layer="25" rot="R270" align="center">TX</text>
+<text x="21.429" y="13.335" size="1.27" layer="25" rot="R180" align="center">CLK</text>
+<text x="21.463" y="10.795" size="1.27" layer="25" align="center">DIO</text>
+<text x="21.463" y="8.255" size="1.27" layer="25" rot="R180" align="center">TX</text>
+<text x="21.463" y="5.715" size="1.27" layer="25" align="center">3V3</text>
+<text x="21.463" y="3.048" size="1.27" layer="25" rot="R180" align="center">GND</text>
+<text x="21.463" y="15.875" size="1.27" layer="25" rot="R180" align="center">RX</text>
 </plain>
 <libraries>
 <library name="pinhead" urn="urn:adsk.eagle:library:325">
@@ -542,6 +548,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <attribute name="POPULARITY" value="0" x="6" y="10.238" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="9.175" y="2.618" size="1.27" layer="27" rot="R90"/>
 </element>
+<element name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X06" package3d_urn="urn:adsk.eagle:package:22472/2" value="" x="18" y="9.5" smashed="yes" rot="R90">
+<attribute name="POPULARITY" value="79" x="18" y="9.5" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="VALUE" x="21.175" y="1.88" size="1.27" layer="27" rot="R90"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -557,6 +567,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </polygon>
 <contactref element="JP2" pad="4"/>
 <contactref element="JP1" pad="4"/>
+<contactref element="JP3" pad="1"/>
 </signal>
 <signal name="+3V3">
 <polygon width="0.1524" layer="16" isolate="0.254">
@@ -571,12 +582,17 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </polygon>
 <contactref element="JP2" pad="3"/>
 <contactref element="JP1" pad="3"/>
+<contactref element="JP3" pad="2"/>
 </signal>
 <signal name="N$1">
 <contactref element="JP2" pad="6"/>
 <contactref element="JP1" pad="7"/>
 <wire x1="5.65" y1="22" x2="5.65" y2="18.208" width="0.3048" layer="1"/>
 <wire x1="5.65" y1="18.208" x2="6" y2="17.858" width="0.3048" layer="1"/>
+<contactref element="JP3" pad="5"/>
+<wire x1="6" y1="17.858" x2="7.034" y2="17.858" width="0.254" layer="16"/>
+<wire x1="11.582" y1="13.31" x2="18" y2="13.31" width="0.254" layer="16"/>
+<wire x1="7.034" y1="17.858" x2="11.582" y2="13.31" width="0.254" layer="16"/>
 </signal>
 <signal name="N$2">
 <contactref element="JP2" pad="5"/>
@@ -584,6 +600,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="8.19" y1="22" x2="8.19" y2="16.572" width="0.3048" layer="1"/>
 <wire x1="6.936" y1="15.318" x2="6" y2="15.318" width="0.3048" layer="1"/>
 <wire x1="8.19" y1="16.572" x2="6.936" y2="15.318" width="0.3048" layer="1"/>
+<contactref element="JP3" pad="4"/>
+<wire x1="6" y1="15.318" x2="6.018" y2="15.318" width="0.254" layer="16"/>
+<wire x1="10.566" y1="10.77" x2="18" y2="10.77" width="0.254" layer="16"/>
+<wire x1="6.018" y1="15.318" x2="10.566" y2="10.77" width="0.254" layer="16"/>
 </signal>
 <signal name="N$5">
 <contactref element="JP2" pad="2"/>
@@ -593,6 +613,9 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="10.73" y1="14.634" x2="10.73" y2="8.825" width="0.3048" layer="1"/>
 <wire x1="7.063" y1="5.158" x2="6" y2="5.158" width="0.3048" layer="1"/>
 <wire x1="10.73" y1="8.825" x2="7.063" y2="5.158" width="0.3048" layer="1"/>
+<contactref element="JP3" pad="6"/>
+<wire x1="15.81" y1="22" x2="15.81" y2="18.04" width="0.254" layer="16"/>
+<wire x1="15.81" y1="18.04" x2="18" y2="15.85" width="0.254" layer="16"/>
 </signal>
 <signal name="N$6">
 <contactref element="JP2" pad="1"/>
@@ -602,6 +625,12 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <wire x1="11.557" y1="14.224" x2="11.557" y2="7.62" width="0.3048" layer="1"/>
 <wire x1="6.555" y1="2.618" x2="6" y2="2.618" width="0.3048" layer="1"/>
 <wire x1="11.557" y1="7.62" x2="6.555" y2="2.618" width="0.3048" layer="1"/>
+<contactref element="JP3" pad="3"/>
+<wire x1="20.284" y1="17.78" x2="18.35" y2="19.714" width="0.254" layer="16"/>
+<wire x1="18.35" y1="22" x2="18.35" y2="19.714" width="0.254" layer="16"/>
+<wire x1="20.284" y1="17.78" x2="20.284" y2="8.981" width="0.254" layer="16"/>
+<wire x1="20.284" y1="8.981" x2="19.533" y2="8.23" width="0.254" layer="16"/>
+<wire x1="19.533" y1="8.23" x2="18" y2="8.23" width="0.254" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
@@ -614,6 +643,10 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </board>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)

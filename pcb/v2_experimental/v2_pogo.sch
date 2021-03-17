@@ -631,6 +631,9 @@ by exp-lbrs.ulp</description>
 <part name="GND26" library="clock" deviceset="GND" device=""/>
 <part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2"/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X7" device="" package3d_urn="urn:adsk.eagle:package:22477/2"/>
+<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2"/>
+<part name="GND1" library="clock" deviceset="GND" device=""/>
+<part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -651,6 +654,16 @@ by exp-lbrs.ulp</description>
 <attribute name="NAME" x="16.51" y="-14.605" size="1.778" layer="95"/>
 <attribute name="VALUE" x="16.51" y="-35.56" size="1.778" layer="96"/>
 </instance>
+<instance part="JP3" gate="A" x="22.86" y="-50.8" smashed="yes">
+<attribute name="NAME" x="16.51" y="-40.005" size="1.778" layer="95"/>
+<attribute name="VALUE" x="16.51" y="-60.96" size="1.778" layer="96"/>
+</instance>
+<instance part="GND1" gate="1" x="30.48" y="-45.72" smashed="yes">
+<attribute name="VALUE" x="27.94" y="-48.26" size="1.778" layer="96"/>
+</instance>
+<instance part="+3V1" gate="G$1" x="10.16" y="-40.64" smashed="yes">
+<attribute name="VALUE" x="7.62" y="-45.72" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -660,6 +673,10 @@ by exp-lbrs.ulp</description>
 <pinref part="JP2" gate="A" pin="6"/>
 <pinref part="JP1" gate="A" pin="7"/>
 <wire x1="-2.54" y1="-33.02" x2="20.32" y2="-33.02" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="5"/>
+<wire x1="-2.54" y1="-33.02" x2="-2.54" y2="-53.34" width="0.1524" layer="91"/>
+<wire x1="-2.54" y1="-53.34" x2="20.32" y2="-53.34" width="0.1524" layer="91"/>
+<junction x="-2.54" y="-33.02"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -667,6 +684,11 @@ by exp-lbrs.ulp</description>
 <pinref part="JP2" gate="A" pin="5"/>
 <pinref part="JP1" gate="A" pin="6"/>
 <wire x1="-2.54" y1="-30.48" x2="20.32" y2="-30.48" width="0.1524" layer="91"/>
+<wire x1="-2.54" y1="-30.48" x2="-5.08" y2="-30.48" width="0.1524" layer="91"/>
+<junction x="-2.54" y="-30.48"/>
+<pinref part="JP3" gate="A" pin="4"/>
+<wire x1="-5.08" y1="-30.48" x2="-5.08" y2="-50.8" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="-50.8" x2="20.32" y2="-50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -676,6 +698,11 @@ by exp-lbrs.ulp</description>
 <wire x1="7.62" y1="-22.86" x2="7.62" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="2"/>
 <wire x1="7.62" y1="-20.32" x2="20.32" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="-20.32" x2="40.64" y2="-20.32" width="0.1524" layer="91"/>
+<junction x="20.32" y="-20.32"/>
+<pinref part="JP3" gate="A" pin="6"/>
+<wire x1="40.64" y1="-20.32" x2="40.64" y2="-55.88" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="-55.88" x2="20.32" y2="-55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -685,6 +712,11 @@ by exp-lbrs.ulp</description>
 <wire x1="5.08" y1="-20.32" x2="5.08" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="1"/>
 <wire x1="5.08" y1="-17.78" x2="20.32" y2="-17.78" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="-17.78" x2="38.1" y2="-17.78" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="-17.78" x2="38.1" y2="-48.26" width="0.1524" layer="91"/>
+<junction x="20.32" y="-17.78"/>
+<pinref part="JP3" gate="A" pin="3"/>
+<wire x1="38.1" y1="-48.26" x2="20.32" y2="-48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -698,6 +730,11 @@ by exp-lbrs.ulp</description>
 <wire x1="-12.7" y1="-27.94" x2="-2.54" y2="-27.94" width="0.1524" layer="91"/>
 <junction x="-2.54" y="-27.94"/>
 </segment>
+<segment>
+<pinref part="JP3" gate="A" pin="1"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="20.32" y1="-43.18" x2="30.48" y2="-43.18" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -709,6 +746,12 @@ by exp-lbrs.ulp</description>
 <pinref part="+3V9" gate="G$1" pin="+3V3"/>
 <wire x1="-17.78" y1="-25.4" x2="-2.54" y2="-25.4" width="0.1524" layer="91"/>
 <junction x="-2.54" y="-25.4"/>
+</segment>
+<segment>
+<pinref part="+3V1" gate="G$1" pin="+3V3"/>
+<wire x1="10.16" y1="-43.18" x2="10.16" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="2"/>
+<wire x1="10.16" y1="-45.72" x2="20.32" y2="-45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
