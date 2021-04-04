@@ -7,7 +7,7 @@ firmware_url = 'https://api.github.com/repos/dekuNukem/daytripper/contents/firmw
 
 def is_internet_available():
     try:
-        socket.create_connection(("www.google.com", 80))
+        socket.create_connection(("www.google.com", 80), timeout=1)
         return True
     except OSError:
         pass
