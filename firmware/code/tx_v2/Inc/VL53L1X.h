@@ -1283,7 +1283,7 @@ uint32_t getMeasurementTimingBudget(void);
 
 void startContinuous(uint32_t period_ms);
 void stopContinuous(void);
-uint16_t read(uint8_t blocking);
+uint16_t VL53L1X_read(uint8_t blocking);
 uint16_t readRangeContinuousMillimeters(uint8_t blocking);
 
 // check if sensor has new reading available

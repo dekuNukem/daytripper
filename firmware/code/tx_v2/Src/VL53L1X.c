@@ -43,7 +43,7 @@ DistanceMode getDistanceMode(void)
 { return distance_mode; }
 
 uint16_t readRangeContinuousMillimeters(uint8_t blocking)
-{ return read(blocking); } // alias of read()
+{ return VL53L1X_read(blocking); } // alias of read()
 
 uint8_t dataReady(void)
 { return (readReg(GPIO__TIO_HV_STATUS) & 0x01) == 0; }
@@ -248,15 +248,6 @@ void writeReg32Bit(uint16_t reg, uint32_t value)
 uint8_t readReg(regAddr reg)
 {
   uint8_t value;
-
-  // Wire.beginTransmission(address);
-  // Wire.write((reg >> 8) & 0xFF); // reg high byte
-  // Wire.write( reg       & 0xFF); // reg low byte
-  // last_status = Wire.endTransmission();
-
-  // Wire.requestFrom(address, (uint8_t)1);
-  // value = Wire.read();
-
   last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 2, &value, 1, 17);
   return value;
 }
@@ -265,16 +256,6 @@ uint8_t readReg(regAddr reg)
 uint16_t readReg16Bit(uint16_t reg)
 {
   uint16_t value;
-
-  // Wire.beginTransmission(address);
-  // Wire.write((reg >> 8) & 0xFF); // reg high byte
-  // Wire.write( reg       & 0xFF); // reg low byte
-  // last_status = Wire.endTransmission();
-
-  // Wire.requestFrom(address, (uint8_t)2);
-  // value  = (uint16_t)Wire.read() << 8; // value high byte
-  // value |=           Wire.read();      // value low byte
-
   uint8_t buf[2];
   last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 2, buf, 2, 17);
   value = (uint16_t)buf[0] << 8;
@@ -286,18 +267,6 @@ uint16_t readReg16Bit(uint16_t reg)
 uint32_t readReg32Bit(uint16_t reg)
 {
   uint32_t value;
-
-  // Wire.beginTransmission(address);
-  // Wire.write((reg >> 8) & 0xFF); // reg high byte
-  // Wire.write( reg       & 0xFF); // reg low byte
-  // last_status = Wire.endTransmission();
-
-  // Wire.requestFrom(address, (uint8_t)4);
-  // value  = (uint32_t)Wire.read() << 24; // value highest byte
-  // value |= (uint32_t)Wire.read() << 16;
-  // value |= (uint16_t)Wire.read() <<  8;
-  // value |=           Wire.read();       // value lowest byte
-
   uint8_t buf[4];
   last_status = HAL_I2C_Mem_Read(&hi2c1, address, reg, 2, buf, 4, 17);
   
@@ -502,7 +471,7 @@ void stopContinuous()
 // Returns a range reading in millimeters when continuous mode is active
 // (readRangeSingleMillimeters() also calls this function after starting a
 // single-shot range measurement)
-uint16_t read(uint8_t blocking)
+uint16_t VL53L1X_read(uint8_t blocking)
 {
   if (blocking)
   {
@@ -626,47 +595,8 @@ uint8_t result_buf[RESULT_BUF_SIZE];
 // read measurement results into buffer
 void readResults()
 {
-  // Wire.beginTransmission(address);
-  // Wire.write((RESULT__RANGE_STATUS >> 8) & 0xFF); // reg high byte
-  // Wire.write( RESULT__RANGE_STATUS       & 0xFF); // reg low byte
-  // last_status = Wire.endTransmission();
-
   memset(result_buf, 0, RESULT_BUF_SIZE);
   HAL_I2C_Mem_Read(&hi2c1, address, RESULT__RANGE_STATUS, 2, result_buf, RESULT_BUF_SIZE, 17);
-  // for (int i = 0; i < RESULT_BUF_SIZE; ++i)
-  //   printf("%d ", result_buf[i]);
-  // printf("\n");
-
-  // HAL_I2C_Master_Transmit
-
-  // Wire.requestFrom(address, (uint8_t)17);
-
-  // results.range_status = Wire.read();
-
-  // Wire.read(); // report_status: not used
-
-  // results.stream_count = Wire.read();
-
-  // results.dss_actual_effective_spads_sd0  = (uint16_t)Wire.read() << 8; // high byte
-  // results.dss_actual_effective_spads_sd0 |=           Wire.read();      // low byte
-
-  // Wire.read(); // peak_signal_count_rate_mcps_sd0: not used
-  // Wire.read();
-
-  // results.ambient_count_rate_mcps_sd0  = (uint16_t)Wire.read() << 8; // high byte
-  // results.ambient_count_rate_mcps_sd0 |=           Wire.read();      // low byte
-
-  // Wire.read(); // sigma_sd0: not used
-  // Wire.read();
-
-  // Wire.read(); // phase_sd0: not used
-  // Wire.read();
-
-  // results.final_crosstalk_corrected_range_mm_sd0  = (uint16_t)Wire.read() << 8; // high byte
-  // results.final_crosstalk_corrected_range_mm_sd0 |=           Wire.read();      // low byte
-
-  // results.peak_signal_count_rate_crosstalk_corrected_mcps_sd0  = (uint16_t)Wire.read() << 8; // high byte
-  // results.peak_signal_count_rate_crosstalk_corrected_mcps_sd0 |=           Wire.read();      // low byte
 
   results.range_status = result_buf[0];
 

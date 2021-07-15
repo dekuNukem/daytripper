@@ -1892,9 +1892,9 @@
       </Doc>
       <Doc>
         <Name>..\Src\VL53L1X.c</Name>
-        <ColumnNumber>28</ColumnNumber>
-        <TopLine>551</TopLine>
-        <CurrentLine>574</CurrentLine>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>45</TopLine>
+        <CurrentLine>46</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

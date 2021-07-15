@@ -15,3 +15,5 @@ big battery (LIR2477):
 2.8mm screw
 
 if using pilers, make sure don't touch the positive battery terminal!
+
+VL53L1X sensor, protective film peel opening face left! (towards power switch)

@@ -128,14 +128,18 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+  VL53L1X_init();
+  setDistanceMode(Long);
+  setMeasurementTimingBudget(50000);
+  startContinuous(50);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    printf("Hello world!\n");
-    VL53L1X_test();
+    printf("dist: %d\n", VL53L1X_read(0));
     HAL_Delay(500);
   /* USER CODE END WHILE */
 
