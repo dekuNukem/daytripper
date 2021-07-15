@@ -8,6 +8,17 @@
 #include "stm32l0xx_hal.h"
 #include "shared.h"
 
+#define DTPR_CMD_TEST 0xa1
+#define DTPR_CMD_TRIG 0xb2
+#define DTPR_CMD_STAT 0xc3
+
+#define NRF_PAYLOAD_SIZE 6
+#define NRF_CHANNEL 115
+
+void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
+
+uint8_t send_packet(uint8_t* data);
+void build_packet_stat(uint8_t* data, uint16_t vbat_mV, uint16_t pot);
 
 #ifdef __cplusplus
 }

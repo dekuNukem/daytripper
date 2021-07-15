@@ -1354,7 +1354,7 @@ uint32_t calcMacroPeriod(uint8_t vcsel_period);
 
 // Convert count rate from fixed point 9.7 format to float
 float countRateFixedToFloat(uint16_t count_rate_fixed);
-void VL53L1X_test(void);
+void VL53L1X_get_ID(void);
 
 #endif
 

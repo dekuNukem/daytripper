@@ -39,3 +39,4 @@ txv2\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h
 txv2\main.o: ../Inc/helpers.h
 txv2\main.o: ../Inc/shared.h
 txv2\main.o: ../Inc/VL53L1X.h
+txv2\main.o: ../Inc/nrf24.h

@@ -432,6 +432,16 @@
               <FileType>5</FileType>
               <FilePath>..\Inc\shared.h</FilePath>
             </File>
+            <File>
+              <FileName>nrf24.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\nrf24.h</FilePath>
+            </File>
+            <File>
+              <FileName>nrf24.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\nrf24.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

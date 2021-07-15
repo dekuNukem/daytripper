@@ -66,11 +66,6 @@ void setAddress(uint8_t new_addr)
   address = new_addr;
 }
 
-void VL53L1X_test(void)
-{
-  printf("model_id: 0x%x\n", readReg16Bit(IDENTIFICATION__MODEL_ID));
-}
-
 // Initialize sensor using settings taken mostly from VL53L1_DataInit() and
 // VL53L1_StaticInit().
 // If io_2v8 (optional) is 1 or not given, the sensor is configured for 2V8
@@ -819,4 +814,9 @@ uint32_t calcMacroPeriod(uint8_t vcsel_period)
   macro_period_us >>= 6;
 
   return macro_period_us;
+}
+
+void VL53L1X_get_ID(void)
+{
+  printf("model_id: 0x%x\n", readReg16Bit(IDENTIFICATION__MODEL_ID));
 }

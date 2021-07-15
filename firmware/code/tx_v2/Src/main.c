@@ -44,6 +44,7 @@
 #include "helpers.h"
 #include "VL53L1X.h"
 #include "shared.h"
+#include "nrf24.h"
 
 /* USER CODE END Includes */
 
@@ -80,7 +81,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+uint8_t data_array[NRF_PAYLOAD_SIZE];
+uint8_t rx_address[5] = {0xBE,0xAD,0xA5,0xBA,0xBE};
+uint8_t tx_address[5] = {0xDA,0xBB,0xED,0xC0,0x0C};
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -131,6 +134,14 @@ int main(void)
   VL53L1X_init();
   setDistanceMode(Long);
   setMeasurementTimingBudget(50000);
+
+  nrf24_init();
+  nrf24_config(NRF_CHANNEL, NRF_PAYLOAD_SIZE);
+  nrf24_tx_address(tx_address);
+  nrf24_rx_address(rx_address);
+  HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+
   // startContinuous(50);
 
   /* USER CODE END 2 */
@@ -140,6 +151,8 @@ int main(void)
   while (1)
   {
     printf("dist: %d\n", VL53L1X_readSingle());
+    build_packet_stat(data_array, 0, 0);
+    send_packet(data_array);
     HAL_Delay(500);
   /* USER CODE END WHILE */
 
