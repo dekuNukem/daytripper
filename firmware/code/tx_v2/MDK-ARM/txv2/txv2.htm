@@ -3,7 +3,7 @@
 <title>Static Call Graph - [txv2\txv2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image txv2\txv2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 15 21:47:09 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 15 22:04:45 2021
 <BR><P>
 <H3>Maximum Stack Usage =        200 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -62,7 +62,7 @@ Global Symbols
 <P><STRONG><a name="[22]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32l052xx.o(.text)
 </UL>
-<P><STRONG><a name="[9b]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[9a]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[24]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -72,15 +72,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[9c]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[9b]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[9d]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[9c]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[9e]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[9d]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[9f]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[9e]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[a0]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[9f]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32l052xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32l052xx.o(RESET)
@@ -167,14 +167,14 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32l052xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32l052xx.o(RESET)
 </UL>
-<P><STRONG><a name="[a1]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[a0]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[30]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DelayMicroSecond
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateDSS
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMicrosecondsToMclks
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
@@ -190,7 +190,7 @@ Global Symbols
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[2a]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -198,9 +198,9 @@ Global Symbols
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[a2]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[a1]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[a3]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[a2]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[29]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -210,24 +210,24 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readResults
 </UL>
 
-<P><STRONG><a name="[a4]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[a3]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[2b]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[92]"></a>__ARM_scalbnf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fscalb.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
+<P><STRONG><a name="[93]"></a>__ARM_scalbnf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fscalb.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
 </UL>
 
-<P><STRONG><a name="[a5]"></a>scalbnf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fscalb.o(.text), UNUSED)
+<P><STRONG><a name="[a4]"></a>scalbnf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fscalb.o(.text), UNUSED)
 
 <P><STRONG><a name="[2c]"></a>__aeabi_ui2f</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ffltui.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
 </UL>
 
 <P><STRONG><a name="[28]"></a>__aeabi_llsl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, llshl.o(.text))
@@ -236,7 +236,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[a6]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[a5]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[27]"></a>__aeabi_llsr</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, llushr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_llsr
@@ -244,11 +244,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[a7]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[a6]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 
-<P><STRONG><a name="[a8]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[a7]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
-<P><STRONG><a name="[a9]"></a>_float_round</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, fepilogue.o(.text), UNUSED)
+<P><STRONG><a name="[a8]"></a>_float_round</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, fepilogue.o(.text), UNUSED)
 
 <P><STRONG><a name="[2d]"></a>_float_epilogue</STRONG> (Thumb, 114 bytes, Stack size 12 bytes, fepilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = _float_epilogue
@@ -262,7 +262,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[aa]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[a9]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[31]"></a>HAL_ADC_ConfigChannel</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, stm32l0xx_hal_adc.o(i.HAL_ADC_ConfigChannel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = HAL_ADC_ConfigChannel &rArr; ADC_DelayMicroSecond &rArr; __aeabi_uidivmod
@@ -374,8 +374,7 @@ Global Symbols
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_TransferConfig
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_RequestMemoryWrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg32Bit
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg16Bit
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg16Bit
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
 </UL>
 
@@ -742,8 +741,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[88]"></a>VL53L1X_read</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, vl53l1x.o(i.VL53L1X_read))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = VL53L1X_read &rArr; updateDSS &rArr; writeReg16Bit &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+<P><STRONG><a name="[88]"></a>VL53L1X_readCont</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, vl53l1x.o(i.VL53L1X_readCont))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = VL53L1X_readCont &rArr; updateDSS &rArr; writeReg16Bit &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateDSS
@@ -754,14 +753,23 @@ Global Symbols
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dataReady
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkTimeoutExpired
 </UL>
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readSingle
+</UL>
+
+<P><STRONG><a name="[8e]"></a>VL53L1X_readSingle</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, vl53l1x.o(i.VL53L1X_readSingle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = VL53L1X_readSingle &rArr; VL53L1X_readCont &rArr; updateDSS &rArr; writeReg16Bit &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
+</UL>
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
+</UL>
 <BR>[Called By]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>__0printf$5</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[8f]"></a>__0printf$5</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[ab]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<P><STRONG><a name="[aa]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
 
 <P><STRONG><a name="[96]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
@@ -769,10 +777,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>__ARM_common_ll_muluu</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, vl53l1x.o(i.__ARM_common_ll_muluu))
+<P><STRONG><a name="[95]"></a>__ARM_common_ll_muluu</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, vl53l1x.o(i.__ARM_common_ll_muluu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __ARM_common_ll_muluu
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 </UL>
 
 <P><STRONG><a name="[7e]"></a>__ARM_common_switch8</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, vl53l1x.o(i.__ARM_common_switch8))
@@ -782,18 +790,18 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
-<P><STRONG><a name="[ac]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[ab]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[ad]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[ac]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[ae]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[ad]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[90]"></a>calcMacroPeriod</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, vl53l1x.o(i.calcMacroPeriod))
+<P><STRONG><a name="[91]"></a>calcMacroPeriod</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, vl53l1x.o(i.calcMacroPeriod))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = calcMacroPeriod &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 </UL>
 
@@ -802,15 +810,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
 </UL>
 
-<P><STRONG><a name="[91]"></a>countRateFixedToFloat</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, vl53l1x.o(i.countRateFixedToFloat))
+<P><STRONG><a name="[92]"></a>countRateFixedToFloat</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, vl53l1x.o(i.countRateFixedToFloat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = countRateFixedToFloat &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbnf
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbnf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRangingData
 </UL>
@@ -820,7 +828,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 </UL>
 
 <P><STRONG><a name="[23]"></a>fputc</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, main.o(i.fputc))
@@ -830,13 +838,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf5.o(i.__0printf$5)
 </UL>
-<P><STRONG><a name="[93]"></a>getMeasurementTimingBudget</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, vl53l1x.o(i.getMeasurementTimingBudget))
+<P><STRONG><a name="[94]"></a>getMeasurementTimingBudget</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, vl53l1x.o(i.getMeasurementTimingBudget))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = getMeasurementTimingBudget &rArr; readReg16Bit &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg16Bit
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_ll_muluu
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_ll_muluu
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setDistanceMode
 </UL>
@@ -844,19 +852,18 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>getRangingData</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, vl53l1x.o(i.getRangingData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = getRangingData &rArr; countRateFixedToFloat &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countRateFixedToFloat
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 </UL>
 
-<P><STRONG><a name="[20]"></a>main</STRONG> (Thumb, 116 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[20]"></a>main</STRONG> (Thumb, 108 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = main &rArr; VL53L1X_init &rArr; setDistanceMode &rArr; setMeasurementTimingBudget &rArr; writeReg &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startContinuous
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setDistanceMode
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readSingle
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_Init
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -878,7 +885,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setupManualCalibration
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dataReady
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
@@ -889,7 +896,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
 </UL>
 
@@ -899,14 +906,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 </UL>
 
 <P><STRONG><a name="[86]"></a>setDistanceMode</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, vl53l1x.o(i.setDistanceMode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = setDistanceMode &rArr; setMeasurementTimingBudget &rArr; writeReg &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getMeasurementTimingBudget
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
@@ -919,7 +926,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg16Bit
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcMacroPeriod
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timeoutMicrosecondsToMclks
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encodeTimeout
 </UL>
@@ -934,16 +941,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readReg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
-</UL>
-
-<P><STRONG><a name="[95]"></a>startContinuous</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, vl53l1x.o(i.startContinuous))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = startContinuous &rArr; writeReg &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg32Bit
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg
-</UL>
-<BR>[Called By]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 </UL>
 
 <P><STRONG><a name="[82]"></a>startTimeout</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, vl53l1x.o(i.startTimeout))
@@ -951,7 +949,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
 </UL>
 
@@ -961,7 +959,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writeReg16Bit
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 </UL>
 
 <P><STRONG><a name="[81]"></a>writeReg</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, vl53l1x.o(i.writeReg))
@@ -970,10 +968,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setupManualCalibration
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startContinuous
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readCont
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setDistanceMode
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_read
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_readSingle
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
 </UL>
 
@@ -985,14 +983,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateDSS
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setMeasurementTimingBudget
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L1X_init
-</UL>
-
-<P><STRONG><a name="[9a]"></a>writeReg32Bit</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, vl53l1x.o(i.writeReg32Bit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = writeReg32Bit &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
-</UL>
-<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
-</UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startContinuous
 </UL>
 <P>
 <H3>
@@ -1214,10 +1204,10 @@ Local Symbols
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 </UL>
 
-<P><STRONG><a name="[8f]"></a>_printf_core</STRONG> (Thumb, 688 bytes, Stack size 96 bytes, printf5.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[90]"></a>_printf_core</STRONG> (Thumb, 688 bytes, Stack size 96 bytes, printf5.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
 </UL>
 <P>
 <H3>

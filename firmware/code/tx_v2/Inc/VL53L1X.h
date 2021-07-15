@@ -1283,8 +1283,9 @@ uint32_t getMeasurementTimingBudget(void);
 
 void startContinuous(uint32_t period_ms);
 void stopContinuous(void);
-uint16_t VL53L1X_read(uint8_t blocking);
+uint16_t VL53L1X_readCont(uint8_t blocking);
 uint16_t readRangeContinuousMillimeters(uint8_t blocking);
+uint16_t VL53L1X_readSingle(void);
 
 // check if sensor has new reading available
 // assumes interrupt is active low (GPIO_HV_MUX__CTRL bit 4 is 1)

@@ -43,7 +43,7 @@ DistanceMode getDistanceMode(void)
 { return distance_mode; }
 
 uint16_t readRangeContinuousMillimeters(uint8_t blocking)
-{ return VL53L1X_read(blocking); } // alias of read()
+{ return VL53L1X_readCont(blocking); } // alias of read()
 
 uint8_t dataReady(void)
 { return (readReg(GPIO__TIO_HV_STATUS) & 0x01) == 0; }
@@ -468,10 +468,14 @@ void stopContinuous()
   // VL53L1_low_power_auto_data_stop_range() end
 }
 
-// Returns a range reading in millimeters when continuous mode is active
+// Returns a range reading in millimeters when continuous mode is active. If
 // (readRangeSingleMillimeters() also calls this function after starting a
+// blocking is true (the default), this function waits for a new measurement to
 // single-shot range measurement)
-uint16_t VL53L1X_read(uint8_t blocking)
+// be available. If blocking is false, it will try to return data immediately.
+// (readSingle() also calls this function after starting a single-shot range
+// measurement)
+uint16_t VL53L1X_readCont(uint8_t blocking)
 {
   if (blocking)
   {
@@ -481,11 +485,7 @@ uint16_t VL53L1X_read(uint8_t blocking)
       if (checkTimeoutExpired())
       {
         did_timeout = 1;
-        ranging_data.range_status = None;
-        ranging_data.range_mm = 0;
-        ranging_data.peak_signal_count_rate_MCPS = 0;
-        ranging_data.ambient_count_rate_MCPS = 0;
-        return ranging_data.range_mm;
+        return 0;
       }
     }
   }
@@ -505,6 +505,14 @@ uint16_t VL53L1X_read(uint8_t blocking)
   writeReg(SYSTEM__INTERRUPT_CLEAR, 0x01); // sys_interrupt_clear_range
 
   return ranging_data.range_mm;
+}
+
+uint16_t VL53L1X_readSingle(void)
+{
+  writeReg(SYSTEM__INTERRUPT_CLEAR, 0x01); // sys_interrupt_clear_range
+  writeReg(SYSTEM__MODE_START, 0x10); // mode_range__single_shot
+
+  return VL53L1X_readCont(1);
 }
 
 // convert a RangeStatus to a readable string

@@ -131,7 +131,7 @@ int main(void)
   VL53L1X_init();
   setDistanceMode(Long);
   setMeasurementTimingBudget(50000);
-  startContinuous(50);
+  // startContinuous(50);
 
   /* USER CODE END 2 */
 
@@ -139,7 +139,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    printf("dist: %d\n", VL53L1X_read(0));
+    printf("dist: %d\n", VL53L1X_readSingle());
     HAL_Delay(500);
   /* USER CODE END WHILE */
 
