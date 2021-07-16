@@ -40,3 +40,4 @@ txv2\main.o: ../Inc/helpers.h
 txv2\main.o: ../Inc/shared.h
 txv2\main.o: ../Inc/VL53L1X.h
 txv2\main.o: ../Inc/nrf24.h
+txv2\main.o: ../Inc/animation.h
