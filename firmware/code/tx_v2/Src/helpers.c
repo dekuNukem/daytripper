@@ -41,7 +41,7 @@ uint8_t send_packet(uint8_t* data)
 {
   nrf24_send(data);
   while(nrf24_isSending());
-    // HAL_IWDG_Refresh(&hiwdg);
+    kick_dog();
   if(nrf24_lastMessageStatus() == NRF24_TRANSMISSON_OK)
   {
     // printf("TX OK, retry %d times\n", nrf24_retransmissionCount());
@@ -52,3 +52,8 @@ uint8_t send_packet(uint8_t* data)
   return 1;
 }
 
+void kick_dog(void)
+{
+  // HAL_IWDG_Refresh(&hiwdg);
+  return;
+}

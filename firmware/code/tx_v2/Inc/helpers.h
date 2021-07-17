@@ -16,9 +16,9 @@
 #define NRF_CHANNEL 115
 
 void build_packet_trig(uint8_t* data_array, uint16_t base, uint16_t this);
-
 uint8_t send_packet(uint8_t* data);
 void build_packet_stat(uint8_t* data, uint16_t vbat_mV, uint16_t pot);
+void kick_dog(void);
 
 #ifdef __cplusplus
 }
