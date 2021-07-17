@@ -167,10 +167,11 @@ int main(void)
   {
     printf("dist: %d\n", VL53L1X_readSingle());
     printf("adc: %d\n\n", get_battery_adc_reading());
-    ;
     // build_packet_stat(data_array, 0, 0);
     // send_packet(data_array);
-    HAL_Delay(500);
+    // for (int i = 0; i < 16; ++i)
+    //   printf("ee%d: %d\n", i, EEPROM_ReadByte(i));
+    HAL_Delay(1000);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */

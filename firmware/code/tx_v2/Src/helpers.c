@@ -11,6 +11,8 @@
 #define STM32L0_UUID1 ((uint32_t *)0x1FF80054)
 #define STM32L0_UUID2 ((uint32_t *)0x1FF80058)
 
+#define EEPROM_BASE_ADDR  0x08080000
+
 uint8_t get_uuid(void)
 {
   uint32_t sum = *STM32L0_UUID0 + *STM32L0_UUID1 + *STM32L0_UUID2;
@@ -91,3 +93,9 @@ void kick_dog(void)
   // HAL_IWDG_Refresh(&hiwdg);
   return;
 }
+
+uint8_t EEPROM_ReadByte(uint16_t addr)
+{
+  return *((uint8_t *)(EEPROM_BASE_ADDR+addr));
+}
+
