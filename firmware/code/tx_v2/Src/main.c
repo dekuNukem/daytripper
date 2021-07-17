@@ -80,6 +80,7 @@ static void MX_TIM2_Init(void);
 static void MX_TIM6_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                                
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -140,6 +141,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
+  printf("dayTripper V2\n");
 
   VL53L1X_init();
   setDistanceMode(Long);
@@ -164,8 +166,10 @@ int main(void)
   while (1)
   {
     printf("dist: %d\n", VL53L1X_readSingle());
-    build_packet_stat(data_array, 0, 0);
-    send_packet(data_array);
+    printf("adc: %d\n\n", get_battery_adc_reading());
+    ;
+    // build_packet_stat(data_array, 0, 0);
+    // send_packet(data_array);
     HAL_Delay(500);
   /* USER CODE END WHILE */
 
@@ -249,7 +253,7 @@ static void MX_ADC_Init(void)
     */
   hadc.Instance = ADC1;
   hadc.Init.OversamplingMode = DISABLE;
-  hadc.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
+  hadc.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
   hadc.Init.Resolution = ADC_RESOLUTION_8B;
   hadc.Init.SamplingTime = ADC_SAMPLETIME_79CYCLES_5;
   hadc.Init.ScanConvMode = ADC_SCAN_DIRECTION_FORWARD;
@@ -273,6 +277,14 @@ static void MX_ADC_Init(void)
     */
   sConfig.Channel = ADC_CHANNEL_9;
   sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**Configure for the selected ADC regular channel to be converted. 
+    */
+  sConfig.Channel = ADC_CHANNEL_VREFINT;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);

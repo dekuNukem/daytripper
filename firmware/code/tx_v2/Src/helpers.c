@@ -52,6 +52,40 @@ uint8_t send_packet(uint8_t* data)
   return 1;
 }
 
+/*
+With Aglient E3610A on the battery input
+3.5V input
+vref: 101
+vbat: 132
+mV: 3199
+
+3.6V input
+vref: 98
+vbat: 132
+mV: 3297
+
+4.2V input
+vref: 98
+vbat: 155
+mV: 3871
+
+5V USB
+mV: 4771
+
+*/
+
+uint32_t get_battery_adc_reading(void)
+{
+  HAL_ADC_Start(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 100);
+  uint8_t vbat_8b = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_PollForConversion(&hadc, 100);
+  uint8_t vrefint = HAL_ADC_GetValue(&hadc);
+  HAL_ADC_Stop(&hadc);
+  // printf("vref: %d\nvbat: %d\nmV: %d\n\n", vrefint, vbat_8b, vbat_mV);
+	return (uint32_t)((1224 / (double)vrefint) * (double)vbat_8b * 2);
+}
+
 void kick_dog(void)
 {
   // HAL_IWDG_Refresh(&hiwdg);
