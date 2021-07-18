@@ -102,6 +102,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     animation_update();
 }
 
+// volatile uint8_t ready_to_sleep;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  printf("%d: %d\n", GPIO_Pin, VL53L1X_readCont(1));
+  // printf("w\n");
+  // ready_to_sleep = 1;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -157,7 +166,9 @@ int main(void)
   animation_init(&htim6, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
 
-  // startContinuous(50);
+  HAL_Delay(1000);
+
+  startContinuous(250);
 
   /* USER CODE END 2 */
 
@@ -165,12 +176,29 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    printf("dist: %d\n", VL53L1X_readSingle());
-    printf("adc: %d\n\n", get_battery_adc_reading());
+    // printf("dist: %d\n", VL53L1X_readSingle());
+    // printf("adc: %d\n\n", get_battery_adc_reading());
     // build_packet_stat(data_array, 0, 0);
     // send_packet(data_array);
     // for (int i = 0; i < 16; ++i)
     //   printf("ee%d: %d\n", i, EEPROM_ReadByte(i));
+    printf("T%d\n", HAL_GetTick());
+
+    // printf("sleeping...\n");
+    // for (int i = 0; i <= 31; i++)
+    // {
+    //   HAL_NVIC_ClearPendingIRQ(i);
+    //   HAL_NVIC_DisableIRQ(i);
+    // }
+    // __HAL_GPIO_EXTI_CLEAR_IT(0);
+    // __HAL_GPIO_EXTI_CLEAR_IT(1);
+    // HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+    // HAL_SuspendTick();
+    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    // HAL_ResumeTick();
+    // HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
+    // printf("woke up!\n");
+    
     HAL_Delay(1000);
   /* USER CODE END WHILE */
 
@@ -500,11 +528,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(NRF_CE_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : TOF_INT_Pin NRF_INT_Pin */
-  GPIO_InitStruct.Pin = TOF_INT_Pin|NRF_INT_Pin;
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : NRF_INT_Pin */
+  GPIO_InitStruct.Pin = NRF_INT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(NRF_INT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;
@@ -512,6 +546,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SPI1_CS_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_1_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 
 }
 

@@ -53,8 +53,6 @@
 #define USER_BUTTON_GPIO_Port GPIOC
 #define NRF_CE_Pin GPIO_PIN_15
 #define NRF_CE_GPIO_Port GPIOC
-#define TOF_INT_Pin GPIO_PIN_0
-#define TOF_INT_GPIO_Port GPIOA
 #define USER_LED_Pin GPIO_PIN_3
 #define USER_LED_GPIO_Port GPIOA
 #define VBAT_ADC_Pin GPIO_PIN_1
