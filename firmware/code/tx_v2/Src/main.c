@@ -211,7 +211,12 @@ int main(void)
     if(ready_to_sleep)
     {
       printf("sleeping...\n");
+      HAL_SuspendTick();
       HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+      HAL_ResumeTick();
+      huart1.Instance->CR1 &= ~(USART_CR1_UE);
+      huart1.Instance->BRR = 18;
+      huart1.Instance->CR1 |= USART_CR1_UE;
       printf("woke up!\n");
       ready_to_sleep = 0;
     }
