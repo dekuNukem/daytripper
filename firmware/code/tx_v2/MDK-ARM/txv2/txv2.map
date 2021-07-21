@@ -2195,7 +2195,7 @@ Image Symbol Table
     PendSV_Handler                           0x0800268d   Thumb Code     2  stm32l0xx_it.o(i.PendSV_Handler)
     SVC_Handler                              0x080027b3   Thumb Code     2  stm32l0xx_it.o(i.SVC_Handler)
     SysTick_Handler                          0x080027b5   Thumb Code    12  stm32l0xx_it.o(i.SysTick_Handler)
-    SystemClock_Config                       0x080027c1   Thumb Code   140  main.o(i.SystemClock_Config)
+    SystemClock_Config                       0x080027c1   Thumb Code   138  main.o(i.SystemClock_Config)
     SystemInit                               0x08002851   Thumb Code    66  system_stm32l0xx.o(i.SystemInit)
     TIM6_DAC_IRQHandler                      0x080028a5   Thumb Code    10  stm32l0xx_it.o(i.TIM6_DAC_IRQHandler)
     UART_AdvFeatureConfig                    0x08002a57   Thumb Code   202  stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig)
@@ -2516,7 +2516,7 @@ Image component sizes
 
        152         20         61         16          0       2267   animation.o
          0          0          0          0          0     443144   helpers.o
-      1304        176          0         11       1044       7848   main.o
+      1304        178          0         11       1044       7840   main.o
        438         18          0          1          0       6602   nrf24.o
         28          8        192          0       1024        636   startup_stm32l052xx.o
        122         24          0          4          0       3655   stm32l0xx_hal.o
@@ -2540,7 +2540,7 @@ Image component sizes
       1766        160          0         16         41      13964   vl53l1x.o
 
     ----------------------------------------------------------------------
-     13854        902        320         56       2116     560292   Object Totals
+     13854        904        320         56       2116     560284   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          2          4          7          0   (incl. Padding)
 
@@ -2591,9 +2591,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15116        970        320         60       2116     554876   Grand Totals
-     15116        970        320         60       2116     554876   ELF Image Totals
-     15116        970        320         60          0          0   ROM Totals
+     15116        972        320         60       2116     554868   Grand Totals
+     15116        972        320         60       2116     554868   ELF Image Totals
+     15116        972        320         60          0          0   ROM Totals
 
 ==============================================================================
 
