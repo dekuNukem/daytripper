@@ -105,16 +105,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     animation_update();
 }
 
-// volatile uint8_t ready_to_sleep;
+volatile uint8_t ready_to_sleep;
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  // printf("%d: %d\n", GPIO_Pin, VL53L1X_readCont(1));
+  printf("V");
   DEBUG_HI();
-  VL53L1X_readCont(1);
+  // VL53L1X_readCont(1);
+  printf("%d\n", VL53L1X_readCont(1));
   DEBUG_LO();
-  // printf("w\n");
-  // ready_to_sleep = 1;
+  ready_to_sleep = 1;
 }
 
 /* USER CODE END 0 */
@@ -202,13 +202,21 @@ int main(void)
     // __HAL_GPIO_EXTI_CLEAR_IT(1);
     // HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
     // HAL_SuspendTick();
-    // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    
     // HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
     // HAL_ResumeTick();
     // HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
     // printf("woke up!\n");
+
+    if(ready_to_sleep)
+    {
+      printf("sleeping...\n");
+      HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+      printf("woke up!\n");
+      ready_to_sleep = 0;
+    }
     
-    HAL_Delay(1000);
+    // HAL_Delay(1000);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
