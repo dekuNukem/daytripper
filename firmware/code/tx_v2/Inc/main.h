@@ -57,6 +57,8 @@
 #define USER_LED_GPIO_Port GPIOA
 #define VBAT_ADC_Pin GPIO_PIN_1
 #define VBAT_ADC_GPIO_Port GPIOB
+#define DEBUG_OUT_Pin GPIO_PIN_10
+#define DEBUG_OUT_GPIO_Port GPIOA
 #define NRF_INT_Pin GPIO_PIN_15
 #define NRF_INT_GPIO_Port GPIOA
 #define SPI1_CS_Pin GPIO_PIN_6

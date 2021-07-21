@@ -47,6 +47,9 @@
 #include "nrf24.h"
 #include "animation.h"
 
+#define DEBUG_HI() HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_SET)
+#define DEBUG_LO() HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET)
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -106,7 +109,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  printf("%d: %d\n", GPIO_Pin, VL53L1X_readCont(1));
+  // printf("%d: %d\n", GPIO_Pin, VL53L1X_readCont(1));
+  DEBUG_HI();
+  VL53L1X_readCont(1);
+  DEBUG_LO();
   // printf("w\n");
   // ready_to_sleep = 1;
 }
@@ -151,6 +157,7 @@ int main(void)
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   printf("dayTripper V2\n");
+  HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
 
   VL53L1X_init();
   setDistanceMode(Long);
@@ -165,8 +172,8 @@ int main(void)
 
   animation_init(&htim6, &htim2);
   start_animation(ANIMATION_TYPE_BREATHING);
-
   HAL_Delay(1000);
+  start_animation(ANIMATION_TYPE_CONST_OFF);
 
   startContinuous(250);
 
@@ -182,9 +189,10 @@ int main(void)
     // send_packet(data_array);
     // for (int i = 0; i < 16; ++i)
     //   printf("ee%d: %d\n", i, EEPROM_ReadByte(i));
-    printf("T%d\n", HAL_GetTick());
+    // printf("T%d\n", HAL_GetTick());
 
     // printf("sleeping...\n");
+    
     // for (int i = 0; i <= 31; i++)
     // {
     //   HAL_NVIC_ClearPendingIRQ(i);
@@ -195,6 +203,7 @@ int main(void)
     // HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
     // HAL_SuspendTick();
     // HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    // HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
     // HAL_ResumeTick();
     // HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
     // printf("woke up!\n");
@@ -515,6 +524,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(NRF_CE_GPIO_Port, NRF_CE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : USER_BUTTON_Pin */
@@ -535,6 +547,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : DEBUG_OUT_Pin */
+  GPIO_InitStruct.Pin = DEBUG_OUT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(DEBUG_OUT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : NRF_INT_Pin */
   GPIO_InitStruct.Pin = NRF_INT_Pin;
