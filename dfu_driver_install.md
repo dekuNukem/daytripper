@@ -16,17 +16,13 @@ If nothing shows up in `STM32 DfuSe tool`, you probably need to install a driver
 
 ![Alt text](resources/photos/app/start.png)
 
-Expand the node for USB devices. You should see one of two things:
+Expand the node for USB devices. If you see a device called **`STM32 BOOTLOADER`** (or something similar) WITHOUT yellow triangle:
 
-* A working device called **`STM32 BOOTLOADER`** (something similar).
+Double click it, go to `Driver` tab, click `Uninstall Device` button, check the `Delete the driver software` box, then press `Uninstall`.
 
-* A **`STM32 BOOTLOADER`** device with a yellow triangle.
+![Alt text](resources/photos/uninstall.png)
 
-If former, double click it, go to `Driver` tab, click `Uninstall Device` button, check the `Delete the driver software` box, then press `Uninstall`.
-
-![Alt text](resources/photos/app/uninstall.png)
-
-Now you should have a **`STM32 BOOTLOADER`** device yellow triangle.
+Now you should have a **`STM32 BOOTLOADER`** device with yellow triangle.
 
 **`Double click`** on it, select `Update Driver...`, then select `Browse my computer for driver software`
 
