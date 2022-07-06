@@ -6,7 +6,7 @@
 
 First, make sure you have followed the procedure of **`holding down the DFU button while plugging in the device`**.
 
-Once plugged in, you can release the button.
+Once plugged in, you can release the button. The lights and screen should stay off.
 
 If nothing shows up in `STM32 DfuSe tool`, you probably need to install a driver.
 
