@@ -1,0 +1,16 @@
+plugins:
+  - jekyll-relative-links
+  - jekyll-remote-theme
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - README.md
+  - LICENSE
+remote_theme: pages-themes/primer@v0.6.0
+title: dayTripper
+description: Hide-My-Windows Laser Tripwire
+permissions:
+  id-token: write
+  pages: write
+  contents: read
